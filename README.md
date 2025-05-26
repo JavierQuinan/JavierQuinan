@@ -4,7 +4,7 @@
 📍 Ecuador | 🌐 Trabajo remoto
 
 🔹 Ingeniero en Software || Desarrollador Full Stack
-🔹  Abogado
+🔹 Abogado
 🔹 Apasionado por convertir ideas complejas en sistemas útiles, legales y escalables
 
 ---
@@ -43,11 +43,26 @@
 ![Scriptcase](https://img.shields.io/badge/Scriptcase-007ACC?style=flat&logo=data:image/svg+xml;base64,...)
 
 
-## 🛠️ Actualmente trabajando en:
+## 🛠️ Actualmente desarrollando proyectos personales y escalables:
 
-- 🧾 Plataforma para generar contratos inteligentes en línea
-- 📲 App para gestión legal de microempresas
-- ⚙️ Automatización de tareas jurídicas y sistemas de onboarding digital
+- 🧾 Generador de Contratos Inteligentes Online
+Plataforma web para crear contratos legales personalizados de forma automática, segura y sin complicaciones. Ideal para freelancers, startups y asesores legales.
+
+- 📲 App Legal para Microempresas
+Aplicación móvil enfocada en la gestión legal de negocios pequeños: documentos, recordatorios, asesoría y cumplimiento desde un solo lugar.
+
+- ⚙️ Automatización Legal + Onboarding Digital
+Sistemas inteligentes que simplifican procesos jurídicos repetitivos: generación de documentos, flujos de firma digital, formularios con lógica condicional y seguimiento automatizado.
+
+---
+
+## 💻 Stack Favorito
+
+- **Lenguajes y bases:** HTML, CSS, JavaScript, Python  
+- **Frameworks:** Angular, Ionic, React, FastAPI  
+- **Bases de datos:** PostgreSQL  
+- **DevOps:** Docker, GitHub Actions  
+- **Automatización & AI:** Vosk, GPT APIs, automatización legal
 
 ---
 
@@ -57,6 +72,8 @@ Estoy disponible para:
 - Proyectos freelance y consultoría
 - Automatización de procesos legales
 - Desarrollo de plataformas web/móvil para profesionales y empresas
+
+---
 
 **📩 Escríbeme en [Instagram](https://www.instagram.com/quinan_dev?igsh=MTB5ZG8zdHFlZm52cw==) o por [correo](mailto:javierquiandra@gmail.com)**  
 También puedes ver más en mi [portafolio](https://portfolio-five-gilt-51.vercel.app/) (en desarrollo)
