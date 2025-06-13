@@ -42,27 +42,19 @@
 ![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white&style=flat)
 ![Scriptcase](https://img.shields.io/badge/Scriptcase-007ACC?style=flat&logo=data:image/svg+xml;base64,...)
 
-
-## 🛠️ Actualmente desarrollando proyectos personales y escalables:
-
-- 🧾 Generador de Contratos Inteligentes Online
-Plataforma web para crear contratos legales personalizados de forma automática, segura y sin complicaciones. Ideal para freelancers, startups y asesores legales.
-
-- 📲 App Legal para Microempresas
-Aplicación móvil enfocada en la gestión legal de negocios pequeños: documentos, recordatorios, asesoría y cumplimiento desde un solo lugar.
-
-- ⚙️ Automatización Legal + Onboarding Digital
-Sistemas inteligentes que simplifican procesos jurídicos repetitivos: generación de documentos, flujos de firma digital, formularios con lógica condicional y seguimiento automatizado.
-
 ---
 
-## 💻 Stack Favorito
+## 💻 Tech Stack
 
-- **Lenguajes y bases:** HTML, CSS, JavaScript, Python  
-- **Frameworks:** Angular, Ionic, React, FastAPI  
-- **Bases de datos:** PostgreSQL  
-- **DevOps:** Docker, GitHub Actions  
-- **Automatización & AI:** Vosk, GPT APIs, automatización legal
+- **Frontend:** HTML, CSS, JavaScript, Angular, React, Ionic
+- **Backend:** Python, FastAPI, Flask (básico)
+- **Bases de datos:** PostgreSQL, Firebase (básico)
+- **DevOps:** Docker, GitHub Actions, Git
+- **Automatización:** Vosk (voz a texto), GPT APIs, generación de documentos legales
+- **APIs:** REST, integración con Typeform, Google Sheets y Notion
+- **Herramientas:** VSCode, Postman, Notion, Trello, Figma (básico)
+
+> Actualmente aplicando este stack en proyectos reales como generadores de documentos, apps para microempresas y flujos legales automatizados.
 
 ---
 
