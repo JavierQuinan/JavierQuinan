@@ -1,6 +1,6 @@
 # 👋 Hola, soy Francisco Quinteros
 
-👨‍💻 Fullstack Software Engineer | ⚖️ LegalTech Dev  
+👨‍💻 Fullstack Software Engineer | ⚖️ LegalTech Dev | Consulto SAP MM-WM
 📍 Ecuador | 🌐 Trabajo remoto
 
 🔹 Ingeniero en Software || Desarrollador Full Stack
@@ -68,6 +68,6 @@ Estoy disponible para:
 ---
 
 **📩 Escríbeme en [Instagram](https://www.instagram.com/quinan_dev?igsh=MTB5ZG8zdHFlZm52cw==) o por [correo](mailto:javierquiandra@gmail.com)**  
-También puedes ver más en mi [portafolio](https://portfolio-five-gilt-51.vercel.app/) (en desarrollo)
+También puedes ver más en mi [portafolio](https://portfolio-five-gilt-51.vercel.app/)
 
 ---
