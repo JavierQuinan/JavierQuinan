@@ -1,6 +1,6 @@
 # 👋 Hola, soy Francisco Quinteros
 
-👨‍💻 Fullstack Software Engineer | ⚖️ LegalTech Dev | Consulto SAP MM-WM
+👨‍💻 Fullstack Software Engineer | ⚖️ LegalTech Dev | Consulto SAP MM-WM |
 📍 Ecuador | 🌐 Trabajo remoto
 
 🔹 Ingeniero en Software || Desarrollador Full Stack
@@ -53,8 +53,6 @@
 - **Automatización:** Vosk (voz a texto), GPT APIs, generación de documentos legales
 - **APIs:** REST, integración con Typeform, Google Sheets y Notion
 - **Herramientas:** VSCode, Postman, Notion, Trello, Figma (básico)
-
-> Actualmente aplicando este stack en proyectos reales como generadores de documentos, apps para microempresas y flujos legales automatizados.
 
 ---
 
