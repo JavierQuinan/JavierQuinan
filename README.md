@@ -25,7 +25,7 @@
 ```typescript
 const franciscoQuinteros = {
     ubicación: "Ecuador",
-    trabajoActual: "Fullstack Developer & LegalTech Specialist",
+    trabajoActual: "Ingeniero en software, Fullstack Developer & Abogado",
     código: ["JavaScript", "TypeScript", "Python", "Java"],
     experiencia: {
         fullstack: ["React", "Angular", "Next.js", "Node.js", "Express", "NestJS"],
