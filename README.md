@@ -116,30 +116,30 @@ const franciscoQuinteros = {
 ![Mocha](https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=mocha&logoColor=white)
 ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
 ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
-Estadísticas de GitHub
 
-<div align="center">
-  
-  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=JavierQuinan&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true" />
-  <img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=JavierQuinan&theme=tokyonight&hide_border=true" />
-  
-</div>
+### Real-time & Communication
+![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 
-<div align="center">
-  
-  <img width="60%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=JavierQuinan&layout=compact&theme=tokyonight&hide_border=true&langs_count=10" />
-  
-</div>
+### UI Libraries & Tools
+![Formik](https://img.shields.io/badge/Formik-172B4D?style=for-the-badge&logo=formik&logoColor=white)
+![Lodash](https://img.shields.io/badge/Lodash-3492FF?style=for-the-badge&logo=lodash&logoColor=white)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
+![Cheerio](https://img.shields.io/badge/Cheerio-E88C1A?style=for-the-badge&logo=javascript&logoColor=white)
+![i18next](https://img.shields.io/badge/i18next-26A69A?style=for-the-badge&logo=i18next&logoColor=white)
 
-<div align="center">
-  
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=JavierQuinan&theme=tokyo-night&hide_border=true&area=true" width="95%" />
-  
-</div>
+### Utilities & CLI
+![Commander.js](https://img.shields.io/badge/Commander.js-000000?style=for-the-badge&logo=node.js&logoColor=white)
+![Yup](https://img.shields.io/badge/Yup-0080FF?style=for-the-badge&logo=javascript&logoColor=white)
+![Listr2](https://img.shields.io/badge/Listr2-FF6F61?style=for-the-badge&logo=npm&logoColor=white)
 
----
+### LegalTech & Automation
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
+![Zapier](https://img.shields.io/badge/Zapier-FF4F00?style=for-the-badge&logo=zapier&logoColor=white)
+![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white)
+![Google Apps Script](https://img.shields.io/badge/Google_Apps_Script-4285F4?style=for-the-badge&logo=google&logoColor=white)
 
-##esign & Collaboration
+### Design & Collaboration
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 ![Trello](https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white)
 
