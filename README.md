@@ -1,7 +1,7 @@
 <div align="center">
   
 <!-- Banner animado -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,20,24,28&height=200&section=header&text=Francisco%20Quinteros&fontSize=60&fontAlignY=35&animation=twinkling&fontColor=fff&desc=Fullstack%20Engineer%20%7C%20LegalTech%20Developer%20%7C%20SAP%20Consultant&descAlignY=55&descSize=18" />
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,12,18,20,24&height=200&section=header&text=Francisco%20Quinteros&fontSize=60&fontAlignY=35&animation=twinkling&fontColor=fff&desc=Fullstack%20Engineer%20%7C%20LegalTech%20Developer%20%7C%20SAP%20Consultant&descAlignY=55&descSize=18" />
 
 <!-- Typing animation -->
 <p align="center">
@@ -200,7 +200,7 @@ Estadísticas de GitHub
 </td>
 <td width="50%">
 
-### LegalTech & Automatización
+### LegalTech & Automatización (En Aprendizaje constante)
 - Automatización de procesos legales
 - Generación automática de documentos
 - Chatbots con IA para consultas legales
@@ -218,6 +218,7 @@ Estadísticas de GitHub
 - Optimización de procesos logísticos
 - Capacitación y soporte técnico
 - Integración con sistemas externos
+- Aprendizaje constante en ABAP CLOUD
 
 </td>
 <td width="50%">
@@ -256,6 +257,8 @@ Plataforma de automatización para despachos legales con:
 
 **Tech:** React, FastAPI, PostgreSQL, OpenAI API, Vosk
 
+![Status](https://img.shields.io/badge/Estado-En%20Desarrollo-yellow?style=flat-square)
+
 </td>
 <td width="50%" valign="top">
 
@@ -268,12 +271,14 @@ Sistema integral de gestión para talleres automotrices:
 
 **Tech:** Angular, TypeScript, NestJS, PostgreSQL, Tailwind
 
+![Status](https://img.shields.io/badge/Estado-En%20Desarrollo-yellow?style=flat-square)
+
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 
-### Chat App Real-time
+### Chat App
 Aplicación de mensajería en tiempo real:
 - Comunicación instantánea
 - Gestión de eventos
@@ -281,6 +286,8 @@ Aplicación de mensajería en tiempo real:
 - Estado persistente
 
 **Tech:** React, Redux, Socket.io, Node.js, Formik
+
+![Status](https://img.shields.io/badge/Estado-Completado-success?style=flat-square)
 
 </td>
 <td width="50%" valign="top">
@@ -294,6 +301,8 @@ Aplicación móvil para gestión de entrenamientos:
 
 **Tech:** React Native, Expo, TypeScript, Node.js, PostgreSQL
 
+![Status](https://img.shields.io/badge/Estado-En%20Desarrollo-yellow?style=flat-square)
+
 </td>
 </tr>
 </table>
@@ -306,10 +315,10 @@ Aplicación móvil para gestión de entrenamientos:
 
 | Título | Institución | Año |
 |:---:|:---:|:---:|
-| Ingeniería en Software | Universidad Tecnológica | 2020 |
-| Abogado | Universidad Nacional | 2018 |
-| SAP MM/WM Consultant | SAP Training Center | 2021 |
-| Cloud Architecture | Google Cloud | 2022 |
+| Ingeniería en Software | Universidad UNIANDES | 2025 |
+| Abogado | Universidad Católica de Cuenca | 2015 |
+| SAP MM/WM Consultant | SAP - Udemy - Logali Group | 2018-2025 |
+| Full stack Developer | Códica LA| 2025 |
 
 </div>
 
