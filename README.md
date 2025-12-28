@@ -49,7 +49,7 @@ const franciscoQuinteros = {
 
 **Desarrollo Fullstack** con tecnologías modernas y escalables  
 **LegalTech Innovation** - Automatización de procesos legales  
-**Consultoría SAP** en módulos MM (Gestión de Materiales) y WM (Warehouse Management)  
+**Consultoría SAP** en módulos MM (Gestión de Materiales) y WM (Work Managament)  
 **Arquitectura de Software** - Diseño de sistemas robustos y mantenibles  
 **Integración de IA** - Implementación de soluciones con GPT y reconocimiento de voz
 
@@ -151,34 +151,34 @@ Estadísticas de GitHub
 
 ---
 
-## 📊 Estadísticas de GitHub
+## Estadísticas de GitHub
 
 <div align="center">
   
-  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=JavierQuinan&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true" />
-  <img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=JavierQuinan&theme=tokyonight&hide_border=true" />
+  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=JavierQuinan&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true" alt="GitHub Stats" />
+  <img width="49%" src="https://streak-stats.demolab.com/?user=JavierQuinan&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
   
 </div>
 
 <div align="center">
   
-  <img width="60%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=JavierQuinan&layout=compact&theme=tokyonight&hide_border=true&langs_count=10" />
+  <img width="60%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=JavierQuinan&layout=compact&theme=tokyonight&hide_border=true&langs_count=10" alt="Top Languages" />
   
 </div>
 
 <div align="center">
   
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=JavierQuinan&theme=tokyo-night&hide_border=true&area=true" width="95%" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=JavierQuinan&theme=tokyo-night&hide_border=true&area=true" width="95%" alt="Contribution Graph" />
   
 </div>
 
 ---
 
-## 🏆 Logros de GitHub
+## Logros de GitHub
 
 <div align="center">
   
-  <img src="https://github-profile-trophy.vercel.app/?username=JavierQuinan&theme=tokyonight&no-frame=true&no-bg=false&margin-w=4&row=1&column=7" />
+  <img src="https://github-profile-trophy.vercel.app/?username=JavierQuinan&theme=tokyonight&no-frame=true&no-bg=false&margin-w=4&row=1&column=7" alt="GitHub Trophies" />
   
 </div>
 
@@ -431,19 +431,12 @@ mindmap
 ## Contribuciones
 
 <div align="center">
-  
-![Snake animation](https://raw.githubusercontent.com/JavierQuinan/JavierQuinan/output/github-contribution-grid-snake-dark.svg)
 
-</div>
-
----
-
-<div align="center">
-  
-### De mis repositorios favoritos
-
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=JavierQuinan&repo=legaltech-automation&theme=tokyonight&hide_border=true)](https://github.com/JavierQuinan)
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=JavierQuinan&repo=sap-integration-suite&theme=tokyonight&hide_border=true)](https://github.com/JavierQuinan)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/JavierQuinan/JavierQuinan/output/github-contribution-grid-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/JavierQuinan/JavierQuinan/output/github-contribution-grid-snake.svg">
+  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/JavierQuinan/JavierQuinan/output/github-contribution-grid-snake.svg">
+</picture>
 
 </div>
 
