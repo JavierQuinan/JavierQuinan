@@ -155,13 +155,6 @@ const franciscoQuinteros = {
 
 <div align="center">
   
-  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=JavierQuinan&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true" alt="GitHub Stats" />
-  <img width="49%" src="https://streak-stats.demolab.com/?user=JavierQuinan&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
-  
-</div>
-
-<div align="center">
-  
   <img width="60%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=JavierQuinan&layout=compact&theme=tokyonight&hide_border=true&langs_count=10" alt="Top Languages" />
   
 </div>
@@ -397,40 +390,11 @@ mindmap
 
 ---
 
-## Actividad de Desarrollo
-
-<div align="center">
-
-<!--START_SECTION:waka-->
-<!--END_SECTION:waka-->
-
-</div>
-
----
-
 ## Frase del Día
 
 <div align="center">
 
 ![Quote](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight)
-
-</div>
-
----
-
-## Contribuciones
-
-<div align="center">
-  
-  ![Snake animation](https://raw.githubusercontent.com/JavierQuinan/JavierQuinan/output/github-contribution-grid-snake-dark.svg)
-
-</div>
-
-<div align="center">
-
-### Gráfico de actividad 3D
-
-![3D Contributions](https://github-readme-activity-graph.vercel.app/graph?username=JavierQuinan&bg_color=1a1b27&color=70a5fd&line=bf91f3&point=38bdae&area=true&hide_border=true)
 
 </div>
 
