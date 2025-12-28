@@ -174,16 +174,6 @@ const franciscoQuinteros = {
 
 ---
 
-## Logros de GitHub
-
-<div align="center">
-  
-  <img src="https://github-profile-trophy.vercel.app/?username=JavierQuinan&theme=tokyonight&no-frame=false&no-bg=false&margin-w=15&row=2" alt="GitHub Trophies" />
-  
-</div>
-
----
-
 ## Experiencia Destacada
 
 <table>
