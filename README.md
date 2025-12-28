@@ -178,7 +178,7 @@ const franciscoQuinteros = {
 
 <div align="center">
   
-  <img src="https://github-profile-trophy.vercel.app/?username=JavierQuinan&theme=tokyonight&no-frame=true&no-bg=false&margin-w=4&row=1&column=7" alt="GitHub Trophies" />
+  <img src="https://github-profile-trophy.vercel.app/?username=JavierQuinan&theme=tokyonight&no-frame=false&no-bg=false&margin-w=15&row=2" alt="GitHub Trophies" />
   
 </div>
 
@@ -431,12 +431,16 @@ mindmap
 ## Contribuciones
 
 <div align="center">
+  
+  ![Snake animation](https://raw.githubusercontent.com/JavierQuinan/JavierQuinan/output/github-contribution-grid-snake-dark.svg)
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/JavierQuinan/JavierQuinan/output/github-contribution-grid-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/JavierQuinan/JavierQuinan/output/github-contribution-grid-snake.svg">
-  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/JavierQuinan/JavierQuinan/output/github-contribution-grid-snake.svg">
-</picture>
+</div>
+
+<div align="center">
+
+### Gráfico de actividad 3D
+
+![3D Contributions](https://github-readme-activity-graph.vercel.app/graph?username=JavierQuinan&bg_color=1a1b27&color=70a5fd&line=bf91f3&point=38bdae&area=true&hide_border=true)
 
 </div>
 
