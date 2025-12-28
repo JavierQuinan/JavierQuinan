@@ -5,7 +5,7 @@
 
 <!-- Typing animation -->
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=2E9EF7&center=true&vCenter=true&multiline=false&repeat=true&width=600&height=100&lines=Ingeniero+en+Software+%F0%9F%92%BB;Abogado+%E2%9A%96%EF%B8%8F;Especialista+en+LegalTech+%F0%9F%93%9C;Consultor+SAP+MM-WM+%F0%9F%93%A6;Transformando+ideas+en+código+%F0%9F%9A%80" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=2E9EF7&center=true&vCenter=true&multiline=false&repeat=true&width=600&height=100&lines=Ingeniero+en+Software;Abogado;Especialista+en+LegalTech;Consultor+SAP+MM-WM;Transformando+ideas+en+código" alt="Typing SVG" />
 </p>
 
 <!-- Badges de perfil -->
@@ -13,25 +13,25 @@
   <img src="https://komarev.com/ghpvc/?username=JavierQuinan&label=Visitas%20al%20perfil&color=0e75b6&style=flat" alt="profile views" />
   <img src="https://img.shields.io/github/followers/JavierQuinan?label=Seguidores&style=social" alt="GitHub followers" />
   <img src="https://img.shields.io/badge/Disponible%20para-Freelance-success?style=flat&logo=upwork" alt="Freelance" />
-  <img src="https://img.shields.io/badge/Ubicación-Ecuador%20🇪🇨-blue?style=flat" alt="Location" />
+  <img src="https://img.shields.io/badge/Ubicación-Ecuador-blue?style=flat" alt="Location" />
 </p>
 
 </div>
 
 ---
 
-## 🚀 Sobre mí
+## Sobre mí
 
 ```typescript
 const franciscoQuinteros = {
-    ubicación: "🌎 Ecuador",
+    ubicación: "Ecuador",
     trabajoActual: "Fullstack Developer & LegalTech Specialist",
     código: ["JavaScript", "TypeScript", "Python", "Java"],
     experiencia: {
-        fullstack: ["React", "Angular", "Next.js", "Node.js", "Express"],
-        mobile: ["Ionic", "Android Studio"],
-        backend: ["FastAPI", "Flask", "Spring Boot"],
-        databases: ["PostgreSQL", "MySQL", "Firebase"],
+        fullstack: ["React", "Angular", "Next.js", "Node.js", "Express", "NestJS"],
+        mobile: ["Ionic", "Android Studio", "React Native", "Expo"],
+        backend: ["FastAPI", "Flask", "Spring Boot", "Fastify"],
+        databases: ["PostgreSQL", "MySQL", "Firebase", "SQLite"],
         cloud: ["Docker", "GitHub Actions"],
         legalTech: ["Automatización Legal", "GPT APIs", "Vosk AI"],
         sap: ["SAP MM", "SAP WM"]
@@ -39,41 +39,46 @@ const franciscoQuinteros = {
     arquitectura: ["REST APIs", "Microservicios", "SPA", "PWA"],
     desafíoActual: "Construir soluciones tecnológicas que simplifiquen procesos legales",
     pasiones: ["Innovación Legal", "Código Limpio", "Open Source", "Automatización"],
-    quote: "El código es poesía, el software es arte ✨"
+    quote: "El código es poesía, el software es arte"
 };
 ```
 
 <div align="center">
   
-### 💡 Lo que hago
+### Lo que hago
 
-🔹 **Desarrollo Fullstack** con tecnologías modernas y escalables  
-🔹 **LegalTech Innovation** - Automatización de procesos legales  
-🔹 **Consultoría SAP** en módulos MM (Gestión de Materiales) y WM (Warehouse Management)  
-🔹 **Arquitectura de Software** - Diseño de sistemas robustos y mantenibles  
-🔹 **Integración de IA** - Implementación de soluciones con GPT y reconocimiento de voz
+**Desarrollo Fullstack** con tecnologías modernas y escalables  
+**LegalTech Innovation** - Automatización de procesos legales  
+**Consultoría SAP** en módulos MM (Gestión de Materiales) y WM (Warehouse Management)  
+**Arquitectura de Software** - Diseño de sistemas robustos y mantenibles  
+**Integración de IA** - Implementación de soluciones con GPT y reconocimiento de voz
 
 </div>
 
 ---
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 <div align="center">
 
 ### Frontend Development
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Redux](https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
 ![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap_5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 ### Backend Development
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
+![Fastify](https://img.shields.io/badge/Fastify-000000?style=for-the-badge&logo=fastify&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
@@ -84,12 +89,20 @@ const franciscoQuinteros = {
 ![Ionic](https://img.shields.io/badge/Ionic-3880FF?style=for-the-badge&logo=ionic&logoColor=white)
 ![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
 
 ### Databases & Cloud
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+
+### Build Tools & Module Bundlers
+![Webpack](https://img.shields.io/badge/Webpack-8DD6F9?style=for-the-badge&logo=webpack&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Rollup](https://img.shields.io/badge/Rollup-EC4A3F?style=for-the-badge&logo=rollup.js&logoColor=white)
+![Babel](https://img.shields.io/badge/Babel-F9DC3E?style=for-the-badge&logo=babel&logoColor=black)
 
 ### DevOps & Tools
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
@@ -98,13 +111,35 @@ const franciscoQuinteros = {
 ![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 
-### LegalTech & Automation
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
-![Zapier](https://img.shields.io/badge/Zapier-FF4F00?style=for-the-badge&logo=zapier&logoColor=white)
-![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white)
-![Google Apps Script](https://img.shields.io/badge/Google_Apps_Script-4285F4?style=for-the-badge&logo=google&logoColor=white)
+### Testing & Quality
+![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
+![Mocha](https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=mocha&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
+Estadísticas de GitHub
 
-### Design & Collaboration
+<div align="center">
+  
+  <img width="49%" src="https://github-readme-stats.vercel.app/api?username=JavierQuinan&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true" />
+  <img width="49%" src="https://github-readme-streak-stats.herokuapp.com/?user=JavierQuinan&theme=tokyonight&hide_border=true" />
+  
+</div>
+
+<div align="center">
+  
+  <img width="60%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=JavierQuinan&layout=compact&theme=tokyonight&hide_border=true&langs_count=10" />
+  
+</div>
+
+<div align="center">
+  
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=JavierQuinan&theme=tokyo-night&hide_border=true&area=true" width="95%" />
+  
+</div>
+
+---
+
+##esign & Collaboration
 ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 ![Trello](https://img.shields.io/badge/Trello-0052CC?style=for-the-badge&logo=trello&logoColor=white)
 
@@ -149,50 +184,50 @@ const franciscoQuinteros = {
 
 ---
 
-## 💼 Experiencia Destacada
+## Experiencia Destacada
 
 <table>
 <tr>
 <td width="50%">
 
-### 👨‍💻 Desarrollo Fullstack
-- ✅ Aplicaciones web escalables con React/Next.js
-- ✅ APIs REST robustas con Node.js/Express
-- ✅ Sistemas empresariales con Angular
-- ✅ Arquitecturas de microservicios
-- ✅ Integración de bases de datos relacionales
+### Desarrollo Fullstack
+- Aplicaciones web escalables con React/Next.js
+- APIs REST robustas con Node.js/Express/NestJS
+- Sistemas empresariales con Angular
+- Arquitecturas de microservicios
+- Integración de bases de datos relacionales
 
 </td>
 <td width="50%">
 
-### ⚖️ LegalTech & Automatización
-- ✅ Automatización de procesos legales
-- ✅ Generación automática de documentos
-- ✅ Chatbots con IA para consultas legales
-- ✅ Reconocimiento de voz (Vosk AI)
-- ✅ Integración GPT para análisis legal
+### LegalTech & Automatización
+- Automatización de procesos legales
+- Generación automática de documentos
+- Chatbots con IA para consultas legales
+- Reconocimiento de voz (Vosk AI)
+- Integración GPT para análisis legal
 
 </td>
 </tr>
 <tr>
 <td width="50%">
 
-### 📦 Consultoría SAP
-- ✅ Implementación SAP MM (Gestión de Materiales)
-- ✅ Configuración SAP WM (Warehouse Management)
-- ✅ Optimización de procesos logísticos
-- ✅ Capacitación y soporte técnico
-- ✅ Integración con sistemas externos
+### Consultoría SAP
+- Implementación SAP MM (Gestión de Materiales)
+- Configuración SAP WM (Warehouse Management)
+- Optimización de procesos logísticos
+- Capacitación y soporte técnico
+- Integración con sistemas externos
 
 </td>
 <td width="50%">
 
-### 📱 Desarrollo Móvil
-- ✅ Apps híbridas con Ionic Framework
-- ✅ Desarrollo nativo Android
-- ✅ PWAs (Progressive Web Apps)
-- ✅ Sincronización offline-first
-- ✅ Integración con APIs REST
+### Desarrollo Móvil
+- Apps híbridas con Ionic Framework
+- Desarrollo nativo Android
+- React Native & Expo
+- PWAs (Progressive Web Apps)
+- Sincronización offline-first
 
 </td>
 </tr>
@@ -200,11 +235,11 @@ const franciscoQuinteros = {
 
 ---
 
-## 🎯 Proyectos Destacados
+## Proyectos Destacados
 
 <div align="center">
 
-[![Portafolio](https://img.shields.io/badge/🌐_Mi_Portafolio-Visitar-2E9EF7?style=for-the-badge)](https://portfolio-five-gilt-51.vercel.app/)
+[![Portafolio](https://img.shields.io/badge/Mi_Portafolio-Visitar-2E9EF7?style=for-the-badge)](https://portfolio-five-gilt-51.vercel.app/)
 
 </div>
 
@@ -212,52 +247,52 @@ const franciscoQuinteros = {
 <tr>
 <td width="50%" valign="top">
 
-### 🤖 LegalTech Automation Platform
+### LegalTech Automation Platform
 Plataforma de automatización para despachos legales con:
-- 📄 Generación automática de contratos
-- 🎙️ Transcripción de audiencias con IA
-- 📊 Dashboard de gestión de casos
-- 🔐 Firma electrónica integrada
+- Generación automática de contratos
+- Transcripción de audiencias con IA
+- Dashboard de gestión de casos
+- Firma electrónica integrada
 
 **Tech:** React, FastAPI, PostgreSQL, OpenAI API, Vosk
 
 </td>
 <td width="50%" valign="top">
 
-### 📦 SAP Integration Suite
-Suite de herramientas para integración SAP:
-- 🔄 Sincronización de datos en tiempo real
-- 📈 Reportes personalizados
-- 🏭 Gestión de inventario avanzada
-- 📊 Analytics y visualización
+### TecnoAuto - ERP Automotriz
+Sistema integral de gestión para talleres automotrices:
+- Órdenes de servicio y facturación SRI
+- Control de roles y flujos operativos
+- Gestión de inventario
+- Reportes y analytics
 
-**Tech:** Java, Spring Boot, PostgreSQL, SAP APIs
+**Tech:** Angular, TypeScript, NestJS, PostgreSQL, Tailwind
 
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 
-### 🏥 Healthcare Management System
-Sistema de gestión para centros médicos:
-- 👥 Gestión de pacientes y citas
-- 📋 Historias clínicas electrónicas
-- 💊 Control de farmacia
-- 📊 Reportes estadísticos
+### Chat App Real-time
+Aplicación de mensajería en tiempo real:
+- Comunicación instantánea
+- Gestión de eventos
+- Interface responsiva
+- Estado persistente
 
-**Tech:** Angular, Node.js, MySQL, Docker
+**Tech:** React, Redux, Socket.io, Node.js, Formik
 
 </td>
 <td width="50%" valign="top">
 
-### 📱 Business Mobile App
-Aplicación móvil empresarial con:
-- 📊 Dashboard en tiempo real
-- 🔔 Notificaciones push
-- 📍 Geolocalización
-- 💳 Integración de pagos
+### Gym Pro - Fitness App
+Aplicación móvil para gestión de entrenamientos:
+- Rutinas personalizadas
+- Seguimiento de métricas
+- Panel administrativo completo
+- Notificaciones push
 
-**Tech:** Ionic, Angular, Firebase, Stripe
+**Tech:** React Native, Expo, TypeScript, Node.js, PostgreSQL
 
 </td>
 </tr>
@@ -265,11 +300,11 @@ Aplicación móvil empresarial con:
 
 ---
 
-## 🎓 Formación & Certificaciones
+## Formación & Certificaciones
 
 <div align="center">
 
-| 🎓 Título | 🏛️ Institución | 📅 Año |
+| Título | Institución | Año |
 |:---:|:---:|:---:|
 | Ingeniería en Software | Universidad Tecnológica | 2020 |
 | Abogado | Universidad Nacional | 2018 |
@@ -280,7 +315,7 @@ Aplicación móvil empresarial con:
 
 ---
 
-## 🤝 Servicios Profesionales
+## Servicios Profesionales
 
 <div align="center">
 
@@ -312,26 +347,26 @@ mindmap
 
 </div>
 
-### 💼 Estoy disponible para:
+### Estoy disponible para:
 
 <table>
 <tr>
 <td>
 
-- 🚀 **Desarrollo de MVPs** - Lleva tu idea al mercado rápidamente
-- 🏢 **Proyectos Empresariales** - Soluciones a medida para tu negocio
-- ⚖️ **Automatización Legal** - Optimiza tus procesos legales
-- 📦 **Consultoría SAP** - Mejora tu gestión logística
-- 🎓 **Mentoría Tech** - Comparto mi experiencia
+- **Desarrollo de MVPs** - Lleva tu idea al mercado rápidamente
+- **Proyectos Empresariales** - Soluciones a medida para tu negocio
+- **Automatización Legal** - Optimiza tus procesos legales
+- **Consultoría SAP** - Mejora tu gestión logística
+- **Mentoría Tech** - Comparto mi experiencia
 
 </td>
 <td>
 
-- 🔧 **Mantenimiento de Apps** - Soporte y mejoras continuas
-- 🌐 **Integración de APIs** - Conecta tus sistemas
-- 📱 **Apps Móviles** - Desde la idea hasta la tienda
-- 🤖 **Soluciones con IA** - Integración de modelos GPT
-- 💡 **Consultoría Técnica** - Orientación en decisiones tech
+- **Mantenimiento de Apps** - Soporte y mejoras continuas
+- **Integración de APIs** - Conecta tus sistemas
+- **Apps Móviles** - Desde la idea hasta la tienda
+- **Soluciones con IA** - Integración de modelos GPT
+- **Consultoría Técnica** - Orientación en decisiones tech
 
 </td>
 </tr>
@@ -339,7 +374,7 @@ mindmap
 
 ---
 
-## 📫 Conectemos
+## Conectemos
 
 <div align="center">
 
@@ -353,17 +388,17 @@ mindmap
 
 <div align="center">
 
-### 💬 ¿Hablamos de tu próximo proyecto?
+### Hablamos de tu próximo proyecto?
 
-**📧 Email:** javierquiandra@gmail.com  
-**📱 Instagram:** [@quinan_dev](https://www.instagram.com/quinan_dev?igsh=MTB5ZG8zdHFlZm52cw==)  
-**🌐 Portfolio:** [Ver mis trabajos](https://portfolio-five-gilt-51.vercel.app/)
+**Email:** javierquiandra@gmail.com  
+**Instagram:** [@quinan_dev](https://www.instagram.com/quinan_dev?igsh=MTB5ZG8zdHFlZm52cw==)  
+**Portfolio:** [Ver mis trabajos](https://portfolio-five-gilt-51.vercel.app/)
 
 </div>
 
 ---
 
-## 📈 Actividad de Desarrollo
+## Actividad de Desarrollo
 
 <div align="center">
 
@@ -374,7 +409,7 @@ mindmap
 
 ---
 
-## 💭 Frase del Día
+## Frase del Día
 
 <div align="center">
 
@@ -384,7 +419,7 @@ mindmap
 
 ---
 
-## 🐍 Contribuciones
+## Contribuciones
 
 <div align="center">
   
@@ -396,7 +431,7 @@ mindmap
 
 <div align="center">
   
-### ⭐ De mis repositorios favoritos
+### De mis repositorios favoritos
 
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=JavierQuinan&repo=legaltech-automation&theme=tokyonight&hide_border=true)](https://github.com/JavierQuinan)
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=JavierQuinan&repo=sap-integration-suite&theme=tokyonight&hide_border=true)](https://github.com/JavierQuinan)
@@ -407,13 +442,13 @@ mindmap
 
 <div align="center">
 
-### 🌟 "La tecnología bien aplicada puede transformar vidas y simplificar complejidades" 🌟
+### "La tecnología bien aplicada puede transformar vidas y simplificar complejidades"
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,20,24,28&height=100&section=footer" width="100%" />
 
-**⭐️ Si te gusta mi trabajo, considera darle una estrella a mis repositorios ⭐️**
+**Si te gusta mi trabajo, considera darle una estrella a mis repositorios**
 
-![Footer](https://img.shields.io/badge/Made%20with-❤️%20and%20☕-red?style=for-the-badge)
-![Ecuador](https://img.shields.io/badge/Hecho%20en-Ecuador%20🇪🇨-blue?style=for-the-badge)
+![Footer](https://img.shields.io/badge/Made%20with-Code%20and%20Coffee-red?style=for-the-badge)
+![Ecuador](https://img.shields.io/badge/Hecho%20en-Ecuador-blue?style=for-the-badge)
 
 </div>
