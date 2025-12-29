@@ -154,15 +154,15 @@ const franciscoQuinteros = {
 ## Estadísticas de GitHub
 
 <div align="center">
-
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=JavierQuinan&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true"/>
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=JavierQuinan&layout=compact&langs_count=8&theme=tokyonight&hide_border=true"/>
+  
+![](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=JavierQuinan&theme=tokyonight)
 
 </div>
 
 <div align="center">
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=JavierQuinan&theme=tokyo-night&hide_border=true&area=true" width="95%" />
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=JavierQuinan&theme=tokyonight" />
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=JavierQuinan&theme=tokyonight" />
 
 </div>
 
