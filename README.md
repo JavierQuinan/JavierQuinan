@@ -198,7 +198,7 @@ const franciscoQuinteros = {
 
 ### Consultoría SAP
 - Implementación SAP MM (Gestión de Materiales)
-- Configuración SAP WM (Warehouse Management)
+- Configuración SAP WM (Work Management)
 - Optimización de procesos logísticos
 - Capacitación y soporte técnico
 - Integración con sistemas externos
