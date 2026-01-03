@@ -324,7 +324,7 @@ mindmap
       Ionic
       Android
       PWA
-    LegalTech
+    LegalTech (Aprendizaje constante)
       Automatización Legal
       IA & GPT
       Documentos Inteligentes
@@ -349,7 +349,7 @@ mindmap
 - **Desarrollo de MVPs** - Lleva tu idea al mercado rápidamente
 - **Proyectos Empresariales** - Soluciones a medida para tu negocio
 - **Automatización Legal** - Optimiza tus procesos legales
-- **Consultoría SAP** - Mejora tu gestión logística
+- **Consultoría SAP** - Mejora tu gestión logística (Frelancer en los módulos MM y WM)
 - **Mentoría Tech** - Comparto mi experiencia
 
 </td>
