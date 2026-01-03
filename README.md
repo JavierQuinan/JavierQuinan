@@ -1,7 +1,7 @@
 <div align="center">
   
-<!-- Banner animado -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,20,24,28&height=200&section=header&text=Francisco%20Quinteros&fontSize=60&fontAlignY=35&animation=twinkling&fontColor=fff&desc=Fullstack%20Engineer%20%7C%20LegalTech%20Developer%20%7C%20SAP%20Consultant&descAlignY=55&descSize=18" />
+<!-- Banner con gradiente estático -->
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:E8D5B7,50:F5E6C8,100:C5E8B7&height=200&section=header&text=Francisco%20Quinteros&fontSize=60&fontAlignY=35&animation=twinkling&fontColor=fff&desc=Fullstack%20Engineer%20%7C%20LegalTech%20Developer%20%7C%20SAP%20Consultant&descAlignY=55&descSize=18" />
 
 <!-- Typing animation -->
 <p align="center">
