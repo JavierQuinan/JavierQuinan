@@ -405,7 +405,7 @@ mindmap
 
 ### "La tecnología bien aplicada puede transformar vidas y simplificar complejidades"
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,20,24,28&height=100&section=footer" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1E88E5,50:1565C0,100:0D47A1&height=100&section=footer" width="100%" />
 
 **Si te gusta mi trabajo, considera darle una estrella a mis repositorios**
 
