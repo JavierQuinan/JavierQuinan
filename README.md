@@ -49,9 +49,9 @@ Consultoría SAP       → MM (Materials Management) / WM (Work Management)
 
 | Proyecto | Descripción | Tecnologías |
 |:---------|:------------|:------------|
-| **TecnoAuto** | Sistema de gestión para talleres automotrices | `Angular` `NestJS` `PostgreSQL` |
-| **Chat App** | Mensajería en tiempo real | `React` `Redux` `Socket.io` |
-| **Gym Pro** | App móvil para gestión de rutinas | `React Native` `Expo` |
+| **TecnoAuto** | Sistema empresarial de facturación y gestión para talleres automotrices (SRI Ecuador) | `Angular` `NestJS` `MySQL` `TypeORM` `JWT` `TailwindCSS` |
+| **Chat App** | Aplicación web de mensajería en tiempo real con canales, autenticación y soporte multiidioma | `React` `Redux Toolkit` `React Router` `Socket.io` `Node.js` `Bootstrap` |
+| **Gym Pro** | Plataforma integral de entrenamiento fitness (App + Panel Web) | `React Native` `Expo` `Next.js` `Node.js` `PostgreSQL` `Firebase` |
 
 ---
 
