@@ -15,11 +15,14 @@ Ingeniero en Software, Abogado y Desarrollador Full Stack con enfoque en fronten
 
 ## Sobre mí
 
-Trabajo con **Angular** y **React** para construir interfaces escalables, conectadas a APIs y bases de datos relacionales.  
-Experiencia en entornos empresariales, consultoría **SAP (MM y WM)** y desarrollo de soluciones orientadas a negocio.
+Desarrollador Full Stack con enfoque en **Angular** y **React**, orientado a la construcción de interfaces escalables, integradas con APIs y bases de datos relacionales.  
+Experiencia en entornos empresariales, desarrollo backend con **Node.js / NestJS**, consultoría **SAP (MM y WM)** y soluciones tecnológicas orientadas a negocio y automatización de procesos.
+
+### Tecnologías y herramientas
 
 [![My Skills](https://skillicons.dev/icons?i=angular,react,ts,js,nodejs,nestjs,express,java&theme=dark)](https://skillicons.dev)
 [![My Skills](https://skillicons.dev/icons?i=postgres,mysql,mongodb,supabase,docker,git,vscode,postman&theme=dark)](https://skillicons.dev)
+
 
 ---
 
