@@ -23,7 +23,6 @@ Experiencia en entornos empresariales, desarrollo backend con **Node.js / NestJS
 [![My Skills](https://skillicons.dev/icons?i=angular,react,ts,js,nodejs,nestjs,express,java&theme=dark)](https://skillicons.dev)
 [![My Skills](https://skillicons.dev/icons?i=postgres,mysql,mongodb,supabase,docker,git,vscode,postman&theme=dark)](https://skillicons.dev)
 
-
 ---
 
 ## Qué hago
@@ -52,19 +51,19 @@ Consultoría SAP       → MM (Materials Management) / WM (Work Management)
 |:---------|:------------|:------------|
 | **TecnoAuto** | Sistema de gestión para talleres automotrices | `Angular` `NestJS` `PostgreSQL` |
 | **Chat App** | Mensajería en tiempo real | `React` `Redux` `Socket.io` |
-| **Gym Pro** | App móvil para gestión de rutinas | `React Native` + `Expo` |
+| **Gym Pro** | App móvil para gestión de rutinas | `React Native` `Expo` |
 
 ---
 
 ## Consultoría SAP
 
-```
- ▸ SAP MM (Gestión de Materiales)
- ▸ SAP WM (Work Management)
- ▸ Soporte funcional y técnico
- ▸ Integración con sistemas externos
- ▸ ABAP (en profundización)
-```
+ ▸ SAP IS-U (Utilities)  
+ ▸ SAP Work Management (WM) – Utilities  
+ ▸ Integración con SAP MM  
+ ▸ Gestión de órdenes, mantenimiento y procesos operativos  
+ ▸ Soporte funcional y técnico  
+ ▸ Integración con sistemas externos  
+ ▸ ABAP (en proceso de profundización)
 
 ---
 
@@ -87,7 +86,6 @@ Consultoría SAP       → MM (Materials Management) / WM (Work Management)
  ✓ Commits descriptivos
  ✓ Enfoque práctico y orientado a negocio
  ✓ Aprendizaje continuo
-```
 
 ---
 
