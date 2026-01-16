@@ -6,6 +6,8 @@ Trabajo con Angular y React para construir interfaces escalables, conectadas a A
 Experiencia en entornos empresariales, consultoría SAP (MM y WM) y desarrollo de soluciones orientadas a negocio.  
 Me enfoco en escribir código claro, mantenible y funcional.
 
+[![My Skills](https://skillicons.dev/icons?i=angular,react,ts,nodejs,nestjs,postgres,mongodb,docker,git&theme=dark)](https://skillicons.dev)
+
 ---
 
 ## Qué hago
@@ -21,95 +23,52 @@ Me enfoco en escribir código claro, mantenible y funcional.
 
 ## Stack principal
 
-### Frontend
-- Angular
-- React (Hooks, Redux)
-- TypeScript
-- HTML, CSS
-- Tailwind CSS, Bootstrap
-
-### Backend
-- Node.js (Express, NestJS)
-- Java (fundamentos y proyectos académicos)
-- APIs REST
-
-### Mobile
-- React Native (Expo)
-- Ionic Framework
-- Android (fundamentos)
-
-### Bases de datos
-- PostgreSQL
-- MySQL
-- MongoDB
-- SQLite
-- Supabase
-
-### Herramientas
-- Git / GitHub
-- Docker
-- Postman
-- VS Code
+**Frontend:** Angular · React · TypeScript · Tailwind CSS · Bootstrap  
+**Backend:** Node.js · Express · NestJS · Java · APIs REST  
+**Mobile:** React Native · Expo · Ionic  
+**Bases de datos:** PostgreSQL · MySQL · MongoDB · SQLite · Supabase  
+**Herramientas:** Git · Docker · Postman · VS Code
 
 ---
 
 ## Proyectos destacados
 
-### TecnoAuto – Sistema de Gestión para Talleres
-Sistema web para la gestión operativa de talleres automotrices.  
-**Incluye:** Órdenes de servicio, control de roles, gestión de inventario, flujo operativo real.  
-**Stack:** Angular, TypeScript, NestJS, PostgreSQL, Tailwind  
-**Estado:** En desarrollo
-
-### Chat App
-Aplicación de mensajería en tiempo real.  
-**Stack:** React, Redux, Socket.io, Node.js  
-**Estado:** Completado
-
-### App móvil de gestión (Gym Pro)
-Aplicación móvil para seguimiento y gestión de rutinas.  
-**Stack:** React Native, Expo, TypeScript  
-**Estado:** En desarrollo
+| Proyecto | Descripción | Stack | Estado |
+|:---------|:------------|:------|:------:|
+| **TecnoAuto** | Sistema de gestión para talleres automotrices | Angular, NestJS, PostgreSQL | En desarrollo |
+| **Chat App** | Mensajería en tiempo real | React, Redux, Socket.io, Node.js | Completado |
+| **Gym Pro** | App móvil para gestión de rutinas | React Native, Expo, TypeScript | En desarrollo |
 
 ---
 
 ## Experiencia complementaria
 
-### Consultoría SAP
-- SAP MM (Gestión de Materiales)
-- SAP WM (Warehouse Management)
-- Soporte funcional y técnico
-- Integración con sistemas externos
-- ABAP en proceso de profundización
+**Consultoría SAP**  
+SAP MM (Gestión de Materiales) · SAP WM (Warehouse Management) · Soporte funcional y técnico · Integración con sistemas externos · ABAP en profundización
 
 ---
 
 ## Formación
 
-- Ingeniería en Software – UNIANDES (2025)
-- Abogado – Universidad Católica de Cuenca
-- Consultor SAP MM / WM
-- Full Stack Developer – Códica LATAM
+| Título | Institución |
+|:-------|:------------|
+| Ingeniería en Software | UNIANDES (2025) |
+| Abogado | Universidad Católica de Cuenca |
+| Consultor SAP MM/WM | Certificación SAP |
+| Full Stack Developer | Códica LATAM |
 
 ---
 
 ## Cómo trabajo
 
-- Código claro y mantenible
-- Repositorios ordenados
-- Commits descriptivos
-- Enfoque práctico y orientado a negocio
-- Aprendizaje continuo
+Código claro y mantenible · Repositorios ordenados · Commits descriptivos · Enfoque práctico · Aprendizaje continuo
 
 ---
 
 ## Enlaces
 
-- **Portafolio:** https://portfolio-five-gilt-51.vercel.app
-- **LinkedIn:** https://www.linkedin.com/in/francisco-quinteros-583132152
-- **GitHub:** https://github.com/JavierQuinan
-- **Email:** javierquiandra@gmail.com
+[Portafolio](https://portfolio-five-gilt-51.vercel.app) · [LinkedIn](https://www.linkedin.com/in/francisco-quinteros-583132152) · [GitHub](https://github.com/JavierQuinan) · [Email](mailto:javierquiandra@gmail.com)
 
 ---
 
-> Construyo software útil, no demostraciones vacías.
+*Construyo software útil, no demostraciones vacías.*
