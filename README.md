@@ -1,6 +1,6 @@
 # Hey! Soy Francisco Quinteros
 
-Desarrollador Full Stack con enfoque en frontend moderno, aplicaciones móviles y sistemas de gestión.
+Ingeniero en Software, Abogado y Desarrollador Full Stack con enfoque en frontend moderno, aplicaciones móviles y sistemas de gestión.
 
 ---
 
