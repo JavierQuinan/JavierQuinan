@@ -1,11 +1,11 @@
 <div align="center">
   
 <!-- Banner con gradiente estático -->
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0D47A1,50:1565C0,100:1E88E5&height=200&section=header&text=Francisco%20Quinteros&fontSize=60&fontAlignY=35&animation=twinkling&fontColor=fff&desc=Fullstack%20Engineer%20%7C%20LegalTech%20Developer%20%7C%20SAP%20Consultant&descAlignY=55&descSize=18" />
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:0D47A1,50:1565C0,100:1E88E5&height=200&section=header&text=Francisco%20Quinteros&fontSize=60&fontAlignY=35&animation=twinkling&fontColor=fff&desc=Full%20Stack%20Engineer%20%7C%20Abogado%20%7C%20SAP%20Consultant&descAlignY=55&descSize=18" />
 
 <!-- Typing animation -->
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=2E9EF7&center=true&vCenter=true&multiline=false&repeat=true&width=600&height=100&lines=Ingeniero+en+Software;Abogado;Especialista+en+LegalTech;Consultor+SAP+MM-WM;Transformando+ideas+en+código" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=2E9EF7&center=true&vCenter=true&multiline=false&repeat=true&width=600&height=100&lines=Ingeniero+en+Software;Abogado;Consultor+SAP+MM-WM;Transformando+ideas+en+código" alt="Typing SVG" />
 </p>
 
 <!-- Badges de perfil -->
