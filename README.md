@@ -21,43 +21,69 @@ Experiencia en entornos empresariales, consultoría **SAP (MM y WM)** y desarrol
 
 ## Qué hago
 
-Desarrollo web (Angular, React) · Desarrollo móvil (React Native, Ionic) · APIs REST · Arquitectura de software · Consultoría SAP (MM/WM)
+```
+ Desarrollo Web        →  Angular, React, TypeScript
+ Desarrollo Móvil      →  React Native, Ionic, Expo
+ Backend & APIs        →  Node.js, NestJS, Express
+ Consultoría SAP       →  MM (Materiales) / WM (Warehouse)
+```
 
 ---
 
 ## Stack
 
-**Frontend:** Angular · React · TypeScript · Tailwind CSS  
-**Backend:** Node.js · NestJS · Express · Java  
-**Mobile:** React Native · Expo · Ionic  
-**DB:** PostgreSQL · MySQL · MongoDB · Supabase
+| Frontend | Backend | Mobile | Bases de Datos |
+|:--------:|:-------:|:------:|:--------------:|
+| Angular | Node.js | React Native | PostgreSQL |
+| React | NestJS | Expo | MySQL |
+| TypeScript | Express | Ionic | MongoDB |
+| Tailwind | Java | — | Supabase |
 
 ---
 
 ## Proyectos destacados
 
-**TecnoAuto** – Sistema de gestión para talleres automotrices `Angular` `NestJS` `PostgreSQL`  
-**Chat App** – Mensajería en tiempo real `React` `Redux` `Socket.io` ✓  
-**Gym Pro** – App móvil para gestión de rutinas `React Native` `Expo`
+| Proyecto | Descripción | Tecnologías |
+|:---------|:------------|:------------|
+| **TecnoAuto** | Sistema de gestión para talleres automotrices | `Angular` `NestJS` `PostgreSQL` |
+| **Chat App** | Mensajería en tiempo real | `React` `Redux` `Socket.io` |
+| **Gym Pro** | App móvil para gestión de rutinas | `React Native` `Expo` |
 
 ---
 
-## SAP
+## Consultoría SAP
 
-SAP MM · SAP WM · Soporte funcional · Integración de sistemas · ABAP
+```
+ ▸ SAP MM (Gestión de Materiales)
+ ▸ SAP WM (Warehouse Management)
+ ▸ Soporte funcional y técnico
+ ▸ Integración con sistemas externos
+ ▸ ABAP (en profundización)
+```
 
 ---
 
 ## Formación
 
-Ingeniería en Software (UNIANDES) · Abogado (UCACUE) · Consultor SAP MM/WM · Full Stack Developer (Códica LATAM)
+| Título | Institución |
+|:-------|:------------|
+| Ingeniería en Software | UNIANDES |
+| Abogado | Universidad Católica de Cuenca |
+| Consultor SAP MM/WM | Certificación SAP |
+| Full Stack Developer | Códica LATAM |
 
 ---
 
 ## Cómo trabajo
 
-Código claro y mantenible · Repositorios ordenados · Commits descriptivos · Enfoque práctico · Aprendizaje continuo
+```
+ ✓ Código claro y mantenible
+ ✓ Repositorios ordenados
+ ✓ Commits descriptivos
+ ✓ Enfoque práctico y orientado a negocio
+ ✓ Aprendizaje continuo
+```
 
 ---
 
-*Construyo software útil, no demostraciones vacías.*
+> **Construyo software útil, no demostraciones vacías.**
