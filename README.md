@@ -28,7 +28,7 @@ Experiencia en entornos empresariales, consultoría **SAP (MM y WM)** y desarrol
 Desarrollo Web        → Angular, React.js, TypeScript  
 Desarrollo Móvil      → React Native (Expo), Ionic (Angular)  
 Backend & APIs        → Node.js, NestJS, Express  
-Consultoría SAP       → MM (Materials Management) / WM (Warehouse Management)
+Consultoría SAP       → MM (Materials Management) / WM (Work Management)
 
 ---
 
@@ -72,7 +72,7 @@ Consultoría SAP       → MM (Materials Management) / WM (Warehouse Management)
 | Ingeniería en Software | UNIANDES |
 | Abogado | Universidad Católica de Cuenca |
 | Consultor SAP MM/WM | Certificación SAP |
-| Full Stack Developer | Códica LATAM |
+| Full Stack Developer | Códica LA |
 
 ---
 
