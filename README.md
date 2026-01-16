@@ -1,4 +1,4 @@
-<img width="1023" height="248" alt="image" src="https://github.com/user-attachments/assets/d7202425-3303-4fb9-93a8-401976d4c413" /># Hey! Soy Francisco Quinteros
+# Hey! Soy Francisco Quinteros
 
 Ingeniero en Software, Abogado y Desarrollador Full Stack con enfoque en frontend moderno, aplicaciones móviles y sistemas de gestión.
 
@@ -25,12 +25,10 @@ Experiencia en entornos empresariales, consultoría **SAP (MM y WM)** y desarrol
 
 ## Qué hago
 
-```
- Desarrollo Web        →  Angular, React, TypeScript
- Desarrollo Móvil      →  React Native, Ionic, Expo
- Backend & APIs        →  Node.js, NestJS, Express
- Consultoría SAP       →  MM (Materiales) / WM (Warehouse)
-```
+Desarrollo Web        → Angular, React.js, TypeScript  
+Desarrollo Móvil      → React Native (Expo), Ionic (Angular)  
+Backend & APIs        → Node.js, NestJS, Express  
+Consultoría SAP       → MM (Materials Management) / WM (Warehouse Management)
 
 ---
 
@@ -42,7 +40,6 @@ Experiencia en entornos empresariales, consultoría **SAP (MM y WM)** y desarrol
 | React.js (Hooks, Redux) | NestJS | Expo (RN) | MySQL |
 | TypeScript | Express | Ionic (Angular) | MongoDB |
 | Tailwind CSS | REST / JWT | — | Supabase |
-
 
 ---
 
@@ -60,7 +57,7 @@ Experiencia en entornos empresariales, consultoría **SAP (MM y WM)** y desarrol
 
 ```
  ▸ SAP MM (Gestión de Materiales)
- ▸ SAP WM (Warehouse Management)
+ ▸ SAP WM (Work Management)
  ▸ Soporte funcional y técnico
  ▸ Integración con sistemas externos
  ▸ ABAP (en profundización)
