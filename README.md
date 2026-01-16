@@ -1,4 +1,4 @@
-# Hey! Soy Francisco Quinteros
+<img width="1023" height="248" alt="image" src="https://github.com/user-attachments/assets/d7202425-3303-4fb9-93a8-401976d4c413" /># Hey! Soy Francisco Quinteros
 
 Ingeniero en Software, Abogado y Desarrollador Full Stack con enfoque en frontend moderno, aplicaciones móviles y sistemas de gestión.
 
@@ -39,9 +39,10 @@ Experiencia en entornos empresariales, consultoría **SAP (MM y WM)** y desarrol
 | Frontend | Backend | Mobile | Bases de Datos |
 |:--------:|:-------:|:------:|:--------------:|
 | Angular | Node.js | React Native | PostgreSQL |
-| React | NestJS | Expo | MySQL |
-| TypeScript | Express | Ionic | MongoDB |
-| Tailwind | Java | — | Supabase |
+| React.js (Hooks, Redux) | NestJS | Expo (RN) | MySQL |
+| TypeScript | Express | Ionic (Angular) | MongoDB |
+| Tailwind CSS | REST / JWT | — | Supabase |
+
 
 ---
 
@@ -51,7 +52,7 @@ Experiencia en entornos empresariales, consultoría **SAP (MM y WM)** y desarrol
 |:---------|:------------|:------------|
 | **TecnoAuto** | Sistema de gestión para talleres automotrices | `Angular` `NestJS` `PostgreSQL` |
 | **Chat App** | Mensajería en tiempo real | `React` `Redux` `Socket.io` |
-| **Gym Pro** | App móvil para gestión de rutinas | `React Native` `Expo` |
+| **Gym Pro** | App móvil para gestión de rutinas | `React Native` + `Expo` |
 
 ---
 
