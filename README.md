@@ -74,6 +74,7 @@ Consultoría SAP       → MM (Materials Management) / WM (Work Management)
 | Ingeniería en Software | UNIANDES |
 | Abogado | Universidad Católica de Cuenca |
 | Consultor SAP MM/WM | Certificación SAP |
+| Consultor ODoo | CERTIFICACIÓN FUNCIONAL DE ODOO 18 |
 | Full Stack Developer | Códica LA |
 
 ---
