@@ -61,25 +61,27 @@ Command-line tool for comparing JSON/YAML configuration files with multiple outp
 
 Repository promotion, historical classification and public-security rules are documented in [Portfolio Governance](docs/PORTFOLIO_GOVERNANCE.md).
 
+## Sanitized private-product case studies
+
 ### [KOVI — Electronic Invoicing Platform](showcases/kovi/README.md)
-Private SaaS product focused on Ecuadorian electronic invoicing workflows, asynchronous processing and SRI-oriented integrations. The linked **sanitized engineering case study is public** and documents architecture, tenant isolation, certificate handling, fiscal validation and recorded quality evidence without publishing commercial source code or fiscal secrets.
+Private SaaS product focused on Ecuadorian electronic invoicing workflows, asynchronous processing and SRI-oriented integrations. The public case study documents architecture, tenant isolation, certificate handling, fiscal validation and recorded quality evidence without publishing commercial source code or fiscal secrets.
 
 `Angular` `NestJS` `PostgreSQL` `Redis` `BullMQ` `SOAP` `XML/XSD` `AES-256-GCM` `Multi-tenant SaaS`
 
-### Motorix / TecnoAuto — Workshop Management SaaS
-Private multi-tenant management platform for automotive workshops, covering operational workflows, customers, vehicles, work orders, billing and administrative controls. Public sanitized case study is being prepared.
+### [Motorix / TecnoAuto — Workshop Management SaaS](showcases/motorix/README.md)
+Private automotive SaaS/ERP. The public case study documents Angular/NestJS architecture, tenant and branch boundaries, granular RBAC, SaaS entitlements, asynchronous workloads, migrations and security-audit maturity.
 
-`Angular` `NestJS` `TypeORM` `PostgreSQL` `Multi-tenant SaaS` `RBAC`
+`Angular 21` `NestJS 11` `TypeORM` `PostgreSQL` `BullMQ` `Redis` `Multi-tenant SaaS` `RBAC`
 
-### FITBA / GYMORA — Fitness Platform
-Private product ecosystem combining management software with mobile-oriented fitness experiences. Public mobile showcase is planned to expose verifiable React Native / Expo evidence without publishing commercial code or customer data.
+### [FITBA / GYMORA — Web + Mobile Fitness Platform](showcases/fitba/README.md)
+Private fitness ecosystem with a Next.js administrative surface and a native Expo/React Native client. The public case study documents the shared Supabase architecture, RLS-aware design, GPS/mobile capabilities and consent/compliance workflows without exposing member or health data.
 
-`React Native` `Expo` `Web` `PostgreSQL` `Supabase` `Mobile`
+`Next.js 16` `React 19` `Expo 54` `React Native 0.81` `Supabase` `PostgreSQL` `RLS` `Mobile`
 
-### LegalTech Automation Platform
-Private product line exploring legal workflow automation, structured case/document processes and AI-assisted capabilities. Public showcase will contain architecture and sanitized technical evidence only.
+### [LegalTech Automation Platform](showcases/legaltech/README.md)
+Private legal-workflow platform. The public case study documents React/Express/MongoDB architecture, legal domain routes, document-processing tooling and the current AI layer with a strict distinction between implemented workflow software and simulated/prototype AI capabilities.
 
-`LegalTech` `Workflow Automation` `AI` `Security-focused design`
+`LegalTech` `React` `Express` `MongoDB` `Documents` `OCR/PDF tooling` `AI prototype` `Security hardening`
 
 ## SAP & enterprise systems
 
@@ -93,6 +95,11 @@ My SAP experience is primarily functional and operational, with emphasis on:
 
 I deliberately separate **hands-on enterprise experience** from **training/certification claims**. Only verifiable certifications are presented as certifications.
 
+### [SAP Integration Lab — Public Evidence Roadmap](showcases/sap-integration-lab/README.md)
+No dedicated SAP/ABAP source repository is currently public. This roadmap defines the acceptance gate and implementation sequence for building real ABAP, ABAP Objects, ABAP Unit and ABAP Cloud/RAP evidence without exposing enterprise/customer systems.
+
+`SAP MM` `IS-U Work Management` `ABAP` `ABAP Cloud` `RAP` `Integration` — **evidence build in progress**
+
 ## Engineering principles
 
 - Evidence before claims
@@ -102,15 +109,13 @@ I deliberately separate **hands-on enterprise experience** from **training/certi
 - Reproducible builds, automated validation and meaningful tests where applicable
 - Documentation that explains architecture, trade-offs and current product status
 
-## Current roadmap
+## Current evidence roadmap
 
-I am progressively converting private production and product work into sanitized public case studies without exposing commercial code, customer data or secrets. Current targets:
-
-1. [KOVI SaaS Showcase](showcases/kovi/README.md) — published
-2. Motorix ERP / SaaS Showcase
-3. FITBA Mobile Showcase
-4. LegalTech Platform Showcase
-5. SAP Integration Lab — ABAP / ABAP Cloud
+1. [KOVI SaaS Showcase](showcases/kovi/README.md) — **published**
+2. [Motorix ERP / SaaS Showcase](showcases/motorix/README.md) — **published**
+3. [FITBA Web + Mobile Showcase](showcases/fitba/README.md) — **published**
+4. [LegalTech Platform Showcase](showcases/legaltech/README.md) — **published**
+5. [SAP Integration Lab](showcases/sap-integration-lab/README.md) — **roadmap published; executable ABAP evidence pending**
 
 ## Español
 
