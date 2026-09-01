@@ -59,6 +59,8 @@ Command-line tool for comparing JSON/YAML configuration files with multiple outp
 | [RSS Reader](https://github.com/JavierQuinan/fullstack-javascript-project-137) | Reactive JavaScript · Axios · RSS parsing · i18next · Webpack | Frontend supporting evidence; Playwright suite verification pending |
 | [Page Loader](https://github.com/JavierQuinan/fullstack-javascript-project-138) | Node.js CLI · Axios · Cheerio · concurrency · Jest | CLI/HTTP processing supporting evidence |
 
+Repository promotion, historical classification and public-security rules are documented in [Portfolio Governance](docs/PORTFOLIO_GOVERNANCE.md).
+
 ### KOVI — Electronic Invoicing Platform
 Private SaaS product focused on Ecuadorian electronic invoicing workflows, asynchronous processing and SRI-oriented integrations. Public sanitized case study is being prepared.
 
