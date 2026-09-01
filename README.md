@@ -61,10 +61,10 @@ Command-line tool for comparing JSON/YAML configuration files with multiple outp
 
 Repository promotion, historical classification and public-security rules are documented in [Portfolio Governance](docs/PORTFOLIO_GOVERNANCE.md).
 
-### KOVI — Electronic Invoicing Platform
-Private SaaS product focused on Ecuadorian electronic invoicing workflows, asynchronous processing and SRI-oriented integrations. Public sanitized case study is being prepared.
+### [KOVI — Electronic Invoicing Platform](showcases/kovi/README.md)
+Private SaaS product focused on Ecuadorian electronic invoicing workflows, asynchronous processing and SRI-oriented integrations. The linked **sanitized engineering case study is public** and documents architecture, tenant isolation, certificate handling, fiscal validation and recorded quality evidence without publishing commercial source code or fiscal secrets.
 
-`NestJS` `PostgreSQL` `Redis` `BullMQ` `SOAP` `XML/XSD` `P12 signing workflows`
+`Angular` `NestJS` `PostgreSQL` `Redis` `BullMQ` `SOAP` `XML/XSD` `AES-256-GCM` `Multi-tenant SaaS`
 
 ### Motorix / TecnoAuto — Workshop Management SaaS
 Private multi-tenant management platform for automotive workshops, covering operational workflows, customers, vehicles, work orders, billing and administrative controls. Public sanitized case study is being prepared.
@@ -106,7 +106,7 @@ I deliberately separate **hands-on enterprise experience** from **training/certi
 
 I am progressively converting private production and product work into sanitized public case studies without exposing commercial code, customer data or secrets. Current targets:
 
-1. KOVI SaaS Showcase
+1. [KOVI SaaS Showcase](showcases/kovi/README.md) — published
 2. Motorix ERP / SaaS Showcase
 3. FITBA Mobile Showcase
 4. LegalTech Platform Showcase
