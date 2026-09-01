@@ -1,93 +1,118 @@
-# Hey! Soy Francisco Quinteros
+<div align="center">
 
-Ingeniero en Software, Abogado y Desarrollador Full Stack con enfoque en frontend moderno, aplicaciones móviles y sistemas de gestión.
+# Francisco Quinteros
 
----
+### Full Stack Engineer · Enterprise SaaS · SAP MM / ABAP Cloud
 
-## Enlaces
+**Software Engineer · Lawyer (Ecuador) · Builder of web, mobile and enterprise software**
 
-[![Portafolio](https://img.shields.io/badge/Portafolio-000000?style=flat&logo=vercel&logoColor=white)](https://portfolio-five-gilt-51.vercel.app)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/francisco-quinteros-583132152)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/JavierQuinan)
-[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:javierquiandra@gmail.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-111827?style=flat-square&logo=vercel&logoColor=white)](https://portfolio-five-gilt-51.vercel.app)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/francisco-quinteros-583132152)
+[![Email](https://img.shields.io/badge/Email-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:javierquiandra@gmail.com)
 
----
-
-## Sobre mí
-
-Desarrollador Full Stack con enfoque en **Angular** y **React**, orientado a la construcción de interfaces escalables, integradas con APIs y bases de datos relacionales.  
-Experiencia en entornos empresariales, desarrollo backend con **Node.js / NestJS**, consultoría **SAP (MM y WM)** y soluciones tecnológicas orientadas a negocio y automatización de procesos.
-
-### Tecnologías y herramientas
-
-[![My Skills](https://skillicons.dev/icons?i=angular,react,ts,js,nodejs,nestjs,express,java&theme=dark)](https://skillicons.dev)
-[![My Skills](https://skillicons.dev/icons?i=postgres,mysql,mongodb,supabase,docker,git,vscode,postman&theme=dark)](https://skillicons.dev)
+</div>
 
 ---
 
-## Qué hago
+## Profile
 
-Desarrollo Web        → Angular, React.js, TypeScript  
-Desarrollo Móvil      → React Native (Expo), Ionic (Angular)  
-Backend & APIs        → Node.js, NestJS, Express  
-Consultoría SAP       → MM (Materials Management) / WM (Work Management)
+Full Stack Engineer focused on building **enterprise SaaS products, web applications, mobile experiences and business integrations**. My core stack combines **Angular, React, TypeScript, NestJS, Node.js, PostgreSQL and Supabase**, with practical experience in multi-tenant architectures, RBAC, REST APIs, background processing and integration-heavy systems.
+
+I also work with **SAP MM and SAP IS-U Work Management** in enterprise environments and I am expanding my technical specialization in **ABAP and ABAP Cloud**.
+
+My background in **Software Engineering and Law** is especially useful in products that involve regulated workflows, traceability, digital evidence, compliance-sensitive processes and complex business rules.
+
+> I prefer verifiable engineering evidence over inflated claims: code, architecture, tests, documentation, demos and reproducible technical decisions.
+
+## Core stack
+
+| Area | Technologies / capabilities |
+|---|---|
+| Frontend | Angular · React · TypeScript · JavaScript · Tailwind CSS |
+| Backend | NestJS · Node.js · Express · REST APIs · JWT · WebSockets |
+| Data | PostgreSQL · Supabase · TypeORM · MySQL · MongoDB |
+| Mobile | React Native · Expo · Ionic · Firebase |
+| Architecture | Multi-tenant SaaS · RBAC · background workers · event-driven workflows · integrations |
+| Async / Infrastructure | Redis · BullMQ · Docker · nginx · S3/MinIO-compatible storage |
+| Quality | Playwright · Jest · Supertest · GitHub Actions · linting · automated validation |
+| Enterprise integration | SOAP · XML/XSD · digital-signature workflows · SAP integration concepts |
+| SAP | SAP MM · IS-U Work Management · CRM · SD · ABAP / ABAP Cloud specialization |
+
+## Selected engineering work
+
+### [AI Dev Team Marketplace](https://github.com/JavierQuinan/ai-dev-team-marketplace)
+Open-source, versioned **Claude Code plugin marketplace** that packages reusable software-engineering skills and specialized agents for architecture, implementation, debugging, QA, security review, code review and release preparation.
+
+`Claude Code` `AI Agents` `Developer Tooling` `Python` `GitHub Actions` `Security` `Testing`
+
+### [GenDiff CLI](https://github.com/JavierQuinan/fullstack-javascript-project-103)
+Command-line tool for comparing JSON/YAML configuration files with multiple output formats, automated tests, linting and CI.
+
+`Node.js` `JavaScript` `Jest` `ESLint` `GitHub Actions` `CLI`
+
+### KOVI — Electronic Invoicing Platform
+Private SaaS product focused on Ecuadorian electronic invoicing workflows, asynchronous processing and SRI-oriented integrations. Public sanitized case study is being prepared.
+
+`NestJS` `PostgreSQL` `Redis` `BullMQ` `SOAP` `XML/XSD` `P12 signing workflows`
+
+### Motorix / TecnoAuto — Workshop Management SaaS
+Private multi-tenant management platform for automotive workshops, covering operational workflows, customers, vehicles, work orders, billing and administrative controls. Public sanitized case study is being prepared.
+
+`Angular` `NestJS` `TypeORM` `PostgreSQL` `Multi-tenant SaaS` `RBAC`
+
+### FITBA / GYMORA — Fitness Platform
+Private product ecosystem combining management software with mobile-oriented fitness experiences. Public mobile showcase is planned to expose verifiable React Native / Expo evidence without publishing commercial code or customer data.
+
+`React Native` `Expo` `Web` `PostgreSQL` `Supabase` `Mobile`
+
+### LegalTech Automation Platform
+Private product line exploring legal workflow automation, structured case/document processes and AI-assisted capabilities. Public showcase will contain architecture and sanitized technical evidence only.
+
+`LegalTech` `Workflow Automation` `AI` `Security-focused design`
+
+## SAP & enterprise systems
+
+My SAP experience is primarily functional and operational, with emphasis on:
+
+- SAP MM and materials/service processes
+- SAP IS-U Work Management and operational order workflows
+- SAP CRM / IS-U integration scenarios
+- enterprise support, configuration analysis and process troubleshooting
+- ABAP and ABAP Cloud as an active technical specialization
+
+I deliberately separate **hands-on enterprise experience** from **training/certification claims**. Only verifiable certifications are presented as certifications.
+
+## Engineering principles
+
+- Evidence before claims
+- Security-conscious and least-privilege design
+- Clear separation between public showcase code and private commercial code
+- No credentials, customer data, signing certificates or production secrets in public repositories
+- Reproducible builds, automated validation and meaningful tests where applicable
+- Documentation that explains architecture, trade-offs and current product status
+
+## Current roadmap
+
+I am progressively converting private production and product work into sanitized public case studies without exposing commercial code, customer data or secrets. Current targets:
+
+1. KOVI SaaS Showcase
+2. Motorix ERP / SaaS Showcase
+3. FITBA Mobile Showcase
+4. LegalTech Platform Showcase
+5. SAP Integration Lab — ABAP / ABAP Cloud
+
+## Español
+
+Soy **Ingeniero en Software, Abogado y Full Stack Engineer**, especializado en desarrollo de productos SaaS empresariales, aplicaciones web y móviles, arquitectura multi-tenant e integraciones. Mi stack principal incluye Angular, React, TypeScript, NestJS, Node.js, PostgreSQL y Supabase. Complemento el perfil con experiencia funcional en SAP MM / IS-U Work Management y especialización técnica progresiva en ABAP y ABAP Cloud.
+
+Mi objetivo profesional es construir y demostrar software empresarial con evidencia verificable: arquitectura, código, pruebas, documentación y casos de estudio sanitizados.
 
 ---
 
-## Stack
+<div align="center">
 
-| Frontend | Backend | Mobile | Bases de Datos |
-|:--------:|:-------:|:------:|:--------------:|
-| Angular | Node.js | React Native | PostgreSQL |
-| React.js (Hooks, Redux) | NestJS | Expo (RN) | MySQL |
-| TypeScript | Express | Ionic (Angular) | MongoDB |
-| Tailwind CSS | REST / JWT | — | Supabase |
+**Open to international remote opportunities, enterprise software projects and technical collaboration.**
 
----
+[Portfolio](https://portfolio-five-gilt-51.vercel.app) · [LinkedIn](https://www.linkedin.com/in/francisco-quinteros-583132152) · [GitHub](https://github.com/JavierQuinan)
 
-## Proyectos destacados
-
-| Proyecto | Descripción | Tecnologías |
-|:---------|:------------|:------------|
-| **TecnoAuto** | Sistema empresarial de facturación y gestión para talleres automotrices (SRI Ecuador) | `Angular` `NestJS` `MySQL` `TypeORM` `JWT` `TailwindCSS` |
-| **Chat App** | Aplicación web de mensajería en tiempo real con canales, autenticación y soporte multiidioma | `React` `Redux Toolkit` `React Router` `Socket.io` `Node.js` `Bootstrap` |
-| **Gym Pro** | Plataforma integral de entrenamiento fitness (App + Panel Web) | `React Native` `Expo` `Next.js` `Node.js` `PostgreSQL` `Firebase` |
-
----
-
-## Consultoría SAP
-
- ▸ SAP IS-U (Utilities)  
- ▸ SAP Work Management (WM) – Utilities  
- ▸ Integración con SAP MM  
- ▸ Gestión de órdenes, mantenimiento y procesos operativos  
- ▸ Soporte funcional y técnico  
- ▸ Integración con sistemas externos  
- ▸ ABAP (en proceso de profundización)
-
----
-
-## Formación
-
-| Título | Institución |
-|:-------|:------------|
-| Ingeniería en Software | UNIANDES |
-| Abogado | Universidad Católica de Cuenca |
-| Consultor SAP MM/WM | Certificación SAP |
-| Consultor ODoo | CERTIFICACIÓN FUNCIONAL DE ODOO 18 |
-| Full Stack Developer | Códica LA |
-
----
-
-## Cómo trabajo
-
-```
- ✓ Código claro y mantenible
- ✓ Repositorios ordenados
- ✓ Commits descriptivos
- ✓ Enfoque práctico y orientado a negocio
- ✓ Aprendizaje continuo
-
----
-
-> **Construyo software útil, no demostraciones vacías.**
+</div>
