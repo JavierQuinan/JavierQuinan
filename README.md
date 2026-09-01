@@ -50,6 +50,15 @@ Command-line tool for comparing JSON/YAML configuration files with multiple outp
 
 `Node.js` `JavaScript` `Jest` `ESLint` `GitHub Actions` `CLI`
 
+### Additional public engineering evidence
+
+| Repository | Evidence | Current portfolio role |
+|---|---|---|
+| [Task Manager](https://github.com/JavierQuinan/fullstack-javascript-project-141) | Fastify · SQLite · Knex · Objection.js · auth · CRUD · i18n | Full-stack supporting evidence; hardening backlog documented |
+| [Realtime Chat](https://github.com/JavierQuinan/fullstack-javascript-project-139) | React 18 · Redux Toolkit · Socket.IO · Formik/Yup · i18n | React/realtime supporting evidence; tests/demo verification pending |
+| [RSS Reader](https://github.com/JavierQuinan/fullstack-javascript-project-137) | Reactive JavaScript · Axios · RSS parsing · i18next · Webpack | Frontend supporting evidence; Playwright suite verification pending |
+| [Page Loader](https://github.com/JavierQuinan/fullstack-javascript-project-138) | Node.js CLI · Axios · Cheerio · concurrency · Jest | CLI/HTTP processing supporting evidence |
+
 ### KOVI — Electronic Invoicing Platform
 Private SaaS product focused on Ecuadorian electronic invoicing workflows, asynchronous processing and SRI-oriented integrations. Public sanitized case study is being prepared.
 
