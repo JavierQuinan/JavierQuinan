@@ -2,13 +2,14 @@
 
 [English version](./COMPATIBILITY.md)
 
-> **Estado:** fuente revisada; validación runtime en SAP todavía pendiente.
+> **Tipo de evidencia:** revisión de compatibilidad y hardening a nivel de source  
+> **Límite runtime:** este documento no atribuye activación sobre una release ECC específica
 
-Este documento registra las decisiones usadas para hacer `ZMM_STOCK_RISK` más portable y defendible en un entorno SAP ECC / AS ABAP clásico.
+Este documento registra las decisiones utilizadas para hacer `ZMM_STOCK_RISK` más portable y defendible en un entorno SAP ECC / AS ABAP clásico.
 
 ## Estrategia de compatibilidad
 
-La fuente favorece construcciones ABAP clásicas y evita sintaxis moderna innecesaria que puede variar entre releases NetWeaver / ECC.
+La fuente favorece construcciones ABAP clásicas y evita sintaxis innecesaria que puede variar entre generaciones NetWeaver / ECC.
 
 Se prioriza:
 
@@ -21,7 +22,7 @@ Se prioriza:
 - `CL_SALV_TABLE`
 - clases locales ABAP Unit
 
-Se evita intencionalmente en el camino runtime principal:
+Se evita intencionalmente en el camino principal:
 
 - `NEW #( )`
 - `VALUE #( )`
@@ -31,42 +32,46 @@ Se evita intencionalmente en el camino runtime principal:
 - expresiones constructoras
 - sintaxis CDS/RAP/ABAP Cloud
 
-Esto **no** fija todavía una release mínima garantizada de ECC. La release/EHP exacta sigue formando parte de la validación runtime.
+Esta postura mejora la portabilidad en ECC clásico. La disponibilidad exacta de sintaxis depende de la release ECC / NetWeaver donde se importe el source; el repositorio no afirma una release mínima no observada.
 
 ## Hardening funcional realizado
 
 ### 1. Stock de planta vs. stock de almacén
 
-Los parámetros de planificación de `MARC` son de nivel planta. La primera versión comparaba esos parámetros directamente contra `MARD-LABST` de un único almacén, lo que era demasiado simplificado para una evidencia profesional.
+Los parámetros de planificación de `MARC` son de nivel planta. El borrador inicial comparaba esos parámetros directamente contra `MARD-LABST` de un único almacén, una simplificación insuficiente para una evidencia profesional.
 
 El snapshot endurecido separa:
 
 - `storage_unrestricted` — stock de libre utilización del almacén seleccionado
-- `plant_unrestricted` — suma del stock de libre utilización representado por registros `MARD-LABST` para el material y planta seleccionados
+- `plant_unrestricted` — suma de `MARD-LABST` representada para el material y centro seleccionados
 
-El estado diagnóstico se calcula con `plant_unrestricted`; el almacén seleccionado se conserva como dato de detalle.
+El estado diagnóstico utiliza `plant_unrestricted`; el valor del almacén permanece como detalle.
 
 ### 2. Tipo MRP visible
 
-El datasource ahora lee `MARC-DISMM`, de forma que el reporte expone el tipo MRP del material y evita mostrar los umbrales sin contexto de planificación.
+El datasource lee `MARC-DISMM`, por lo que el reporte expone el tipo MRP y evita mostrar umbrales sin contexto de planificación.
 
-### 3. Umbrales no configurados
+### 3. Unidad base visible
 
-Cuando punto de pedido y stock de seguridad están iniciales, el resultado es `NOT_CONFIGURED` en lugar de producir una señal de reposición engañosa.
+El snapshot incluye `MARA-MEINS`, evitando mostrar cantidades sin contexto de unidad base.
 
-### 4. Disciplina de excepciones estáticas
+### 4. Umbrales no configurados
 
-`ZCX_MM_STOCK_NOT_FOUND` hereda de `CX_STATIC_CHECK`. Los métodos ABAP Unit que llaman APIs que pueden propagar esa excepción declaran explícitamente `RAISING ZCX_MM_STOCK_NOT_FOUND`.
+Cuando punto de pedido y stock de seguridad están iniciales, el resultado es `NOT_CONFIGURED` y no una señal de reposición engañosa.
 
-### 5. Camino runtime de solo lectura
+### 5. Disciplina de excepciones estáticas
 
-El datasource ECC contiene únicamente operaciones `SELECT`. No existen `INSERT`, `UPDATE`, `MODIFY`, `DELETE`, mantenimiento directo de tablas, escrituras mediante debug ni lógica de commit.
+`ZCX_MM_STOCK_NOT_FOUND` hereda de `CX_STATIC_CHECK`. Los métodos ABAP Unit que llaman APIs que propagan esa excepción declaran explícitamente `RAISING ZCX_MM_STOCK_NOT_FOUND`.
 
-## Límite importante respecto a MRP
+### 6. Camino read-only
 
-Esta aplicación es un **diagnóstico temprano basado únicamente en stock**. No es SAP MRP y no debe describirse como una reproducción del reorder-point planning.
+El datasource ECC contiene únicamente `SELECT`. No existen `INSERT`, `UPDATE`, `MODIFY` de base, `DELETE`, mantenimiento directo de tablas, escrituras mediante debug ni lógica de commit.
 
-La planificación por punto de pedido de SAP puede considerar stock de planta, entradas firmes y otras reglas de planificación. Este laboratorio no calcula:
+## Límite respecto a MRP
+
+La aplicación es un **diagnóstico temprano basado únicamente en stock**. No es SAP MRP ni reproduce el reorder-point planning.
+
+El source público no calcula:
 
 - entradas firmes
 - pedidos / solicitudes de pedido
@@ -74,40 +79,37 @@ La planificación por punto de pedido de SAP puede considerar stock de planta, e
 - alcance por área MRP
 - exclusiones de almacenes respecto a MRP
 - lotificación
-- planificación por tiempos de aprovisionamiento
+- tiempos de aprovisionamiento
 - forecast
 - comportamiento del planning file
 
-Por ello, la salida debe presentarse como un diagnóstico transparente de ingeniería sobre campos seleccionados de stock y maestro de materiales MM.
+La salida se presenta como un diagnóstico transparente de ingeniería sobre campos MM seleccionados.
 
 ## Elección de SALV
 
-Se utiliza `CL_SALV_TABLE` para salida estructurada de solo lectura. No se implementa ALV editable.
+Se utiliza `CL_SALV_TABLE` para salida estructurada read-only. No se implementa ALV editable.
 
-## Límite de autorizaciones de la transacción
+## Límite de autorizaciones
 
-`ZMM_STOCK_RISK` está diseñada como Report Transaction creada en `SE93`. SAP ejecuta el control estándar de inicio de transacción (`S_TCODE`) también para transacciones propias.
+`ZMM_STOCK_RISK` se documenta como Report Transaction creada en `SE93`. SAP aplica el control estándar de inicio (`S_TCODE`).
 
-En una implantación productiva real, la autorización sobre datos de negocio debe diseñarse con el equipo de seguridad/autorizaciones del cliente. Este laboratorio público no inventa objetos de autorización ni roles específicos de un cliente.
+La autorización sobre datos de negocio depende de cada organización. Este laboratorio público no inventa objetos de autorización ni roles específicos de cliente.
 
-## Checklist de validación runtime
+## Procedimiento de verificación
 
-Antes de promover el artefacto más allá de `RUNTIME_VALIDATION_PENDING`:
+Existe una secuencia reusable para un ambiente ECC de desarrollo/sandbox autorizado:
 
-1. verificar que todas las referencias DDIC existan en la release ECC objetivo
-2. ejecutar syntax check de cada clase/interfaz/programa
-3. activar cada objeto
-4. ejecutar todos los tests ABAP Unit
-5. crear y ejecutar `ZMM_STOCK_RISK` mediante `SE93`
-6. ejecutar con una combinación material/centro/almacén no sensible
-7. validar campos SALV y lógica de estados
-8. registrar en `EVIDENCE.md` cualquier ajuste de compatibilidad requerido por la release
+1. verificar referencias DDIC
+2. ejecutar syntax check sobre clases/interfaces/programa
+3. activar objetos
+4. ejecutar los seis casos ABAP Unit
+5. ejecutar `ZMM_STOCK_RISK_REPORT` en `SE38`
+6. configurar/ejecutar `ZMM_STOCK_RISK` en `SE93`
+7. revisar campos SALV y resultado con datos no sensibles
+8. registrar diferencias de release sin revelar identificadores empresariales
 
-## Referencias SAP utilizadas durante el hardening
+Es un procedimiento de réplica, no un claim de resultados runtime observados para este artefacto público.
 
-- SAP ABAP Keyword Documentation — categorías de excepciones basadas en clases
-- SAP ABAP Unit — `FOR TESTING`, `RISK LEVEL`, `DURATION`
-- documentación SAP — Report Transactions / `SE93`
-- documentación SAP de autorizaciones — `S_TCODE`
-- documentación SAP ALV — uso cliente de `CL_SALV_TABLE`
-- documentación SAP — comportamiento funcional del reorder-point planning
+## Referencias SAP
+
+Consulte [`OFFICIAL_SAP_REFERENCES.es.md`](../../OFFICIAL_SAP_REFERENCES.es.md) para referencias Help SAP sobre Class Builder/SE24, Report Transactions/SE93, ABAP Unit y conceptos de desarrollo relacionados.
