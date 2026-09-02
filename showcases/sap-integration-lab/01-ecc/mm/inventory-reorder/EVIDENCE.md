@@ -36,14 +36,30 @@ Recommended creation/activation order:
 | ZMM_STOCK_RISK_REPORT | PENDING | PENDING | PENDING | |
 | ZMM_STOCK_RISK (SE93) | N/A | PENDING | PENDING | Report transaction -> ZMM_STOCK_RISK_REPORT |
 
+## Source-review hardening completed
+
+Before runtime validation, the source was reviewed and changed to reduce semantic and compatibility risk:
+
+- plant-level and storage-location unrestricted stock are separated
+- diagnostic status uses plant-level unrestricted stock, not a single storage location
+- `MARC-DISMM` MRP type is exposed
+- materials with no reorder/safety thresholds return `NOT_CONFIGURED`
+- ABAP Unit methods explicitly declare the propagated `CX_STATIC_CHECK` exception
+- classic `CREATE OBJECT`, `CALL METHOD` and classic Open SQL are preferred
+- runtime path remains read-only
+
+See [`COMPATIBILITY.md`](./COMPATIBILITY.md).
+
 ## ABAP Unit record
 
 Prepared deterministic cases:
 
-1. unrestricted stock above reorder point → `OK`
-2. unrestricted stock exactly at reorder point → `REORDER`
-3. unrestricted stock below safety stock → `CRITICAL`
+1. plant unrestricted stock above reorder point → `OK`
+2. plant unrestricted stock exactly at reorder point → `REORDER`
+3. plant unrestricted stock below safety stock → `CRITICAL`
 4. shortage quantity calculated up to reorder point
+5. absent reorder/safety thresholds → `NOT_CONFIGURED`
+6. low selected-storage stock with sufficient plant stock → status is based on plant stock
 
 Actual execution result: **PENDING**
 
@@ -65,22 +81,25 @@ The executable report and the `ZMM_STOCK_RISK` report transaction accept:
 
 The ECC datasource reads only:
 
+- `MARC-DISMM`
 - `MARC-MINBE`
 - `MARC-EISBE`
-- `MARD-LABST`
+- `MARD-LABST` for the selected storage location
+- `MARD-LABST` records for the material/plant to calculate a transparent gross plant unrestricted-stock total
 
 The report must be validated with a non-sensitive test/demo material whose organizational extension is already correct.
 
 ## Functional pre-validation
 
-Before interpreting the report result, verify that:
+Before interpreting the result, verify that:
 
 1. the material exists
 2. the material is extended to the target plant
-3. the material/storage-location combination exists
-4. reorder point and safety stock are meaningful for the selected material/MRP context
+3. the selected material/storage-location combination exists
+4. the MRP type is understood
+5. reorder point and safety stock are meaningful for the selected planning context
 
-The portfolio report is a diagnostic exercise and must not be presented as SAP MRP logic.
+This package is a stock-only early-warning diagnostic. It does not calculate SAP MRP availability, firmed receipts, requirements, MRP-area scope, storage-location exclusions, lot sizing, lead times or forecast behavior.
 
 ## Expected runtime evidence
 
