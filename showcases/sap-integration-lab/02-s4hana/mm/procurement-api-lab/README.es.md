@@ -2,202 +2,151 @@
 
 [English version](./README.md)
 
-> **Tipo de evidencia:** diseño de integración Clean Core basado en interfaces SAP liberadas  
-> **Estado:** `RESEARCH_VALIDATED / DESIGN_READY / RUNTIME_NOT_CLAIMED`  
+> **Tipo de evidencia:** integración Clean Core basada en interfaces SAP liberadas  
+> **Estado:** `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_PENDING / S4_RUNTIME_NOT_CLAIMED`  
 > **Alcance:** Solicitudes de Pedido + Pedidos de Compra
 
-Este laboratorio documenta cómo evoluciona la evidencia MM desde acceso clásico ECC de solo lectura hacia un enfoque moderno S/4HANA basado en superficies CDS/API liberadas.
+Este laboratorio demuestra cómo evoluciona la evidencia de compras desde ECC clásico hacia un diseño moderno S/4HANA, sin presentar el acceso directo a tablas como patrón de integración Clean Core.
 
 ## Contraste arquitectónico
 
 ```text
-Evidencia ECC clásica
----------------------
-Reporte/servicio ABAP
-      │
-      ▼
-EKKO / EKPO
-Open SQL clásico
-
-          ≠
-
-Evidencia S/4HANA Clean Core
-----------------------------
-Extensión/app externa
-      │
-      ▼
-OData / CDS API liberada
-      │
-      ├── Purchase Requisition API
-      └── Purchase Order API
+ECC clásico                         S/4HANA Clean Core
+-----------                         -----------------
+Reporte/servicio ABAP               Extensión/aplicación externa
+       │                                      │
+       ▼                                      ▼
+EKKO / EKPO                         OData / CDS API liberada
+Open SQL clásico                             │
+                                     ┌───────┴────────┐
+                                     ▼                ▼
+                              Solicitud de pedido   Pedido
 ```
 
-El patrón ECC conserva valor en su propia línea, pero no se reutiliza como prueba de Clean Core.
+## Dirección de interfaces liberadas
 
-## Interfaces seleccionadas
-
-### Pedidos de compra
+Pedidos de compra:
 
 - CDS: `I_PurchaseOrderAPI01`
-- OData V4: `API_PURCHASEORDER_2`
+- familia API OData V4: `API_PURCHASEORDER_2`
 
-### Solicitudes de pedido
+Solicitudes de pedido:
 
-- OData V4: `API_PURCHASEREQUISITION_2`
+- familia API OData V4: `API_PURCHASEREQUISITION_2`
 
-Disponibilidad, campos y operaciones se verificarán siempre contra la release S/4HANA objetivo.
+Los paths exactos, campos, autenticación y disponibilidad deberán verificarse contra la release S/4HANA objetivo antes de conectarse a un tenant real.
 
-## Escenario de portafolio
+## Implementación source
 
-**Procurement Visibility Client**
+Ya existe un cliente TypeScript sin dependencias externas en [`client/`](./client/README.es.md).
 
-Aplicación TypeScript externa prevista:
+Capacidades implementadas:
 
-```text
-Configuración / secret provider
-            │
-            ▼
-SAP Procurement API Client
-            │
-     ┌──────┴──────┐
-     ▼             ▼
-Solicitudes      Pedidos
-     │             │
-     └──────┬──────┘
-            ▼
-Modelo de dominio normalizado
-            │
-            ▼
-Validación / mapping de estados
-            │
-            ▼
-CLI o facade REST
-            │
-            ▼
-Contract tests + mock SAP adapter
-```
+- consultas read-only de pedidos
+- consultas read-only de solicitudes
+- transporte HTTP inyectable
+- validación de respuesta OData `value`
+- construcción de `$top`, `$skip` y `$filter`
+- mapeo estable de errores SAP API
+- captura de correlation/request ID
+- HTTPS obligatorio fuera de localhost
+- transporte Fetch con timeout
+- tests deterministas con respuestas sintéticas
+- quality gate en GitHub Actions
 
-## Primera frontera de implementación
-
-La Fase 1 será **solo lectura**.
-
-Capacidades previstas:
-
-- recuperar datos por API liberada configurada
-- normalizar respuestas SAP a un dominio local pequeño
-- filtrar/resumir estados y referencias de PR/PO
-- correlation IDs para diagnóstico
-- paginación cuando aplique
-- error mapping estable
-- secretos fuera de Git
-- tests deterministas con mocks
-
-No se habilitarán escrituras hasta validar primero el cliente read-only y su modelo de seguridad.
-
-## Seguridad
-
-Nunca versionar:
-
-- URLs confidenciales de tenant
-- usuarios/passwords
-- OAuth client secrets
-- certificados/llaves privadas
-- bearer tokens
-- cookies
-- payloads productivos
-
-Contrato de configuración documental:
+Arquitectura:
 
 ```text
-SAP_BASE_URL=<configuración externa>
-SAP_AUTH_MODE=<configurado fuera del source>
-SAP_CLIENT_ID=<secret provider>
-SAP_CLIENT_SECRET=<secret provider>
+Configuración externa
+        │
+        ▼
+ProcurementApiClient
+        │
+        ├── Pedidos de compra
+        └── Solicitudes de pedido
+        │
+        ▼
+Abstracción HttpTransport
+        ├── FetchTransport
+        └── transporte sintético de pruebas
+        │
+        ▼
+ProcurementDocument[] normalizado
 ```
 
-Son placeholders, no credenciales.
+## Evidencia de tests
 
-## Controles de integración
+Se versionaron y ejecutaron localmente seis pruebas deterministas con Node 22:
 
-El cliente futuro debe implementar:
+1. normalización OData de pedido
+2. normalización OData de solicitud
+3. página OData vacía
+4. HTTP 401 mapeado con correlation ID
+5. rechazo de respuesta no compatible con OData
+6. rechazo de endpoint HTTP inseguro no local
 
-- timeout
-- retry solo para condiciones seguras/transitorias
-- no reintentar ciegamente escrituras no idempotentes
-- correlation/request ID
-- logs sanitizados
-- protección de paginación
-- validación de esquema
-- documentación de versión/release API
-
-## Plan de contract tests
-
-Fixtures sintéticos:
-
-1. lectura exitosa de solicitud
-2. lectura exitosa de pedido
-3. resultado vacío
-4. paginación
-5. unauthorized
-6. forbidden
-7. throttling/error transitorio
-8. respuesta inesperada
-9. timeout
-10. propagación de correlation ID
-
-## Decisión Clean Core
-
-Para una integración externa, el lab prioriza API remota liberada en lugar de acoplar la aplicación a tablas internas SAP.
+Resultado local registrado durante el desarrollo:
 
 ```text
-Necesidad: integración externa de compras
-
-No acoplar app externa
-      directamente a EKKO/EKPO
-              │
-              ▼
-Consumir interfaz remota liberada
-cuando esté disponible en la release objetivo
+Ejecutados: 6
+Aprobados:  6
+Fallidos:   0
 ```
 
-## Milestones
+La validación de GitHub Actions se registra por separado. No se declara `CI_VALIDATED` hasta observar el workflow verde.
 
-### P1 — Cliente TypeScript source-ready
+## Frontera de seguridad
 
-- paquete aislado
-- adapter tipado
-- validación runtime de configuración
-- mock SAP adapter
-- unit/contract tests
+No se versiona URL real de SAP, usuario, contraseña, OAuth client secret, bearer token, cookie, certificado/llave privada ni payload productivo.
 
-### P2 — CI
+El source actual sigue siendo deliberadamente **solo lectura**. La autenticación real deberá provenir de un proveedor externo de credenciales/tokens.
 
-- install
-- lint
-- typecheck
-- tests
-- secret scan
+## Qué demuestra actualmente
 
-### P3 — Integración autorizada
+- comprensión de la frontera ECC → S/4HANA
+- diseño orientado a APIs liberadas / Clean Core
+- ingeniería TypeScript para integración
+- abstracción de transporte y contract testing determinista
+- manejo de errores/correlation IDs
+- validación segura de endpoints
+- documentación técnica bilingüe
 
-Solo si existe sandbox S/4HANA legítimo:
+## Qué no se afirma
 
-- connectivity
+- conexión con tenant S/4HANA real
+- metadata validada en una release concreta
+- adquisición OAuth/token
+- autorización SAP real
+- runtime end-to-end S/4HANA
+- operaciones de creación/modificación
+
+## Próximos hitos
+
+### P2 — Validación CI
+
+GitHub Actions ejecutará los seis tests deterministas con Node 22. Cuando el workflow quede verde podrá agregarse `CI_VALIDATED`.
+
+### P3 — Hardening de integración
+
+- recorrido de paginación
+- retry de errores transitorios únicamente para lecturas seguras
+- schemas por release
+- comprobación metadata/capabilities
+- abstracción de proveedor de autenticación
+
+### P4 — Sandbox autorizado
+
+Solo cuando exista un entorno S/4HANA legítimo:
+
+- conectividad
 - metadata API
-- request read-only sanitizado
-- evidencia runtime
+- lectura sanitizada
+- evidencia runtime documentada
 
-Hasta P3 no se afirma runtime S/4.
+Hasta entonces no se afirma runtime S/4.
 
 ## Madurez
 
-`RESEARCH_VALIDATED -> DESIGN_READY -> SOURCE_READY -> STATIC_VALIDATED -> RUNTIME_VALIDATED`
+`RESEARCH_VALIDATED -> DESIGN_READY -> SOURCE_READY -> LOCAL_TEST_VALIDATED -> CI_VALIDATED -> RUNTIME_VALIDATED`
 
-Posición actual: **`DESIGN_READY`**.
-
-## Referencias oficiales
-
-- Purchase Order CDS `I_PurchaseOrderAPI01` — SAP Help Portal
-- Purchase Order OData V4 `API_PURCHASEORDER_2` — SAP Business Accelerator Hub / SAP Help
-- Purchase Requisition OData V4 `API_PURCHASEREQUISITION_2` — SAP Business Accelerator Hub / SAP Help
-- Released APIs: https://help.sap.com/docs/abap-cloud/abap-cloud/public-released-apis
+Posición actual: **`SOURCE_READY / LOCAL_TEST_VALIDATED / CI_PENDING`**.
