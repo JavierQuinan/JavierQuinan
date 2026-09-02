@@ -5,6 +5,7 @@ INTERFACE zif_mm_stock_source PUBLIC.
       matnr                TYPE mara-matnr,
       werks                TYPE marc-werks,
       lgort                TYPE mard-lgort,
+      base_uom             TYPE mara-meins,
       mrp_type             TYPE marc-dismm,
       storage_unrestricted TYPE mard-labst,
       plant_unrestricted   TYPE mard-labst,
