@@ -3,7 +3,7 @@
 [English version](./README.md)
 
 > **Alcance:** SAP ECC IS-U / Work Management / integración CRM  
-> **Madurez actual:** múltiples packs funcionales/técnicos sanitizados publicados; labs ABAP planificados
+> **Madurez actual:** evidencia funcional/técnica sanitizada publicada; primer pack ABAP WM validado estáticamente
 
 Esta línea está separada de S/4HANA. Convierte experiencia operativa utilities en evidencia revisable eliminando configuración e identificadores reales de empresa/cliente.
 
@@ -13,13 +13,15 @@ Esta línea está separada de S/4HANA. Convierte experiencia operativa utilities
 
 [Work Management Operations](./functional-evidence/work-management-operations/README.es.md)
 
-Cubre `IW38`, ciclo de OT, conceptos de creación individual/masiva, asignación/liberación/cierre en `IW32`, planificación automática, monitoreo `SM37` y dependencias CRM↔WM.
+Cubre `IW38`, ciclo de OT, creación individual/masiva, asignación/liberación/cierre en `IW32`, planificación automática, monitoreo `SM37` y dependencias CRM↔WM.
 
-### Auditoría de Estados de OT
+### Auditoría de Estados de OT — funcional + source ABAP
 
 [Auditoría de Estados de OT](./work-management/status-audit/README.es.md)
 
-Troubleshooting avanzado read-only con:
+Estado: `FUNCTIONAL_TECHNICAL_EVIDENCE_READY / SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
+
+Evidencia:
 
 - `IW33`
 - `AUFK -> OBJNR`
@@ -27,7 +29,12 @@ Troubleshooting avanzado read-only con:
 - `JSTO -> STSMA`
 - `TJ02T` / `TJ30T`
 - `JCDS`
-- `SE93`, `SE38`, `SE80`, `ST05`, `SAT`, `SU53`
+- abstracción original de datasource
+- datasource ECC y demo
+- servicio ABAP OO
+- reporte SALV
+- seis vectores ABAP Unit trazados consistentemente a nivel de source
+- guía reproducible `SE24` / `SE38` / `SE93`
 
 ### Gobierno de cierre masivo
 
@@ -59,7 +66,7 @@ Cadena sanitizada:
 
 [Contract-End / DCDE Recovery](./crm-isu-integration/dcde-recovery/README.es.md)
 
-Muestra recuperación cuando un fin contractual CRM incompleto no produce la OT downstream esperada: restaurar un estado funcional válido y repetir el proceso oficial.
+Muestra recuperación cuando un fin contractual CRM incompleto no produce la OT downstream esperada.
 
 ### Servicio ocasional con medición
 
@@ -69,16 +76,15 @@ Evidencia end-to-end CRM→WM→CRM: cliente/acuerdo/contrato, ejecución técni
 
 ## Límite técnico
 
-La evidencia puede documentar objetos estándar de diagnóstico read-only, pero no publica atajos de manipulación directa de datos, implementación `Z*` propietaria, credenciales ni IDs de procesos propios del cliente.
+La evidencia pública documenta objetos estándar read-only y source original de portfolio. No publica atajos de manipulación directa, implementaciones `Z*` propietarias del empleador/cliente, credenciales ni identificadores reales de procesos.
 
-Nunca se publican instalaciones, cuentas contrato, contratos, interlocutores, medidores, OT, CUEN/identificadores de servicio, direcciones ni empleados reales.
+## Progresión de ingeniería
 
-## Progresión ABAP/ingeniería prevista
-
-1. reporte/servicio sintético de auditoría de estados
-2. comparación APIs de status vs. lectura diagnóstica directa
-3. lab de batch eligibility/idempotencia con OT sintéticas
-4. checker MM↔Seal de consistencia de configuración
-5. state machine de integración CRM↔IS-U con retry/compensación
+1. **completado:** `ZWM_STATUS_AUDIT_LAB` source/static evidence
+2. comparar APIs estándar de status vs. lectura diagnóstica cuando exista release/runtime disponible
+3. construir `ZWM_ORDER_MONITOR_LAB` de visibilidad read-only/sintética
+4. construir lab de batch eligibility/idempotencia con OT sintéticas
+5. construir checker MM↔Seal de consistencia de configuración
+6. modelar estados/retry/compensación CRM↔IS-U
 
 Todo artefacto ABAP sigue Evidence Governance; source/static evidence se mantiene separado de claims runtime SAP.
