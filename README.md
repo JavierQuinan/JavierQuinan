@@ -2,7 +2,7 @@
 
 # Francisco Quinteros
 
-### Full Stack Engineer · Enterprise SaaS · SAP MM / ABAP Cloud
+### Full Stack Engineer · Enterprise SaaS · SAP MM / ABAP
 
 **Software Engineer · Lawyer (Ecuador) · Builder of web, mobile and enterprise software**
 
@@ -18,11 +18,11 @@
 
 Full Stack Engineer focused on building **enterprise SaaS products, web applications, mobile experiences and business integrations**. My core stack combines **Angular, React, TypeScript, NestJS, Node.js, PostgreSQL and Supabase**, with practical experience in multi-tenant architectures, RBAC, REST APIs, background processing and integration-heavy systems. My mobile evidence spans both cross-platform development and **native Android with Kotlin**.
 
-I also work with **SAP MM and SAP IS-U Work Management** in enterprise environments and I am expanding my technical specialization in **ABAP, ABAP Cloud and S/4HANA engineering patterns**.
+I also work with **SAP MM and SAP IS-U Work Management** in enterprise environments. My public SAP engineering evidence includes classic ABAP source packs, technical troubleshooting guides, S/4HANA integration source, Clean Core architecture guidance and bilingual operational documentation.
 
-My background in **Software Engineering and Law** is especially useful in products that involve regulated workflows, traceability, digital evidence, compliance-sensitive processes and complex business rules.
+My background in **Software Engineering and Law** is especially useful in products involving regulated workflows, traceability, digital evidence, compliance-sensitive processes and complex business rules.
 
-> I prefer verifiable engineering evidence over inflated claims: code, architecture, tests, documentation, demos and reproducible technical decisions.
+> I prefer verifiable engineering evidence over inflated claims: code, architecture, tests, documentation, sanitized operational guides and reproducible technical decisions.
 
 ## Core stack
 
@@ -35,8 +35,8 @@ My background in **Software Engineering and Law** is especially useful in produc
 | Architecture | Multi-tenant SaaS · RBAC · background workers · event-driven workflows · integrations |
 | Async / Infrastructure | Redis · BullMQ · Docker · nginx · S3/MinIO-compatible storage |
 | Quality | Playwright · Jest · Supertest · GitHub Actions · linting · automated validation |
-| Enterprise integration | SOAP · XML/XSD · digital-signature workflows · SAP integration concepts |
-| SAP | SAP MM · IS-U Work Management · CRM · SD · ABAP · ABAP Cloud specialization · S/4HANA evidence track |
+| Enterprise integration | SOAP · XML/XSD · digital-signature workflows · OData · SAP integration |
+| SAP | SAP MM · IS-U Work Management · CRM · SD · ABAP · S/4HANA integration · ABAP Cloud/Clean Core architecture |
 
 ## Selected engineering work
 
@@ -52,15 +52,15 @@ Command-line tool for comparing JSON/YAML configuration files with multiple outp
 
 ### Additional public engineering evidence
 
-| Repository | Evidence | Current portfolio role |
+| Repository | Evidence | Portfolio role |
 |---|---|---|
-| [Task Manager](https://github.com/JavierQuinan/fullstack-javascript-project-141) | Fastify · SQLite · Knex · Objection.js · auth · CRUD · i18n | Full-stack supporting evidence; hardening backlog documented |
-| [Realtime Chat](https://github.com/JavierQuinan/fullstack-javascript-project-139) | React 18 · Redux Toolkit · Socket.IO · Formik/Yup · i18n | React/realtime supporting evidence with CI quality gate |
-| [RSS Reader](https://github.com/JavierQuinan/fullstack-javascript-project-137) | Reactive JavaScript · Axios · RSS parsing · i18next · Webpack | Frontend supporting evidence; Playwright modernization in progress |
-| [Parking Android](https://github.com/JavierQuinan/parqueadero_android) | Kotlin · Native Android · AndroidX · Material Components · HTTP/Volley | Active open-source revival; roadmap to modern Android architecture and CI |
+| [Task Manager](https://github.com/JavierQuinan/fullstack-javascript-project-141) | Fastify · SQLite · Knex · Objection.js · auth · CRUD · i18n · CI | Full-stack supporting evidence |
+| [Realtime Chat](https://github.com/JavierQuinan/fullstack-javascript-project-139) | React 18 · Redux Toolkit · Socket.IO · Formik/Yup · i18n · CI | React/realtime supporting evidence |
+| [RSS Reader](https://github.com/JavierQuinan/fullstack-javascript-project-137) | Reactive JavaScript · Axios · RSS parsing · i18next · Webpack | Frontend supporting evidence |
+| [Parking Android](https://github.com/JavierQuinan/parqueadero_android) | Kotlin · Native Android · AndroidX · Material Components · HTTP/Volley · CRUD/parking flow | Native Android open-source evidence |
 | [Page Loader](https://github.com/JavierQuinan/fullstack-javascript-project-138) | Node.js CLI · Axios · Cheerio · concurrency · Jest | CLI/HTTP processing supporting evidence |
 
-Repository promotion, historical classification and public-security rules are documented in [Portfolio Governance](docs/PORTFOLIO_GOVERNANCE.md).
+Repository classification and public-security rules are documented in [Portfolio Governance](docs/PORTFOLIO_GOVERNANCE.md).
 
 ## Sanitized private-product case studies
 
@@ -86,34 +86,37 @@ Private legal-workflow platform. The public case study documents React/Express/M
 
 ## SAP & enterprise systems
 
-My SAP evidence is deliberately split by **real enterprise operations**, **public technical source**, and **modern S/4HANA engineering evidence**.
+My SAP evidence is split by **enterprise operational experience**, **reviewable technical source**, and **S/4HANA engineering/architecture evidence**.
 
 ### Hands-on functional / operational evidence
 
-- SAP MM material, inventory, purchasing and service-procurement processes
-- SAP IS-U Work Management lifecycle, order/status troubleshooting and field-process controls
-- SAP CRM ↔ IS-U / WM contract and work-order integration scenarios
-- SAP SD / CRM-oriented non-energy billing workflow evidence
-- ABAP debugging and technical diagnostics methodology across `SE24`, `SE37`, `SE38`, `SE80`, `SE93`, `ST22`, `SM21`, `SM50/SM66`, traces and runtime analysis
+- SAP MM material, inventory, purchasing and service-procurement processes;
+- SAP IS-U Work Management lifecycle, order/status troubleshooting and field-process controls;
+- SAP CRM ↔ IS-U / WM contract and work-order integration scenarios;
+- SAP SD / CRM-oriented non-energy billing workflow;
+- ABAP debugging and technical diagnostics across `SE24`, `SE37`, `SE38`, `SE80`, `SE93`, `ST22`, `SM21`, `SM50/SM66`, traces and runtime analysis.
 
-All public operational guides are sanitized: no employer/customer names, real orders/contracts/installations/materials, credentials, unsanitized screenshots or proprietary Z implementation are published.
+Public operational guides are sanitized: no employer/customer identities, real orders/contracts/installations/materials, credentials, proprietary Z source or unsanitized enterprise screenshots are published.
 
 ### [SAP Integration Lab — Public Engineering Evidence](showcases/sap-integration-lab/README.md)
 
-The lab now contains:
+Evidence available now:
 
-- **ECC MM Inventory & Stock Risk** — ABAP OO, read-only `MARA/MARC/MARD`, SALV, 6 deterministic ABAP Unit vectors statically traced and a reproducible `SE24/SE38/SE93` procedure.
-- **ECC MM Service Procurement / `ZMM_CONTRACT_AUDIT`** — sanitized framework-contract evidence plus original read-only `EKKO/EKPO` ABAP source, SALV, 8 deterministic vectors and bilingual build/evidence documentation.
-- **ECC MM Purchasing Analytics / `ZMM_PURCH_ANALYTICS`** — original read-only PR→PO→schedule-line source over `EBAN/EKKO/EKPO/EKET`, SALV, 7 deterministic vectors and bilingual build/evidence documentation.
-- **ECC IS-U / Work Management / `ZWM_STATUS_AUDIT_LAB`** — original read-only ABAP source over `AUFK/JSTO/JEST/TJ02T/TJ30T/JCDS`, datasource abstraction, SALV, 6 deterministic vectors and bilingual build/evidence documentation, backed by sanitized real troubleshooting guidance.
-- **ECC / CRM-SD** — sanitized non-energy service billing evidence.
-- **S/4HANA MM Procurement API Client** — actual TypeScript read-only source with transport abstraction, OData validation, error/correlation-ID handling and a GitHub Actions gate observed at **6/6 tests PASS**. This validates the client source, not a real S/4HANA tenant connection.
-- **S/4HANA Migration Cockpit** — documentation-grounded migration lifecycle evidence, explicitly research-level rather than hands-on runtime.
-- **ABAP Cloud / Clean Core / RAP** — released-API governance and first RAP business-object architecture; implementation remains a separate milestone.
+- **ECC MM Inventory & Stock Risk** — original ABAP OO source, read-only `MARA/MARC/MARD`, SALV, 6 source-reviewed deterministic scenarios, `SE24/SE38/SE93` guide and sanitized MM01 visual evidence.
+- **ECC MM Service Procurement / `ZMM_CONTRACT_AUDIT`** — sanitized framework-contract guide, original read-only `EKKO/EKPO` ABAP source, SALV and 8 source-reviewed deterministic scenarios.
+- **ECC MM Purchasing Analytics / `ZMM_PURCH_ANALYTICS`** — original read-only `EBAN → EKKO/EKPO → EKET` source, PO-category guard, SALV and 7 source-reviewed deterministic scenarios.
+- **ECC IS-U / Work Management / `ZWM_STATUS_AUDIT_LAB`** — original read-only `AUFK/JSTO/JEST/TJ02T/TJ30T/JCDS` source, datasource abstraction, SALV and 6 source-reviewed deterministic scenarios, backed by sanitized operational troubleshooting guidance.
+- **ECC Technical Diagnostics** — original bilingual guides for transaction/object discovery, debugging, dump analysis and process monitoring.
+- **ECC / CRM-SD** — sanitized non-energy service billing workflow.
+- **S/4HANA MM Procurement API Client** — actual TypeScript read-only source with OData validation, correlation-ID handling, HTTPS enforcement and **6/6 tests PASS in GitHub Actions**.
+- **S/4HANA Migration Cockpit** — complete technical guide + synthetic migration runbook.
+- **ABAP Cloud / Clean Core** — technical architecture/governance guide covering released objects, release contracts and extension boundaries.
+- **RAP** — technical architecture guide covering CDS, behavior, projection, service definition/binding and authorization/test boundaries.
+- **SAP Integration** — OData/REST/SOAP, idempotency, error classification, correlation and observability guide.
 
-SAP runtime claims remain separate from source/static/CI evidence. ECC runtime is deferred until an authorized SAP development environment is available, and no S/4 tenant runtime is claimed for the API client.
+ECC ABAP artifacts are presented as reviewable source/static evidence, not as corporate runtime results. The S/4 API client has real local/CI test evidence but no live-tenant claim.
 
-`SAP MM` `IS-U Work Management` `CRM` `SD` `ABAP` `Debugging` `S/4HANA` `ABAP Cloud` `RAP` `OData` `TypeScript` `Integration`
+`SAP MM` `IS-U Work Management` `CRM` `SD` `ABAP` `Debugging` `S/4HANA` `ABAP Cloud` `Clean Core` `RAP` `OData` `TypeScript` `Integration`
 
 ## Engineering principles
 
@@ -121,25 +124,23 @@ SAP runtime claims remain separate from source/static/CI evidence. ECC runtime i
 - Security-conscious and least-privilege design
 - Clear separation between public showcase code and private commercial code
 - No credentials, customer data, signing certificates or production secrets in public repositories
-- Reproducible builds, automated validation and meaningful tests where applicable
-- Documentation that explains architecture, trade-offs and current product status
+- Reproducible builds and meaningful tests where applicable
+- Documentation that explains architecture, trade-offs and actual current status
 
-## Current evidence roadmap
+## Public evidence index
 
-1. [KOVI SaaS Showcase](showcases/kovi/README.md) — **published**
-2. [Motorix ERP / SaaS Showcase](showcases/motorix/README.md) — **published**
-3. [FITBA Web + Mobile Showcase](showcases/fitba/README.md) — **published**
-4. [LegalTech Platform Showcase](showcases/legaltech/README.md) — **published**
-5. [SAP Integration Lab](showcases/sap-integration-lab/README.md) — **ECC functional library + four ABAP source packs + CI-validated S/4 integration client published**
-6. [Parking Android](https://github.com/JavierQuinan/parqueadero_android) — **Kotlin/native Android open-source revival in progress**
+1. [KOVI SaaS Showcase](showcases/kovi/README.md)
+2. [Motorix ERP / SaaS Showcase](showcases/motorix/README.md)
+3. [FITBA Web + Mobile Showcase](showcases/fitba/README.md)
+4. [LegalTech Platform Showcase](showcases/legaltech/README.md)
+5. [SAP Integration Lab](showcases/sap-integration-lab/README.md)
+6. [Parking Android](https://github.com/JavierQuinan/parqueadero_android)
 
 ## Español
 
 Soy **Ingeniero en Software, Abogado y Full Stack Engineer**, especializado en productos SaaS empresariales, aplicaciones web/móviles, arquitectura multi-tenant e integraciones. Mi stack principal incluye Angular, React, TypeScript, NestJS, Node.js, PostgreSQL y Supabase; en móvil mantengo evidencia de **Android nativo con Kotlin**, además de React Native/Expo.
 
-En SAP, mi evidencia pública separa tres niveles: **experiencia funcional/operativa ECC**, **ingeniería ABAP demostrable a nivel de source/validación estática**, y **evolución moderna S/4HANA / ABAP Cloud / RAP orientada a APIs liberadas y Clean Core**. Actualmente existen cuatro packs ABAP ECC revisables —tres de MM y uno de IS-U/WM— y un cliente TypeScript S/4 Procurement con **6/6 pruebas verdes en CI**, sin atribuirle una conexión SAP que no se haya ejecutado realmente.
-
-Las guías reales de MM, IS-U/WM, CRM y SD se publican únicamente en versiones sanitizadas y bilingües. La evidencia visual se utiliza solo cuando puede publicarse legítimamente y después de sanitizar datos empresariales.
+En SAP, mi evidencia pública muestra experiencia funcional/operativa ECC, cuatro packs ABAP ECC revisables, guías técnicas bilingües, evidencia visual sanitizada de MM01 y un cliente TypeScript S/4 Procurement con **6/6 pruebas verdes en CI**. S/4HANA, ABAP Cloud/Clean Core y RAP se documentan con el nivel exacto de evidencia disponible, sin atribuir runtime inexistente.
 
 ---
 

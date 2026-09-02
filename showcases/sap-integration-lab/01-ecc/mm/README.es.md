@@ -2,89 +2,125 @@
 
 [English version](./README.md)
 
-> **Alcance:** SAP ECC / MM clásico  
-> **Madurez actual:** evidencia funcional + tres packs ABAP source-ready/validados estáticamente
+> **Alcance:** SAP ECC / MM clásico
 
-Esta línea se mantiene separada de SAP S/4HANA. Documenta conocimiento funcional MM clásico e ingeniería ABAP orientada a ECC sin presentar patrones de acceso directo como evidencia Clean Core.
+Esta línea documenta conocimiento funcional MM clásico e ingeniería ABAP original orientada a ECC. Se mantiene separada de S/4HANA para no presentar patrones de acceso directo ECC como evidencia Clean Core.
 
-## Evidencia técnica publicada
+## Evidencia técnica disponible actualmente
 
 ### 1. Inventario y Riesgo de Stock
 
 [Evidence Pack](./inventory-reorder/README.es.md)
 
-`SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+Evidencia:
 
-- ABAP Objects
-- `MARA` / `MARC` / `MARD`
-- separación stock planta/almacén
-- SALV
-- 6 vectores ABAP Unit trazados a nivel de source
-- procedimiento reproducible `SE24 / SE38 / SE93`
+- source original ABAP Objects;
+- datasource read-only `MARA / MARC / MARD`;
+- separación stock de planta vs. almacén;
+- visibilidad de contexto MRP;
+- source de reporte SALV;
+- 6 escenarios ABAP Unit deterministas revisados a nivel de source;
+- guía reproducible `SE24 / SE38 / SE93`;
+- revisión de compatibilidad con sintaxis ECC clásica.
 
-### 2. Contratación de Servicios y Contract Audit
+**Límite:** se documenta validación source/estática; no se afirma activación SAP corporativa ni ejecución de ABAP Unit en sistema empresarial.
+
+### 2. Contratación de Servicios y `ZMM_CONTRACT_AUDIT`
 
 [Contratación de Servicios y Contratos Marco](./service-procurement/README.es.md)
 
-`FUNCTIONAL_EVIDENCE_READY / ABAP_SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
+Evidencia:
 
-Source original read-only `ZMM_CONTRACT_AUDIT` sobre `EKKO/EKPO`, diagnóstico de vigencia, SALV, 8 vectores deterministas y documentación bilingüe.
+- guía operativa sanitizada de contrato marco/servicios;
+- source ABAP original read-only sobre `EKKO / EKPO`;
+- diagnóstico de vigencia contractual;
+- contexto proveedor/organización de compras;
+- target value e indicadores quantity/value;
+- source SALV;
+- 8 escenarios ABAP Unit deterministas revisados a nivel de source;
+- documentación bilingüe de construcción/evidencia.
+
+**Límite:** se documenta validación source/estática; no se afirma runtime SAP.
 
 ### 3. Purchasing Analytics — PR → PO → líneas de reparto
 
 [Purchasing Analytics](./purchasing-analytics/README.es.md)
 
-`SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
-
-Source original read-only `ZMM_PURCH_ANALYTICS`:
+Evidencia:
 
 ```text
 EBAN
   ↓ referencia opcional EBELN/EBELP
-EKKO / EKPO
+EKKO / EKPO   [EKKO-BSTYP = 'F']
   ↓
 EKET
 ```
 
-Evidencia:
+- visibilidad de posición PR;
+- resolución opcional del PO downstream;
+- guard de categoría Purchase Order;
+- contexto organización de compras/proveedor;
+- conteo de líneas de reparto y fechas de entrega;
+- indicadores de borrado;
+- `PR_ONLY / REFERENCE_GAP`;
+- `PO_WITHOUT_SCHEDULE / PO_WITH_SCHEDULE`;
+- `PR_DELETED / PO_ITEM_DELETED`;
+- source SALV;
+- 7 escenarios ABAP Unit deterministas revisados a nivel de source;
+- guía bilingüe `SE24 / SE38 / SE93`.
 
-- visibilidad de posición PR
-- resolución opcional del PO downstream
-- contexto organización de compras/proveedor
-- conteo de líneas de reparto y fechas de entrega
-- indicadores de borrado
-- `PR_ONLY / REFERENCE_GAP`
-- `PO_WITHOUT_SCHEDULE / PO_WITH_SCHEDULE`
-- `PR_DELETED / PO_ITEM_DELETED`
-- reporte SALV
-- 7 vectores ABAP Unit trazados consistentemente
-- guía bilingüe `SE24 / SE38 / SE93`
+Una PR sin PO se interpreta deliberadamente como un estado válido `PR_ONLY`, no como error automático.
 
-Una PR sin PO no se clasifica como error.
+**Límite:** se documenta validación source/estática; no se afirma runtime SAP.
 
 ## Evidencia funcional MM
 
 [Evidencia funcional sanitizada](./functional-evidence/)
 
-Derivada de material operativo sobre:
+Las guías operativas cubren:
 
-- extensión de materiales
-- consumo de materiales en OT y movimientos
-- troubleshooting material/proveedor/puesto de trabajo
-- contratos marco y contratación de servicios
+- extensión de material mediante `MM01`;
+- verificación de extensión organizativa;
+- consumo de materiales en OT y validación de movimientos;
+- troubleshooting material/proveedor/puesto de trabajo;
+- contratos marco y contratación de servicios.
 
-## Próxima progresión técnica
+### Evidencia visual — MM01
 
-1. relaciones de paquetes de servicios solo después de verificación por release/escenario
-2. historial de compras/GR más profundo solo con un caso acotado y verificable
-3. runtime futuro cuando exista DEV/sandbox SAP autorizado
+[Capturas MM01 sanitizadas](../../visual-evidence/mm01-material-extension/README.es.md)
+
+El set visual muestra:
+
+1. acceso/selección de material existente;
+2. selección de vistas del maestro;
+3. niveles organizativos centro/almacén;
+4. verificación posterior del resultado.
+
+Se sanitizan material, centro/almacén, descripción y usuario. Las capturas provienen de material operativo suministrado para este portafolio y se publican únicamente en versión redactada.
+
+## Referencias oficiales SAP
+
+Las guías MM se contrastan con documentación pública SAP. Consulte el [Índice de Referencias Oficiales SAP](../../OFFICIAL_SAP_REFERENCES.es.md), que incluye Help SAP sobre extensión del maestro de materiales, datos por almacén, Class Builder, SE93 y ABAP Unit.
+
+## Qué demuestra esta línea
+
+- comprensión operativa SAP MM clásico;
+- razonamiento de material y niveles organizativos;
+- conceptos de purchasing y service procurement;
+- análisis de relación PR→PO→schedule lines;
+- ABAP Objects y abstracción de datasource;
+- Open SQL read-only para diagnóstico;
+- reporting SALV;
+- diseño determinista de pruebas;
+- documentación técnica bilingüe;
+- evidencia respaldada por material operativo sanitizado y referencias oficiales SAP.
 
 ## Límite ECC
 
-Se permiten objetos clásicos/Open SQL cuando corresponden a ECC y quedan rotulados como **ECC/clásico**.
+Se utilizan objetos clásicos/Open SQL únicamente cuando corresponden a ECC y se rotulan expresamente como **ECC/clásico**.
 
-No se publica código del empleador/cliente, documentos de compras reales, proveedores, materiales, precios, códigos organizativos ni capturas.
+No se publica código del empleador/cliente, documentos de compras reales, proveedores, materiales, precios, códigos organizativos ni screenshots no sanitizados.
 
 ## Límite S/4HANA
 
-La evidencia moderna S/4HANA está separada en [`../../02-s4hana`](../../02-s4hana/README.es.md) y prioriza CDS/OData/APIs liberadas.
+La evidencia moderna S/4HANA vive separada en [`../../02-s4hana`](../../02-s4hana/README.es.md) y prioriza APIs/CDS/OData liberados.

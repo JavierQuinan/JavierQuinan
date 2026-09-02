@@ -2,11 +2,9 @@
 
 [English version](./README.md)
 
-> **Tipo de evidencia:** troubleshooting operativo sanitizado + source ABAP read-only original  
-> **Estado:** `FUNCTIONAL_TECHNICAL_EVIDENCE_READY / SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`  
-> **Claim runtime:** no se afirma activación SAP ni ejecución real de ABAP Unit
+> **Evidencia:** troubleshooting operativo sanitizado · source ABAP original read-only · revisión determinista de source
 
-Este evidence pack combina un método de troubleshooting sanitizado derivado de guías operativas reales con un laboratorio ABAP original que audita el modelo estándar de estados de órdenes sin modificar datos.
+Este paquete combina un método de troubleshooting sanitizado derivado de guías operativas con un laboratorio ABAP original que audita el modelo estándar de estados de órdenes sin modificar datos.
 
 ## Flujo funcional de diagnóstico
 
@@ -37,23 +35,13 @@ JCDS — contexto de historial de cambios
 
 Reglas críticas:
 
-- `INACT` vacío → registro activo
-- `INACT = X` → registro inactivo/histórico
-- `I....` → familia de estados de sistema
-- `E....` → familia de estados de usuario
-- un estado de usuario debe interpretarse dentro del perfil `STSMA` correspondiente
+- `INACT` vacío → registro activo;
+- `INACT = X` → registro inactivo/histórico;
+- `I....` → familia de estados de sistema;
+- `E....` → familia de estados de usuario;
+- un estado de usuario se interpreta con el perfil `STSMA` correspondiente.
 
-## Artefacto técnico ABAP original
-
-Transacción objetivo:
-
-`ZWM_STATUS_AUDIT_LAB`
-
-Reporte ejecutable:
-
-`ZWM_STATUS_AUDIT_REPORT`
-
-Arquitectura:
+## Artefacto ABAP original
 
 ```text
 ZWM_STATUS_AUDIT_LAB
@@ -78,9 +66,9 @@ Datasource ECC      Datasource demo
    └── JCDS
 ```
 
-El source revisable está en [`source/`](./source/).
+Source revisable: [`source/`](./source/)
 
-## Qué lee el datasource ECC
+## Alcance del datasource ECC
 
 | Objeto | Uso |
 |---|---|
@@ -91,85 +79,78 @@ El source revisable está en [`source/`](./source/).
 | `TJ30T` | resolver texto de usuario dentro del perfil |
 | `JCDS` | conteo de cambios y última fecha/hora |
 
-El lab público excluye deliberadamente usuario/TCode histórico y toda operación de escritura.
+El lab público excluye usuario/TCode histórico y toda operación de escritura.
 
 ## Resultados diagnósticos
 
-El servicio reporta únicamente condiciones estructurales:
+El servicio reporta condiciones estructurales únicamente:
 
 - `OK`
 - `NO_ACTIVE_STATUS`
 - `USER_PROFILE_MISSING`
 - `TEXT_RESOLUTION_GAP`
 
-`OK` **no** significa que la orden esté funcionalmente correcta. Solo significa que el snapshot de estados inspeccionado es estructuralmente resoluble por la lógica del auditor.
+`OK` **no** significa que la orden esté funcionalmente correcta. Significa que el snapshot de estados es estructuralmente resoluble por esta lógica de auditoría.
 
-## Validación estática
+## Revisión de escenarios deterministas
 
-Se prepararon seis vectores deterministas ABAP Unit y fueron trazados consistentemente a nivel de source:
+Se versionaron seis escenarios ABAP Unit y fueron trazados consistentemente a nivel de source:
 
-1. estado sistema activo resuelto → `OK`
-2. solo registros históricos → `NO_ACTIVE_STATUS`
-3. estado usuario activo sin `STSMA` → `USER_PROFILE_MISSING`
-4. estado activo sin texto → `TEXT_RESOLUTION_GAP`
-5. separación correcta entre activos e históricos
-6. preservación del resumen de cambios
-
-Resultado:
+1. estado de sistema activo resuelto → `OK`;
+2. solo registros históricos → `NO_ACTIVE_STATUS`;
+3. estado de usuario activo sin `STSMA` → `USER_PROFILE_MISSING`;
+4. estado activo sin texto → `TEXT_RESOLUTION_GAP`;
+5. separación correcta entre activos e históricos;
+6. preservación del resumen de cambios.
 
 ```text
-Vectores revisados: 6
-Consistentes:       6
-Inconsistencias:    0
+Escenarios revisados: 6
+Consistentes:         6
+Inconsistencias:      0
 ```
 
-Esto es **validación estática/source**, no ejecución ABAP Unit dentro de SAP.
+Esto corresponde a revisión source/estática, no a un claim de ejecución ABAP Unit dentro de un sistema SAP corporativo.
 
 ## Salida SALV
 
-El reporte ejecutable está diseñado para mostrar:
+El source del reporte expone:
 
-- orden / objeto de estados
-- perfil `STSMA`
-- código y clasificación sistema/usuario
-- activo vs. histórico
-- textos
-- número de cambio
-- conteos resumen
-- última fecha/hora de cambio
-- resultado diagnóstico
+- orden / objeto de estados;
+- perfil `STSMA`;
+- código y clasificación sistema/usuario;
+- activo vs. histórico;
+- textos;
+- número de cambio;
+- conteos resumen;
+- última fecha/hora de cambio;
+- resultado diagnóstico.
 
-## Reproducción
+## Evidencia reproducible
 
 - [Build Guide — English](./BUILD_GUIDE.md)
 - [Guía de Construcción — Español](./BUILD_GUIDE.es.md)
 - [Registro de Evidencia](./EVIDENCE.md)
 - [Validación Estática](./STATIC_VALIDATION.md)
 
-El procedimiento documentado utiliza `SE24`, `SE38` y `SE93`, manteniendo `RUNTIME_DEFERRED` hasta disponer de un SAP DEV/sandbox autorizado.
+La guía de construcción documenta creación de objetos mediante `SE24`, reporte `SE38` y configuración de Report Transaction en `SE93`.
 
-## Seguridad / límite público
+## Qué demuestra esta evidencia
 
-Nunca publicar:
+- troubleshooting del modelo de estados de OT SAP;
+- separación estado sistema vs. usuario;
+- interpretación activo vs. histórico;
+- resolución consciente de `STSMA`;
+- análisis del historial de cambios;
+- diseño ABAP Objects clásico;
+- abstracción datasource ECC/sintético;
+- diseño determinista de escenarios;
+- reporting SALV;
+- documentación pública orientada a seguridad.
 
-- números reales de OT
-- instalaciones o cuentas contrato
-- identificadores de cliente/empresa
-- usuarios, SID/mandante, URLs o transportes
-- nombres/source de transacciones custom propietarias
-- procedimientos de edición directa de tablas
-- screenshots con datos empresariales o material de terceros sin derecho de publicación
+## Seguridad / límite de evidencia
 
-El artefacto es read-only y no contiene `UPDATE`, `INSERT`, `MODIFY`, `DELETE` ni commit.
+La evidencia pública excluye números reales de OT, instalaciones, cuentas contrato, identificadores de cliente/empresa, usuarios, SID/mandante, URLs internas, transportes, source de transacciones custom propietarias y procedimientos de edición directa de tablas.
 
-## Qué demuestra
+El artefacto es read-only y no contiene `UPDATE`, `INSERT`, `MODIFY` de base, `DELETE` ni commit.
 
-- troubleshooting del modelo de estados de OT SAP
-- separación estado sistema vs. usuario
-- interpretación activo vs. histórico
-- resolución consciente de `STSMA`
-- análisis de historial de cambios
-- diseño ABAP OO clásico
-- abstracción de datasource y pruebas sintéticas
-- reporting SALV
-- límites de evidencia pública orientados a seguridad
+El repositorio presenta source/revisión estática e instrucciones reproducibles de construcción; no afirma activación o ejecución de estos objetos custom dentro de un sistema SAP corporativo específico.

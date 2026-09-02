@@ -1,146 +1,140 @@
 # SAP Evidence Governance
 
-This document defines the acceptance criteria for SAP evidence published in this portfolio.
+This document defines how SAP evidence is labelled in this portfolio. It does not use roadmap states; an artifact is described only by evidence that already exists.
 
-## Evidence states
+## Evidence labels
 
-| State | Acceptance criteria |
+| Label | Meaning |
 |---|---|
-| `PLANNED` | Scenario and expected learning/evidence outcome documented. |
-| `SOURCE_READY` | Reviewable source exists in GitHub and has an explanation of assumptions and expected behavior. |
-| `STATIC_VALIDATED` | Source logic, dependencies, decision paths and deterministic test vectors have been reviewed consistently at source level; this is not runtime execution. |
-| `EXECUTION_PROCEDURE_READY` | A reproducible object-by-object creation, activation, test and execution procedure is documented for an authorized SAP environment. |
-| `RUNTIME_DEFERRED` | Runtime execution is intentionally deferred because an authorized SAP DEV/sandbox or required development/CTS access is not available. This is an environment constraint, not a successful runtime result. |
-| `RUNTIME_VALIDATED` | Source was activated and executed in an appropriate SAP environment; execution evidence is documented. |
-| `TEST_VALIDATED` | Runtime validation plus reproducible automated/unit-test evidence. |
+| `FUNCTIONAL_GUIDE` | Sanitized operational/process guide derived from legitimate hands-on material. |
+| `TECHNICAL_GUIDE` | Original technical reference grounded in available source material and/or authoritative documentation. |
+| `SOURCE_REVIEWED` | Reviewable source exists in GitHub and its assumptions, dependencies and boundaries are documented. |
+| `STATIC_SCENARIOS_REVIEWED` | Deterministic source/test scenarios were traced consistently against the current implementation; this is not runtime execution. |
+| `BUILD_GUIDE_INCLUDED` | Reproducible object-by-object construction/execution instructions exist. |
+| `LOCAL_TESTED` | Automated tests were actually executed outside SAP against local/synthetic/mocked behavior. |
+| `CI_TESTED` | An automated CI gate was actually observed successfully. |
+| `SAP_RUNTIME_EVIDENCE` | Activation/execution evidence from an appropriate SAP environment exists and is explicitly documented. |
+| `SAP_TEST_EVIDENCE` | Executed SAP test evidence exists, such as observed ABAP Unit results. |
 
-No artifact may be described as “executed”, “working in SAP”, “6/6 ABAP Unit passed”, “production-ready” or equivalent unless it reaches the corresponding runtime/test state.
+No artifact is described as “executed in SAP”, “working in SAP”, “ABAP Unit passed” or “production-ready” unless the corresponding runtime/test evidence is actually available.
 
-`STATIC_VALIDATED` and `EXECUTION_PROCEDURE_READY` are legitimate professional evidence states. They allow a portfolio artifact to progress without inventing enterprise runtime access.
+Absence of SAP runtime evidence is expressed simply as **“SAP runtime is not claimed by this artifact.”** It is not presented as a future task or promotion promise.
 
-## Required evidence record
+## Evidence record
 
-Each executable artifact must eventually include an `EVIDENCE.md` containing:
+An `EVIDENCE.md` may record:
 
-- SAP product/context (ECC, IS-U, S/4HANA, ABAP Cloud)
-- environment availability/boundary
-- object names used
-- source/static-review result
-- activation result when actually observed
-- execution steps
-- expected result
-- actual runtime result when actually observed
-- test result, distinguishing static vectors from executed ABAP Unit
-- validation date when applicable
-- screenshots/log excerpts only when sanitized
-- known limitations
+- SAP product/context (`ECC`, `IS-U`, `S/4HANA`, `ABAP Cloud`);
+- source objects included;
+- functional/technical source basis;
+- static source-review result;
+- local/CI test result when actually observed;
+- SAP runtime/test result only when actually observed;
+- reproducible build/execution instructions;
+- known functional boundaries;
+- sanitized screenshots/log excerpts when publication is legitimate.
 
-Production/customer identifiers must never be included.
+Production/customer identifiers are never included.
 
 ## Product boundaries
 
 ### SAP ECC MM
 
-Classic MM evidence can demonstrate:
+Classic MM evidence may demonstrate:
 
-- material/plant/storage-location concepts
-- inventory analysis
-- purchase requisitions and purchase orders
-- service procurement
-- classic Open SQL where appropriate
-- ALV/SALV reporting
-- ABAP Objects and ABAP Unit source
+- material/plant/storage-location concepts;
+- inventory analysis;
+- purchase requisitions and purchase orders;
+- service procurement;
+- classic Open SQL where appropriate;
+- ALV/SALV reporting;
+- ABAP Objects and ABAP Unit source.
 
-Any direct-table example must be explicitly labelled as ECC/classic evidence and must not be reused to claim a modern S/4HANA Clean Core design.
+Direct-table examples are explicitly labelled as ECC/classic evidence and are not reused as Clean Core claims.
 
 ### SAP ECC IS-U / Work Management
 
-IS-U evidence is a separate track. Functional evidence can be derived from sanitized user-authored guides and real troubleshooting knowledge.
+IS-U / WM evidence may combine sanitized operational guides with original read-only technical source.
 
-Technical/public artifacts must not expose real:
+Public artifacts exclude real:
 
-- business partners
-- contract accounts
-- contracts
-- installations
-- devices/meters
-- work orders
-- users
-- customer/company configuration
-- internal integration endpoints
+- business partners;
+- contract accounts;
+- contracts;
+- installations;
+- devices/meters;
+- work orders;
+- users;
+- company/customer configuration;
+- internal integration endpoints.
 
 ### SAP S/4HANA
 
-S/4HANA evidence should prioritize modern extensibility and released interfaces:
+S/4HANA evidence is split between:
 
-- CDS View Entities
-- released APIs
-- OData services
-- ABAP Cloud language/version constraints
-- RAP
-- Clean Core-compatible design
+- executable integration-side source with observed local/CI tests where available; and
+- technical guides covering released interfaces, Migration Cockpit, ABAP Cloud/Clean Core and RAP architecture.
 
-Legacy ECC patterns do not automatically qualify as S/4HANA evidence.
+Classic ECC source is never relabelled as S/4HANA Clean Core source.
 
 ### SAP Integration
 
 Integration evidence may cover:
 
-- OData
-- REST
-- SOAP/XML
-- message transformation
-- idempotency
-- correlation IDs
-- retry/error mapping
-- audit and observability
+- OData;
+- REST;
+- SOAP/XML;
+- message transformation;
+- idempotency;
+- correlation IDs;
+- retry/error mapping;
+- audit and observability.
 
-Secrets and internal destinations remain external to Git.
+Secrets and internal destinations remain outside Git.
 
 ## Functional-guide policy
 
-User-authored SAP MM and SAP IS-U/WM guides may be incorporated as high-value functional evidence after sanitization.
+SAP MM, IS-U/WM, CRM and SD guides may be included after sanitization when they legitimately support professional evidence.
 
 Before publication, remove or replace:
 
-- employer/customer names
-- real IDs/documents
-- usernames
-- URLs/hostnames
-- screenshots with confidential information
-- custom object details that reveal proprietary implementation when not necessary
+- employer/customer names;
+- real IDs/documents;
+- usernames;
+- URLs/hostnames;
+- confidential screenshots;
+- proprietary custom-object details that are not necessary to explain the process.
 
-The resulting artifact must state whether it is:
+The resulting artifact states whether it is:
 
-- a sanitized professional guide derived from real operational experience, or
-- an original technical reference synthesized from study/training material.
+- a sanitized professional guide derived from operational material; or
+- an original technical guide synthesized from study/training/official documentation.
 
-Third-party screenshots, logos and copyrighted training pages are not republished as portfolio assets unless explicit publication rights exist.
+Third-party screenshots, logos and training pages are not republished unless publication rights are clear.
+
+## Visual-evidence policy
+
+Screenshots are supporting evidence when they are legitimate to publish and sufficiently sanitized.
+
+A visual asset should document:
+
+- its technical purpose;
+- what was redacted/replaced;
+- what the screenshot demonstrates;
+- what it does not demonstrate.
+
+See [`VISUAL_EVIDENCE_POLICY.md`](./VISUAL_EVIDENCE_POLICY.md) and [`visual-evidence/`](./visual-evidence/README.md).
 
 ## Bilingual standard
 
-Portfolio-facing technical documentation is English-first and accompanied by Spanish when the artifact is substantial.
+Portfolio-facing technical documentation is English-first and accompanied by Spanish for substantial artifacts.
 
 Preferred convention:
 
-- `README.md` — English
-- `README.es.md` — Spanish
-- `EVIDENCE.md` — English evidence record, optionally accompanied by `EVIDENCE.es.md`
+- `README.md` — English;
+- `README.es.md` — Spanish;
+- code identifiers — English unless SAP standard naming dictates otherwise.
 
-Code identifiers remain in English unless SAP standard object naming dictates otherwise.
+## Current integrity rule
 
-## Runtime-validation gate
-
-For ABAP source, true runtime validation still requires at minimum:
-
-1. object creation/import into an appropriate authorized SAP development environment
-2. successful syntax check/activation
-3. executable scenario or callable class method
-4. result capture with synthetic/demo data
-5. ABAP Unit execution result when tests exist
-
-If enterprise governance prevents those steps, the correct state is:
-
-`STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
-
-This state may be promoted later without redesign when an authorized sandbox/DEV environment becomes available.
+Every recruiter-facing claim must be answerable by pointing to an existing guide, source file, test record, CI run or sanitized visual asset in the repository. If the evidence does not exist, the claim is omitted rather than represented as a roadmap item.

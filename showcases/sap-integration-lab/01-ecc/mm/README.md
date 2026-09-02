@@ -2,89 +2,125 @@
 
 [Versión en español](./README.es.md)
 
-> **Scope:** SAP ECC / classic MM  
-> **Current maturity:** functional evidence + three source-ready/static-validated ABAP packs
+> **Scope:** SAP ECC / classic MM
 
-This track is intentionally separated from SAP S/4HANA. It documents classic MM functional knowledge and ECC-oriented ABAP engineering without presenting direct-table patterns as Clean Core evidence.
+This track documents classic MM functional knowledge and original ECC-oriented ABAP engineering. It is intentionally separated from S/4HANA so direct-table ECC patterns are not presented as Clean Core evidence.
 
-## Published technical evidence
+## Technical evidence available now
 
 ### 1. Inventory & Stock Risk
 
 [Evidence Pack](./inventory-reorder/README.md)
 
-`SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+Evidence:
 
-- ABAP Objects
-- `MARA` / `MARC` / `MARD`
-- plant vs. storage-location stock
-- SALV
-- 6 deterministic ABAP Unit vectors traced at source level
-- reproducible `SE24 / SE38 / SE93` procedure
+- original ABAP Objects source;
+- read-only `MARA / MARC / MARD` datasource;
+- plant vs. storage-location stock separation;
+- MRP-context visibility;
+- SALV report source;
+- 6 deterministic ABAP Unit scenarios reviewed at source level;
+- reproducible `SE24 / SE38 / SE93` build guide;
+- source-compatibility review for classic ECC syntax.
 
-### 2. Service Procurement & Contract Audit
+**Evidence boundary:** source/static validation is documented; corporate SAP activation and executed ABAP Unit runtime are not claimed.
+
+### 2. Service Procurement & `ZMM_CONTRACT_AUDIT`
 
 [Service Procurement & Framework Contracts](./service-procurement/README.md)
 
-`FUNCTIONAL_EVIDENCE_READY / ABAP_SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
+Evidence:
 
-Original read-only `ZMM_CONTRACT_AUDIT` source over `EKKO/EKPO`, contract-validity diagnostics, SALV, 8 deterministic vectors and bilingual build/evidence documentation.
+- sanitized operational guide for framework/service contracts;
+- original read-only `ZMM_CONTRACT_AUDIT` source over `EKKO / EKPO`;
+- contract-validity diagnostics;
+- vendor/purchasing-organization context;
+- target-value / quantity-value indicators;
+- SALV report source;
+- 8 deterministic ABAP Unit scenarios reviewed at source level;
+- bilingual build/evidence documentation.
+
+**Evidence boundary:** source/static validation is documented; SAP runtime is not claimed.
 
 ### 3. Purchasing Analytics — PR → PO → Schedule Lines
 
 [Purchasing Analytics](./purchasing-analytics/README.md)
 
-`SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
-
-Original read-only `ZMM_PURCH_ANALYTICS` source:
+Evidence:
 
 ```text
 EBAN
   ↓ optional EBELN/EBELP reference
-EKKO / EKPO
+EKKO / EKPO   [EKKO-BSTYP = 'F']
   ↓
 EKET
 ```
 
-Evidence includes:
+- PR item visibility;
+- optional downstream PO resolution;
+- PO-category guard;
+- purchasing organization/vendor context;
+- schedule-line count and delivery-date context;
+- deletion indicators;
+- `PR_ONLY / REFERENCE_GAP`;
+- `PO_WITHOUT_SCHEDULE / PO_WITH_SCHEDULE`;
+- `PR_DELETED / PO_ITEM_DELETED`;
+- SALV report source;
+- 7 deterministic ABAP Unit scenarios reviewed at source level;
+- bilingual `SE24 / SE38 / SE93` build guide.
 
-- PR item visibility
-- optional downstream PO resolution
-- purchasing organization/vendor context
-- schedule-line count and delivery-date context
-- deletion indicators
-- `PR_ONLY / REFERENCE_GAP`
-- `PO_WITHOUT_SCHEDULE / PO_WITH_SCHEDULE`
-- `PR_DELETED / PO_ITEM_DELETED`
-- SALV report
-- 7 deterministic ABAP Unit vectors traced consistently
-- bilingual `SE24 / SE38 / SE93` build guide
+A PR without a PO is deliberately treated as a valid `PR_ONLY` state rather than an automatic error.
 
-A PR without PO is deliberately not classified as an error.
+**Evidence boundary:** source/static validation is documented; SAP runtime is not claimed.
 
 ## Functional MM evidence
 
 [Sanitized functional evidence](./functional-evidence/)
 
-Derived from operational material covering:
+Operational guides in this track cover:
 
-- material extension
-- work-order material consumption and movement validation
-- material/vendor/work-center troubleshooting
-- framework/service contract handling
+- material extension with `MM01`;
+- verification of organizational extension;
+- work-order material consumption and movement validation;
+- material/vendor/work-center troubleshooting;
+- framework/service contract handling.
 
-## Next technical progression
+### Visual evidence — MM01
 
-1. service-package relationships only after release/scenario verification
-2. deeper purchasing history/GR visibility only after defining a bounded evidence case
-3. future runtime validation when an authorized SAP DEV/sandbox exists
+[Sanitized MM01 screenshots](../../visual-evidence/mm01-material-extension/README.md)
+
+The visual set shows:
+
+1. existing-material selection/access;
+2. material-master view selection;
+3. plant/storage-location organizational levels;
+4. post-process verification.
+
+Material IDs, plant/storage-location values, descriptions and usernames are sanitized. The screenshots come from operational material supplied for this portfolio and are published only in redacted form.
+
+## Official SAP references
+
+The MM guides are cross-referenced against public SAP documentation. See the centralized [SAP Official Reference Index](../../OFFICIAL_SAP_REFERENCES.md), including SAP Help pages for material-master extension, storage-location-specific data, Class Builder, SE93 and ABAP Unit.
+
+## What this track demonstrates
+
+- classic SAP MM operational understanding;
+- material and organizational-level reasoning;
+- purchasing/service-procurement concepts;
+- PR→PO→schedule-line relationship analysis;
+- ABAP Objects and datasource abstraction;
+- read-only Open SQL diagnostics;
+- SALV reporting;
+- deterministic test design;
+- bilingual technical documentation;
+- evidence backed by sanitized operational material and official SAP references.
 
 ## ECC boundary
 
-Classic objects and Open SQL are permitted when appropriate to ECC and remain clearly labelled **ECC/classic**.
+Classic objects and Open SQL are used only where appropriate to ECC and remain clearly labelled **ECC/classic**.
 
-No employer/customer source, real purchasing documents, vendor IDs, material IDs, prices, organizational codes or screenshots are published.
+No employer/customer source, real purchasing documents, vendor IDs, material IDs, prices, organizational codes or unsanitized screenshots are published.
 
 ## S/4HANA boundary
 
-Modern S/4HANA procurement evidence lives separately under [`../../02-s4hana`](../../02-s4hana/README.md) and prioritizes released CDS/OData interfaces.
+Modern S/4HANA procurement evidence lives separately under [`../../02-s4hana`](../../02-s4hana/README.md) and prioritizes released APIs/CDS/OData boundaries.

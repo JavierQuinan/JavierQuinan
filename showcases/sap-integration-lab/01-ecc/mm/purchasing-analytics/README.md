@@ -2,11 +2,10 @@
 
 [Versión en español](./README.es.md)
 
-> **Evidence type:** original read-only ECC purchasing source  
-> **Status:** `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`  
+> **Evidence:** original read-only ECC purchasing source · deterministic source review · reproducible build guide  
 > **Scope:** Purchase Requisition → Purchase Order → Schedule-Line visibility
 
-`ZMM_PURCH_ANALYTICS` is a classic ECC evidence lab that follows one purchase-requisition item into downstream purchasing references when they exist, without creating or changing purchasing documents.
+`ZMM_PURCH_ANALYTICS` follows one purchase-requisition item into downstream purchasing references when they exist, without creating or changing purchasing documents.
 
 ## Standard model used
 
@@ -18,12 +17,12 @@ EBAN — Purchase Requisition item
    │
    ▼
 EKKO / EKPO — Purchase Order header/item
-   │
+   │  EKKO-BSTYP = 'F'
    ▼
 EKET — Schedule-line delivery context
 ```
 
-SAP documentation exposes `BANFN`, `BNFPO`, `EBELN` and `EBELP` in purchase-requisition data and uses `EKET-EINDT` as schedule-line delivery-date context. The portfolio implementation remains explicitly **ECC/classic** and is not used as S/4HANA Clean Core proof.
+The artifact remains explicitly **ECC/classic** and is not presented as S/4HANA Clean Core evidence.
 
 ## Source architecture
 
@@ -48,74 +47,67 @@ Reviewable source: [`source/`](./source/)
 
 ## Read-only output
 
-The first version exposes:
-
-- Purchase Requisition number/item
-- PR document and requested-delivery context
-- material / plant / purchasing group
-- referenced Purchase Order/item when present
-- PO document date
-- vendor and purchasing organization
-- PO quantity/unit
-- schedule-line count
-- earliest/latest schedule-line delivery date
-- transparent portfolio diagnostic result
+- Purchase Requisition number/item;
+- PR document and requested-delivery context;
+- material / plant / purchasing group;
+- referenced Purchase Order/item when present;
+- PO document date;
+- vendor and purchasing organization;
+- PO quantity/unit;
+- schedule-line count;
+- earliest/latest schedule-line delivery date;
+- transparent portfolio diagnostic result.
 
 ## Diagnostic results
 
 These labels are portfolio diagnostics, **not SAP standard document statuses**:
 
-- `PR_ONLY` — PR exists without a PO reference
-- `REFERENCE_GAP` — PR contains a PO reference but header/item cannot be resolved by the read-only lookup
-- `PO_WITHOUT_SCHEDULE` — referenced PO item resolves but no schedule line is found
-- `PO_WITH_SCHEDULE` — referenced PO item and schedule-line context resolve
-- `PR_DELETED` — PR deletion indicator is set
-- `PO_ITEM_DELETED` — referenced PO item deletion indicator is set
+- `PR_ONLY` — PR exists without a PO reference;
+- `REFERENCE_GAP` — PR contains a PO reference but header/item cannot be resolved by the read-only lookup;
+- `PO_WITHOUT_SCHEDULE` — referenced PO item resolves but no schedule line is found;
+- `PO_WITH_SCHEDULE` — referenced PO item and schedule-line context resolve;
+- `PR_DELETED` — PR deletion indicator is set;
+- `PO_ITEM_DELETED` — referenced PO item deletion indicator is set.
 
-A PR without a PO is not treated as an error. The artifact intentionally avoids assuming that every requisition must already have a downstream order.
+A PR without a PO is deliberately not classified as an error.
 
-## Static validation
+## Deterministic scenario review
 
-Seven deterministic ABAP Unit vectors are prepared and traced consistently at source level:
+Seven ABAP Unit scenarios are versioned and traced consistently at source level:
 
 ```text
-Vectors reviewed: 7
-Consistent:       7
-Mismatches:       0
+Scenarios reviewed: 7
+Consistent:         7
+Mismatches:         0
 ```
 
-See [Static Validation](./STATIC_VALIDATION.md).
+See [Static Validation](./STATIC_VALIDATION.md). This is source/static review, not a claim of ABAP Unit execution inside SAP.
 
-This is not presented as SAP ABAP Unit runtime evidence.
-
-## Reproduction
+## Reproducible evidence
 
 - [Build Guide — English](./BUILD_GUIDE.md)
 - [Guía de Construcción — Español](./BUILD_GUIDE.es.md)
 - [Evidence Boundary](./EVIDENCE.md)
 - [Design](./DESIGN.md)
+- [Source Review](./SOURCE_REVIEW.md)
 
-The documented reproduction path uses `SE24`, `SE38` and `SE93`.
+The build guide documents `SE24`, `SE38` and `SE93`.
 
-## Non-goals
+## What this evidence demonstrates
 
-The first version does not:
+- PR→PO→schedule-line relationship reasoning;
+- use of `EKKO-BSTYP = 'F'` to guard Purchase Order category;
+- ABAP Objects and datasource abstraction;
+- synthetic deterministic test design;
+- read-only ECC Open SQL;
+- deletion/reference-gap handling;
+- SALV reporting;
+- bilingual technical documentation.
 
-- create/change PRs or POs
-- release purchasing documents
-- simulate MRP
-- calculate commitments
-- claim that `PR_ONLY` is a business error
-- traverse service-entry/package relationships
-- calculate goods-receipt completion
-- implement S/4HANA released-API behavior
+## Non-goals / evidence boundary
 
-## Security / confidentiality
+The artifact does not create/change/release PRs or POs, simulate MRP, calculate commitments, traverse service-entry packages, calculate goods-receipt completion or implement S/4HANA released-API behavior.
 
-Only synthetic identifiers belong in public visual evidence. Never publish real requisitions, POs, vendor IDs, material IDs, organizational codes, prices, screenshots or internal system metadata.
+Public evidence contains no real requisitions, POs, vendor/material identifiers, organizational codes, prices or internal system metadata. The source contains no purchasing-document write/commit path.
 
-The source contains no purchasing-document write/commit path.
-
-## Evidence boundary
-
-`SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY` means the code and deterministic behavior are reviewable and documented. `RUNTIME_DEFERRED` means SAP activation and ABAP Unit execution are not claimed until an authorized DEV/sandbox is available.
+The repository presents source/static evidence and construction instructions; it does not claim activation or execution of these custom objects inside a specific corporate SAP system.
