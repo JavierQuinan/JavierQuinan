@@ -24,7 +24,7 @@ Confirmar que la release objetivo resuelva:
 - `EBAN-BADAT`, `EBAN-LFDAT`, `EBAN-LOEKZ`
 - `EBAN-MATNR`, `EBAN-WERKS`, `EBAN-EKGRP`
 - `EBAN-EBELN`, `EBAN-EBELP`
-- `EKKO-BEDAT`, `EKKO-LIFNR`, `EKKO-EKORG`
+- `EKKO-BSTYP`, `EKKO-BEDAT`, `EKKO-LIFNR`, `EKKO-EKORG`
 - `EKPO-LOEKZ`, `EKPO-MENGE`, `EKPO-MEINS`
 - `EKET-EINDT`
 
@@ -37,12 +37,16 @@ EBAN
    ├── metadata de PR
    └── referencia EBELN/EBELP cuando existe
            ↓
-        EKKO/EKPO
+ EKKO donde BSTYP = 'F'
+           ↓
+          EKPO
            ↓
           EKET
 ```
 
-La ausencia de referencia a PO se considera una situación válida `PR_ONLY`. `REFERENCE_GAP` se utiliza únicamente cuando la PR contiene referencia downstream pero el lookup read-only no puede resolver correctamente cabecera/posición.
+`BSTYP = 'F'` se utiliza como guard de categoría **Purchase Order**. Un purchasing document referenciado que no resuelva como categoría `F` no se presenta silenciosamente como PO.
+
+La ausencia de referencia a PO se considera una situación válida `PR_ONLY`. `REFERENCE_GAP` se utiliza cuando la PR contiene referencia downstream pero el lookup read-only no puede resolverla como la cabecera/posición PO esperada.
 
 ## ABAP Unit
 
