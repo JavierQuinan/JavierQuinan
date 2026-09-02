@@ -14,6 +14,19 @@ CLASS zcl_mm_stock_source_ecc IMPLEMENTATION.
 
     CLEAR rs_snapshot.
 
+    SELECT SINGLE meins
+      FROM mara
+      INTO rs_snapshot-base_uom
+      WHERE matnr = iv_matnr.
+
+    IF sy-subrc <> 0.
+      RAISE EXCEPTION TYPE zcx_mm_stock_not_found
+        EXPORTING
+          iv_matnr = iv_matnr
+          iv_werks = iv_werks
+          iv_lgort = iv_lgort.
+    ENDIF.
+
     SELECT SINGLE dismm minbe eisbe
       FROM marc
       INTO (rs_snapshot-mrp_type,
