@@ -1,0 +1,39 @@
+name: SAP S4 Procurement API Client
+
+on:
+  pull_request:
+    paths:
+      - 'showcases/sap-integration-lab/02-s4hana/mm/procurement-api-lab/client/**'
+      - '.github/workflows/sap-s4-procurement-api.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'showcases/sap-integration-lab/02-s4hana/mm/procurement-api-lab/client/**'
+      - '.github/workflows/sap-s4-procurement-api.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: showcases/sap-integration-lab/02-s4hana/mm/procurement-api-lab/client
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Show runtime
+        run: node --version
+
+      - name: Run deterministic contract tests
+        run: npm test
