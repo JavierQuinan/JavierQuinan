@@ -1,8 +1,8 @@
 # Design — `ZMM_PURCH_ANALYTICS`
 
-> **Status:** `DESIGN_READY`
+> **Status:** `SOURCE_READY / STATIC_VALIDATED`
 
-Planned source architecture:
+Implemented source architecture:
 
 ```text
 ZMM_PURCH_ANALYTICS
@@ -21,43 +21,58 @@ ECC datasource        Demo datasource
 EBAN/EKKO/EKPO/EKET   synthetic records
 ```
 
-## First source boundary
+## Source boundary
 
 Read-only visibility only.
 
-Planned outputs:
+The ECC datasource starts from one Purchase Requisition item (`BANFN/BNFPO`), preserves its optional `EBELN/EBELP` reference, resolves only `EKKO` category `BSTYP = 'F'` as a Purchase Order, then reads the referenced `EKPO` item and `EKET` delivery-date context.
+
+## Implemented outputs
 
 - purchase requisition number/item
-- purchase order number/item when a safe standard relationship is available
-- purchasing organization/group context
-- material or short-text context without publishing real values
-- document/date context
-- item count
-- schedule-line count and delivery-date visibility
-- diagnostic state for missing/partial downstream linkage
+- PR date and requested-delivery date
+- material / plant / purchasing group
+- purchase order number/item when present
+- PO document date
+- vendor / purchasing organization
+- order quantity / unit
+- schedule-line count
+- earliest/latest `EKET-EINDT`
+- diagnostic state
 
-## Diagnostic states planned
+## Diagnostic states
 
 - `PR_ONLY`
-- `PR_WITH_PO`
+- `REFERENCE_GAP`
 - `PO_WITHOUT_SCHEDULE`
 - `PO_WITH_SCHEDULE`
-- `REFERENCE_GAP`
+- `PR_DELETED`
+- `PO_ITEM_DELETED`
 
 These labels are portfolio diagnostics, not SAP standard document statuses.
 
+## Decision rules
+
+1. PR deletion indicator takes precedence → `PR_DELETED`.
+2. No downstream PO reference → `PR_ONLY`.
+3. PO reference exists but category-F header/item cannot be resolved → `REFERENCE_GAP`.
+4. Referenced PO item is marked for deletion → `PO_ITEM_DELETED`.
+5. Resolved PO item with no schedule lines → `PO_WITHOUT_SCHEDULE`.
+6. Resolved PO item with schedule-line context → `PO_WITH_SCHEDULE`.
+
 ## Non-goals
 
-The first version will not:
+The first version does not:
 
 - create/change PRs or POs
 - release purchasing documents
 - simulate MRP
 - calculate commitments
 - traverse service packages
+- calculate goods-receipt completion
 - modify source lists/info records
 - claim S/4HANA Clean Core behavior
 
 ## Test strategy
 
-A demo datasource will drive deterministic vectors without SAP data dependency. The ECC datasource will remain independently reviewable and read-only.
+A demo datasource supports a synthetic end-to-end source/service vector. Six additional snapshot vectors isolate the decision rules. All seven are currently source/static evidence rather than SAP ABAP Unit runtime evidence.
