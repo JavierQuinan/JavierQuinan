@@ -132,6 +132,12 @@ La evidencia visual se utiliza cuando la imagen puede publicarse legítimamente 
 
 No se republican screenshots de manuales elaborados por terceros ni material formativo externo. Su contenido técnico se transforma en guías explicativas originales.
 
+## Referencias oficiales SAP
+
+[Índice de Referencias Oficiales SAP](./OFFICIAL_SAP_REFERENCES.es.md)
+
+El índice conecta las guías del portafolio con documentación autoritativa de SAP Help sobre extensión de materiales/MM01, Class Builder/SE24, report transactions/SE93, ABAP Unit, estados de órdenes, APIs de compras S/4HANA, Migration Cockpit, APIs liberadas de ABAP Cloud y RAP. Las referencias oficiales respaldan conceptos estándar; no sustituyen los límites de evidencia indicados en cada artefacto.
+
 ## Matriz de evidencia
 
 | Área | Evidencia disponible |
