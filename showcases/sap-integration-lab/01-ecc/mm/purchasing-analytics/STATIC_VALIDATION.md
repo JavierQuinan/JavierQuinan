@@ -8,7 +8,7 @@
 | # | Scenario | Expected result | Source trace |
 |---|---|---|---|
 | 1 | PR exists and has no PO reference | `PR_ONLY` | consistent |
-| 2 | PR has PO reference but header/item cannot be resolved | `REFERENCE_GAP` | consistent |
+| 2 | PR has PO reference but category-F header/item cannot be resolved | `REFERENCE_GAP` | consistent |
 | 3 | PO header/item resolve and no schedule lines exist | `PO_WITHOUT_SCHEDULE` | consistent |
 | 4 | PO header/item resolve and schedule lines exist | `PO_WITH_SCHEDULE` | consistent |
 | 5 | PR deletion indicator is set | `PR_DELETED` | consistent |
@@ -33,10 +33,13 @@ EBAN BANFN/BNFPO
       ├── no EBELN/EBELP → PR_ONLY candidate
       │
       ▼
-EKKO + EKPO
+EKKO with BSTYP = 'F'
       │
-      ├── missing referenced header/item → REFERENCE_GAP candidate
+      ├── no category-F PO header → REFERENCE_GAP candidate
+      ▼
+EKPO referenced item
       │
+      ├── missing item → REFERENCE_GAP candidate
       ▼
 EKET schedule lines
 ```
