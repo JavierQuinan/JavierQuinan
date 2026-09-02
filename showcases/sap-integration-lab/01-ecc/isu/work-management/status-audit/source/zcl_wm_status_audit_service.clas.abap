@@ -12,17 +12,17 @@ CLASS zcl_wm_status_audit_service DEFINITION
 
     TYPES:
       BEGIN OF ty_result,
-        aufnr                TYPE aufk-aufnr,
-        objnr                TYPE aufk-objnr,
-        stsma                TYPE jsto-stsma,
-        active_system_count  TYPE i,
-        active_user_count    TYPE i,
-        historical_count     TYPE i,
+        aufnr                 TYPE aufk-aufnr,
+        objnr                 TYPE aufk-objnr,
+        stsma                 TYPE jsto-stsma,
+        active_system_count   TYPE i,
+        active_user_count     TYPE i,
+        historical_count      TYPE i,
         unresolved_text_count TYPE i,
-        change_count         TYPE i,
-        latest_change_date   TYPE sy-datum,
-        latest_change_time   TYPE sy-uzeit,
-        diagnostic_result    TYPE char24,
+        change_count          TYPE i,
+        latest_change_date    TYPE sy-datum,
+        latest_change_time    TYPE sy-uzeit,
+        diagnostic_result     TYPE char24,
       END OF ty_result.
 
     METHODS constructor
@@ -37,6 +37,12 @@ CLASS zcl_wm_status_audit_service DEFINITION
       RAISING
         zcx_wm_order_not_found.
 
+    METHODS evaluate_snapshot
+      IMPORTING
+        is_snapshot TYPE zif_wm_status_source=>ty_status_snapshot
+      RETURNING
+        VALUE(rs_result) TYPE ty_result.
+
   PRIVATE SECTION.
     DATA mo_source TYPE REF TO zif_wm_status_source.
 ENDCLASS.
@@ -48,9 +54,6 @@ CLASS zcl_wm_status_audit_service IMPLEMENTATION.
 
   METHOD evaluate.
     DATA ls_snapshot TYPE zif_wm_status_source=>ty_status_snapshot.
-    DATA ls_status TYPE zif_wm_status_source=>ty_status_entry.
-    DATA lv_active_count TYPE i.
-    DATA lv_active_user_without_profile TYPE abap_bool.
 
     CALL METHOD mo_source->get_status_snapshot
       EXPORTING
@@ -58,12 +61,24 @@ CLASS zcl_wm_status_audit_service IMPLEMENTATION.
       RECEIVING
         rs_snapshot = ls_snapshot.
 
-    rs_result-aufnr = ls_snapshot-aufnr.
-    rs_result-objnr = ls_snapshot-objnr.
-    rs_result-stsma = ls_snapshot-stsma.
-    rs_result-change_count = ls_snapshot-change_count.
-    rs_result-latest_change_date = ls_snapshot-latest_change_date.
-    rs_result-latest_change_time = ls_snapshot-latest_change_time.
+    CALL METHOD me->evaluate_snapshot
+      EXPORTING
+        is_snapshot = ls_snapshot
+      RECEIVING
+        rs_result = rs_result.
+  ENDMETHOD.
+
+  METHOD evaluate_snapshot.
+    DATA ls_status TYPE zif_wm_status_source=>ty_status_entry.
+    DATA lv_active_count TYPE i.
+    DATA lv_active_user_without_profile TYPE abap_bool.
+
+    rs_result-aufnr = is_snapshot-aufnr.
+    rs_result-objnr = is_snapshot-objnr.
+    rs_result-stsma = is_snapshot-stsma.
+    rs_result-change_count = is_snapshot-change_count.
+    rs_result-latest_change_date = is_snapshot-latest_change_date.
+    rs_result-latest_change_time = is_snapshot-latest_change_time.
 
     CLEAR: rs_result-active_system_count,
            rs_result-active_user_count,
@@ -72,7 +87,7 @@ CLASS zcl_wm_status_audit_service IMPLEMENTATION.
            lv_active_count,
            lv_active_user_without_profile.
 
-    LOOP AT ls_snapshot-statuses INTO ls_status.
+    LOOP AT is_snapshot-statuses INTO ls_status.
       IF ls_status-inact IS INITIAL.
         ADD 1 TO lv_active_count.
 
@@ -80,7 +95,7 @@ CLASS zcl_wm_status_audit_service IMPLEMENTATION.
           ADD 1 TO rs_result-active_system_count.
         ELSEIF ls_status-status_kind = 'USER'.
           ADD 1 TO rs_result-active_user_count.
-          IF ls_snapshot-stsma IS INITIAL.
+          IF is_snapshot-stsma IS INITIAL.
             lv_active_user_without_profile = abap_true.
           ENDIF.
         ENDIF.
