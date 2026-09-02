@@ -1,115 +1,85 @@
-# SAP S/4HANA — ABAP Cloud / Clean Core Evidence Track
+# SAP S/4HANA — ABAP Cloud / Clean Core Technical Guide
 
 [Versión en español](./README.es.md)
 
-> **Evidence type:** architecture/research track  
-> **Status:** `RESEARCH_VALIDATED / IMPLEMENTATION_PLANNED`  
+> **Evidence type:** documentation-grounded architecture guide  
 > **Runtime claim:** none
 
-This track defines the rules that future S/4HANA technical evidence must satisfy. It is intentionally separate from classic ECC ABAP.
+This guide explains the engineering rules used in this portfolio to distinguish classic ECC ABAP from S/4HANA Clean Core / ABAP Cloud design.
 
 ## Core principle
 
-**Do not treat classic ECC access patterns as automatic proof of S/4HANA Clean Core engineering.**
+**Classic ECC access patterns are not presented as automatic proof of S/4HANA Clean Core engineering.**
 
-Future ABAP Cloud evidence will prioritize released extension points and APIs.
+S/4HANA extensions should prefer released SAP objects, released APIs and documented extension points appropriate to the target release.
 
 ## Release-contract awareness
 
-SAP documents release contracts including:
+The guide records the practical distinction between release contracts used in ABAP Cloud scenarios:
 
-- **C0 — Extend**: extensibility use cases
-- **C1 — Use System-Internally**: stable consumption of released development objects inside the system across software components
-- **C2 — Use as Remote API**: integration/side-by-side remote consumption
+- **C0 — Extend**: extensibility-oriented use cases.
+- **C1 — Use System-Internally**: released objects intended for stable internal consumption across software components.
+- **C2 — Use as Remote API**: released remote interfaces for integration/side-by-side consumption.
 
-A future artifact must identify which released contract/API it relies on instead of merely stating “S/4 compatible”.
+The engineering rule is simple: an artifact should identify the released object/API it relies on and the intended consumption boundary instead of making a generic “S/4 compatible” claim.
 
-## Evidence rules
+## Clean Core review checklist
 
-An ABAP Cloud artifact must document:
+For any ABAP Cloud/S/4HANA extension, review:
 
-1. ABAP language version / target environment
-2. released SAP objects consumed
-3. release contract where relevant
-4. why the approach is Clean Core-oriented
-5. ATC/static checks expected
-6. authorization model
-7. extension boundary
-8. test strategy
-9. runtime evidence state
+1. target ABAP language version/environment;
+2. released SAP objects consumed;
+3. release contract where relevant;
+4. extension boundary and ownership;
+5. whether standard persistence is modified or bypassed;
+6. authorization model;
+7. test strategy;
+8. ATC/static-quality expectations;
+9. API/service exposure boundary;
+10. evidence actually available for the artifact.
 
-## Target progression
+## ECC vs. Clean Core decision record
+
+| Question | Classic ECC example | Clean Core / S/4HANA direction |
+|---|---|---|
+| Data access | Open SQL on standard tables where appropriate | released CDS/API/object first |
+| Remote integration | custom RFC/table-oriented patterns may exist | released remote APIs/OData where available |
+| Upgrade safety | customer code must be reviewed against upgrades | released contracts and supported extension points reduce coupling |
+| Business object extension | exits/BAdIs/custom tables depending on release | released extensibility + RAP/ABAP Cloud when applicable |
+| Quality gate | syntax, ATC/custom checks, ABAP Unit | released-object checks, ATC, tests, service/authorization checks |
+
+## Architecture sequence documented in this portfolio
 
 ```text
-ABAP fundamentals
-      │
-      ▼
-Modern ABAP syntax
-      │
-      ▼
-CDS view entities
-      │
-      ▼
-Released APIs / C1 consumption
-      │
-      ▼
-RAP business object
-      │
-      ▼
-Service definition
-      │
-      ▼
-OData V4 service binding
-      │
-      ▼
-Authorization + tests + ATC
-      │
-      ▼
-Side-by-side / integration patterns (C2)
+Released data/API selection
+        ↓
+Clean read model / CDS boundary
+        ↓
+Business object behavior when required
+        ↓
+Projection + service definition
+        ↓
+OData V4 / released integration surface
+        ↓
+Authorization + tests + ATC-oriented review
 ```
 
-## Planned evidence packs
+## Existing repository evidence connected to this guide
 
-### 1. Read-only MM analytical CDS lab
+- [S/4HANA MM Procurement API Client](../mm/procurement-api-lab/README.md) — executable TypeScript read-only client with **6/6 CI tests**.
+- [RAP Architecture Guide](../rap/README.md) — documented CDS/behavior/projection/service architecture.
+- [Migration Cockpit Technical Guide](../migration-cockpit/README.md) — documented migration lifecycle and controls.
+- ECC MM ABAP packs under [`../../01-ecc/mm`](../../01-ecc/mm/README.md) — intentionally labelled classic ECC rather than Clean Core.
 
-Goal: demonstrate a clean read model built only on released data sources appropriate to the target S/4HANA release.
+## What this guide demonstrates
 
-Status: `PLANNED`.
+- awareness of released-object governance;
+- ability to separate ECC implementation patterns from S/4HANA extension patterns;
+- release-contract reasoning;
+- Clean Core architecture review;
+- ATC/test/authorization considerations;
+- integration boundary awareness.
 
-### 2. RAP managed business object
+## Evidence boundary
 
-Goal: create a self-contained custom business object demonstrating CDS, behavior definition, projection, service definition/binding and tests without modifying SAP standard persistence.
-
-Status: `PLANNED`.
-
-### 3. Sourcing & Procurement API client
-
-Goal: consume an official released OData API from an external integration client, with secrets/configuration separated from Git and deterministic mock/contract tests.
-
-Status: `DESIGN_READY`.
-
-### 4. Clean Core decision record
-
-Goal: compare classic ECC direct-table implementation with the S/4HANA released-API approach and explain why they are not interchangeable.
-
-Status: `PLANNED`.
-
-## ATC and quality gate
-
-Future implementation evidence should include, where available:
-
-- syntax/activation
-- ATC result
-- released-object check
-- ABAP Unit
-- behavior tests
-- service metadata/runtime
-- authorization test
-
-No pass result will be invented without the relevant environment.
-
-## Official reference
-
-Public Released APIs: https://help.sap.com/docs/abap-cloud/abap-cloud/public-released-apis
-
-RAP overview: https://help.sap.com/docs/abap-cloud/abap-rap/learn
+This document is a technical architecture guide. It does not claim ABAP Cloud runtime, ATC execution or RAP activation in an SAP tenant.
