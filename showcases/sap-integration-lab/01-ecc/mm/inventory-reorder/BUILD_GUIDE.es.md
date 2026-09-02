@@ -2,277 +2,260 @@
 
 [English version](./BUILD_GUIDE.md)
 
-> **Objetivo:** reconstruir desde cero, en un ambiente SAP ECC DEV/sandbox autorizado, una transacción Z propia y reproducible para el paquete de evidencia `Inventory & Stock Risk`.
->
-> **Estado actual del runtime:** `RUNTIME_VALIDATION_PENDING`.
+> **Objetivo:** reconstruir desde cero, en un ambiente SAP ECC DEV/sandbox autorizado, una transacción Z propia y reproducible para el paquete `Inventory & Stock Risk`.  
+> **Estado runtime actual:** `RUNTIME_VALIDATION_PENDING`.
 
-## 1. Principio de diseño
+## 1. Principio de ingeniería
 
-Esta guía **no replica desarrollos internos de terceros**. El laboratorio implementa una solución propia basada en objetos estándar SAP ECC y en documentación pública de SAP.
+Este laboratorio **no replica desarrollos internos de terceros**. Implementa una solución original y de solo lectura usando objetos DDIC estándar ECC, ABAP Objects clásico, ABAP Unit, SALV y una Report Transaction creada con `SE93`.
 
-La primera transacción será:
+Objetos:
 
-- **Transaction code:** `ZMM_STOCK_RISK`
-- **Executable report:** `ZMM_STOCK_RISK_REPORT`
-- **Domain service:** `ZCL_MM_STOCK_RISK_SERVICE`
-- **ECC datasource:** `ZCL_MM_STOCK_SOURCE_ECC`
-- **Demo datasource:** `ZCL_MM_STOCK_SOURCE_DEMO`
-- **Datasource contract:** `ZIF_MM_STOCK_SOURCE`
-- **Domain exception:** `ZCX_MM_STOCK_NOT_FOUND`
+- `ZCX_MM_STOCK_NOT_FOUND`
+- `ZIF_MM_STOCK_SOURCE`
+- `ZCL_MM_STOCK_SOURCE_DEMO`
+- `ZCL_MM_STOCK_SOURCE_ECC`
+- `ZCL_MM_STOCK_RISK_SERVICE`
+- clases locales ABAP Unit
+- `ZMM_STOCK_RISK_REPORT`
+- `ZMM_STOCK_RISK` — Report Transaction en SE93
 
-La transacción es **read-only**. Consulta datos estándar de MM y no actualiza stock, materiales ni customizing.
+Antes de implementar, revisar [`COMPATIBILITY.es.md`](./COMPATIBILITY.es.md).
 
-## 2. Arquitectura
+## 2. Límite funcional
 
-```text
-ZMM_STOCK_RISK
-      |
-      v
-ZMM_STOCK_RISK_REPORT
-      |
-      v
-ZCL_MM_STOCK_RISK_SERVICE
-      |
-      v
-ZIF_MM_STOCK_SOURCE
-  |                 |
-  v                 v
-ECC datasource   Demo datasource
-  |                 |
-  v                 v
-MARC / MARD      synthetic data
-```
+La aplicación es un **diagnóstico temprano basado únicamente en stock**, no SAP MRP.
 
-## 3. Preparar paquete y transporte
+La versión endurecida distingue:
 
-### Opción A — evidencia local controlada
+- stock libre del almacén seleccionado
+- stock libre bruto total de planta calculado desde `MARD-LABST`
+- tipo MRP desde `MARC-DISMM`
+- punto de pedido desde `MARC-MINBE`
+- stock de seguridad desde `MARC-EISBE`
 
-Usar `$TMP` solo si la política del sistema permite objetos locales no transportables.
+El estado se calcula con el stock total de planta, no con un solo almacén.
 
-### Opción B — evidencia transportable
+El laboratorio no calcula entradas firmes, necesidades, alcance de áreas MRP, exclusiones de almacenes respecto a MRP, lotificación, tiempos de aprovisionamiento ni forecast.
 
-Usar un paquete Z autorizado del landscape de desarrollo. El paquete determina cómo los objetos se integran al Change and Transport System (CTS).
+## 3. Postura de compatibilidad
 
-Registrar para la evidencia pública únicamente:
+El código runtime prioriza construcciones clásicas:
 
-- release/EHP de ECC
-- tipo de ambiente: DEV o sandbox
-- paquete anonimizado si corresponde
-- resultado de activación
+- `CREATE OBJECT`
+- `CALL METHOD`
+- declaraciones `DATA` explícitas
+- Open SQL clásico sin host variables `@`
+- clases e interfaces globales
+- excepciones basadas en clases
+- `CL_SALV_TABLE`
 
-No publicar SID, mandante, usuarios, órdenes de transporte ni nombres de empresa.
+Se evita sintaxis moderna cuando no aporta valor probatorio. La compatibilidad exacta con una release/EHP ECC sigue pendiente de validación runtime.
 
-## 4. Crear la excepción global
+## 4. Paquete y transporte
 
-### Herramienta
+Usar `$TMP` únicamente para una prueba local autorizada y no transportable. Para evidencia transportable, usar un paquete Z autorizado y CTS.
 
-`SE24` — Class Builder, o alternativamente `SE80`.
+Nunca publicar:
 
-### Objeto
+- SID/mandante
+- usuarios
+- números de transportes
+- nombres de empresa/cliente
+- identificadores reales de materiales o negocio
 
-`ZCX_MM_STOCK_NOT_FOUND`
+## 5. Crear `ZCX_MM_STOCK_NOT_FOUND`
 
-### Procedimiento
+Herramienta: `SE24` o `SE80`.
 
-1. Abrir `SE24`.
-2. Introducir `ZCX_MM_STOCK_NOT_FOUND`.
-3. Elegir **Create**.
-4. Descripción sugerida: `MM stock snapshot not found`.
-5. Crearla como clase global pública.
-6. Definir `CX_STATIC_CHECK` como superclase.
-7. Asignar paquete/orden de transporte según política del ambiente.
-8. Cambiar a vista source-code-based si está disponible.
-9. Implementar el código versionado en `source/zcx_mm_stock_not_found.clas.abap`.
-10. Ejecutar **Syntax Check**.
-11. Activar.
+1. Crear la clase global `ZCX_MM_STOCK_NOT_FOUND`.
+2. Definir `CX_STATIC_CHECK` como superclase.
+3. Asignar paquete/transporte.
+4. Implementar `source/zcx_mm_stock_not_found.clas.abap`.
+5. Ejecutar Syntax Check.
+6. Activar.
 
-### Gate
+Al ser una excepción de tipo static-check, los consumidores deben capturarla o declararla en su interfaz.
 
-No continuar si la clase no activa.
+## 6. Crear `ZIF_MM_STOCK_SOURCE`
 
-## 5. Crear la interfaz de datasource
+Crear una interfaz global e incorporar `source/zif_mm_stock_source.intf.abap`.
 
-### Objeto
+Confirmar en la release objetivo estas referencias DDIC:
 
-`ZIF_MM_STOCK_SOURCE`
+- `MARA-MATNR`
+- `MARC-WERKS`
+- `MARC-DISMM`
+- `MARC-MINBE`
+- `MARC-EISBE`
+- `MARD-LGORT`
+- `MARD-LABST`
 
-### Procedimiento
+El snapshot expone stock tanto de almacén como de planta.
 
-1. Abrir `SE24` o `SE80`.
-2. Crear una **Interface** global con nombre `ZIF_MM_STOCK_SOURCE`.
-3. Asignar el mismo paquete del evidence pack.
-4. Incorporar la definición de `source/zif_mm_stock_source.intf.abap`.
-5. Verificar que los tipos DDIC estándar existan en el sistema:
-   - `MARA-MATNR`
-   - `MARC-WERKS`
-   - `MARD-LGORT`
-   - `MARD-LABST`
-   - `MARC-MINBE`
-   - `MARC-EISBE`
-6. Syntax Check.
-7. Activar.
+Ejecutar Syntax Check y activar antes de continuar.
 
-## 6. Crear los datasources
+## 7. Crear datasources
 
 Crear en este orden:
 
 1. `ZCL_MM_STOCK_SOURCE_DEMO`
 2. `ZCL_MM_STOCK_SOURCE_ECC`
 
-Para cada clase:
+El datasource demo recibe valores sintéticos deterministas y se utiliza en ABAP Unit.
 
-1. Crear clase global en `SE24`/`SE80`.
-2. Implementar `ZIF_MM_STOCK_SOURCE`.
-3. Copiar la implementación versionada correspondiente.
+El datasource ECC es de solo lectura. Realiza:
+
+1. lectura de `MARC-DISMM`, `MARC-MINBE`, `MARC-EISBE` por material/centro
+2. lectura de `MARD-LABST` del almacén seleccionado
+3. lectura de todos los `MARD-LABST` del material/centro
+4. suma en ABAP para obtener `plant_unrestricted`
+
+No se utiliza `INSERT`, `UPDATE`, `MODIFY`, `DELETE` ni `COMMIT WORK`.
+
+## 8. Crear `ZCL_MM_STOCK_RISK_SERVICE`
+
+Crear la clase global e inyectar `ZIF_MM_STOCK_SOURCE` mediante constructor.
+
+El servicio produce:
+
+- `NOT_CONFIGURED` — punto de pedido y stock de seguridad están iniciales
+- `CRITICAL` — stock libre de planta por debajo del stock de seguridad configurado
+- `REORDER` — stock libre de planta igual o inferior al punto de pedido configurado, sin estar debajo del safety stock
+- `OK` — ninguna condición anterior aplica
+
+`shortage_qty` solo se calcula si existe un punto de pedido positivo y el stock de planta es inferior.
+
+Ejecutar Syntax Check y activar.
+
+## 9. Añadir ABAP Unit
+
+Abrir `ZCL_MM_STOCK_RISK_SERVICE` e incorporar las clases locales desde:
+
+`source/zcl_mm_stock_risk_service.clas.testclasses.abap`
+
+Según release, usar el editor de clases locales de prueba o la vista equivalente de definiciones/implementaciones locales.
+
+Los métodos de prueba declaran explícitamente `RAISING ZCX_MM_STOCK_NOT_FOUND`, ya que el servicio propaga una excepción `CX_STATIC_CHECK`.
+
+Casos preparados:
+
+1. stock de planta sobre punto de pedido → `OK`
+2. stock de planta exactamente en punto de pedido → `REORDER`
+3. stock de planta debajo del stock de seguridad → `CRITICAL`
+4. cálculo de cantidad faltante al punto de pedido
+5. sin umbrales configurados → `NOT_CONFIGURED`
+6. stock bajo en almacén seleccionado pero suficiente en planta → el estado sigue siendo de planta
+
+Después de una validación real exitosa, la evidencia esperada será:
+
+```text
+Tests executed: 6
+Passed: 6
+Failed: 0
+```
+
+No registrar esto como aprobado hasta observarlo realmente en SAP.
+
+## 10. Crear el programa ejecutable
+
+Herramienta: `SE38` o `SE80`.
+
+Programa: `ZMM_STOCK_RISK_REPORT`
+
+1. Crear como **Executable Program**.
+2. Asignar el mismo paquete/CTS.
+3. Incorporar `source/zmm_stock_risk_report.prog.abap`.
 4. Syntax Check.
 5. Activar.
+6. Ejecutar primero directamente desde `SE38`.
 
-### Regla del datasource ECC
-
-`ZCL_MM_STOCK_SOURCE_ECC` ejecuta únicamente lecturas sobre datos estándar:
-
-- `MARC-MINBE` — punto de pedido
-- `MARC-EISBE` — stock de seguridad
-- `MARD-LABST` — stock de libre utilización
-
-No se permiten `UPDATE`, `INSERT`, `MODIFY` ni edición directa de tablas.
-
-## 7. Crear el servicio de dominio
-
-### Objeto
-
-`ZCL_MM_STOCK_RISK_SERVICE`
-
-### Procedimiento
-
-1. Crear clase global.
-2. Añadir la dependencia `ZIF_MM_STOCK_SOURCE` mediante constructor.
-3. Incorporar la implementación de `source/zcl_mm_stock_risk_service.clas.abap`.
-4. Syntax Check.
-5. Activar.
-
-### Regla funcional
-
-El servicio clasifica riesgo de stock; **no intenta reproducir el algoritmo MRP de SAP**.
-
-Estados de diagnóstico:
-
-- `OK`
-- `REORDER`
-- `CRITICAL`
-
-## 8. Añadir ABAP Unit
-
-SAP recomienda que los tests de una clase residan como clases locales asociadas al objeto probado.
-
-En `SE24`:
-
-1. Abrir `ZCL_MM_STOCK_RISK_SERVICE`.
-2. Ir a `Goto -> Local Definitions/Implementations -> Local Test Classes`, o usar la opción equivalente de la release.
-3. Incorporar `source/zcl_mm_stock_risk_service.clas.testclasses.abap`.
-4. Syntax Check.
-5. Activar.
-6. Ejecutar ABAP Unit.
-
-Casos esperados:
-
-1. stock suficiente -> `OK`
-2. stock en/bajo punto de pedido -> `REORDER`
-3. stock bajo safety stock -> `CRITICAL`
-4. cálculo correcto de shortage quantity
-
-No marcar `TEST_VALIDATED` hasta observar una ejecución exitosa en SAP.
-
-## 9. Crear el programa ejecutable
-
-### Herramienta
-
-`SE38` o `SE80`.
-
-### Objeto
-
-`ZMM_STOCK_RISK_REPORT`
-
-### Procedimiento
-
-1. Abrir `SE38`.
-2. Introducir `ZMM_STOCK_RISK_REPORT`.
-3. Elegir **Create**.
-4. Tipo: **Executable Program**.
-5. Asignar el mismo paquete/CTS.
-6. Incorporar `source/zmm_stock_risk_report.prog.abap`.
-7. Syntax Check.
-8. Activar.
-9. Ejecutar directamente desde `SE38` antes de crear la transacción.
-
-## 10. Crear la transacción Z en SE93
-
-### Objeto
-
-`ZMM_STOCK_RISK`
-
-### Tipo correcto
-
-**Report Transaction** / transacción de reporte.
-
-### Procedimiento
-
-1. Abrir `SE93`.
-2. Introducir `ZMM_STOCK_RISK`.
-3. Elegir **Create**.
-4. Short text: `MM Stock Risk Diagnostic`.
-5. Elegir **Program and selection screen (report transaction)** o la denominación equivalente de la release.
-6. Informar el programa `ZMM_STOCK_RISK_REPORT`.
-7. Mantener la pantalla de selección inicial visible.
-8. Guardar.
-9. Asignar el mismo paquete y transporte.
-10. Ejecutar `ZMM_STOCK_RISK` desde SAP Easy Access.
-
-### Resultado esperado
-
-La transacción debe abrir los parámetros:
+Parámetros:
 
 - Material
 - Centro
 - Almacén
 
-Al ejecutar, debe mostrar una salida SALV con datos de stock y clasificación de riesgo.
+Campos SALV esperados:
 
-## 11. Evidencia que debemos capturar
+- material
+- centro
+- almacén seleccionado
+- tipo MRP
+- stock libre del almacén
+- stock libre bruto de planta
+- punto de pedido
+- stock de seguridad
+- estado diagnóstico
+- cantidad faltante
 
-No hacen falta capturas con datos sensibles. Para el portfolio basta con registrar:
+## 11. Crear `ZMM_STOCK_RISK` en SE93
+
+Tipo correcto: **Report Transaction / Program and selection screen**.
+
+1. Abrir `SE93`.
+2. Ingresar `ZMM_STOCK_RISK`.
+3. Elegir **Create**.
+4. Short text: `MM Stock Risk Diagnostic`.
+5. Seleccionar la opción de Report Transaction.
+6. Programa: `ZMM_STOCK_RISK_REPORT`.
+7. Mantener la pantalla estándar de selección.
+8. Guardar y asignar paquete/transporte.
+9. Ejecutar desde SAP Easy Access.
+
+SAP aplica el control estándar de inicio `S_TCODE` también a transacciones Z. Una implantación productiva real requeriría además un diseño de autorizaciones sobre datos de negocio con el equipo de seguridad; este laboratorio no inventa objetos de autorización específicos de un cliente.
+
+## 12. Datos de prueba runtime
+
+Usar únicamente un material no sensible que:
+
+- exista
+- esté extendido al centro objetivo
+- tenga registro en el almacén seleccionado
+- tenga un tipo MRP comprendido
+- disponga de valores útiles para punto de pedido/stock de seguridad en el escenario elegido
+
+No publicar números reales de material. La evidencia pública puede usar placeholders.
+
+## 13. Registro de evidencia
+
+Después de validar realmente, registrar en `EVIDENCE.md` solo resultados no confidenciales:
 
 ```text
 Object creation: PASS
-Syntax check: PASS
+Syntax checks: PASS
 Activation: PASS
-ABAP Unit: 4/4 PASS
+ABAP Unit: 6/6 PASS
 Transaction ZMM_STOCK_RISK: PASS
 SALV runtime: PASS
-Data source: sanitized/non-sensitive material
+ECC release/EHP: <descripción no confidencial>
 ```
 
-Una captura sanitizada de ABAP Unit y otra del SALV son opcionales, no obligatorias.
+Las capturas son opcionales. La evidencia textual exacta y reproducible es suficiente.
 
-## 12. Checklist de promoción
+## 14. Gate de promoción
 
-El paquete solo cambia a `RUNTIME_VALIDATED / TEST_VALIDATED` cuando:
+Solo promover a `RUNTIME_VALIDATED / TEST_VALIDATED` cuando:
 
-- [ ] todos los objetos existen en ECC DEV/sandbox
-- [ ] todos activan
-- [ ] ABAP Unit ejecuta correctamente
-- [ ] `SE93` abre la transacción Z
-- [ ] el reporte procesa un material no sensible
-- [ ] no existe modificación de tablas
-- [ ] `EVIDENCE.md` está actualizado
+- [ ] todos los objetos existan y activen en ECC DEV/sandbox
+- [ ] los seis tests ABAP Unit pasen
+- [ ] el reporte ejecute directamente
+- [ ] `SE93` abra `ZMM_STOCK_RISK`
+- [ ] SALV muestre los campos endurecidos
+- [ ] no exista lógica de escritura
+- [ ] no se publique información confidencial
+- [ ] `EVIDENCE.md` quede actualizado
 
-## 13. Fuentes SAP oficiales usadas para el procedimiento
+## 15. Base documental SAP
 
-- Class Builder / SE24: https://help.sap.com/docs/SAP_ERP_SPV/142f8559883b4c11966ebfb99dd61164/cac035baa6c611d1b4790000e8a52bed.html
-- Creating a Standard Class: https://help.sap.com/docs/SAP_NETWEAVER_AS_ABAP_752/bd833c8355f34e96a6e83096b38bf192/c088885f720911d1b44d0000e8a52bed.html
-- Creating a Program / SE38: https://help.sap.com/saphelp_aii710/helpdata/en/d1/801a47454211d189710000e8322d00/content.htm
-- Maintaining Transactions / SE93: https://help.sap.com/docs/SAP_NETWEAVER_AS_ABAP_752/bd833c8355f34e96a6e83096b38bf192/432c43b427bf601fe10000000a422035.html
-- Report Transactions: https://help.sap.com/saphelp_snc70/helpdata/en/43/0f4c879f2d6f41e10000000a422035/content.htm
-- ABAP Unit: https://help.sap.com/docs/ABAP_PLATFORM_NEW/c238d694b825421f940829321ffa326a/4ec18be06e391014adc9fffe4e204223.html
-- ABAP Unit local test classes: https://help.sap.com/docs/ABAP_PLATFORM_NEW/ba879a6e2ea04d9bb94c7ccd7cdac446/556bac6cf8464655ab726c8a49aa6adc.html
-- Transport Layer / CTS: https://help.sap.com/docs/ABAP_PLATFORM_NEW/c238d694b825421f940829321ffa326a/4ec218e26e391014adc9fffe4e204223.html
+El procedimiento se apoya en documentación SAP para:
+
+- Class Builder / clases e interfaces globales
+- excepciones basadas en clases y `CX_STATIC_CHECK`
+- programas ejecutables
+- ABAP Unit
+- `CL_SALV_TABLE`
+- Report Transactions / `SE93`
+- autorización de inicio mediante `S_TCODE`
+- comportamiento funcional de reorder-point planning
+- paquetes / CTS
