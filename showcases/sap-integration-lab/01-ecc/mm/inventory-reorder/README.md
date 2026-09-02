@@ -16,8 +16,11 @@ It implements a classic ECC, read-only stock early-warning diagnostic for materi
 - [Guía de construcción — Español](./BUILD_GUIDE.es.md)
 - [Compatibility & Hardening Profile](./COMPATIBILITY.md)
 - [Perfil de compatibilidad y hardening](./COMPATIBILITY.es.md)
+- [Runtime Execution Packet — English](./RUNTIME_EXECUTION.md)
+- [Paquete de ejecución runtime — Español](./RUNTIME_EXECUTION.es.md)
 - [Runtime Runbook](./RUNBOOK.md)
 - [Guía de ejecución](./RUNBOOK.es.md)
+- [Validation Results Template](./VALIDATION_RESULTS_TEMPLATE.md)
 - [Evidence record](./EVIDENCE.md)
 
 The build path uses classic SAP development tools and concepts: `SE24`, `SE38`, `SE93`, packages/CTS, ABAP Unit and SALV.
