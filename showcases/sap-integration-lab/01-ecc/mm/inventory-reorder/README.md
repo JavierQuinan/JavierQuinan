@@ -1,72 +1,101 @@
-# SAP ECC MM — Inventory & Reorder Evidence Pack
+# SAP ECC MM — Inventory & Stock Risk Evidence Pack
 
 [Versión en español](./README.es.md)
 
 > **Track:** SAP ECC / Materials Management  
 > **Artifact status:** `SOURCE_READY / RUNTIME_VALIDATION_PENDING`  
-> **Runtime claim:** none yet
+> **Runtime claim:** source prepared; SAP activation/execution not yet evidenced
 
-This package is the first technical artifact in the SAP Integration Lab.
+This is the first executable technical artifact in the SAP Integration Lab.
 
-It demonstrates a small, testable MM domain rule around current stock, reorder point and safety stock using ABAP Objects and ABAP Unit.
+It implements a classic ECC diagnostic around material/plant/storage-location stock. The application reads standard MM fields from `MARC` and `MARD`, evaluates unrestricted-use stock against reorder point and safety stock, and presents the result through an executable SALV report.
 
-## What this source proves
+## Important functional boundary
 
-- ABAP Objects class design
-- typed return structure
-- explicit business-status rules
-- deterministic business logic
-- ABAP Unit test-class structure
-- separation of public source evidence from runtime claims
+This application is **not an implementation of SAP MRP** and does not claim to reproduce replenishment planning. It is a focused diagnostic/reporting exercise suitable for demonstrating classic ECC MM + ABAP engineering.
 
-## What this source does **not** prove yet
+## Architecture
 
-- activation in a real SAP ECC system
-- execution against MARC/MARD or another SAP standard source
-- successful ABAP Unit execution in SAP
-- production readiness
+```text
+ZMM_STOCK_RISK_REPORT
+        │
+        ▼
+ZCL_MM_STOCK_RISK_SERVICE
+        │
+        ▼
+ZIF_MM_STOCK_SOURCE
+   ├── ZCL_MM_STOCK_SOURCE_ECC  → MARC / MARD
+   └── ZCL_MM_STOCK_SOURCE_DEMO → synthetic deterministic data
+```
 
-Those claims remain blocked until `EVIDENCE.md` records the runtime result.
+Supporting object:
 
-## Business scenario
+- `ZCX_MM_STOCK_NOT_FOUND` — explicit error when material/plant/storage-location data cannot be resolved.
 
-For a synthetic material/plant context:
+## Standard ECC data used
 
-- `current_stock` = available stock
-- `reorder_point` = threshold that triggers replenishment
-- `safety_stock` = minimum protective stock
+The ECC datasource reads:
 
-The evaluator returns:
+- `MARC-MINBE` — reorder point
+- `MARC-EISBE` — safety stock
+- `MARD-LABST` — unrestricted-use stock for the selected storage location
 
-- `OK` — stock is at or above reorder point + safety stock
-- `REORDER` — stock is below the target but not below safety stock
-- `CRITICAL` — stock is below safety stock
+No update, insert or delete statement is used. The datasource is read-only.
 
-It also returns the quantity required to recover the target level.
+## Diagnostic rule
 
-## Current branch layout
+- `CRITICAL` — unrestricted stock is below safety stock
+- `REORDER` — unrestricted stock is at or below reorder point, but not below safety stock
+- `OK` — unrestricted stock is above reorder point
 
-This folder already contains the bilingual package documentation and runtime-evidence record. The first ABAP class and its ABAP Unit source currently remain under the earlier `01-abap-core/` path in this same branch.
+`shortage_qty` reports the quantity required to reach the configured reorder point when current unrestricted stock is lower.
 
-They will be refactored into this package during **Task 2 — ECC MM Inventory & Reorder executable evidence**, together with the datasource abstraction, executable report and runtime-validation checklist. Until that refactor is complete, this README does not claim the source files are physically located here.
+## Source layout
 
-## Next technical promotion
+```text
+inventory-reorder/
+├── README.md
+├── README.es.md
+├── EVIDENCE.md
+└── source/
+    ├── zcx_mm_stock_not_found.clas.abap
+    ├── zif_mm_stock_source.intf.abap
+    ├── zcl_mm_stock_source_ecc.clas.abap
+    ├── zcl_mm_stock_source_demo.clas.abap
+    ├── zcl_mm_stock_risk_service.clas.abap
+    ├── zcl_mm_stock_risk_service.clas.testclasses.abap
+    └── zmm_stock_risk_report.prog.abap
+```
 
-Task 2 will add:
+## ABAP Unit coverage prepared
 
-1. datasource interface
-2. synthetic/demo datasource for deterministic tests
-3. ECC datasource for standard material/plant/storage-location stock when an appropriate SAP environment is available
-4. executable report/SALV consumer
-5. ABAP Unit coverage
-6. completed `EVIDENCE.md` after SAP activation/execution
+Four deterministic cases are versioned:
 
-## Validation rule
+1. stock above reorder point → `OK`
+2. stock exactly at reorder point → `REORDER`
+3. stock below safety stock → `CRITICAL`
+4. shortage quantity is calculated up to the reorder point
 
-Do not describe this package as “running in SAP” until:
+The tests use the demo datasource, not production SAP data.
 
-1. the class is created/imported
-2. syntax check succeeds
-3. activation succeeds
-4. ABAP Unit runs successfully
-5. result is recorded in `EVIDENCE.md`
+## What this source proves now
+
+- classic ABAP OO design
+- interface-based dependency inversion
+- deterministic test datasource
+- read-only Open SQL against standard ECC MM tables
+- domain-specific exception handling
+- executable report structure
+- SALV output structure
+- ABAP Unit source coverage
+
+## What remains blocked
+
+The following claims are **not** made until SAP runtime evidence is captured:
+
+- syntax check passed in a specific ECC release
+- all objects activated successfully
+- ABAP Unit passed in SAP
+- the SALV report executed successfully against an SAP system
+
+See [`EVIDENCE.md`](./EVIDENCE.md) for the validation protocol.
