@@ -3,9 +3,15 @@
 [Versión en español](./README.es.md)
 
 > **Scope:** SAP ECC IS-U / Work Management  
-> **Current maturity:** functional evidence available; public technical artifacts planned
+> **Current maturity:** sanitized functional evidence published; technical ABAP artifacts planned
 
-This track is intentionally independent from S/4HANA. It will document sanitized professional evidence from real operational experience in utilities processes and Work Management.
+This track is intentionally independent from S/4HANA. It documents sanitized professional evidence derived from real operational experience in utilities processes and Work Management.
+
+## Published functional evidence
+
+- [Work Management operations — sanitized version](./functional-evidence/work-management-operations/README.md)
+
+The published evidence covers IW38 usage, work-order lifecycle, individual/mass creation, IW32 assignment/release/completion, controlled mass processing, automated release planning, SM37 monitoring, CRM ↔ WM flow and consistency between technical and commercial equipment data.
 
 ## Evidence areas
 
@@ -19,9 +25,9 @@ This track is intentionally independent from S/4HANA. It will document sanitized
 
 ## Functional evidence policy
 
-User-authored professional MM/WM guides can be incorporated as primary functional evidence when each topic is reached. Before publication they will be sanitized to remove employer/customer identifiers, real documents, users, endpoints and confidential configuration.
+Professional MM/WM guides are incorporated as primary functional evidence after sanitization. Public versions exclude company/customer names, people, IDs, real documents, screenshots, organizational codes, endpoints and confidential configuration. Organization-specific Z-development names are abstracted when publication would expose internal design.
 
-The published artifact will state whether it is:
+The published artifact clearly states whether it is:
 
 - sanitized professional guide derived from operational experience
 - synthetic technical exercise
