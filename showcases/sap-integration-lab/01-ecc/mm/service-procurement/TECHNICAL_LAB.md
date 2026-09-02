@@ -1,20 +1,10 @@
 # ECC MM Technical Lab — Read-Only Contract Audit
 
-> **Status:** `DESIGN_READY / SOURCE_NOT_YET_IMPLEMENTED`
+> **Status:** `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
 
-This lab is intentionally read-only. Its purpose is to transform functional knowledge of framework contracts into ABAP engineering evidence without creating or changing purchasing documents.
+This lab transforms functional framework-contract knowledge into reviewable ABAP engineering evidence without creating or changing purchasing documents.
 
-## Target
-
-Custom report transaction:
-
-`ZMM_CONTRACT_AUDIT`
-
-Executable report:
-
-`ZMM_CONTRACT_AUDIT_REPORT`
-
-## Planned architecture
+## Artifact
 
 ```text
 ZMM_CONTRACT_AUDIT
@@ -27,62 +17,93 @@ ZCL_MM_CONTRACT_AUDIT_SERVICE
         │
         ▼
 ZIF_MM_CONTRACT_SOURCE
-   ├── ZCL_MM_CONTRACT_SOURCE_ECC
-   └── ZCL_MM_CONTRACT_SOURCE_DEMO
+   ├── ZCL_MM_CONTRACT_SOURCE_ECC  → EKKO / EKPO
+   └── ZCL_MM_CONTRACT_SOURCE_DEMO → synthetic data
 ```
+
+Supporting exception:
+
+`ZCX_MM_CONTRACT_NOT_FOUND`
 
 ## Standard ECC boundary
 
-The first source implementation will be limited to purchasing-document information that can be safely explained from the standard ECC contract model, primarily `EKKO` and `EKPO`.
+The ECC datasource reads only transparent purchasing-contract information needed for this first diagnostic:
 
-No service-package table relationship will be implemented until it is separately verified for the target ECC release and the selected service-procurement scenario.
+### EKKO
 
-## Diagnostic outcomes
+- contract/purchasing document
+- vendor
+- purchasing organization
+- document type/category
+- validity start/end
+- currency
+- target value
 
-Planned transparent states:
+### EKPO
+
+- active item count
+- target-quantity indicator count
+- target-value indicator count
+
+Only purchasing documents with category `BSTYP = 'K'` are accepted. Deleted items are excluded from item counts.
+
+No service-package hierarchy is traversed in this version.
+
+## Transparent diagnostic outcomes
 
 - `ACTIVE`
 - `EXPIRING_SOON`
 - `EXPIRED`
+- `NOT_YET_VALID`
 - `INVALID_VALIDITY`
+- `VALIDITY_INCOMPLETE`
 - `NO_ITEMS`
 
-The report will not claim to replace release strategy, commitment consumption, source determination, pricing, service entry or procurement controls.
+The service also exposes `days_to_expiry` and preserves target-value/target-item indicators returned by the datasource.
 
-## Selection screen
+## First-version selection screen
 
-Planned safe filters:
+The first executable report intentionally audits **one contract at a time**:
 
-- purchasing document / contract (optional)
-- vendor (optional)
-- validity date range
-- purchasing organization (optional)
-- status filter
+- purchasing contract
+- key date
+- warning days
 
-Public screenshots, if ever added, must use synthetic identifiers.
+This keeps the result deterministic and explainable. Multi-contract/vendor/purchasing-organization monitoring is a future extension.
 
-## ABAP Unit design
+## ABAP Unit source
 
-Deterministic vectors planned:
+Eight deterministic test vectors are versioned:
 
-1. valid agreement with future end date → `ACTIVE`
-2. agreement within configurable warning window → `EXPIRING_SOON`
-3. end date before key date → `EXPIRED`
-4. end date before start date → `INVALID_VALIDITY`
-5. agreement with no items → `NO_ITEMS`
-6. demo datasource returns multiple contracts without SAP data dependency
+1. active agreement
+2. expiring agreement
+3. expired agreement
+4. not-yet-valid agreement
+5. invalid validity interval
+6. incomplete validity
+7. no active items
+8. target indicators preserved
+
+Source-level review: **8/8 consistent**. This is not an SAP runtime test claim.
 
 ## Security and governance
 
 - read-only Open SQL
 - no `UPDATE`, `INSERT`, `MODIFY` or `DELETE`
 - no `BAPI_TRANSACTION_COMMIT`
-- no direct document creation
-- no internal Z transaction reuse
-- no copied employer/customer code
-- source remains `PLANNED` until actual ABAP files exist
-- runtime remains unclaimed until authorized execution evidence exists
+- no document creation/change API
+- no copied internal `Z*` implementation
+- no enterprise identifiers or values
+- SAP runtime remains deferred until an authorized DEV/sandbox is available
 
-## Future promotion gate
+## Reproducibility
 
-`DESIGN_READY -> SOURCE_READY -> STATIC_VALIDATED -> RUNTIME_DEFERRED/RUNTIME_VALIDATED -> TEST_VALIDATED`
+- [Build Guide](./BUILD_GUIDE.md)
+- [Guía de construcción](./BUILD_GUIDE.es.md)
+- [Static Validation](./STATIC_VALIDATION.md)
+- [Evidence Record](./EVIDENCE.md)
+- [`source/`](./source/)
+
+## Evidence gate
+
+`DESIGN_READY -> SOURCE_READY -> STATIC_VALIDATED -> EXECUTION_PROCEDURE_READY -> RUNTIME_DEFERRED/RUNTIME_VALIDATED -> TEST_VALIDATED`

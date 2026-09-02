@@ -86,7 +86,7 @@ Private legal-workflow platform. The public case study documents React/Express/M
 
 ## SAP & enterprise systems
 
-My SAP evidence is deliberately split by **real enterprise operations**, **public technical source**, and **modern S/4HANA research/design**.
+My SAP evidence is deliberately split by **real enterprise operations**, **public technical source**, and **modern S/4HANA engineering evidence**.
 
 ### Hands-on functional / operational evidence
 
@@ -102,15 +102,17 @@ All public operational guides are sanitized: no employer/customer names, real or
 
 The lab now contains:
 
-- **ECC MM Inventory & Stock Risk** — ABAP OO/source, SALV, six deterministic vectors statically traced, reproducible SE24/SE38/SE93 procedure; runtime deliberately deferred rather than invented.
-- **ECC MM Service Procurement** — framework-contract functional evidence plus a read-only Contract Audit technical design.
-- **ECC IS-U / Work Management** — published evidence for work-order operations, status audit, batch governance, seal-material enablement, equipment consistency, photovoltaic onboarding, CRM contract-end recovery and occasional metered-service flow.
+- **ECC MM Inventory & Stock Risk** — ABAP OO, read-only `MARA/MARC/MARD`, SALV, 6 deterministic ABAP Unit vectors statically traced and a reproducible `SE24/SE38/SE93` procedure.
+- **ECC MM Service Procurement / `ZMM_CONTRACT_AUDIT`** — sanitized framework-contract evidence plus original read-only `EKKO/EKPO` ABAP source, SALV, 8 deterministic test vectors and bilingual build/evidence documentation.
+- **ECC IS-U / Work Management** — work-order operations, status audit, batch governance, seal-material enablement, equipment consistency, photovoltaic onboarding, CRM contract-end recovery and occasional metered-service flow.
 - **ECC / CRM-SD** — sanitized non-energy service billing evidence.
-- **S/4HANA MM** — released Procurement API design using `I_PurchaseOrderAPI01`, `API_PURCHASEORDER_2` and `API_PURCHASEREQUISITION_2` as the modern integration direction.
+- **S/4HANA MM Procurement API Client** — actual TypeScript read-only source with transport abstraction, OData validation, error/correlation-ID handling and a GitHub Actions gate observed at **6/6 tests PASS**. This validates the client source, not a real S/4HANA tenant connection.
 - **S/4HANA Migration Cockpit** — documentation-grounded migration lifecycle evidence, explicitly research-level rather than hands-on runtime.
-- **ABAP Cloud / Clean Core / RAP** — released-API governance and the first RAP business-object architecture, implementation still planned.
+- **ABAP Cloud / Clean Core / RAP** — released-API governance and first RAP business-object architecture; implementation remains a separate milestone.
 
-`SAP MM` `IS-U Work Management` `CRM` `SD` `ABAP` `Debugging` `S/4HANA` `ABAP Cloud` `RAP` `OData` `Integration`
+SAP runtime claims remain separate from source/static/CI evidence. ECC runtime is deferred until an authorized SAP development environment is available, and no S/4 tenant runtime is claimed for the API client.
+
+`SAP MM` `IS-U Work Management` `CRM` `SD` `ABAP` `Debugging` `S/4HANA` `ABAP Cloud` `RAP` `OData` `TypeScript` `Integration`
 
 ## Engineering principles
 
@@ -127,16 +129,16 @@ The lab now contains:
 2. [Motorix ERP / SaaS Showcase](showcases/motorix/README.md) — **published**
 3. [FITBA Web + Mobile Showcase](showcases/fitba/README.md) — **published**
 4. [LegalTech Platform Showcase](showcases/legaltech/README.md) — **published**
-5. [SAP Integration Lab](showcases/sap-integration-lab/README.md) — **ECC functional library + ABAP static evidence + S/4HANA Clean Core research/design published**
+5. [SAP Integration Lab](showcases/sap-integration-lab/README.md) — **ECC functional library + two ABAP source packs + CI-validated S/4 integration client published**
 6. [Parking Android](https://github.com/JavierQuinan/parqueadero_android) — **Kotlin/native Android open-source revival in progress**
 
 ## Español
 
 Soy **Ingeniero en Software, Abogado y Full Stack Engineer**, especializado en productos SaaS empresariales, aplicaciones web/móviles, arquitectura multi-tenant e integraciones. Mi stack principal incluye Angular, React, TypeScript, NestJS, Node.js, PostgreSQL y Supabase; en móvil mantengo evidencia de **Android nativo con Kotlin**, además de React Native/Expo.
 
-En SAP, mi evidencia pública separa claramente tres niveles: **experiencia funcional/operativa ECC**, **ingeniería ABAP demostrable a nivel de source/validación estática**, y **evolución moderna S/4HANA / ABAP Cloud / RAP basada en APIs liberadas y Clean Core**. Las guías reales de MM, IS-U/WM, CRM y SD se publican únicamente en versiones sanitizadas y bilingües.
+En SAP, mi evidencia pública separa tres niveles: **experiencia funcional/operativa ECC**, **ingeniería ABAP demostrable a nivel de source/validación estática**, y **evolución moderna S/4HANA / ABAP Cloud / RAP orientada a APIs liberadas y Clean Core**. Actualmente existen dos packs ABAP ECC revisables y un cliente TypeScript S/4 Procurement con **6/6 pruebas verdes en CI**, sin atribuirle una conexión SAP que no se haya ejecutado realmente.
 
-No presento una prueba como ejecutada en SAP si no existe evidencia runtime autorizada. Prefiero demostrar proceso, arquitectura, código y razonamiento técnico con límites verificables.
+Las guías reales de MM, IS-U/WM, CRM y SD se publican únicamente en versiones sanitizadas y bilingües.
 
 ---
 
