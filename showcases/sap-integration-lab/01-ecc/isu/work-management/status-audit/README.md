@@ -2,11 +2,9 @@
 
 [Versión en español](./README.es.md)
 
-> **Evidence type:** sanitized operational troubleshooting + original read-only ABAP source  
-> **Status:** `FUNCTIONAL_TECHNICAL_EVIDENCE_READY / SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`  
-> **Runtime claim:** no SAP activation or ABAP Unit runtime is claimed
+> **Evidence:** sanitized operational troubleshooting · original read-only ABAP source · deterministic source review
 
-This evidence pack combines a sanitized troubleshooting method derived from real operational guidance with an original ABAP engineering lab that audits the standard SAP work-order status model without changing data.
+This evidence pack combines a sanitized troubleshooting method derived from operational guidance with an original ABAP engineering lab that audits the standard SAP work-order status model without changing data.
 
 ## Functional diagnostic flow
 
@@ -37,23 +35,13 @@ JCDS — change-history context
 
 Critical interpretation rules:
 
-- `INACT` initial → active record
-- `INACT = X` → inactive/historical record
-- `I....` → system-status family
-- `E....` → user-status family
-- user status must be interpreted with the applicable `STSMA` profile
+- `INACT` initial → active record;
+- `INACT = X` → inactive/historical record;
+- `I....` → system-status family;
+- `E....` → user-status family;
+- user status is interpreted with the applicable `STSMA` profile.
 
-## Original ABAP technical artifact
-
-Transaction target:
-
-`ZWM_STATUS_AUDIT_LAB`
-
-Executable report:
-
-`ZWM_STATUS_AUDIT_REPORT`
-
-Architecture:
+## Original ABAP artifact
 
 ```text
 ZWM_STATUS_AUDIT_LAB
@@ -78,9 +66,9 @@ ECC datasource      Demo datasource
    └── JCDS
 ```
 
-Reviewable source lives under [`source/`](./source/).
+Reviewable source: [`source/`](./source/)
 
-## What the ECC datasource reads
+## ECC datasource scope
 
 | Object | Purpose |
 |---|---|
@@ -91,85 +79,78 @@ Reviewable source lives under [`source/`](./source/).
 | `TJ30T` | resolve user-status text within the profile |
 | `JCDS` | change count and latest change timestamp |
 
-The public lab deliberately excludes historical user/TCode output and all write operations.
+The public lab excludes historical user/TCode output and all write operations.
 
 ## Diagnostic outcomes
 
-The service reports only structural audit conditions:
+The service reports structural audit conditions only:
 
 - `OK`
 - `NO_ACTIVE_STATUS`
 - `USER_PROFILE_MISSING`
 - `TEXT_RESOLUTION_GAP`
 
-`OK` does **not** mean the work order is functionally correct. It only means the inspected status snapshot is structurally resolvable by this audit logic.
+`OK` does **not** mean a work order is functionally correct. It means the status snapshot is structurally resolvable by this audit logic.
 
-## Static validation
+## Deterministic scenario review
 
-Six deterministic ABAP Unit vectors are prepared and traced consistently at source level:
+Six ABAP Unit scenarios are versioned and traced consistently at source level:
 
-1. resolved active system status → `OK`
-2. historical-only records → `NO_ACTIVE_STATUS`
-3. active user status without `STSMA` → `USER_PROFILE_MISSING`
-4. active status without text → `TEXT_RESOLUTION_GAP`
-5. active and historical records counted separately
-6. change-summary metadata preserved
-
-Result:
+1. resolved active system status → `OK`;
+2. historical-only records → `NO_ACTIVE_STATUS`;
+3. active user status without `STSMA` → `USER_PROFILE_MISSING`;
+4. active status without text → `TEXT_RESOLUTION_GAP`;
+5. active and historical records counted separately;
+6. change-summary metadata preserved.
 
 ```text
-Vectors reviewed: 6
-Consistent:       6
-Mismatches:       0
+Scenarios reviewed: 6
+Consistent:         6
+Mismatches:         0
 ```
 
-This is **static/source validation**, not SAP ABAP Unit runtime.
+This is source/static review, not a claim of ABAP Unit execution inside a corporate SAP system.
 
 ## SALV output
 
-The executable report is designed to expose:
+The report source exposes:
 
-- order / status object
-- status profile
-- status code and system/user classification
-- active vs. historical state
-- status texts
-- change number
-- summary counts
-- latest change date/time
-- diagnostic result
+- order / status object;
+- status profile;
+- status code and system/user classification;
+- active vs. historical state;
+- status texts;
+- change number;
+- summary counts;
+- latest change date/time;
+- diagnostic result.
 
-## Reproduction
+## Reproducible evidence
 
 - [Build Guide — English](./BUILD_GUIDE.md)
 - [Guía de Construcción — Español](./BUILD_GUIDE.es.md)
 - [Evidence Record](./EVIDENCE.md)
 - [Static Validation](./STATIC_VALIDATION.md)
 
-The documented build sequence uses `SE24`, `SE38` and `SE93` and keeps runtime status at `RUNTIME_DEFERRED` until an authorized SAP DEV/sandbox is available.
+The build guide documents `SE24`, `SE38` and `SE93` object creation and report-transaction setup.
 
-## Security / public boundary
+## What this evidence demonstrates
 
-Never publish:
+- SAP work-order status-model troubleshooting;
+- system vs. user status separation;
+- active vs. historical interpretation;
+- `STSMA`-aware status resolution;
+- change-history awareness;
+- classic ABAP Objects design;
+- ECC/synthetic datasource abstraction;
+- deterministic scenario design;
+- SALV reporting;
+- security-aware public documentation.
 
-- real work-order numbers
-- installations or contract accounts
-- customer/company identifiers
-- usernames, SID/client, URLs or transport IDs
-- internal proprietary transaction names/source
-- direct table-editing procedures
-- screenshots that contain enterprise data or third-party material without publication rights
+## Security / evidence boundary
 
-The artifact is read-only and contains no `UPDATE`, `INSERT`, `MODIFY`, `DELETE` or commit operation.
+The public evidence excludes real work-order numbers, installations, contract accounts, customer/company identifiers, usernames, SID/client, internal URLs, transport IDs, proprietary custom transaction source and direct table-editing procedures.
 
-## What this demonstrates
+The artifact is read-only and contains no `UPDATE`, `INSERT`, database `MODIFY`, `DELETE` or commit operation.
 
-- SAP work-order status-model troubleshooting
-- system vs. user status separation
-- active vs. historical interpretation
-- `STSMA`-aware status resolution
-- change-history awareness
-- classic ABAP OO source design
-- datasource abstraction and synthetic testing
-- SALV reporting
-- security-conscious public evidence boundaries
+The repository presents source/static evidence and reproducible construction instructions; it does not claim activation or execution of these custom objects in a specific corporate SAP system.
