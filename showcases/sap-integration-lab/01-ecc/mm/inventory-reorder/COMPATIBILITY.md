@@ -2,13 +2,14 @@
 
 [Versión en español](./COMPATIBILITY.es.md)
 
-> **Status:** source-reviewed; SAP runtime validation still pending.
+> **Evidence type:** source-level compatibility and hardening review  
+> **Runtime boundary:** no specific ECC release activation is asserted by this document
 
-This document records the design decisions used to make `ZMM_STOCK_RISK` more portable and defensible on a classic SAP ECC / AS ABAP landscape.
+This document records the design decisions used to make `ZMM_STOCK_RISK` portable and defensible on a classic SAP ECC / AS ABAP landscape.
 
 ## Compatibility strategy
 
-The source intentionally favors classic ABAP constructs and avoids unnecessary modern syntax that may vary across NetWeaver / ECC releases.
+The source intentionally favors classic ABAP constructs and avoids unnecessary syntax that varies across NetWeaver / ECC generations.
 
 Preferred in this package:
 
@@ -31,54 +32,58 @@ Intentionally avoided in the core runtime path:
 - constructor expressions
 - CDS/RAP/ABAP Cloud syntax
 
-This does **not** establish a guaranteed minimum ECC release. The exact release/EHP remains part of runtime validation.
+This posture improves classic-ECC portability. Exact syntax availability still depends on the concrete ECC / NetWeaver release in which the source is imported; this repository does not claim a minimum release that was not observed.
 
 ## Functional hardening performed
 
 ### 1. Plant stock vs. storage-location stock
 
-`MARC` planning parameters are plant-level. The first source version compared them directly with one storage location's `MARD-LABST` value. That was too simplified for a professional diagnostic.
+`MARC` planning parameters are plant-level. The original draft compared them directly with one storage location's `MARD-LABST`, which was too simplified for a professional diagnostic.
 
-The hardened snapshot now exposes both:
+The hardened snapshot exposes both:
 
 - `storage_unrestricted` — unrestricted-use stock for the selected storage location
-- `plant_unrestricted` — sum of unrestricted-use stock represented by `MARD-LABST` records for the selected material and plant
+- `plant_unrestricted` — sum of `MARD-LABST` represented for the selected material and plant
 
-The diagnostic status is based on `plant_unrestricted`; the selected storage-location value is retained as a drill-down field.
+The diagnostic status uses `plant_unrestricted`; the selected storage-location value remains a drill-down field.
 
 ### 2. MRP type made visible
 
-The datasource now reads `MARC-DISMM` so the report exposes the material's MRP type instead of presenting reorder-point thresholds without planning context.
+The datasource reads `MARC-DISMM`, so the report exposes the material's MRP type instead of presenting reorder/safety thresholds without planning context.
 
-### 3. Unconfigured thresholds
+### 3. Base unit made visible
+
+The snapshot includes `MARA-MEINS`, preventing quantity values from being shown without their base-unit context.
+
+### 4. Unconfigured thresholds
 
 When both reorder point and safety stock are initial, the result is `NOT_CONFIGURED` instead of producing a misleading reorder signal.
 
-### 4. Static exception discipline
+### 5. Static exception discipline
 
-`ZCX_MM_STOCK_NOT_FOUND` inherits from `CX_STATIC_CHECK`. ABAP Unit test methods that call APIs propagating this exception now explicitly declare `RAISING ZCX_MM_STOCK_NOT_FOUND`.
+`ZCX_MM_STOCK_NOT_FOUND` inherits from `CX_STATIC_CHECK`. ABAP Unit test methods that call APIs propagating this exception explicitly declare `RAISING ZCX_MM_STOCK_NOT_FOUND`.
 
-### 5. Read-only runtime path
+### 6. Read-only source path
 
-The ECC datasource contains `SELECT` operations only. There is no `INSERT`, `UPDATE`, `MODIFY`, `DELETE`, direct table maintenance, debug-based write or commit logic.
+The ECC datasource contains `SELECT` operations only. There is no `INSERT`, `UPDATE`, database `MODIFY`, `DELETE`, direct table maintenance, debug-based write or commit logic.
 
 ## Important MRP boundary
 
 This application is a **stock-only early-warning diagnostic**. It is not SAP MRP and must not be described as reproducing reorder-point planning.
 
-SAP reorder-point planning can consider plant stock plus firmed receipts and other planning logic. This lab intentionally does not calculate:
+The public source does not calculate:
 
 - firmed receipts
 - purchase orders / purchase requisitions
 - reservations or dependent requirements
 - MRP-area scope
 - storage-location MRP exclusions
-- lot-sizing
+- lot sizing
 - lead-time planning
 - forecast logic
 - planning-file behavior
 
-The output should therefore be described as a transparent engineering diagnostic around selected MM stock/master-data fields.
+The output is therefore described as a transparent engineering diagnostic around selected MM stock/master-data fields.
 
 ## SALV choice
 
@@ -86,28 +91,25 @@ The output should therefore be described as a transparent engineering diagnostic
 
 ## Transaction authorization boundary
 
-`ZMM_STOCK_RISK` is designed as a report transaction created in `SE93`. SAP performs the standard transaction-start authorization check (`S_TCODE`) for custom transactions as well.
+`ZMM_STOCK_RISK` is documented as a report transaction created in `SE93`. SAP applies the standard transaction-start authorization check (`S_TCODE`).
 
-For a real productive deployment, business-data authorization must be designed with the customer's authorization team. This public lab deliberately does not invent a customer-specific authorization object or role model.
+Business-data authorization is organization-specific. This public lab deliberately does not invent a customer-specific authorization object or role model.
 
-## Runtime validation checklist
+## Verification procedure
 
-Before promotion beyond `RUNTIME_VALIDATION_PENDING`:
+A reusable verification sequence is documented for any authorized ECC development/sandbox environment:
 
-1. verify all DDIC references exist on the target ECC release
-2. syntax-check every class/interface/program
-3. activate every object
-4. run all ABAP Unit tests
-5. create and execute `ZMM_STOCK_RISK` through `SE93`
-6. execute with a non-sensitive material/plant/storage-location combination
-7. verify the SALV fields and status logic
-8. record any release-specific compatibility changes in `EVIDENCE.md`
+1. verify the DDIC references used by the source
+2. run syntax checks on the classes/interfaces/program
+3. activate the objects
+4. run the six ABAP Unit cases
+5. execute `ZMM_STOCK_RISK_REPORT` through `SE38`
+6. configure/launch `ZMM_STOCK_RISK` through `SE93`
+7. inspect the SALV fields and diagnostic result using non-sensitive data
+8. record release-specific differences without exposing enterprise identifiers
 
-## External SAP references used during hardening
+This is a replication procedure, not a claim that those runtime results were observed for this public artifact.
 
-- SAP ABAP Keyword Documentation — class-based exception categories
-- SAP ABAP Unit — `FOR TESTING`, `RISK LEVEL`, `DURATION`
-- SAP documentation — report transactions / `SE93`
-- SAP authorization documentation — `S_TCODE`
-- SAP ALV documentation — customer use of `CL_SALV_TABLE`
-- SAP documentation — reorder-point planning functional behavior
+## External SAP references
+
+See the centralized [`OFFICIAL_SAP_REFERENCES.md`](../../OFFICIAL_SAP_REFERENCES.md) for SAP Help references covering Class Builder/SE24, report transactions/SE93, ABAP Unit and related development concepts.
