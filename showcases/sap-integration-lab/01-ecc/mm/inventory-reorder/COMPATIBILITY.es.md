@@ -112,4 +112,4 @@ Es un procedimiento de réplica, no un claim de resultados runtime observados pa
 
 ## Referencias SAP
 
-Consulte [`OFFICIAL_SAP_REFERENCES.es.md`](../../OFFICIAL_SAP_REFERENCES.es.md) para referencias Help SAP sobre Class Builder/SE24, Report Transactions/SE93, ABAP Unit y conceptos de desarrollo relacionados.
+Consulte [`OFFICIAL_SAP_REFERENCES.es.md`](../../../OFFICIAL_SAP_REFERENCES.es.md) para referencias Help SAP sobre Class Builder/SE24, Report Transactions/SE93, ABAP Unit y conceptos de desarrollo relacionados.
