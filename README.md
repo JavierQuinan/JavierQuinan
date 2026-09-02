@@ -18,7 +18,7 @@
 
 Full Stack Engineer focused on building **enterprise SaaS products, web applications, mobile experiences and business integrations**. My core stack combines **Angular, React, TypeScript, NestJS, Node.js, PostgreSQL and Supabase**, with practical experience in multi-tenant architectures, RBAC, REST APIs, background processing and integration-heavy systems. My mobile evidence spans both cross-platform development and **native Android with Kotlin**.
 
-I also work with **SAP MM and SAP IS-U Work Management** in enterprise environments and I am expanding my technical specialization in **ABAP and ABAP Cloud**.
+I also work with **SAP MM and SAP IS-U Work Management** in enterprise environments and I am expanding my technical specialization in **ABAP, ABAP Cloud and S/4HANA engineering patterns**.
 
 My background in **Software Engineering and Law** is especially useful in products that involve regulated workflows, traceability, digital evidence, compliance-sensitive processes and complex business rules.
 
@@ -36,7 +36,7 @@ My background in **Software Engineering and Law** is especially useful in produc
 | Async / Infrastructure | Redis · BullMQ · Docker · nginx · S3/MinIO-compatible storage |
 | Quality | Playwright · Jest · Supertest · GitHub Actions · linting · automated validation |
 | Enterprise integration | SOAP · XML/XSD · digital-signature workflows · SAP integration concepts |
-| SAP | SAP MM · IS-U Work Management · CRM · SD · ABAP / ABAP Cloud specialization |
+| SAP | SAP MM · IS-U Work Management · CRM · SD · ABAP · ABAP Cloud specialization · S/4HANA evidence track |
 
 ## Selected engineering work
 
@@ -86,22 +86,31 @@ Private legal-workflow platform. The public case study documents React/Express/M
 
 ## SAP & enterprise systems
 
-My SAP experience is primarily functional and operational, with emphasis on:
+My SAP evidence is deliberately split by **real enterprise operations**, **public technical source**, and **modern S/4HANA research/design**.
 
-- SAP MM and materials/service processes
-- SAP IS-U Work Management and operational order workflows
-- SAP CRM / IS-U integration scenarios
-- enterprise support, configuration analysis and process troubleshooting
-- ABAP and ABAP Cloud as an active technical specialization
+### Hands-on functional / operational evidence
 
-I deliberately separate **hands-on enterprise experience** from **training/certification claims**. Only verifiable certifications are presented as certifications.
+- SAP MM material, inventory and service-procurement processes
+- SAP IS-U Work Management lifecycle, order/status troubleshooting and field-process controls
+- SAP CRM ↔ IS-U / WM contract and work-order integration scenarios
+- SAP SD / CRM-oriented non-energy billing workflow evidence
+- ABAP debugging and technical diagnostics methodology across `SE24`, `SE37`, `SE38`, `SE80`, `SE93`, `ST22`, `SM21`, `SM50/SM66`, traces and runtime analysis
+
+All public operational guides are sanitized: no employer/customer names, real orders/contracts/installations/materials, credentials, screenshots or proprietary Z implementation are published.
 
 ### [SAP Integration Lab — Public Engineering Evidence](showcases/sap-integration-lab/README.md)
-The SAP Integration Lab contains a **SAP ECC MM / ABAP Objects evidence pack** with read-only MM source design, ABAP Unit test source, SALV reporting, bilingual build/run documentation and a custom `SE93` report-transaction design. Its six deterministic test vectors have been statically traced against the current implementation with 6/6 expected outcomes consistent and zero source-level mismatches. A separate ECC troubleshooting guide documents `SE24`, `SE37`, `SE38`, `SE80`, `SE93`, `/H`, breakpoints, `ST22`, `SM21`, `SM50` and `SM66`.
 
-Enterprise SAP runtime execution is explicitly deferred until an authorized DEV/sandbox is available; no activation or ABAP Unit runtime result is invented.
+The lab now contains:
 
-`SAP MM` `IS-U Work Management` `ABAP` `ABAP Unit` `Debugging` `ABAP Cloud` `RAP` `Integration` — **ECC MM static-validated; execution procedure ready**
+- **ECC MM Inventory & Stock Risk** — ABAP OO/source, SALV, six deterministic vectors statically traced, reproducible SE24/SE38/SE93 procedure; runtime deliberately deferred rather than invented.
+- **ECC MM Service Procurement** — framework-contract functional evidence plus a read-only Contract Audit technical design.
+- **ECC IS-U / Work Management** — published evidence for work-order operations, status audit, batch governance, seal-material enablement, equipment consistency, photovoltaic onboarding, CRM contract-end recovery and occasional metered-service flow.
+- **ECC / CRM-SD** — sanitized non-energy service billing evidence.
+- **S/4HANA MM** — released Procurement API design using `I_PurchaseOrderAPI01`, `API_PURCHASEORDER_2` and `API_PURCHASEREQUISITION_2` as the modern integration direction.
+- **S/4HANA Migration Cockpit** — documentation-grounded migration lifecycle evidence, explicitly research-level rather than hands-on runtime.
+- **ABAP Cloud / Clean Core / RAP** — released-API governance and the first RAP business-object architecture, implementation still planned.
+
+`SAP MM` `IS-U Work Management` `CRM` `SD` `ABAP` `Debugging` `S/4HANA` `ABAP Cloud` `RAP` `OData` `Integration`
 
 ## Engineering principles
 
@@ -118,16 +127,16 @@ Enterprise SAP runtime execution is explicitly deferred until an authorized DEV/
 2. [Motorix ERP / SaaS Showcase](showcases/motorix/README.md) — **published**
 3. [FITBA Web + Mobile Showcase](showcases/fitba/README.md) — **published**
 4. [LegalTech Platform Showcase](showcases/legaltech/README.md) — **published**
-5. [SAP Integration Lab](showcases/sap-integration-lab/README.md) — **ECC MM static-validated + execution procedure ready; ECC diagnostics published**
+5. [SAP Integration Lab](showcases/sap-integration-lab/README.md) — **ECC functional library + ABAP static evidence + S/4HANA Clean Core research/design published**
 6. [Parking Android](https://github.com/JavierQuinan/parqueadero_android) — **Kotlin/native Android open-source revival in progress**
 
 ## Español
 
-Soy **Ingeniero en Software, Abogado y Full Stack Engineer**, especializado en desarrollo de productos SaaS empresariales, aplicaciones web y móviles, arquitectura multi-tenant e integraciones. Mi stack principal incluye Angular, React, TypeScript, NestJS, Node.js, PostgreSQL y Supabase; en móvil también mantengo evidencia de **Android nativo con Kotlin**, además de React Native/Expo.
+Soy **Ingeniero en Software, Abogado y Full Stack Engineer**, especializado en productos SaaS empresariales, aplicaciones web/móviles, arquitectura multi-tenant e integraciones. Mi stack principal incluye Angular, React, TypeScript, NestJS, Node.js, PostgreSQL y Supabase; en móvil mantengo evidencia de **Android nativo con Kotlin**, además de React Native/Expo.
 
-En SAP complemento la experiencia funcional MM / IS-U Work Management con una línea técnica pública de ABAP: código fuente revisable, validación estática trazable, guías reproducibles de creación de objetos y documentación de debugging/troubleshooting. Mantengo separado lo comprobado en fuente de cualquier claim de ejecución que requiera un sistema SAP autorizado.
+En SAP, mi evidencia pública separa claramente tres niveles: **experiencia funcional/operativa ECC**, **ingeniería ABAP demostrable a nivel de source/validación estática**, y **evolución moderna S/4HANA / ABAP Cloud / RAP basada en APIs liberadas y Clean Core**. Las guías reales de MM, IS-U/WM, CRM y SD se publican únicamente en versiones sanitizadas y bilingües.
 
-Mi objetivo profesional es construir y demostrar software empresarial con evidencia verificable: arquitectura, código, pruebas, documentación y casos de estudio sanitizados.
+No presento una prueba como ejecutada en SAP si no existe evidencia runtime autorizada. Prefiero demostrar proceso, arquitectura, código y razonamiento técnico con límites verificables.
 
 ---
 
