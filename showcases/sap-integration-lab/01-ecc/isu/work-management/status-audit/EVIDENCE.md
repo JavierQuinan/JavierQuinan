@@ -1,6 +1,6 @@
 # Evidence Record — `ZWM_STATUS_AUDIT_LAB`
 
-> **Current maturity:** `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+> **Evidence classification:** `REVIEWABLE_SOURCE / STATIC_SCENARIO_VALIDATION / REPRODUCIBLE_BUILD_GUIDE`
 
 ## Reviewable source
 
@@ -27,52 +27,35 @@ The ECC datasource is limited to diagnostic reads over standard objects:
 
 No `UPDATE`, `INSERT`, `MODIFY`, `DELETE` or commit operation is part of this artifact.
 
-## Static validation
-
-Prepared deterministic vectors: **6**.
-
-Source review result:
+## Static scenario validation
 
 ```text
-Vectors reviewed: 6
-Consistent:       6
-Mismatches:       0
+Scenarios reviewed: 6
+Consistent:        6
+Mismatches:        0
 ```
 
-Expected diagnostics covered:
+Covered diagnostics:
 
 1. resolved active system status → `OK`
 2. historical statuses only → `NO_ACTIVE_STATUS`
 3. active user status without profile → `USER_PROFILE_MISSING`
 4. active status without resolved text → `TEXT_RESOLUTION_GAP`
-5. active + historical records are counted separately
-6. change-summary metadata remains preserved
+5. active + historical records counted separately
+6. change-summary metadata preserved
 
-This is static/source evidence. It is **not** presented as ABAP Unit runtime execution inside SAP.
+This is source/static evidence and is not represented as executed ABAP Unit runtime inside SAP.
 
-## Runtime boundary
+## Reproducible verification procedure
 
-Runtime is deferred because the portfolio does not currently use an authorized SAP DEV/sandbox and CTS path for this public lab.
+The bilingual build guide documents object creation, syntax/activation checkpoints, ABAP Unit execution, `SE38` report execution and `SE93` report-transaction configuration. Any recorded runtime result must be observed directly and sanitized.
 
-Future promotion requires:
+## Visual evidence policy
 
-- syntax check
-- activation
-- ABAP Unit execution
-- SE38 execution
-- SE93 transaction execution
-- SALV result
+Visual evidence is accepted only when the image can be published legitimately and sanitized without losing its technical value. Appropriate examples include synthetic/demo SALV output or author-owned SAP GUI screens with system/company/user identifiers removed.
 
-Only sanitized results may be recorded publicly.
+Screenshots owned by employers, customers or third-party training providers are not republished unless publication rights are clear. Their technical concepts are converted into original explanatory guides and backed by official SAP documentation where available.
 
-## Media evidence
+## Claims not made
 
-Future screenshots are optional, not required for source/static validation. If added, they must be sanitized and limited to evidence that the author is permitted to publish.
-
-Allowed examples:
-
-- synthetic/demo SALV output
-- SE24/SE38/SE93 object screens with system/company/user identifiers removed
-- ABAP Unit result screen using non-sensitive objects
-
-Never publish customer/company identities, real order numbers, users, SID/client, URLs, transport IDs, proprietary Z transactions or screenshots owned by third parties without publication rights.
+This repository does not claim activation in a specific ECC landscape, ABAP Unit runtime `6/6 PASS`, productive deployment or access to confidential work-order data. These are evidence boundaries, not unfinished portfolio tasks.
