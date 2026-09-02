@@ -1,199 +1,213 @@
-# SAP S/4HANA — Migration Cockpit Evidence Lab
+# SAP S/4HANA — Migration Cockpit Technical Guide
 
 [Versión en español](./README.es.md)
 
-> **Evidence type:** official-documentation-based study/design evidence  
-> **Status:** `RESEARCH_VALIDATED / RUNTIME_NOT_CLAIMED`  
-> **Boundary:** this is not presented as hands-on production migration experience
+> **Evidence type:** documentation-grounded technical guide  
+> **Boundary:** no productive S/4HANA migration runtime is claimed
 
-This lab documents the SAP S/4HANA Migration Cockpit workflow using current SAP Help Portal documentation as the source of truth.
+This guide documents the SAP S/4HANA Migration Cockpit workflow, its control points and a reproducible synthetic migration runbook. It is intentionally separated from the ECC evidence track.
 
-It is deliberately separate from the ECC evidence track.
+## Migration approaches
 
-## Supported migration approaches
+The guide distinguishes two primary cockpit approaches:
 
-SAP documents two primary approaches for the S/4HANA Migration Cockpit:
+1. **Staging tables** — source data is prepared outside the target business objects and loaded into migration staging structures.
+2. **Direct transfer from an SAP source system** — supported migration objects transfer data directly from the configured source scenario.
 
-1. **Migrate data using staging tables**
-2. **Migrate data directly from an SAP source system**
+The selected approach depends on the migration object, source system and target product/release.
 
-The appropriate approach depends on the source scenario and available migration objects.
-
-## Migration-project lifecycle
+## End-to-end lifecycle
 
 ```text
 Create migration project
-        │
-        ▼
+        ↓
 Select migration scenario
-        │
-        ▼
+        ↓
 Select migration objects
-        │
-        ▼
+        ↓
 Prepare source/staging data
-        │
-        ▼
+        ↓
 Transfer / prepare data
-        │
-        ▼
-Process mapping tasks
-        │
-        ▼
+        ↓
+Resolve mapping tasks
+        ↓
 Simulate migration
-        │
-        ├── issues/mapping tasks → correct and repeat
-        │
-        ▼
-Migrate
-        │
-        ▼
-Monitor activities/results
-        │
-        ▼
-Business reconciliation
+        ↓
+Review issues and corrections
+        ↓
+Execute migration
+        ↓
+Monitor results
+        ↓
+Reconcile business data
 ```
 
 ## Migration objects
 
-The cockpit uses **migration objects** to define the business data to be transferred.
+A migration object defines the business-data structure and migration behavior for a bounded domain. A professional review records:
 
-For each object, the project can expose:
+- object name and scenario;
+- source approach;
+- field documentation;
+- required/optional attributes;
+- mapping tasks;
+- instance scope;
+- dependencies;
+- simulation result;
+- migration result;
+- reconciliation result.
 
-- documentation
-- active/custom view scope
-- table structure for staging scenarios
-- mapping tasks
-- migration-object instances
-- preparation/simulation/migration activities
-
-A future portfolio exercise should choose one bounded object rather than claiming a full-system migration.
-
-## Staging-table approach
-
-SAP creates one or more staging tables for each relevant migration object.
-
-Source data can be loaded using:
-
-- provided template files, or
-- appropriate external tooling such as SAP Data Services / controlled database-loading processes where supported.
-
-Depending on product/version/scenario, staging tables can be located in an appropriate local or remote SAP HANA schema configured for the migration project.
-
-### Staging flow
+## Staging-table workflow
 
 ```text
 Source data
-   │
-   ▼
-Template / ETL process
-   │
-   ▼
+   ↓
+Template / ETL preparation
+   ↓
 Staging tables
-   │
-   ▼
+   ↓
 Prepare / transfer from staging
-   │
-   ▼
+   ↓
 Mapping
-   │
-   ▼
+   ↓
 Simulation
-   │
-   ▼
+   ↓
 Migration
+   ↓
+Reconciliation
 ```
 
-## Simulation gate
+The guide treats simulation as a control gate, not as an optional cosmetic step. Simulation is used to surface mapping/data-quality issues before the actual target write.
 
-Simulation is a critical control.
+## Synthetic migration runbook
 
-SAP documents that simulation does not write the business data to the target system but allows migration messages/issues to be reviewed. New mapping tasks can appear after simulation; they must be resolved and simulation repeated before migration continues.
+The following runbook is complete enough to reproduce the analysis with synthetic data without publishing enterprise records.
 
-Therefore a professional migration evidence record should never jump directly from file preparation to “migrated”.
+### 1. Define scope
 
-## Monitoring
+Document:
 
-Migration activities are monitored through the project/cockpit monitoring capabilities.
+- target migration object;
+- source approach (`staging` or `direct transfer`);
+- organizational scope;
+- expected record count;
+- dependencies on previously migrated objects.
 
-Evidence should record:
+### 2. Build a data dictionary
 
-- migration object
-- source approach
-- object-instance scope
-- preparation result
-- mapping tasks
-- simulation result
-- migration result
-- rejected/error records
-- reconciliation outcome
+For each field record:
 
-## Portfolio lab design
+| Field | Required | Source meaning | Target meaning | Validation |
+|---|---|---|---|---|
+| Key | yes | synthetic source identifier | migration-object key | unique, non-empty |
+| Date | scenario-specific | business date | SAP target date | valid format/range |
+| Org value | scenario-specific | source organization | SAP target organization | mapped value exists |
+| Code/value | scenario-specific | source code | SAP target code | mapping resolved |
 
-First future hands-on exercise:
+### 3. Prepare synthetic source data
 
-**Synthetic Business Data Migration Runbook**
+Rules:
 
-Target deliverables:
+- no real customer/vendor/material/BP identifiers;
+- no production addresses or financial values;
+- enough rows to cover valid, invalid, duplicate and unmapped cases;
+- stable identifiers so reconciliation is repeatable.
 
-```text
-MIGRATION_SCENARIO.md
-DATA_DICTIONARY.md
-SOURCE_TO_TARGET_MAPPING.md
-SYNTHETIC_DATA.csv
-PRE_VALIDATION.md
-SIMULATION_RESULTS.md
-ERROR_CATALOG.md
-RECONCILIATION.md
-POST_MIGRATION_CHECKLIST.md
-```
+### 4. Pre-validation
 
-No real enterprise dataset will be published.
+Check before cockpit processing:
 
-## Data-quality gates
+- required keys populated;
+- mandatory attributes present;
+- dates valid;
+- duplicates identified;
+- code/value mappings defined;
+- organizational dependencies resolved;
+- referential dependencies understood;
+- source file/table encoding and delimiters verified where relevant.
 
-Before simulation:
+### 5. Mapping review
 
-- required keys populated
-- mandatory attributes present
-- dates valid
-- code/value mappings defined
-- organizational dependencies resolved
-- duplicates identified
-- referential dependencies understood
+Maintain an explicit source-to-target table:
 
-After migration:
+| Source value | Target value | Rule | Status |
+|---|---|---|---|
+| `SRC_A` | `TGT_A` | direct mapping | resolved |
+| `SRC_B` | — | no target equivalent | issue |
 
-- migrated count reconciled
-- rejected count explained
-- key business totals reconciled where relevant
-- sample records functionally verified
-- no sensitive source data committed to Git
+### 6. Simulation review
+
+Record:
+
+- object/instance scope;
+- number of records processed;
+- errors/warnings;
+- new mapping tasks;
+- rejected records;
+- corrective action.
+
+A simulation issue is treated as evidence to correct the dataset or mapping, not something to hide from the final record.
+
+### 7. Migration result review
+
+Record:
+
+- migrated count;
+- rejected count;
+- warnings;
+- object-specific post-processing;
+- technical messages relevant to reconciliation.
+
+### 8. Reconciliation
+
+Reconcile:
+
+- expected vs. migrated record count;
+- rejected records with reason;
+- key business totals where applicable;
+- representative sample records;
+- dependent-object consistency;
+- absence of sensitive source data in Git.
+
+## Error catalogue template
+
+| Category | Example | Root cause | Correction |
+|---|---|---|---|
+| Required field | missing mandatory value | incomplete source data | complete source field |
+| Mapping | source code has no target value | mapping not maintained | create/approve mapping |
+| Duplicate | repeated source key | source quality issue | deduplicate according to rule |
+| Dependency | referenced object missing | migration sequence issue | migrate dependency first |
+| Format | invalid date/number | source formatting | normalize source representation |
+
+## Monitoring checklist
+
+For every migration review, capture:
+
+- project/scenario;
+- migration object;
+- source approach;
+- instance scope;
+- preparation status;
+- mapping status;
+- simulation status;
+- migration status;
+- rejected/error records;
+- reconciliation outcome.
 
 ## Migration Object Modeler boundary
 
-`LTMOM` / migration-object modelling is an advanced extension topic and will be treated separately. The portfolio will not imply custom migration-object expertise until an actual model/design artifact is produced.
+Migration Object Modeler (`LTMOM`) is not presented here as hands-on custom-model expertise. The guide only describes standard Migration Cockpit workflow and the governance required to evaluate a migration run.
 
-## Evidence maturity
+## What this guide demonstrates
 
-```text
-RESEARCH_VALIDATED
-        ↓
-LAB_DESIGNED
-        ↓
-SYNTHETIC_DATA_READY
-        ↓
-RUNTIME_VALIDATION_PENDING
-        ↓
-RUNTIME_VALIDATED
-```
+- staging vs. direct-transfer reasoning;
+- migration-object scoping;
+- source-to-target mapping discipline;
+- simulation as a control gate;
+- error/rejection handling;
+- reconciliation methodology;
+- privacy-aware synthetic evidence design.
 
-Current position: `RESEARCH_VALIDATED`.
+## Evidence boundary
 
-## Official sources
-
-- SAP S/4HANA Data Migration: https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/29193bf0ebdd4583930b2176cb993268/6e7648c7d6a844e69ee9d24d00cfc464.html
-- Migrate Your Data — Migration Cockpit: https://help.sap.com/docs/PRODUCT_ID/29193bf0ebdd4583930b2176cb993268/2f0dbe4111214bcf9b2d57eca26f0525.html
-- Migrate Data Using Staging Tables: https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/29193bf0ebdd4583930b2176cb993268/87ffdbfebd504116b497c02d51ce5b58.html
-- Simulating the Migration: https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/29193bf0ebdd4583930b2176cb993268/0ee46d72aa734da6ba5d9285da4d7148.html
-- Public training material — staging/direct transfer: https://help.sap.com/docs/PRODUCT_ID/ffaed9ee977247e689972af70212149e/8bc93e781ddd463a9710bf5d505d58c9.html
+This repository contains the guide and synthetic runbook. It does not claim productive S/4HANA migration execution, LTMOM custom-object implementation or target-system runtime results.
