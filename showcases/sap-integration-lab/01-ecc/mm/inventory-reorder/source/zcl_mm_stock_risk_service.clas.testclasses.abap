@@ -30,6 +30,7 @@ CLASS ltcl_mm_stock_risk_service IMPLEMENTATION.
     ls_snapshot-matnr = 'TEST_MAT_01'.
     ls_snapshot-werks = 'T001'.
     ls_snapshot-lgort = '0001'.
+    ls_snapshot-base_uom = 'EA'.
     ls_snapshot-mrp_type = 'VB'.
     ls_snapshot-storage_unrestricted = 120.
     ls_snapshot-plant_unrestricted = 120.
@@ -50,6 +51,9 @@ CLASS ltcl_mm_stock_risk_service IMPLEMENTATION.
     cl_abap_unit_assert=>assert_equals(
       exp = zcl_mm_stock_risk_service=>c_status_ok
       act = ls_result-status ).
+    cl_abap_unit_assert=>assert_equals(
+      exp = ls_snapshot-base_uom
+      act = ls_result-base_uom ).
   ENDMETHOD.
 
   METHOD returns_reorder_at_point.
