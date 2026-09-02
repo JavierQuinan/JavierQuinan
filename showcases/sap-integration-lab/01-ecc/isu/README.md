@@ -3,7 +3,7 @@
 [Versión en español](./README.es.md)
 
 > **Scope:** SAP ECC IS-U / Work Management / CRM integration  
-> **Current maturity:** sanitized functional/technical evidence published; first WM ABAP source pack static-validated
+> **Evidence represented:** sanitized operational guidance · original read-only ABAP source · deterministic source review · reproducible technical guides
 
 This track is intentionally independent from S/4HANA. It converts operational utilities experience into reviewable evidence while removing customer/company configuration and real identifiers.
 
@@ -13,28 +13,36 @@ This track is intentionally independent from S/4HANA. It converts operational ut
 
 [Work Management Operations](./functional-evidence/work-management-operations/README.md)
 
-Covers `IW38`, work-order lifecycle, individual/mass creation concepts, `IW32` assignment/release/completion, automated planning, `SM37` monitoring and CRM↔WM process dependencies.
+Covers:
+
+- `IW38` work-order analysis and layouts;
+- work-order lifecycle interpretation;
+- individual and controlled mass-processing concepts;
+- `IW32` assignment/release/technical-completion flow;
+- automated planning concepts;
+- `SM37` background-job monitoring;
+- CRM ↔ WM process dependencies.
 
 ### Work Order Status Audit — functional + ABAP source
 
 [Work Order Status Audit](./work-management/status-audit/README.md)
 
-Status: `FUNCTIONAL_TECHNICAL_EVIDENCE_READY / SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
+Evidence available:
 
-Evidence:
+- `IW33` functional baseline;
+- `AUFK → OBJNR`;
+- `JEST` active/historical records;
+- `JSTO → STSMA`;
+- `TJ02T` / `TJ30T`;
+- `JCDS` change-summary context;
+- original datasource abstraction;
+- ECC and synthetic datasources;
+- ABAP Objects audit service;
+- SALV report source;
+- six deterministic ABAP Unit scenarios reviewed consistently at source level;
+- reproducible `SE24 / SE38 / SE93` build/verification guide.
 
-- `IW33`
-- `AUFK -> OBJNR`
-- `JEST` active/historical records
-- `JSTO -> STSMA`
-- `TJ02T` / `TJ30T`
-- `JCDS`
-- original datasource abstraction
-- ECC and demo datasources
-- ABAP OO audit service
-- SALV report
-- six deterministic ABAP Unit vectors traced consistently at source level
-- reproducible `SE24` / `SE38` / `SE93` build guide
+Evidence classification: `REVIEWABLE_SOURCE / STATIC_SCENARIO_VALIDATION / REPRODUCIBLE_BUILD_GUIDE`.
 
 ### Batch Work-Order Governance
 
@@ -46,7 +54,7 @@ Documents eligibility gates, bounded input, duplicate/range checks, SAP GUI scri
 
 [Seal Material Enablement](./work-management/seals-material-enablement/README.md)
 
-Shows the difference between a material being available in MM and being enabled/configured for a downstream Seal Management / work-order process.
+Documents the difference between a material being available in MM and being enabled/configured for a downstream Seal Management / work-order process.
 
 ### Equipment Consistency — IS-U ↔ CRM
 
@@ -60,31 +68,42 @@ Documents the rule that technical equipment assignment and commercial/product re
 
 Sanitized chain:
 
-`external/GIS context -> connection object -> point of supply -> installation -> CRM customer/commercial context -> specialized service contract`.
+`external/GIS context → connection object → point of supply → installation → CRM customer/commercial context → specialized service contract`
 
 ### CRM ↔ IS-U Contract-End Recovery
 
 [Contract-End / DCDE Recovery](./crm-isu-integration/dcde-recovery/README.md)
 
-Shows process recovery when an incomplete CRM contract-end flow does not produce the expected downstream work order.
+Documents process recovery when an incomplete CRM contract-end flow does not produce the expected downstream work order.
 
 ### Occasional Metered Service
 
 [Occasional Metered Service](./crm-isu-integration/occasional-metered-service/README.md)
 
-End-to-end CRM→WM→CRM evidence covering customer/agreement/contract setup, technical work-order execution, meter-related data, final operational status, technical completion and contract completion sequencing.
+End-to-end CRM → WM → CRM evidence covering customer/agreement/contract setup, technical work-order execution, meter-related data, final operational status, technical completion and contract-completion sequencing.
 
-## Technical boundary
+## Standard technical references
 
-The public evidence documents standard read-only diagnostic objects and original portfolio source only. It does not publish direct data-manipulation shortcuts, proprietary employer/customer `Z*` implementations, credentials or real process identifiers.
+The public SAP reference index includes official documentation for order/status fields and related development tooling:
 
-## Engineering progression
+- [`OFFICIAL_SAP_REFERENCES.md`](../../OFFICIAL_SAP_REFERENCES.md)
 
-1. **completed:** `ZWM_STATUS_AUDIT_LAB` source/static evidence
-2. compare standard status APIs vs. direct diagnostic reads when release/runtime is available
-3. build `ZWM_ORDER_MONITOR_LAB` with synthetic/read-only order visibility
-4. build batch eligibility/idempotency lab with synthetic orders
-5. build MM↔Seal configuration-consistency checker
-6. model CRM↔IS-U integration state/retry/compensation patterns
+For the status model, SAP documentation exposes standard fields including `AUFK-AUFNR`, `JEST-STAT`, `JEST-INACT`, `JEST-CHGNR`, `JEST-OBJNR` and `JSTO-STSMA`.
 
-Any ABAP artifact follows SAP Evidence Governance. Static/source evidence remains separate from SAP runtime claims.
+## What this track demonstrates
+
+- SAP IS-U / Work Management operational troubleshooting;
+- work-order lifecycle and status interpretation;
+- system vs. user status reasoning;
+- active vs. historical status analysis;
+- CRM ↔ IS-U / WM integration-process awareness;
+- MM ↔ WM configuration-consistency reasoning;
+- background-job and controlled batch-process governance;
+- original classic-ABAP read-only diagnostic design;
+- bilingual technical and operational documentation.
+
+## Technical and confidentiality boundary
+
+The public evidence documents standard read-only diagnostic objects and original portfolio source only. It does not publish direct data-manipulation shortcuts, proprietary employer/customer `Z*` implementations, credentials, real orders/installations/contracts/meters/users, internal endpoints or unsanitized enterprise screenshots.
+
+The ABAP status-audit source is presented as source/static evidence with a reproducible verification guide. No corporate runtime result is attributed where no actual execution record exists.
