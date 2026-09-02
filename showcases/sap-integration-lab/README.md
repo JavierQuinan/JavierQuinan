@@ -22,11 +22,13 @@ The portfolio intentionally separates four technical contexts that must not be c
 |---|---|
 | `PLANNED` | Scenario designed; implementation not yet complete. |
 | `SOURCE_READY` | Reviewable source/documentation is available in GitHub. |
-| `RUNTIME_VALIDATION_PENDING` | Source is ready to activate/run, but no SAP runtime proof has been recorded. |
+| `STATIC_VALIDATED` | Source logic and deterministic test vectors have been reviewed consistently; no SAP runtime claim is implied. |
+| `EXECUTION_PROCEDURE_READY` | Reproducible SAP object-creation, activation, test and execution steps are documented. |
+| `RUNTIME_DEFERRED` | Runtime execution is deferred because an authorized development/sandbox environment or required CTS permissions are not available for the portfolio exercise. |
 | `RUNTIME_VALIDATED` | Activated/executed in an appropriate SAP environment with documented result. |
 | `TEST_VALIDATED` | Runtime validation plus reproducible automated/unit-test evidence. |
 
-`SOURCE_READY` does **not** mean `RUNTIME_VALIDATED`.
+`STATIC_VALIDATED` does **not** mean `RUNTIME_VALIDATED`.
 
 See [SAP Evidence Governance](./EVIDENCE_GOVERNANCE.md).
 
@@ -38,6 +40,7 @@ sap-integration-lab/
 ├── README.es.md
 ├── EVIDENCE_GOVERNANCE.md
 ├── 01-ecc/
+│   ├── technical-diagnostics/
 │   ├── mm/
 │   │   ├── inventory-reorder/
 │   │   ├── purchasing/
@@ -62,6 +65,23 @@ sap-integration-lab/
 
 ## 01 — SAP ECC
 
+### ECC Technical Diagnostics
+
+[ABAP Debugging & Technical Diagnostics](./01-ecc/technical-diagnostics/README.md) documents a sanitized troubleshooting workflow across:
+
+- `SE93` — transaction-to-object identification
+- `SE24` — ABAP classes
+- `SE37` — function modules
+- `SE38` — programs/reports
+- `SE80` — integrated repository navigation
+- `/H` and breakpoints
+- ABAP Debugger inspection
+- `ST22` — short dumps
+- `SM21` — system log context
+- `SM50` vs. `SM66` — local vs. global work-process analysis
+
+This track proves technical method and troubleshooting knowledge without claiming privileged Basis access or production debugging.
+
 ### ECC Materials Management (MM)
 
 This track demonstrates classic MM domain knowledge and ABAP engineering without exposing employer/customer implementation.
@@ -77,11 +97,16 @@ Target evidence:
 - classic Open SQL where appropriate
 - SALV/ALV reporting
 - ABAP Objects
-- ABAP Unit
+- ABAP Unit source and test design
 
-Classic direct-table evidence, when used, will be clearly labelled **ECC/classic** and will not be reused as proof of modern S/4HANA Clean Core design.
+Classic direct-table evidence, when used, is clearly labelled **ECC/classic** and is not reused as proof of modern S/4HANA Clean Core design.
 
-The first package is **ECC MM — Inventory & Reorder**. The current source is classified `SOURCE_READY / RUNTIME_VALIDATION_PENDING` until it is activated and tested in an SAP environment.
+The first package, **ECC MM — Inventory & Stock Risk**, is now classified `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`:
+
+- source and hardening review complete
+- six deterministic vectors traced successfully against the current implementation
+- reproducible `SE24` / `SE38` / `SE93` build and runtime procedure documented
+- SAP activation/ABAP Unit execution not claimed until an authorized development environment is available
 
 ### ECC IS-U / Work Management
 
@@ -114,6 +139,7 @@ Target evidence:
 - behavior definitions and implementations
 - service definitions/bindings
 - automated tests
+- migration-cockpit knowledge separated from classic ECC development evidence
 
 The S/4HANA track has its own evidence gate. A classic ECC report does not qualify as an S/4HANA artifact by itself.
 
@@ -140,7 +166,7 @@ Preferred convention:
 
 - `README.md` — English
 - `README.es.md` — Español
-- `EVIDENCE.md` — runtime/test record
+- `EVIDENCE.md` — evidence record
 
 Code identifiers remain in English. Functional terminology may be shown bilingually where useful:
 
@@ -160,34 +186,25 @@ Never publish:
 - production screenshots without sanitization
 - passwords, tokens or credentials
 - private P12/PFX/PEM material
+- third-party training screenshots or copyrighted pages as portfolio assets without publication rights
 
 ## Current evidence matrix
 
-| Track | Functional evidence | Public source | Runtime proof | Status |
+| Track | Functional evidence | Public source / guide | Runtime proof | Status |
 |---|---|---|---|---|
-| ECC MM | Profile-level professional experience | First inventory/reorder source in branch | Pending | `SOURCE_READY / RUNTIME_VALIDATION_PENDING` |
-| ECC IS-U / WM | Professional operational experience | Planned; guides will be incorporated | Pending | `PLANNED` |
+| ECC Technical Diagnostics | Troubleshooting methodology | Debugging/diagnostics guide | Not required for methodology claim | `PROCEDURE_READY` |
+| ECC MM | Profile-level professional experience + technical source | Inventory/stock-risk pack | Deferred until authorized DEV/sandbox | `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY` |
+| ECC IS-U / WM | Professional operational experience | Planned; sanitized guides being incorporated | Pending | `PLANNED` |
 | S/4HANA MM | Study/specialization track | Planned | Pending | `PLANNED` |
 | ABAP Cloud / RAP | Study/specialization track | Planned | Pending | `PLANNED` |
 | SAP Integration | Enterprise integration experience + software engineering | Planned | Pending | `PLANNED` |
 
-## Next milestone
+## Next milestones
 
-**SAP ECC MM — Inventory & Reorder Evidence Pack**
-
-The target package will contain:
-
-- domain model
-- datasource abstraction
-- synthetic/demo datasource
-- ECC datasource implementation when runtime validation is available
-- executable report
-- ABAP Objects service layer
-- ABAP Unit
-- bilingual documentation
-- `EVIDENCE.md` with activation/runtime/test record
-
-Until runtime evidence exists, the artifact remains explicitly `RUNTIME_VALIDATION_PENDING`.
+1. expand ECC MM with purchasing and service-procurement evidence
+2. incorporate sanitized IS-U / Work Management operational guides
+3. build the S/4HANA evidence line separately, including migration-cockpit process knowledge
+4. add real ABAP runtime evidence later when an authorized sandbox/DEV environment becomes available
 
 ---
 
