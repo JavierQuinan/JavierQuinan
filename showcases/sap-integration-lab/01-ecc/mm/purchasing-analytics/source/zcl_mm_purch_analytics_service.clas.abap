@@ -36,7 +36,7 @@ CLASS zcl_mm_purch_analytics_service DEFINITION
 
     METHODS constructor
       IMPORTING
-        io_source TYPE REF TO zif_mm_purch_source.
+        io_source TYPE REF TO zif_mm_purch_source OPTIONAL.
 
     METHODS evaluate
       IMPORTING
