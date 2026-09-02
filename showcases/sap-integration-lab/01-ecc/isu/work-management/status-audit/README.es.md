@@ -2,22 +2,13 @@
 
 [English version](./README.md)
 
-> **Tipo de evidencia:** guía técnica de troubleshooting sanitizada  
-> **Estado:** `FUNCTIONAL_TECHNICAL_EVIDENCE_READY`  
-> **Claim runtime:** no se afirma ejecución de un artefacto ABAP propio
+> **Tipo de evidencia:** troubleshooting operativo sanitizado + source ABAP read-only original  
+> **Estado:** `FUNCTIONAL_TECHNICAL_EVIDENCE_READY / SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`  
+> **Claim runtime:** no se afirma activación SAP ni ejecución real de ABAP Unit
 
-Esta guía documenta un método reproducible y de solo lectura para determinar el estado real de una orden de trabajo, diferenciar estados activos de estados históricos y aislar si una discrepancia pertenece al objeto estándar SAP o a una capa personalizada de visualización/selección.
+Este evidence pack combina un método de troubleshooting sanitizado derivado de guías operativas reales con un laboratorio ABAP original que audita el modelo estándar de estados de órdenes sin modificar datos.
 
-## Regla de seguridad
-
-Este procedimiento es diagnóstico.
-
-- No modificar directamente registros de estado desde visores de tablas.
-- No eliminar estados históricos.
-- No manipular manualmente `INACT` ni códigos de estado.
-- Toda corrección debe realizarse por proceso funcional autorizado, lógica aprobada o cambio/transportación controlada.
-
-## Flujo de diagnóstico
+## Flujo funcional de diagnóstico
 
 ```text
 Problema reportado de estado de OT
@@ -41,124 +32,144 @@ Estado sistema   Estado usuario
         │           │
         └─────┬─────┘
               ▼
-JCDS — reconstruir historial de cambios
-              │
-              ▼
-Comparar objeto estándar con monitor/interfaz custom
-              │
-       ┌──────┴──────┐
-       ▼             ▼
-estándar incorrecto  capa custom incorrecta
-       │             │
-flujo funcional     SE93 → SE38/SE80 → ST05/SAT
+JCDS — contexto de historial de cambios
 ```
 
-## Objetos estándar
+Reglas críticas:
 
-| Objeto | Relación | Uso diagnóstico |
-|---|---|---|
-| `AUFK` | `AUFNR -> OBJNR` | Cabecera de OT y punto de entrada al objeto de estados |
-| `AFIH` | `AUFNR` | Contexto de cabecera PM/maintenance cuando sea necesario |
-| `JEST` | `OBJNR + STAT` | Estados de sistema/usuario; `INACT` determina activo/inactivo |
-| `JSTO` | `OBJNR` | Control del objeto de estado y perfil `STSMA` |
-| `TJ02T` | estado sistema + idioma | Resolución de texto de estado de sistema |
-| `TJ30T` | `STSMA + estado usuario + idioma` | Texto del estado de usuario dentro del perfil correcto |
-| `JCDS` | `OBJNR + STAT + CHGNR` | Historial de activación/desactivación y contexto de cambio |
+- `INACT` vacío → registro activo
+- `INACT = X` → registro inactivo/histórico
+- `I....` → familia de estados de sistema
+- `E....` → familia de estados de usuario
+- un estado de usuario debe interpretarse dentro del perfil `STSMA` correspondiente
 
-## Regla crítica de interpretación
+## Artefacto técnico ABAP original
 
-Un código de estado por sí solo no basta.
+Transacción objetivo:
 
-- `INACT` vacío → estado activo en el registro inspeccionado.
-- `INACT = X` → registro inactivo/histórico.
-- `I....` → familia de estados de sistema.
-- `E....` → familia de estados de usuario.
-- Un estado de usuario debe interpretarse junto con el perfil `STSMA`; no se debe asumir que el mismo código interno significa lo mismo en todos los perfiles.
+`ZWM_STATUS_AUDIT_LAB`
 
-## Procedimiento paso a paso
+Reporte ejecutable:
 
-### 1. Baseline funcional — `IW33`
+`ZWM_STATUS_AUDIT_REPORT`
 
-Visualizar la OT y registrar el resumen de estados, contexto de cierre técnico, fechas, tipo de orden y datos de control relevantes.
-
-### 2. Resolver el objeto de estados — `AUFK`
-
-Consultar la cabecera por número de orden y obtener `OBJNR`. Cuando el objeto técnico ya existe en la cabecera, utilizarlo y no reconstruirlo manualmente.
-
-### 3. Leer estados activos e históricos — `JEST`
-
-Primero revisar registros activos (`INACT` vacío). Después contrastar con todo el historial incluyendo inactivos. Nunca interpretar como vigente una fila histórica.
-
-### 4. Resolver textos
-
-Para estados de sistema, resolver el texto con la fuente estándar correspondiente, como `TJ02T`, usando el idioma aplicable.
-
-Para estados de usuario:
-
-1. leer `JSTO` para el objeto de estado;
-2. obtener `STSMA`;
-3. resolver el código de usuario dentro de ese perfil mediante `TJ30T`.
-
-### 5. Reconstruir secuencia — `JCDS`
-
-Ordenar cronológicamente los cambios y revisar estado, activación/inactivación, fecha/hora y contexto disponible de transacción/usuario. El objetivo es identificar qué proceso, job, workflow o transacción provocó el cambio.
-
-### 6. Comparar con la superficie reportada
-
-Si el objeto estándar está correcto pero un monitor/interfaz custom muestra un estado distinto, investigar la selección custom en lugar de modificar la OT estándar.
-
-### 7. Trazar la capa custom cuando sea necesario
+Arquitectura:
 
 ```text
-SE93
-  ↓ identificar objeto ejecutable
-SE38 / SE80
-  ↓ inspeccionar lógica de selección/estado
-ST05
-  ↓ observar tablas/SQL para un caso reproducible
-SAT
-  ↓ seguir el flujo runtime cuando el SQL no sea suficiente
-SU53
-  ↓ revisar autorización si el resultado cambia según usuario
+ZWM_STATUS_AUDIT_LAB
+        │
+        ▼
+ZWM_STATUS_AUDIT_REPORT
+        │
+        ▼
+ZCL_WM_STATUS_AUDIT_SERVICE
+        │
+        ▼
+ZIF_WM_STATUS_SOURCE
+   ┌─────────┴─────────┐
+   ▼                   ▼
+Datasource ECC      Datasource demo
+   │
+   ├── AUFK
+   ├── JSTO
+   ├── JEST
+   ├── TJ02T
+   ├── TJ30T
+   └── JCDS
 ```
 
-## Matriz típica de diagnóstico
+El source revisable está en [`source/`](./source/).
 
-| Hallazgo | Interpretación | Acción siguiente |
-|---|---|---|
-| Estado objetivo activo en `JEST` | El estado realmente está vigente | Revisar el proceso funcional que debía cambiarlo |
-| Estado inactivo en `JEST`, pero la pantalla custom lo muestra | Probable lectura histórica o selección custom | Revisar `INACT`, antecedentes y lógica de selección |
-| Estado no existe en `JEST` | La capa custom puede derivarlo de otra fuente | Trazar tablas custom, RFC/proxy/workflow o lógica calculada |
-| Cierre técnico activo y tratamiento pendiente inactivo | Orden estándar consistente | Escalar solo la discrepancia de visualización/procesamiento |
-| Resultado distinto por usuario | Variante, autorización, ámbito organizativo o buffer | Comparar variantes, `SU53`, parámetros y trace controlado |
+## Qué lee el datasource ECC
 
-## Orientación para desarrollo ABAP
+| Objeto | Uso |
+|---|---|
+| `AUFK` | resolver número de orden a `OBJNR` |
+| `JSTO` | obtener perfil de estados `STSMA` |
+| `JEST` | registros activos e históricos |
+| `TJ02T` | resolver texto de estado de sistema |
+| `TJ30T` | resolver texto de usuario dentro del perfil |
+| `JCDS` | conteo de cambios y última fecha/hora |
 
-Cuando se construya lógica de aplicación, priorizar APIs estándar de estado cuando correspondan en lugar de duplicar semántica mediante lecturas directas no controladas. Cualquier API candidata debe verificarse en la release ECC instalada antes de usarla en productivo.
+El lab público excluye deliberadamente usuario/TCode histórico y toda operación de escritura.
 
-Las lecturas de tablas de este documento son únicamente **evidencia diagnóstica/read-only**.
+## Resultados diagnósticos
 
-## Límite público
+El servicio reporta únicamente condiciones estructurales:
 
-La guía fuente contenía números reales de OT y el nombre de una transacción personalizada. Se excluyen deliberadamente.
+- `OK`
+- `NO_ACTIVE_STATUS`
+- `USER_PROFILE_MISSING`
+- `TEXT_RESOLUTION_GAP`
+
+`OK` **no** significa que la orden esté funcionalmente correcta. Solo significa que el snapshot de estados inspeccionado es estructuralmente resoluble por la lógica del auditor.
+
+## Validación estática
+
+Se prepararon seis vectores deterministas ABAP Unit y fueron trazados consistentemente a nivel de source:
+
+1. estado sistema activo resuelto → `OK`
+2. solo registros históricos → `NO_ACTIVE_STATUS`
+3. estado usuario activo sin `STSMA` → `USER_PROFILE_MISSING`
+4. estado activo sin texto → `TEXT_RESOLUTION_GAP`
+5. separación correcta entre activos e históricos
+6. preservación del resumen de cambios
+
+Resultado:
+
+```text
+Vectores revisados: 6
+Consistentes:       6
+Inconsistencias:    0
+```
+
+Esto es **validación estática/source**, no ejecución ABAP Unit dentro de SAP.
+
+## Salida SALV
+
+El reporte ejecutable está diseñado para mostrar:
+
+- orden / objeto de estados
+- perfil `STSMA`
+- código y clasificación sistema/usuario
+- activo vs. histórico
+- textos
+- número de cambio
+- conteos resumen
+- última fecha/hora de cambio
+- resultado diagnóstico
+
+## Reproducción
+
+- [Build Guide — English](./BUILD_GUIDE.md)
+- [Guía de Construcción — Español](./BUILD_GUIDE.es.md)
+- [Registro de Evidencia](./EVIDENCE.md)
+- [Validación Estática](./STATIC_VALIDATION.md)
+
+El procedimiento documentado utiliza `SE24`, `SE38` y `SE93`, manteniendo `RUNTIME_DEFERRED` hasta disponer de un SAP DEV/sandbox autorizado.
+
+## Seguridad / límite público
 
 Nunca publicar:
 
 - números reales de OT
 - instalaciones o cuentas contrato
-- nombres de transacciones custom internas cuando no aportan al aprendizaje
-- usuarios
-- configuración de empresa/cliente
-- screenshots internos
+- identificadores de cliente/empresa
+- usuarios, SID/mandante, URLs o transportes
+- nombres/source de transacciones custom propietarias
 - procedimientos de edición directa de tablas
+- screenshots con datos empresariales o material de terceros sin derecho de publicación
+
+El artefacto es read-only y no contiene `UPDATE`, `INSERT`, `MODIFY`, `DELETE` ni commit.
 
 ## Qué demuestra
 
 - troubleshooting del modelo de estados de OT SAP
 - separación estado sistema vs. usuario
-- análisis vigente vs. histórico
-- interpretación consciente del perfil de estados
-- reconstrucción por change documents
-- trazabilidad transacción→código
-- diagnóstico SQL/runtime
-- disciplina de escalamiento y seguridad
+- interpretación activo vs. histórico
+- resolución consciente de `STSMA`
+- análisis de historial de cambios
+- diseño ABAP OO clásico
+- abstracción de datasource y pruebas sintéticas
+- reporting SALV
+- límites de evidencia pública orientados a seguridad
