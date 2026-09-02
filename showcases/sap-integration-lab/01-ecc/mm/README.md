@@ -3,7 +3,7 @@
 [Versión en español](./README.es.md)
 
 > **Scope:** SAP ECC / classic MM  
-> **Current maturity:** functional evidence + two source-ready/static-validated ABAP packs
+> **Current maturity:** functional evidence + three source-ready/static-validated ABAP packs
 
 This track is intentionally separated from SAP S/4HANA. It documents classic MM functional knowledge and ECC-oriented ABAP engineering without presenting direct-table patterns as Clean Core evidence.
 
@@ -28,31 +28,39 @@ This track is intentionally separated from SAP S/4HANA. It documents classic MM 
 
 `FUNCTIONAL_EVIDENCE_READY / ABAP_SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
 
-The functional layer documents framework-contract/service-procurement workflow derived from sanitized operational material. The technical layer now includes the original read-only `ZMM_CONTRACT_AUDIT` source pack:
+Original read-only `ZMM_CONTRACT_AUDIT` source over `EKKO/EKPO`, contract-validity diagnostics, SALV, 8 deterministic vectors and bilingual build/evidence documentation.
+
+### 3. Purchasing Analytics — PR → PO → Schedule Lines
+
+[Purchasing Analytics](./purchasing-analytics/README.md)
+
+`SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+
+Original read-only `ZMM_PURCH_ANALYTICS` source:
 
 ```text
-ZMM_CONTRACT_AUDIT_REPORT
-        ↓
-ZCL_MM_CONTRACT_AUDIT_SERVICE
-        ↓
-ZIF_MM_CONTRACT_SOURCE
-   ├── ECC → EKKO / EKPO
-   └── Demo → synthetic data
+EBAN
+  ↓ optional EBELN/EBELP reference
+EKKO / EKPO
+  ↓
+EKET
 ```
 
 Evidence includes:
 
-- validity audit
-- vendor/purchasing-organization context
-- target value and target-item indicators
-- active-item count
-- `ACTIVE / EXPIRING_SOON / EXPIRED`
-- `NOT_YET_VALID / INVALID_VALIDITY / VALIDITY_INCOMPLETE / NO_ITEMS`
-- SALV report source
-- 8 deterministic ABAP Unit vectors traced consistently
-- bilingual build/evidence documentation
+- PR item visibility
+- optional downstream PO resolution
+- purchasing organization/vendor context
+- schedule-line count and delivery-date context
+- deletion indicators
+- `PR_ONLY / REFERENCE_GAP`
+- `PO_WITHOUT_SCHEDULE / PO_WITH_SCHEDULE`
+- `PR_DELETED / PO_ITEM_DELETED`
+- SALV report
+- 7 deterministic ABAP Unit vectors traced consistently
+- bilingual `SE24 / SE38 / SE93` build guide
 
-The first source intentionally does not traverse service-package hierarchies.
+A PR without PO is deliberately not classified as an error.
 
 ## Functional MM evidence
 
@@ -67,8 +75,8 @@ Derived from operational material covering:
 
 ## Next technical progression
 
-1. Purchasing Analytics — Purchase Requisition / Purchase Order visibility
-2. service-package relationships only after release/scenario verification
+1. service-package relationships only after release/scenario verification
+2. deeper purchasing history/GR visibility only after defining a bounded evidence case
 3. future runtime validation when an authorized SAP DEV/sandbox exists
 
 ## ECC boundary

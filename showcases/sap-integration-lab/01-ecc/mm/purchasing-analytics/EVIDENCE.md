@@ -1,16 +1,72 @@
-# Evidence Boundary — `ZMM_PURCH_ANALYTICS`
+# Evidence Record — `ZMM_PURCH_ANALYTICS`
 
-> **Current status:** `DESIGN_READY / SOURCE_NOT_YET_IMPLEMENTED`
+> **Current maturity:** `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
 
-This file reserves the evidence gate for the next ECC MM artifact.
+## Reviewable source
 
-Planned acceptance criteria:
+The public source pack contains:
 
-- original read-only source exists
-- ECC classic model is documented separately from S/4HANA APIs
-- synthetic datasource exists for deterministic tests
-- PR/PO relationship logic is explicit and reviewable
-- no employer/customer identifiers are present
-- no purchasing document write/commit operation exists
-- static vectors are reviewed before any runtime claim
-- SAP runtime remains unclaimed until authorized execution exists
+- `ZCX_MM_PURCH_NOT_FOUND`
+- `ZIF_MM_PURCH_SOURCE`
+- `ZCL_MM_PURCH_SOURCE_DEMO`
+- `ZCL_MM_PURCH_SOURCE_ECC`
+- `ZCL_MM_PURCH_ANALYTICS_SERVICE`
+- local ABAP Unit classes
+- `ZMM_PURCH_ANALYTICS_REPORT`
+
+## Standard read-only model
+
+The ECC datasource is limited to:
+
+- `EBAN` — Purchase Requisition item and optional downstream PO reference
+- `EKKO` — PO header context
+- `EKPO` — PO item context and deletion indicator
+- `EKET` — schedule-line delivery-date context
+
+No purchase-document creation/change API is used.
+
+## Static validation
+
+Prepared deterministic vectors: **7**.
+
+```text
+Vectors reviewed: 7
+Consistent:       7
+Mismatches:       0
+```
+
+Covered diagnostics:
+
+1. `PR_ONLY`
+2. `REFERENCE_GAP`
+3. `PO_WITHOUT_SCHEDULE`
+4. `PO_WITH_SCHEDULE`
+5. `PR_DELETED`
+6. `PO_ITEM_DELETED`
+7. synthetic demo-source roundtrip
+
+This is source/static evidence, not executed ABAP Unit runtime.
+
+## Integrity controls
+
+- no `UPDATE`
+- no `INSERT`
+- no database `MODIFY`
+- no `DELETE`
+- no BAPI document creation/change
+- no `BAPI_TRANSACTION_COMMIT`
+- no employer/customer source copied
+- no real PR/PO/vendor/material values published
+
+## Runtime promotion gate
+
+Future promotion requires an authorized SAP ECC DEV/sandbox and recorded sanitized evidence for:
+
+- syntax checks
+- object activation
+- ABAP Unit execution
+- `SE38` report execution
+- `SE93` transaction execution
+- SALV output
+
+Until then: `RUNTIME_DEFERRED`.

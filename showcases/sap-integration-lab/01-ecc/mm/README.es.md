@@ -3,7 +3,7 @@
 [English version](./README.md)
 
 > **Alcance:** SAP ECC / MM clásico  
-> **Madurez actual:** evidencia funcional + dos packs ABAP source-ready/validados estáticamente
+> **Madurez actual:** evidencia funcional + tres packs ABAP source-ready/validados estáticamente
 
 Esta línea se mantiene separada de SAP S/4HANA. Documenta conocimiento funcional MM clásico e ingeniería ABAP orientada a ECC sin presentar patrones de acceso directo como evidencia Clean Core.
 
@@ -28,31 +28,39 @@ Esta línea se mantiene separada de SAP S/4HANA. Documenta conocimiento funciona
 
 `FUNCTIONAL_EVIDENCE_READY / ABAP_SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
 
-La capa funcional documenta contratos marco/servicios a partir de material operativo sanitizado. La capa técnica ya incluye el desarrollo original read-only `ZMM_CONTRACT_AUDIT`:
+Source original read-only `ZMM_CONTRACT_AUDIT` sobre `EKKO/EKPO`, diagnóstico de vigencia, SALV, 8 vectores deterministas y documentación bilingüe.
+
+### 3. Purchasing Analytics — PR → PO → líneas de reparto
+
+[Purchasing Analytics](./purchasing-analytics/README.es.md)
+
+`SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+
+Source original read-only `ZMM_PURCH_ANALYTICS`:
 
 ```text
-ZMM_CONTRACT_AUDIT_REPORT
-        ↓
-ZCL_MM_CONTRACT_AUDIT_SERVICE
-        ↓
-ZIF_MM_CONTRACT_SOURCE
-   ├── ECC → EKKO / EKPO
-   └── Demo → datos sintéticos
+EBAN
+  ↓ referencia opcional EBELN/EBELP
+EKKO / EKPO
+  ↓
+EKET
 ```
 
 Evidencia:
 
-- auditoría de vigencia
-- contexto proveedor/organización de compras
-- valor objetivo e indicadores target por posición
-- conteo de posiciones activas
-- `ACTIVE / EXPIRING_SOON / EXPIRED`
-- `NOT_YET_VALID / INVALID_VALIDITY / VALIDITY_INCOMPLETE / NO_ITEMS`
-- source de reporte SALV
-- 8 vectores ABAP Unit trazados consistentemente
-- documentación bilingüe de construcción/evidencia
+- visibilidad de posición PR
+- resolución opcional del PO downstream
+- contexto organización de compras/proveedor
+- conteo de líneas de reparto y fechas de entrega
+- indicadores de borrado
+- `PR_ONLY / REFERENCE_GAP`
+- `PO_WITHOUT_SCHEDULE / PO_WITH_SCHEDULE`
+- `PR_DELETED / PO_ITEM_DELETED`
+- reporte SALV
+- 7 vectores ABAP Unit trazados consistentemente
+- guía bilingüe `SE24 / SE38 / SE93`
 
-La primera versión no recorre jerarquías de paquetes de servicios.
+Una PR sin PO no se clasifica como error.
 
 ## Evidencia funcional MM
 
@@ -67,8 +75,8 @@ Derivada de material operativo sobre:
 
 ## Próxima progresión técnica
 
-1. Purchasing Analytics — visibilidad de solicitudes y pedidos
-2. relaciones de paquetes de servicios solo después de verificación por release/escenario
+1. relaciones de paquetes de servicios solo después de verificación por release/escenario
+2. historial de compras/GR más profundo solo con un caso acotado y verificable
 3. runtime futuro cuando exista DEV/sandbox SAP autorizado
 
 ## Límite ECC
