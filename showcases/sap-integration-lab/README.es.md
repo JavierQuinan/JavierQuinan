@@ -33,14 +33,6 @@ Este laboratorio transforma experiencia operativa SAP y especialización técnic
 | `RUNTIME_VALIDATED` | ejecución real SAP documentada |
 | `TEST_VALIDATED` | runtime SAP + pruebas reproducibles |
 
-## Diagnóstico técnico ECC
-
-[ABAP Debugging & Technical Diagnostics](./01-ecc/technical-diagnostics/README.es.md)
-
-Metodología publicada:
-
-`SE93 -> SE24/SE37/SE38/SE80 -> /H/breakpoints/debugger -> ST22/SM21 -> SM50/SM66`.
-
 ## SAP ECC MM
 
 [MM Evidence Track](./01-ecc/mm/README.es.md)
@@ -49,12 +41,7 @@ Metodología publicada:
 
 `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
 
-- ABAP OO y abstracción de datasource
-- lectura `MARA/MARC/MARD`
-- SALV
-- separación planta/almacén endurecida
-- 6 vectores ABAP Unit trazados consistentemente
-- procedimiento `SE24/SE38/SE93`
+ABAP OO clásico, lectura `MARA/MARC/MARD`, SALV, seis vectores deterministas y procedimiento reproducible `SE24/SE38/SE93`.
 
 ### Contratación de Servicios y `ZMM_CONTRACT_AUDIT`
 
@@ -62,36 +49,42 @@ Metodología publicada:
 
 `FUNCTIONAL_EVIDENCE_READY / ABAP_SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
 
-- workflow funcional de contratos marco derivado de evidencia operativa sanitizada
-- datasource read-only `EKKO/EKPO`
-- proveedor/organización de compras/vigencia
-- target value e indicadores de cantidad/valor por posición
-- source SALV
-- 8 vectores ABAP Unit trazados consistentemente
-- guía bilingüe de construcción/evidencia
-
-Ningún pack ABAP afirma activación/runtime SAP mientras no se utilice un DEV/sandbox autorizado para la evidencia.
+Source read-only `EKKO/EKPO`, diagnóstico de vigencia contractual, SALV, ocho vectores deterministas y documentación bilingüe.
 
 ## SAP ECC IS-U / Work Management
 
 [IS-U / WM Evidence Track](./01-ecc/isu/README.es.md)
 
-Evidencia sanitizada publicada:
+### `ZWM_STATUS_AUDIT_LAB`
 
-- [Operación Work Management](./01-ecc/isu/functional-evidence/work-management-operations/README.es.md)
-- [Auditoría de estados de OT](./01-ecc/isu/work-management/status-audit/README.es.md)
-- [Gobierno de procesamiento masivo](./01-ecc/isu/work-management/batch-order-governance/README.es.md)
-- [Habilitación de materiales de sellos — MM↔WM](./01-ecc/isu/work-management/seals-material-enablement/README.es.md)
-- [Consistencia de equipamiento — IS-U↔CRM](./01-ecc/isu/device-management/pec-equipment-consistency/README.es.md)
-- [Alta de servicio fotovoltaico](./01-ecc/isu/master-data/photovoltaic-service-onboarding/README.es.md)
-- [Recuperación CRM↔IS-U de fin contractual/DCDE](./01-ecc/isu/crm-isu-integration/dcde-recovery/README.es.md)
-- [Servicio ocasional con medición CRM→WM→CRM](./01-ecc/isu/crm-isu-integration/occasional-metered-service/README.es.md)
+[Auditoría de Estados de OT](./01-ecc/isu/work-management/status-audit/README.es.md)
+
+`FUNCTIONAL_TECHNICAL_EVIDENCE_READY / SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+
+El primer pack ABAP WM combina troubleshooting operativo sanitizado con source original read-only:
+
+- `AUFK -> OBJNR`
+- `JSTO -> STSMA`
+- `JEST` activo/histórico
+- resolución `TJ02T` / `TJ30T`
+- contexto de cambios `JCDS`
+- datasource ECC + demo
+- servicio ABAP OO
+- reporte SALV
+- seis vectores ABAP Unit trazados consistentemente
+- guía bilingüe `SE24/SE38/SE93`
+
+La línea también contiene evidencia sanitizada de operación de OT, gobierno batch, sellos MM↔WM, consistencia de equipamiento, alta fotovoltaica, recuperación de fin contractual y servicio ocasional con medición.
+
+## Diagnóstico técnico ECC
+
+[ABAP Debugging & Technical Diagnostics](./01-ecc/technical-diagnostics/README.es.md)
+
+Metodología: `SE93 -> SE24/SE37/SE38/SE80 -> /H/breakpoints/debugger -> ST22/SM21 -> SM50/SM66`.
 
 ## SAP ECC / CRM-SD
 
-[SD Evidence Track](./01-ecc/sd/README.es.md)
-
-Publicado: [Facturación de Servicios No Energéticos](./01-ecc/sd/non-energy-billing/README.es.md).
+[SD Evidence Track](./01-ecc/sd/README.es.md) — evidencia sanitizada de facturación de servicios no energéticos.
 
 ## SAP S/4HANA
 
@@ -103,18 +96,7 @@ Publicado: [Facturación de Servicios No Energéticos](./01-ecc/sd/non-energy-bi
 
 `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_VALIDATED / S4_RUNTIME_NOT_CLAIMED`
 
-El primer artefacto ejecutable del lado de integración S/4 es un cliente TypeScript read-only sin dependencias externas que demuestra:
-
-- lectura de pedidos y solicitudes
-- abstracción de transporte
-- validación OData
-- query construction
-- correlation/request IDs
-- HTTPS obligatorio
-- tests deterministas
-- GitHub Actions
-
-Resultado CI observado: **6 tests / 6 pass / 0 fail** con Node 22. Esto valida el cliente, no conectividad con un tenant S/4HANA.
+Cliente TypeScript read-only con lectura de pedidos/solicitudes, validación OData, correlation/request IDs, HTTPS obligatorio y quality gate observado en GitHub Actions: **6 tests / 6 pass / 0 fail** con Node 22.
 
 Dirección de interfaces:
 
@@ -134,7 +116,11 @@ Dirección de interfaces:
 
 [RAP Evidence Roadmap](./02-s4hana/rap/README.es.md) — `DESIGN_READY / IMPLEMENTATION_PLANNED`
 
-Primer BO previsto: **MM Replenishment Review**.
+## Evidencia visual
+
+La [Política de Evidencia Visual](./VISUAL_EVIDENCE_POLICY.es.md) define cuándo pueden agregarse capturas, qué sanitización es obligatoria y la regla de no republicar material de terceros sin derechos claros.
+
+Las capturas son evidencia de apoyo; source, tests y documentación reproducible siguen siendo la evidencia principal.
 
 ## Política bilingüe
 
@@ -142,7 +128,7 @@ Primer BO previsto: **MM Replenishment Review**.
 
 ## Confidencialidad / integridad
 
-Nunca se publica empresa/cliente ni código propietario, materiales/proveedores/contratos/instalaciones/OT/BP/medidores reales, source/configuración Z propietaria, endpoints internos, credenciales, transportes, certificados privados o capturas empresariales no sanitizadas.
+Nunca se publica empresa/cliente ni código propietario, materiales/proveedores/contratos/instalaciones/OT/BP/medidores reales, source Z propietario, endpoints internos, credenciales, transportes, certificados privados o capturas empresariales no sanitizadas.
 
 ## Matriz actual
 
@@ -150,8 +136,9 @@ Nunca se publica empresa/cliente ni código propietario, materiales/proveedores/
 |---|---|---|
 | Diagnóstico ECC | debugging/troubleshooting | `PROCEDURE_READY` |
 | ECC MM Inventario | ABAP source + 6 vectores + runbook | `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED` |
-| ECC MM Servicios | funcional + `ZMM_CONTRACT_AUDIT` + 8 vectores | `ABAP_SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED` |
-| ECC IS-U / WM | 8 packs sanitizados | `FUNCTIONAL_TECHNICAL_EVIDENCE_READY` |
+| ECC MM Servicios | `ZMM_CONTRACT_AUDIT` + 8 vectores | `SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED` |
+| ECC IS-U / WM Estados | `ZWM_STATUS_AUDIT_LAB` + 6 vectores | `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED` |
+| ECC IS-U / WM Operación | packs sanitizados | `FUNCTIONAL_TECHNICAL_EVIDENCE_READY` |
 | ECC / CRM-SD | facturación no energética | `FUNCTIONAL_EVIDENCE_READY` |
 | S/4 MM APIs | cliente TypeScript + CI | `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_VALIDATED` |
 | S/4 Migration | Migration Cockpit | `RESEARCH_VALIDATED` |
@@ -160,8 +147,8 @@ Nunca se publica empresa/cliente ni código propietario, materiales/proveedores/
 
 ## Próximos hitos
 
-1. implementar **IS-U/WM `ZWM_STATUS_AUDIT_LAB`** sintético
-2. construir Purchasing Analytics ECC para PR/PO
-3. endurecer el cliente S/4 con paginación/retry/schemas por release
+1. construir **ECC MM Purchasing Analytics** para visibilidad PR/PO
+2. construir `ZWM_ORDER_MONITOR_LAB` read-only/sintético
+3. endurecer cliente S/4 con paginación/retry/schemas por release
 4. crear primer source RAP cuando exista workflow/entorno ABAP Cloud adecuado
 5. añadir runtime SAP solo mediante entorno autorizado

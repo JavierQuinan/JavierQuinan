@@ -3,7 +3,7 @@
 [Versión en español](./README.es.md)
 
 > **Scope:** SAP ECC IS-U / Work Management / CRM integration  
-> **Current maturity:** multiple sanitized functional/technical evidence packs published; ABAP labs planned
+> **Current maturity:** sanitized functional/technical evidence published; first WM ABAP source pack static-validated
 
 This track is intentionally independent from S/4HANA. It converts operational utilities experience into reviewable evidence while removing customer/company configuration and real identifiers.
 
@@ -15,11 +15,13 @@ This track is intentionally independent from S/4HANA. It converts operational ut
 
 Covers `IW38`, work-order lifecycle, individual/mass creation concepts, `IW32` assignment/release/completion, automated planning, `SM37` monitoring and CRM↔WM process dependencies.
 
-### Work Order Status Audit
+### Work Order Status Audit — functional + ABAP source
 
 [Work Order Status Audit](./work-management/status-audit/README.md)
 
-Advanced read-only troubleshooting using:
+Status: `FUNCTIONAL_TECHNICAL_EVIDENCE_READY / SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
+
+Evidence:
 
 - `IW33`
 - `AUFK -> OBJNR`
@@ -27,7 +29,12 @@ Advanced read-only troubleshooting using:
 - `JSTO -> STSMA`
 - `TJ02T` / `TJ30T`
 - `JCDS`
-- `SE93`, `SE38`, `SE80`, `ST05`, `SAT`, `SU53`
+- original datasource abstraction
+- ECC and demo datasources
+- ABAP OO audit service
+- SALV report
+- six deterministic ABAP Unit vectors traced consistently at source level
+- reproducible `SE24` / `SE38` / `SE93` build guide
 
 ### Batch Work-Order Governance
 
@@ -59,7 +66,7 @@ Sanitized chain:
 
 [Contract-End / DCDE Recovery](./crm-isu-integration/dcde-recovery/README.md)
 
-Shows process recovery when an incomplete CRM contract-end flow does not produce the expected downstream work order: restore the contract to a valid business state, then rerun the official process.
+Shows process recovery when an incomplete CRM contract-end flow does not produce the expected downstream work order.
 
 ### Occasional Metered Service
 
@@ -69,16 +76,15 @@ End-to-end CRM→WM→CRM evidence covering customer/agreement/contract setup, t
 
 ## Technical boundary
 
-The public evidence may document standard read-only diagnostic objects, but it does not publish direct data-manipulation shortcuts, proprietary `Z*` implementation details, credentials or customer-specific process IDs.
+The public evidence documents standard read-only diagnostic objects and original portfolio source only. It does not publish direct data-manipulation shortcuts, proprietary employer/customer `Z*` implementations, credentials or real process identifiers.
 
-No real installation, contract account, contract, business partner, device/meter, work order, CUEN/service identifier, customer address or employee data may appear publicly.
+## Engineering progression
 
-## Planned ABAP / engineering progression
+1. **completed:** `ZWM_STATUS_AUDIT_LAB` source/static evidence
+2. compare standard status APIs vs. direct diagnostic reads when release/runtime is available
+3. build `ZWM_ORDER_MONITOR_LAB` with synthetic/read-only order visibility
+4. build batch eligibility/idempotency lab with synthetic orders
+5. build MM↔Seal configuration-consistency checker
+6. model CRM↔IS-U integration state/retry/compensation patterns
 
-1. synthetic Work Order Status Audit report/service
-2. status API vs. direct diagnostic-read comparison
-3. batch eligibility/idempotency lab with synthetic orders
-4. MM↔Seal configuration consistency checker
-5. CRM↔IS-U integration state-machine/compensation lab
-
-Any ABAP artifact follows the SAP Evidence Governance gate. Source/static evidence remains separate from SAP runtime claims.
+Any ABAP artifact follows SAP Evidence Governance. Static/source evidence remains separate from SAP runtime claims.

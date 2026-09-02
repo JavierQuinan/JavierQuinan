@@ -33,16 +33,6 @@ This lab converts SAP operational experience and technical specialization into r
 | `RUNTIME_VALIDATED` | execution captured in an appropriate SAP environment |
 | `TEST_VALIDATED` | SAP runtime plus reproducible test evidence |
 
-## ECC Technical Diagnostics
-
-[ABAP Debugging & Technical Diagnostics](./01-ecc/technical-diagnostics/README.md)
-
-Published methodology:
-
-`SE93 -> SE24/SE37/SE38/SE80 -> /H/breakpoints/debugger -> ST22/SM21 -> SM50/SM66`.
-
-This demonstrates troubleshooting method without claiming Basis privileges or production debugging.
-
 ## SAP ECC MM
 
 [MM Evidence Track](./01-ecc/mm/README.md)
@@ -51,12 +41,7 @@ This demonstrates troubleshooting method without claiming Basis privileges or pr
 
 `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
 
-- ABAP OO and datasource abstraction
-- read-only `MARA/MARC/MARD`
-- SALV
-- plant/storage stock semantics hardened
-- six deterministic ABAP Unit vectors traced consistently
-- reproducible `SE24/SE38/SE93` procedure
+Classic ABAP OO, read-only `MARA/MARC/MARD`, SALV, six deterministic vectors and reproducible `SE24/SE38/SE93` procedure.
 
 ### Service Procurement & `ZMM_CONTRACT_AUDIT`
 
@@ -64,38 +49,42 @@ This demonstrates troubleshooting method without claiming Basis privileges or pr
 
 `FUNCTIONAL_EVIDENCE_READY / ABAP_SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
 
-- framework-contract functional workflow derived from sanitized operational evidence
-- read-only `EKKO/EKPO` datasource
-- vendor/purchasing-organization/validity context
-- target value and quantity/value item indicators
-- SALV report source
-- eight deterministic ABAP Unit vectors traced consistently
-- bilingual build/evidence guide
-
-Neither ABAP pack claims SAP activation/runtime while an authorized DEV/sandbox is not used for portfolio execution.
+Read-only `EKKO/EKPO` source, contract validity diagnostics, SALV, eight deterministic vectors and bilingual build/evidence documentation.
 
 ## SAP ECC IS-U / Work Management
 
 [IS-U / WM Evidence Track](./01-ecc/isu/README.md)
 
-Published sanitized evidence includes:
+### `ZWM_STATUS_AUDIT_LAB`
 
-- [Work Management operations](./01-ecc/isu/functional-evidence/work-management-operations/README.md)
-- [Work-order status audit](./01-ecc/isu/work-management/status-audit/README.md)
-- [Batch work-order governance](./01-ecc/isu/work-management/batch-order-governance/README.md)
-- [Seal material enablement — MM↔WM](./01-ecc/isu/work-management/seals-material-enablement/README.md)
-- [Equipment consistency — IS-U↔CRM](./01-ecc/isu/device-management/pec-equipment-consistency/README.md)
-- [Photovoltaic service onboarding](./01-ecc/isu/master-data/photovoltaic-service-onboarding/README.md)
-- [CRM↔IS-U contract-end/DCDE recovery](./01-ecc/isu/crm-isu-integration/dcde-recovery/README.md)
-- [Occasional metered service CRM→WM→CRM](./01-ecc/isu/crm-isu-integration/occasional-metered-service/README.md)
+[Work Order Status Audit](./01-ecc/isu/work-management/status-audit/README.md)
+
+`FUNCTIONAL_TECHNICAL_EVIDENCE_READY / SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+
+The first WM ABAP source pack combines sanitized operational troubleshooting with original read-only engineering source:
+
+- `AUFK -> OBJNR`
+- `JSTO -> STSMA`
+- `JEST` active/historical status records
+- `TJ02T` / `TJ30T` text resolution
+- `JCDS` change-summary context
+- ECC + demo datasource abstraction
+- ABAP OO audit service
+- SALV report
+- six deterministic ABAP Unit vectors traced consistently
+- bilingual `SE24/SE38/SE93` build guide
+
+Additional sanitized WM/IS-U evidence includes work-order operations, batch governance, seal-material enablement, equipment consistency, photovoltaic onboarding, CRM contract-end recovery and occasional metered-service flow.
+
+## ECC Technical Diagnostics
+
+[ABAP Debugging & Technical Diagnostics](./01-ecc/technical-diagnostics/README.md)
+
+Methodology: `SE93 -> SE24/SE37/SE38/SE80 -> /H/breakpoints/debugger -> ST22/SM21 -> SM50/SM66`.
 
 ## SAP ECC / CRM-SD
 
-[SD Evidence Track](./01-ecc/sd/README.md)
-
-Published:
-
-- [Non-Energy Service Billing Workflow](./01-ecc/sd/non-energy-billing/README.md)
+[SD Evidence Track](./01-ecc/sd/README.md) — sanitized non-energy service billing evidence.
 
 ## SAP S/4HANA
 
@@ -107,18 +96,7 @@ Published:
 
 `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_VALIDATED / S4_RUNTIME_NOT_CLAIMED`
 
-The first executable S/4 integration-side artifact is a dependency-free TypeScript read-only client demonstrating:
-
-- Purchase Order and Purchase Requisition reads
-- transport abstraction
-- OData response validation
-- query construction
-- correlation/request ID handling
-- HTTPS enforcement
-- deterministic tests
-- GitHub Actions quality gate
-
-Observed CI result: **6 tests / 6 pass / 0 fail** on Node 22. This validates the client source, not connectivity to an S/4HANA tenant.
+The first executable S/4 integration-side artifact is a dependency-free TypeScript read-only client with Purchase Order/Requisition reads, OData validation, correlation/request IDs, HTTPS enforcement and a GitHub Actions gate observed at **6 tests / 6 pass / 0 fail** on Node 22.
 
 Released-interface direction:
 
@@ -138,15 +116,19 @@ Released-interface direction:
 
 [RAP Evidence Roadmap](./02-s4hana/rap/README.md) — `DESIGN_READY / IMPLEMENTATION_PLANNED`
 
-First planned BO: **MM Replenishment Review**.
+## Visual evidence
+
+[Visual Evidence Policy](./VISUAL_EVIDENCE_POLICY.md) defines when screenshots may be added, required sanitization and the rule against republishing third-party training material without clear publication rights.
+
+Screenshots are supporting evidence only; source, tests and reproducible documentation remain the primary evidence.
 
 ## Bilingual standard
 
-Substantial artifacts use `README.md` for English-first international documentation and `README.es.md` for the complete Spanish version. Code identifiers remain in English.
+Substantial artifacts use `README.md` for English-first international documentation and `README.es.md` for complete Spanish documentation. Code identifiers remain in English.
 
 ## Confidentiality / integrity rules
 
-Never publish company/customer identities or source, real materials/vendors/contracts/installations/work orders/BP IDs/meters, proprietary Z source/configuration, internal endpoints, credentials, transport IDs, private certificates or unsanitized enterprise screenshots.
+Never publish customer/company identities, real materials/vendors/contracts/installations/work orders/BP IDs/meters, proprietary employer/customer Z source, internal endpoints, credentials, transport IDs, private certificates or unsanitized enterprise screenshots.
 
 ## Current evidence matrix
 
@@ -154,8 +136,9 @@ Never publish company/customer identities or source, real materials/vendors/cont
 |---|---|---|
 | ECC Technical Diagnostics | debugging/diagnostics procedure | `PROCEDURE_READY` |
 | ECC MM Inventory | ABAP source + 6-vector static trace + runbook | `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED` |
-| ECC MM Services | functional evidence + `ZMM_CONTRACT_AUDIT` source + 8-vector trace | `ABAP_SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED` |
-| ECC IS-U / WM | 8 sanitized operational/troubleshooting packs | `FUNCTIONAL_TECHNICAL_EVIDENCE_READY` |
+| ECC MM Services | `ZMM_CONTRACT_AUDIT` + 8-vector trace | `SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED` |
+| ECC IS-U / WM Status | `ZWM_STATUS_AUDIT_LAB` + 6-vector trace | `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED` |
+| ECC IS-U / WM Operations | sanitized operational/troubleshooting packs | `FUNCTIONAL_TECHNICAL_EVIDENCE_READY` |
 | ECC / CRM-SD | non-energy billing pack | `FUNCTIONAL_EVIDENCE_READY` |
 | S/4HANA MM APIs | TypeScript Procurement API client + CI | `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_VALIDATED` |
 | S/4HANA Migration | Migration Cockpit research/design | `RESEARCH_VALIDATED` |
@@ -164,8 +147,8 @@ Never publish company/customer identities or source, real materials/vendors/cont
 
 ## Next engineering milestones
 
-1. implement the synthetic **IS-U/WM `ZWM_STATUS_AUDIT_LAB`**
-2. build ECC Purchasing Analytics for PR/PO visibility
+1. build **ECC MM Purchasing Analytics** for PR/PO visibility
+2. build `ZWM_ORDER_MONITOR_LAB` for read-only/synthetic work-order monitoring
 3. harden the S/4 Procurement client with pagination/retry/release-specific schemas
 4. create the first RAP source package when an appropriate ABAP Cloud workflow/environment is available
 5. add SAP runtime proof only through an authorized environment

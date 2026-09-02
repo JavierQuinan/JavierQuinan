@@ -104,7 +104,7 @@ The lab now contains:
 
 - **ECC MM Inventory & Stock Risk** — ABAP OO, read-only `MARA/MARC/MARD`, SALV, 6 deterministic ABAP Unit vectors statically traced and a reproducible `SE24/SE38/SE93` procedure.
 - **ECC MM Service Procurement / `ZMM_CONTRACT_AUDIT`** — sanitized framework-contract evidence plus original read-only `EKKO/EKPO` ABAP source, SALV, 8 deterministic test vectors and bilingual build/evidence documentation.
-- **ECC IS-U / Work Management** — work-order operations, status audit, batch governance, seal-material enablement, equipment consistency, photovoltaic onboarding, CRM contract-end recovery and occasional metered-service flow.
+- **ECC IS-U / Work Management / `ZWM_STATUS_AUDIT_LAB`** — original read-only ABAP source over `AUFK/JSTO/JEST/TJ02T/TJ30T/JCDS`, datasource abstraction, SALV, 6 deterministic vectors and bilingual build/evidence documentation, backed by sanitized real troubleshooting guidance.
 - **ECC / CRM-SD** — sanitized non-energy service billing evidence.
 - **S/4HANA MM Procurement API Client** — actual TypeScript read-only source with transport abstraction, OData validation, error/correlation-ID handling and a GitHub Actions gate observed at **6/6 tests PASS**. This validates the client source, not a real S/4HANA tenant connection.
 - **S/4HANA Migration Cockpit** — documentation-grounded migration lifecycle evidence, explicitly research-level rather than hands-on runtime.
@@ -129,16 +129,16 @@ SAP runtime claims remain separate from source/static/CI evidence. ECC runtime i
 2. [Motorix ERP / SaaS Showcase](showcases/motorix/README.md) — **published**
 3. [FITBA Web + Mobile Showcase](showcases/fitba/README.md) — **published**
 4. [LegalTech Platform Showcase](showcases/legaltech/README.md) — **published**
-5. [SAP Integration Lab](showcases/sap-integration-lab/README.md) — **ECC functional library + two ABAP source packs + CI-validated S/4 integration client published**
+5. [SAP Integration Lab](showcases/sap-integration-lab/README.md) — **ECC functional library + three ABAP source packs + CI-validated S/4 integration client published**
 6. [Parking Android](https://github.com/JavierQuinan/parqueadero_android) — **Kotlin/native Android open-source revival in progress**
 
 ## Español
 
 Soy **Ingeniero en Software, Abogado y Full Stack Engineer**, especializado en productos SaaS empresariales, aplicaciones web/móviles, arquitectura multi-tenant e integraciones. Mi stack principal incluye Angular, React, TypeScript, NestJS, Node.js, PostgreSQL y Supabase; en móvil mantengo evidencia de **Android nativo con Kotlin**, además de React Native/Expo.
 
-En SAP, mi evidencia pública separa tres niveles: **experiencia funcional/operativa ECC**, **ingeniería ABAP demostrable a nivel de source/validación estática**, y **evolución moderna S/4HANA / ABAP Cloud / RAP orientada a APIs liberadas y Clean Core**. Actualmente existen dos packs ABAP ECC revisables y un cliente TypeScript S/4 Procurement con **6/6 pruebas verdes en CI**, sin atribuirle una conexión SAP que no se haya ejecutado realmente.
+En SAP, mi evidencia pública separa tres niveles: **experiencia funcional/operativa ECC**, **ingeniería ABAP demostrable a nivel de source/validación estática**, y **evolución moderna S/4HANA / ABAP Cloud / RAP orientada a APIs liberadas y Clean Core**. Actualmente existen tres packs ABAP ECC revisables —incluyendo MM e IS-U/WM— y un cliente TypeScript S/4 Procurement con **6/6 pruebas verdes en CI**, sin atribuirle una conexión SAP que no se haya ejecutado realmente.
 
-Las guías reales de MM, IS-U/WM, CRM y SD se publican únicamente en versiones sanitizadas y bilingües.
+Las guías reales de MM, IS-U/WM, CRM y SD se publican únicamente en versiones sanitizadas y bilingües. La evidencia visual se utiliza solo cuando puede publicarse legítimamente y después de sanitizar datos empresariales.
 
 ---
 
