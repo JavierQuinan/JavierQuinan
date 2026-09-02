@@ -1,115 +1,85 @@
-# SAP S/4HANA — Línea de Evidencia ABAP Cloud / Clean Core
+# SAP S/4HANA — Guía Técnica ABAP Cloud / Clean Core
 
 [English version](./README.md)
 
-> **Tipo de evidencia:** arquitectura/investigación  
-> **Estado:** `RESEARCH_VALIDATED / IMPLEMENTATION_PLANNED`  
+> **Tipo de evidencia:** guía de arquitectura basada en documentación  
 > **Claim runtime:** ninguno
 
-Esta línea define las reglas que deberá cumplir la evidencia técnica S/4HANA futura. Se mantiene completamente separada de ABAP clásico ECC.
+Esta guía explica las reglas de ingeniería utilizadas en este portafolio para diferenciar ABAP clásico ECC de diseño S/4HANA Clean Core / ABAP Cloud.
 
 ## Principio central
 
-**Un patrón clásico ECC no constituye automáticamente evidencia de ingeniería Clean Core en S/4HANA.**
+**Los patrones clásicos ECC no se presentan como prueba automática de ingeniería Clean Core en S/4HANA.**
 
-La evidencia ABAP Cloud priorizará puntos de extensión y APIs liberadas.
+Las extensiones S/4HANA deben priorizar objetos SAP liberados, APIs liberadas y puntos de extensión documentados adecuados para la release objetivo.
 
 ## Contratos de liberación
 
-SAP documenta, entre otros:
+La guía registra la distinción práctica entre contratos de liberación utilizados en escenarios ABAP Cloud:
 
-- **C0 — Extend**: escenarios de extensibilidad
-- **C1 — Use System-Internally**: consumo estable de objetos liberados dentro del sistema y entre componentes
-- **C2 — Use as Remote API**: consumo remoto para integración/extensión side-by-side
+- **C0 — Extend**: escenarios orientados a extensibilidad.
+- **C1 — Use System-Internally**: objetos liberados para consumo interno estable entre componentes.
+- **C2 — Use as Remote API**: interfaces remotas liberadas para integración/side-by-side.
 
-Cada artefacto deberá identificar qué API/contrato utiliza en lugar de limitarse a decir “compatible con S/4”.
+La regla de ingeniería es identificar el objeto/API liberado y su límite de consumo en lugar de realizar un claim genérico de “compatible con S/4”.
 
-## Reglas de evidencia
+## Checklist de revisión Clean Core
 
-Un artefacto ABAP Cloud debe documentar:
+Para una extensión ABAP Cloud/S/4HANA revisar:
 
-1. versión/lenguaje ABAP objetivo
-2. objetos SAP liberados consumidos
-3. release contract cuando aplique
-4. por qué el diseño se alinea con Clean Core
-5. checks ATC/estáticos esperados
-6. modelo de autorización
-7. límite de extensión
-8. estrategia de pruebas
-9. estado de evidencia runtime
+1. lenguaje/entorno ABAP objetivo;
+2. objetos SAP liberados consumidos;
+3. release contract cuando corresponda;
+4. límite y ownership de la extensión;
+5. si se modifica o evita persistencia estándar;
+6. modelo de autorización;
+7. estrategia de pruebas;
+8. controles ATC/calidad estática;
+9. límite de exposición API/servicio;
+10. evidencia realmente disponible para el artefacto.
 
-## Progresión objetivo
+## Registro de decisión ECC vs. Clean Core
+
+| Pregunta | Ejemplo ECC clásico | Dirección Clean Core / S/4HANA |
+|---|---|---|
+| Acceso a datos | Open SQL sobre tablas estándar cuando corresponde | priorizar CDS/API/objeto liberado |
+| Integración remota | pueden existir RFC/custom/table-oriented | APIs remotas/OData liberadas cuando estén disponibles |
+| Upgrade safety | el código cliente requiere revisión frente a upgrades | contratos liberados y extension points soportados reducen acoplamiento |
+| Extensión de BO | exits/BAdIs/tablas custom según release | extensibilidad liberada + RAP/ABAP Cloud cuando aplique |
+| Calidad | syntax, ATC/checks custom, ABAP Unit | released-object checks, ATC, tests, servicio/autorización |
+
+## Secuencia de arquitectura documentada
 
 ```text
-Fundamentos ABAP
-      │
-      ▼
-Modern ABAP
-      │
-      ▼
-CDS view entities
-      │
-      ▼
-Released APIs / consumo C1
-      │
-      ▼
-RAP business object
-      │
-      ▼
-Service definition
-      │
-      ▼
-OData V4 service binding
-      │
-      ▼
-Autorización + tests + ATC
-      │
-      ▼
-Side-by-side / integración (C2)
+Selección de datos/API liberados
+        ↓
+Read model / límite CDS
+        ↓
+Behavior del business object cuando aplica
+        ↓
+Projection + service definition
+        ↓
+OData V4 / superficie de integración liberada
+        ↓
+Autorización + tests + revisión orientada a ATC
 ```
 
-## Evidence packs previstos
+## Evidencia existente conectada con esta guía
 
-### 1. Lab CDS analítico MM read-only
+- [S/4HANA MM Procurement API Client](../mm/procurement-api-lab/README.es.md) — cliente TypeScript read-only ejecutable con **6/6 tests CI**.
+- [Guía de Arquitectura RAP](../rap/README.es.md) — arquitectura CDS/behavior/projection/service documentada.
+- [Guía Técnica Migration Cockpit](../migration-cockpit/README.es.md) — ciclo y controles de migración documentados.
+- Packs ABAP ECC bajo [`../../01-ecc/mm`](../../01-ecc/mm/README.es.md) — expresamente rotulados como ECC clásico, no como Clean Core.
 
-Objetivo: demostrar un read model limpio construido solo sobre fuentes liberadas apropiadas para la release S/4HANA objetivo.
+## Qué demuestra esta guía
 
-Estado: `PLANNED`.
+- gobierno de objetos liberados;
+- separación consciente entre patrones ECC y extensiones S/4HANA;
+- razonamiento por release contracts;
+- revisión de arquitectura Clean Core;
+- consideración de ATC/tests/autorización;
+- comprensión de límites de integración.
 
-### 2. RAP managed business object
+## Límite de evidencia
 
-Objetivo: crear un business object custom autocontenido con CDS, behavior definition, projection, service definition/binding y pruebas, sin modificar persistencia estándar SAP.
-
-Estado: `PLANNED`.
-
-### 3. Cliente API Sourcing & Procurement
-
-Objetivo: consumir una API OData oficial desde un cliente externo, con secretos fuera de Git y mocks/contract tests deterministas.
-
-Estado: `DESIGN_READY`.
-
-### 4. ADR Clean Core
-
-Objetivo: comparar un patrón clásico ECC de acceso directo con el enfoque S/4HANA basado en objetos/APIs liberadas y explicar por qué no son equivalentes.
-
-Estado: `PLANNED`.
-
-## Gate ATC/calidad
-
-Cuando exista entorno, la evidencia incluirá donde sea aplicable:
-
-- syntax/activation
-- resultado ATC
-- verificación de objetos liberados
-- ABAP Unit
-- pruebas de behavior
-- metadata/runtime del servicio
-- prueba de autorización
-
-No se inventarán resultados PASS sin entorno.
-
-## Referencias oficiales
-
-Public Released APIs: https://help.sap.com/docs/abap-cloud/abap-cloud/public-released-apis
-
-RAP overview: https://help.sap.com/docs/abap-cloud/abap-rap/learn
+Este documento es una guía técnica de arquitectura. No afirma runtime ABAP Cloud, ejecución ATC ni activación RAP en un tenant SAP.
