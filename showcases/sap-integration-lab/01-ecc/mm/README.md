@@ -2,35 +2,76 @@
 
 [Versión en español](./README.es.md)
 
-> **Scope:** SAP ECC / classic MM only  
-> **Current maturity:** functional evidence published; technical packs in construction
+> **Scope:** SAP ECC / classic MM  
+> **Current maturity:** functional evidence published; first ABAP pack static-validated; service-procurement technical lab designed
 
-This track is intentionally separated from SAP S/4HANA. It documents classic MM functional knowledge and ABAP engineering patterns appropriate for ECC scenarios.
+This track is intentionally separated from SAP S/4HANA. It documents classic MM functional knowledge and ECC-oriented ABAP engineering without presenting direct-table patterns as Clean Core evidence.
 
-## Evidence layers
+## Published evidence
 
-### Functional / operational evidence
+### 1. Inventory & Stock Risk — ABAP engineering
 
-A sanitized public evidence layer is now available under [`functional-evidence`](./functional-evidence/). It is derived from real operational guides covering material extension, work-order material consumption and troubleshooting of material/supplier organizational dependencies.
+[Inventory & Stock Risk Evidence Pack](./inventory-reorder/README.md)
 
-The original guides remain private; real identifiers, customer configuration, screenshots and proprietary values are not published.
+Status: `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
 
-### Technical ABAP evidence
+Evidence:
 
-Planned and active technical packs:
+- classic ABAP Objects
+- read-only `MARA` / `MARC` / `MARD` datasource
+- plant vs. storage-location stock separation
+- MRP-context visibility
+- explicit exception handling
+- SALV report design
+- six deterministic ABAP Unit vectors traced consistently at source level
+- reproducible `SE24` / `SE38` / `SE93` build and execution procedure
 
-1. **Inventory & Stock Risk** — stock, reorder point, safety stock, datasource abstraction, OO service, executable report and ABAP Unit.
-2. **Purchasing Analytics** — purchase requisitions, purchase orders, positions/schedules and analytical transformations.
-3. **Service Procurement** — service-oriented procurement scenarios, validations and reporting.
+Actual SAP activation/unit-test runtime is not claimed while portfolio execution remains blocked by enterprise DEV/CTS access.
 
-## Technical boundary
+### 2. Functional MM evidence
 
-ECC evidence may use classic objects and Open SQL when appropriate. Any direct-table implementation is labelled ECC/classic evidence and is not represented as a Clean Core S/4HANA pattern.
+[Sanitized functional evidence](./functional-evidence/)
 
-The Inventory & Stock Risk pack is a diagnostic portfolio application. It does not claim to reproduce SAP MRP planning logic.
+Derived from operational material covering:
 
-No employer/customer source or configuration is copied into this lab.
+- material extension to organizational levels
+- work-order material consumption and movement validation
+- material/vendor/work-center troubleshooting
 
-## Runtime rule
+### 3. Service Procurement & Framework Contracts
 
-A source artifact only becomes `RUNTIME_VALIDATED` after successful SAP activation and execution are documented in its `EVIDENCE.md`. ABAP Unit results are required before a test claim becomes `TEST_VALIDATED`.
+[Service Procurement & Framework Contracts](./service-procurement/README.md)
+
+Status: `FUNCTIONAL_EVIDENCE_READY / TECHNICAL_LAB_PLANNED`
+
+The evidence covers:
+
+- long-term vendor agreements
+- duplicate-prevention check
+- validity periods
+- quantity/value context
+- service items
+- contracted activities/service catalogue
+- commercial conditions
+- follow-on procurement reference
+
+The source operational guide uses `ME31` plus `ME33K`; the public document preserves that source-derived procedure while distinguishing it from the standard SAP ECC contract transaction family commonly represented by `ME31K` / `ME32K` / `ME33K`.
+
+A [read-only Contract Audit technical lab](./service-procurement/TECHNICAL_LAB.md) is designed around `EKKO` / `EKPO`, with no document creation/change claim.
+
+## Planned technical progression
+
+1. implement `ZMM_CONTRACT_AUDIT` as read-only source evidence
+2. add deterministic contract-validity ABAP Unit vectors
+3. build Purchasing Analytics for requisition/order visibility
+4. keep service-package relationships release-specific until formally verified
+
+## ECC boundary
+
+Classic objects/Open SQL may be used when appropriate to ECC. They remain labelled **ECC/classic**.
+
+No employer/customer source, real purchasing documents, vendor IDs, material IDs, prices, organizational codes or screenshots are published.
+
+## S/4HANA boundary
+
+Modern S/4HANA procurement evidence lives separately under [`../../02-s4hana`](../../02-s4hana/README.md) and prioritizes released CDS/OData interfaces rather than mechanically exposing ECC tables externally.
