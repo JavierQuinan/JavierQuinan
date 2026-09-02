@@ -3,76 +3,30 @@
 [Versión en español](./README.es.md)
 
 > **Track:** SAP ECC / Materials Management / Purchasing & Services  
-> **Evidence status:** `FUNCTIONAL_EVIDENCE_READY / TECHNICAL_LAB_PLANNED`  
-> **Runtime claim:** no custom ABAP runtime claim is made in this package
+> **Status:** `FUNCTIONAL_EVIDENCE_READY / ABAP_SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
 
-This evidence pack documents a sanitized professional workflow for long-term purchasing agreements used for recurring materials or service procurement.
+This pack combines sanitized professional knowledge of long-term purchasing agreements with an original read-only ABAP engineering artifact.
 
-The source material describes a framework/outline agreement as a long-term purchasing agreement with a vendor, validity dates, quantity/value limits and reusable conditions for future purchases or services. The original operational guide uses a create flow entered through `ME31` and verifies existing agreements with `ME33K`; this portfolio preserves that source-derived workflow as historical/operational evidence while clearly noting that standard SAP ECC contract processing commonly uses the contract transactions `ME31K`, `ME32K` and `ME33K`.
+## Functional evidence
 
-## Functional scenario
+The underlying operational guide demonstrates a workflow around:
 
-```text
-Need for recurring service/material procurement
-              │
-              ▼
-Check whether an agreement already exists
-              │
-              ▼
-Vendor + purchasing organization + validity
-              │
-              ▼
-Agreement header
-              │
-              ▼
-Service/material item
-              │
-              ▼
-Quantity / value / pricing conditions
-              │
-              ▼
-Service catalog / contracted activities
-              │
-              ▼
-Save + communicate agreement reference
-              │
-              ▼
-Future procurement references the agreement
-```
+- checking for an existing agreement before creating a duplicate
+- vendor and purchasing-organization context
+- validity start/end
+- quantity/value-oriented agreements
+- service-oriented positions
+- units, quantities and commercial values
+- service/activity catalog maintenance
+- follow-on procurement referencing an existing agreement
 
-## Source-derived operating controls
+The source guide used `ME31` in its operational context and `ME33K` for existing-contract review. This public version preserves that fact without presenting it as a universal standard; classic SAP contract processing commonly uses the `ME31K / ME32K / ME33K` family.
 
-The sanitized guide preserves these controls from the underlying material:
+No real company, vendor, contract, purchasing organization, amount, user or screenshot is published.
 
-1. Check for an existing contract before creating a new one to prevent duplicates.
-2. Select the vendor and organizational purchasing context.
-3. Define start/end validity dates.
-4. Maintain the offered/contracted value and commercial reference.
-5. Create service-oriented item data where the agreement concerns services.
-6. Maintain unit, quantity and price context.
-7. Enter the contracted service/activity identifiers and quantities in the service catalog area.
-8. Save the agreement and communicate the generated agreement reference through the authorized business process.
+## Technical evidence — `ZMM_CONTRACT_AUDIT`
 
-No real vendor, company, contract number, purchasing organization code, employee, email address or customer-specific configuration is published.
-
-## Professional interpretation
-
-This evidence demonstrates familiarity with:
-
-- outline agreements / framework contracts
-- vendor purchasing context
-- validity periods
-- quantity vs. value-oriented agreements
-- service-item procurement
-- service catalog / activity references
-- procurement controls against duplicate agreements
-- commercial conditions and follow-on procurement
-
-## ECC technical model — planned lab
-
-The next technical artifact for this topic will be a **read-only contract audit/report**, not a transaction that creates or changes purchasing documents.
-
-Planned architecture:
+The planned auditor is now implemented as reviewable source:
 
 ```text
 ZMM_CONTRACT_AUDIT
@@ -85,38 +39,79 @@ ZCL_MM_CONTRACT_AUDIT_SERVICE
         │
         ▼
 ZIF_MM_CONTRACT_SOURCE
-      /                      \
-ECC datasource             demo datasource
-EKKO / EKPO               synthetic data
+   ├── ZCL_MM_CONTRACT_SOURCE_ECC  → EKKO / EKPO
+   └── ZCL_MM_CONTRACT_SOURCE_DEMO → synthetic data
 ```
 
-The first version will focus on safe, explainable evidence such as:
+Supporting object:
 
-- agreement validity
-- vendor context
-- item count
-- quantity/value agreement classification where available
-- expiry risk
-- missing/expired validity
-- read-only reporting
-- deterministic ABAP Unit vectors
+`ZCX_MM_CONTRACT_NOT_FOUND`
 
-Service-package details will only be added after the exact ECC service-document relationships are verified for the intended release. No proprietary `Z*` implementation will be copied.
+## Read-only ECC model
+
+The first version uses standard purchasing-contract fields that are independently documented in SAP material:
+
+- `EKKO-KDATB` / `EKKO-KDATE` — validity start/end
+- `EKKO-LIFNR` — vendor
+- `EKKO-EKORG` — purchasing organization
+- `EKKO-KTWRT` — target value
+- `EKPO-KTMNG` — target quantity at item level
+- `EKPO-ZWERT` — target value at item level
+- `EKPO-LOEKZ` — deleted-item exclusion
+
+Only purchasing documents with `BSTYP = 'K'` are accepted by the ECC datasource.
+
+The first source deliberately does **not** traverse service-package hierarchy tables. That remains a release/scenario-specific future extension.
+
+## Diagnostic states
+
+- `ACTIVE`
+- `EXPIRING_SOON`
+- `EXPIRED`
+- `NOT_YET_VALID`
+- `INVALID_VALIDITY`
+- `VALIDITY_INCOMPLETE`
+- `NO_ITEMS`
+
+The report also exposes days to expiry, active-item count and quantity/value target indicators.
+
+## Test design
+
+Eight deterministic ABAP Unit vectors are versioned and were traced at source level:
+
+```text
+Vectors reviewed: 8
+Consistent:       8
+Mismatches:       0
+```
+
+This is **static/source validation**, not an SAP runtime test claim.
+
+## Reproduce the lab
+
+- [Technical Lab](./TECHNICAL_LAB.md)
+- [Build Guide](./BUILD_GUIDE.md)
+- [Guía de construcción](./BUILD_GUIDE.es.md)
+- [Static Validation](./STATIC_VALIDATION.md)
+- [Evidence Record](./EVIDENCE.md)
+- [`source/`](./source/)
 
 ## Evidence boundary
 
-This is **functional professional evidence**, not proof that a custom purchasing program has been executed in SAP.
+This source does not create or change purchasing documents and contains no write statement or transaction commit.
 
-The public artifact does not include:
+It does not claim to replace:
 
-- employer/customer names
-- vendor IDs
-- agreement numbers
-- purchasing organization codes
-- real prices or contract values
-- screenshots from enterprise systems
-- internal custom transaction codes
-- credentials or transport information
+- release strategy
+- service entry
+- pricing/condition technique
+- source determination
+- contract consumption
+- account assignment
+- invoice verification
+- service-package processing
+
+SAP activation, ABAP Unit runtime and SE93 execution remain deferred until an authorized DEV/sandbox is available.
 
 ## Bilingual terminology
 
@@ -130,7 +125,3 @@ The public artifact does not include:
 | Value contract | Contrato por valor |
 | Service item | Posición de servicio |
 | Service catalog | Catálogo de prestaciones/servicios |
-
-## Source note
-
-This document is a sanitized transformation of user-provided operational material. It does not reproduce the original screenshots, organization identifiers or third-party formatting.
