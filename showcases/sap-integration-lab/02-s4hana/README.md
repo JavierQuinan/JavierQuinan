@@ -2,84 +2,88 @@
 
 [Versión en español](./README.es.md)
 
-> **Scope:** S/4HANA MM, Migration Cockpit, released APIs, ABAP Cloud and RAP  
-> **Current maturity:** research validated; multiple designs ready; runtime not claimed
+> **Scope:** S/4HANA MM integration, Migration Cockpit, released APIs, ABAP Cloud and RAP architecture  
+> **Evidence rule:** this page lists only material that already exists in the repository
 
-This track is deliberately separated from ECC. It focuses on current SAP extensibility, integration and migration practices rather than rebranding classic ECC patterns as S/4HANA evidence.
+This track is deliberately separated from ECC. It documents current S/4HANA integration and extensibility concepts without presenting classic ECC table access as Clean Core evidence.
 
-## Published evidence
+## Evidence available now
 
-### 1. Procurement API Lab — S/4HANA MM
+### 1. MM Procurement API Client
 
-[Procurement API Evidence Lab](./mm/procurement-api-lab/README.md)
+[Procurement API Lab](./mm/procurement-api-lab/README.md)
 
-Status: `RESEARCH_VALIDATED / DESIGN_READY / RUNTIME_NOT_CLAIMED`
+A real, dependency-free TypeScript read-only client is versioned in this repository.
 
-Selected released interfaces:
+Implemented evidence:
+
+- Purchase Order reads
+- Purchase Requisition reads
+- OData response validation
+- transport abstraction
+- query construction
+- correlation/request-ID handling
+- HTTPS enforcement
+- deterministic error handling
+- automated tests
+- GitHub Actions quality gate
+
+Observed CI result: **6 tests / 6 pass / 0 fail** on Node 22.
+
+Released-interface direction documented by the lab:
 
 - `I_PurchaseOrderAPI01`
-- `API_PURCHASEORDER_2` — Purchase Order OData V4
-- `API_PURCHASEREQUISITION_2` — Purchase Requisition OData V4
+- `API_PURCHASEORDER_2`
+- `API_PURCHASEREQUISITION_2`
 
-The lab defines a future TypeScript read-only integration client with typed adapters, pagination, error mapping, correlation IDs, secret separation and deterministic contract tests.
+The evidence validates the client source and CI behavior; it does not claim connection to a live S/4HANA tenant.
 
-### 2. Migration Cockpit
+### 2. Migration Cockpit Technical Guide
 
-[Migration Cockpit Evidence Lab](./migration-cockpit/README.md)
+[Migration Cockpit Guide](./migration-cockpit/README.md)
 
-Status: `RESEARCH_VALIDATED / RUNTIME_NOT_CLAIMED`
+Documentation-grounded guide covering:
 
-Documents the official migration-project lifecycle:
-
-- migration project/scenario
-- migration objects
-- staging-table vs. direct-transfer approaches
+- migration projects and migration objects
+- staging-table and direct-transfer approaches
 - mapping tasks
 - simulation
-- migration
-- monitoring
-- reconciliation
+- migration monitoring
+- error handling and reconciliation concepts
 
-This is research/study evidence, not a claim of having executed a productive S/4HANA migration.
+This is a technical study/operating guide, not a claim of having executed a productive S/4HANA migration.
 
-### 3. ABAP Cloud / Clean Core
+### 3. ABAP Cloud / Clean Core Technical Guide
 
-[ABAP Cloud / Clean Core Evidence Track](./abap-cloud/README.md)
+[ABAP Cloud / Clean Core Guide](./abap-cloud/README.md)
 
-Status: `RESEARCH_VALIDATED / IMPLEMENTATION_PLANNED`
-
-Documents:
+Documentation-grounded guide covering:
 
 - released-object/API discipline
-- release-contract awareness (`C0`, `C1`, `C2` where relevant)
+- release contracts (`C0`, `C1`, `C2` where applicable)
 - Clean Core decision boundaries
-- ATC/test/runtime gates
-- future CDS/API/RAP evidence packs
+- ATC-oriented governance
+- separation of internal released objects and remote APIs
+- architecture rules for upgrade-safe extensions
 
-### 4. RAP
+### 4. RAP Architecture Guide
 
-[RAP Evidence Roadmap](./rap/README.md)
+[RAP Architecture Guide](./rap/README.md)
 
-Status: `DESIGN_READY / IMPLEMENTATION_PLANNED`
+The guide documents an MM replenishment-review scenario through:
 
-First planned business object: **MM Replenishment Review** — a custom review/workflow BO that bridges the business concept from the ECC stock-risk lab without modifying SAP material/MRP standard persistence.
+`CDS root → Behavior Definition → Behavior Implementation → Projection → Service Definition → OData V4 Service Binding → Consumer`
 
-Target architecture:
+It explains business-object boundaries, behavior ownership, service exposure and Clean Core considerations without claiming RAP runtime that is not present in the repository.
 
-`CDS root -> Behavior -> Projection -> Service Definition -> OData V4 Service Binding -> Consumer`.
+## ECC vs. S/4HANA boundary
 
-## Evidence rule
+ECC evidence may use classic Open SQL and standard tables when appropriate to the ECC scenario. S/4HANA evidence in this track prioritizes released APIs, documented extension points and explicit Clean Core reasoning.
 
-A direct-table ECC report does not qualify as S/4HANA evidence by itself. S/4HANA artifacts favor released interfaces, upgrade-safe extension points and explicit Clean Core reasoning.
+## Evidence integrity
 
-## Next implementation sequence
+The repository distinguishes three things clearly:
 
-1. source-ready TypeScript Procurement API client with mock/contract tests
-2. CDS analytical/read-model evidence on verified released data sources
-3. RAP custom business object source
-4. ATC/released-object evidence when an appropriate environment is available
-5. authorized sandbox runtime only when legitimately accessible
-
-## Runtime gate
-
-No artifact is described as running on S/4HANA until actual activation/API execution evidence is captured. Research, design, source, static validation and runtime are separate maturity states.
+1. **Executable source with observed tests/CI** — the TypeScript Procurement API Client.
+2. **Technical guides grounded in SAP documentation** — Migration Cockpit, ABAP Cloud/Clean Core and RAP.
+3. **Runtime not claimed** — no live S/4HANA tenant execution is stated without evidence.
