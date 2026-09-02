@@ -91,12 +91,16 @@ Las guías operativas cubren:
 
 El set visual muestra:
 
-1. pantalla de acceso para extensión;
-2. selección de vistas;
-3. niveles organizativos;
-4. verificación en índice de materiales.
+1. acceso/selección de material existente;
+2. selección de vistas del maestro;
+3. niveles organizativos centro/almacén;
+4. verificación posterior del resultado.
 
-Se sanitizan material, centro/almacén, descripción y usuario. Las capturas provienen de una guía suministrada para este portafolio y se publican únicamente en versión redactada.
+Se sanitizan material, centro/almacén, descripción y usuario. Las capturas provienen de material operativo suministrado para este portafolio y se publican únicamente en versión redactada.
+
+## Referencias oficiales SAP
+
+Las guías MM se contrastan con documentación pública SAP. Consulte el [Índice de Referencias Oficiales SAP](../../OFFICIAL_SAP_REFERENCES.es.md), que incluye Help SAP sobre extensión del maestro de materiales, datos por almacén, Class Builder, SE93 y ABAP Unit.
 
 ## Qué demuestra esta línea
 
@@ -108,7 +112,8 @@ Se sanitizan material, centro/almacén, descripción y usuario. Las capturas pro
 - Open SQL read-only para diagnóstico;
 - reporting SALV;
 - diseño determinista de pruebas;
-- documentación técnica bilingüe.
+- documentación técnica bilingüe;
+- evidencia respaldada por material operativo sanitizado y referencias oficiales SAP.
 
 ## Límite ECC
 
