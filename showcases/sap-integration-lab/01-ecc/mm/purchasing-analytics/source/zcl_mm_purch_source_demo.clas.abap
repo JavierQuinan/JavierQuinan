@@ -22,7 +22,7 @@ CLASS zcl_mm_purch_source_demo IMPLEMENTATION.
     rs_snapshot-bnfpo = iv_bnfpo.
     rs_snapshot-pr_date = '20260110'.
     rs_snapshot-pr_delivery_date = '20260215'.
-    rs_snapshot-material = 'MAT_DEMO_001'.
+    rs_snapshot-material = 'MATDEMO001'.
     rs_snapshot-plant = 'D001'.
     rs_snapshot-purchasing_group = 'D01'.
     rs_snapshot-po_number = '4500000001'.
@@ -30,7 +30,7 @@ CLASS zcl_mm_purch_source_demo IMPLEMENTATION.
     rs_snapshot-po_header_found = abap_true.
     rs_snapshot-po_item_found = abap_true.
     rs_snapshot-po_document_date = '20260112'.
-    rs_snapshot-vendor = 'VENDOR_DEMO'.
+    rs_snapshot-vendor = '0000900001'.
     rs_snapshot-purchasing_org = 'D001'.
     rs_snapshot-order_quantity = '10'.
     rs_snapshot-order_unit = 'EA'.
