@@ -3,7 +3,7 @@
 [Versión en español](./README.es.md)
 
 > **Evidence type:** Clean Core integration evidence based on released SAP interfaces  
-> **Status:** `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_PENDING / S4_RUNTIME_NOT_CLAIMED`  
+> **Status:** `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_VALIDATED / S4_RUNTIME_NOT_CLAIMED`  
 > **Scope:** Purchase Requisitions + Purchase Orders
 
 This lab demonstrates how classic ECC purchasing evidence evolves into a modern S/4HANA integration design without treating direct table access as a Clean Core integration pattern.
@@ -52,31 +52,11 @@ Implemented source evidence:
 - HTTPS enforcement outside localhost
 - timeout-aware Fetch transport
 - deterministic synthetic contract tests
-- GitHub Actions quality gate
-
-Architecture:
-
-```text
-External configuration
-        │
-        ▼
-ProcurementApiClient
-        │
-        ├── Purchase Orders
-        └── Purchase Requisitions
-        │
-        ▼
-HttpTransport abstraction
-        ├── FetchTransport
-        └── synthetic test transport
-        │
-        ▼
-Normalized ProcurementDocument[]
-```
+- GitHub Actions quality gate with `contents: read`
 
 ## Test evidence
 
-Six deterministic tests are versioned and were executed locally with Node 22:
+Six deterministic tests are versioned and passed both locally and in GitHub Actions with Node 22:
 
 1. Purchase Order OData normalization
 2. Purchase Requisition OData normalization
@@ -85,7 +65,7 @@ Six deterministic tests are versioned and were executed locally with Node 22:
 5. malformed/non-OData response rejected
 6. insecure non-local HTTP endpoint rejected
 
-Local result recorded during development:
+Recorded CI result:
 
 ```text
 Executed: 6
@@ -93,7 +73,7 @@ Passed:   6
 Failed:   0
 ```
 
-GitHub Actions verification is tracked separately. The lab must not claim CI validation until the workflow run is observed successfully.
+This is **client/source validation**, not SAP S/4HANA tenant runtime validation.
 
 ## Security boundary
 
@@ -109,6 +89,7 @@ The current source remains intentionally read-only. Real authentication should b
 - transport abstraction and deterministic contract testing
 - error/correlation-ID handling
 - secure-by-default endpoint validation
+- reproducible CI validation
 - bilingual technical documentation
 
 ## What is not claimed
@@ -121,10 +102,6 @@ The current source remains intentionally read-only. Real authentication should b
 - write/create/change operations
 
 ## Next milestones
-
-### P2 — CI validation
-
-GitHub Actions executes the deterministic client tests using Node 22. Once observed green, the evidence can add `CI_VALIDATED`.
 
 ### P3 — Integration hardening
 
@@ -149,4 +126,4 @@ Until P4, no S/4 runtime claim is made.
 
 `RESEARCH_VALIDATED -> DESIGN_READY -> SOURCE_READY -> LOCAL_TEST_VALIDATED -> CI_VALIDATED -> RUNTIME_VALIDATED`
 
-Current position: **`SOURCE_READY / LOCAL_TEST_VALIDATED / CI_PENDING`**.
+Current position: **`SOURCE_READY / LOCAL_TEST_VALIDATED / CI_VALIDATED`**.
