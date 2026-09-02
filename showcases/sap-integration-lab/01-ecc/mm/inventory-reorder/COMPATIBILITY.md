@@ -112,4 +112,4 @@ This is a replication procedure, not a claim that those runtime results were obs
 
 ## External SAP references
 
-See the centralized [`OFFICIAL_SAP_REFERENCES.md`](../../OFFICIAL_SAP_REFERENCES.md) for SAP Help references covering Class Builder/SE24, report transactions/SE93, ABAP Unit and related development concepts.
+See the centralized [`OFFICIAL_SAP_REFERENCES.md`](../../../OFFICIAL_SAP_REFERENCES.md) for SAP Help references covering Class Builder/SE24, report transactions/SE93, ABAP Unit and related development concepts.
