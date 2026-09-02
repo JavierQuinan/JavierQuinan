@@ -1,172 +1,195 @@
-# SAP Integration Lab — Public Evidence Roadmap
+# SAP Integration Lab — Public Engineering Evidence
 
-> **Artifact type:** public engineering-evidence roadmap  
+[Versión en español](./README.es.md)
+
+> **Artifact type:** public SAP engineering and functional-evidence lab  
 > **Current status:** in construction  
-> **Public ABAP source currently available:** none  
-> **Purpose:** convert enterprise SAP experience and ABAP/ABAP Cloud study into reproducible, non-confidential technical evidence
+> **Primary rule:** source code is never presented as executed in SAP until activation/runtime evidence exists  
+> **Languages:** English + Spanish
 
-This is intentionally **not presented as a completed SAP/ABAP case study**. A review of the current GitHub account found no dedicated SAP repository and no indexed ABAP source suitable for public portfolio evidence.
+This lab converts SAP functional experience plus ABAP/ABAP Cloud specialization into reviewable, reproducible and non-confidential public evidence.
 
-The objective of this lab is to build that evidence correctly without publishing employer/client configuration, screenshots, production data or proprietary SAP artifacts.
+The portfolio intentionally separates four technical contexts that must not be conflated:
 
-## Positioning boundary
+1. **SAP ECC — Materials Management (MM)**
+2. **SAP ECC — IS-U / Work Management**
+3. **SAP S/4HANA — MM, CDS, released APIs, ABAP Cloud and RAP**
+4. **SAP Integration — OData, REST, SOAP/XML and observability patterns**
 
-The public profile currently separates two different things:
+## Evidence maturity model
 
-1. **Functional/operational SAP experience** — enterprise process support, configuration analysis and integration troubleshooting.
-2. **Technical ABAP / ABAP Cloud specialization** — an active learning and evidence-building track.
+| State | Meaning |
+|---|---|
+| `PLANNED` | Scenario designed; implementation not yet complete. |
+| `SOURCE_READY` | Reviewable source/documentation is available in GitHub. |
+| `RUNTIME_VALIDATION_PENDING` | Source is ready to activate/run, but no SAP runtime proof has been recorded. |
+| `RUNTIME_VALIDATED` | Activated/executed in an appropriate SAP environment with documented result. |
+| `TEST_VALIDATED` | Runtime validation plus reproducible automated/unit-test evidence. |
 
-This lab exists to make the second category independently verifiable through code and reproducible exercises instead of relying on profile claims.
+`SOURCE_READY` does **not** mean `RUNTIME_VALIDATED`.
 
-## Target evidence areas
+See [SAP Evidence Governance](./EVIDENCE_GOVERNANCE.md).
 
-### SAP MM
-
-Planned public exercises should demonstrate technical understanding around materials/service-oriented processes without reproducing customer configuration.
-
-Potential evidence:
-
-- synthetic material/service master examples
-- purchase-order/reporting scenarios
-- validation/report utilities
-- service-procurement examples
-- document-flow analysis using synthetic datasets
-
-### SAP IS-U / Work Management
-
-Production/customer workflows must remain private. Public evidence should instead use abstracted examples and diagrams covering concepts such as:
-
-- work-order lifecycle
-- status/event handling
-- operational integration boundaries
-- CRM ↔ IS-U process interaction
-- external-system integration patterns
-
-No real installation, contract, business-partner, meter or customer identifiers should be included.
-
-### ABAP fundamentals
-
-First executable evidence set:
+## Repository structure
 
 ```text
-01-abap-core/
-├── reports/
-├── internal-tables/
-├── modularization/
-├── exceptions/
-└── unit-tests/
+sap-integration-lab/
+├── README.md
+├── README.es.md
+├── EVIDENCE_GOVERNANCE.md
+├── 01-ecc/
+│   ├── mm/
+│   │   ├── inventory-reorder/
+│   │   ├── purchasing/
+│   │   └── service-procurement/
+│   └── isu/
+│       ├── master-data/
+│       ├── device-management/
+│       ├── work-management/
+│       └── crm-isu-integration/
+├── 02-s4hana/
+│   ├── mm/
+│   ├── cds/
+│   ├── released-apis/
+│   ├── abap-cloud/
+│   └── rap/
+└── 03-integration/
+    ├── odata/
+    ├── rest/
+    ├── soap-xml/
+    └── observability/
 ```
 
-Expected artifacts:
+## 01 — SAP ECC
 
-- typed data structures
-- internal tables and expressions
-- Open SQL over synthetic/demo tables where legally available
-- modularized reports/classes
-- exception handling
-- ABAP Unit examples
+### ECC Materials Management (MM)
 
-### ABAP Objects
-
-```text
-02-abap-oo/
-├── classes/
-├── interfaces/
-├── dependency-injection/
-└── abap-unit/
-```
-
-Evidence gate:
-
-- interfaces instead of monolithic procedural examples
-- testable classes
-- explicit error contracts
-- ABAP Unit coverage for business rules
-
-### ABAP Cloud / RAP
-
-```text
-03-abap-cloud/
-├── cds/
-├── behavior-definitions/
-├── behavior-implementations/
-├── service-definitions/
-└── tests/
-```
+This track demonstrates classic MM domain knowledge and ABAP engineering without exposing employer/customer implementation.
 
 Target evidence:
 
-- released-API discipline
-- CDS view entities
+- material / plant / storage-location concepts
+- inventory and reorder analysis
+- purchase requisitions
+- purchase orders
+- delivery/schedule concepts
+- service procurement
+- classic Open SQL where appropriate
+- SALV/ALV reporting
+- ABAP Objects
+- ABAP Unit
+
+Classic direct-table evidence, when used, will be clearly labelled **ECC/classic** and will not be reused as proof of modern S/4HANA Clean Core design.
+
+The first package is **ECC MM — Inventory & Reorder**. The current source is classified `SOURCE_READY / RUNTIME_VALIDATION_PENDING` until it is activated and tested in an SAP environment.
+
+### ECC IS-U / Work Management
+
+IS-U remains an independent evidence line rather than being grouped under S/4HANA.
+
+Planned functional/technical areas:
+
+- installation and contract lifecycle concepts
+- device management
+- work-order lifecycle
+- workflow/status/event handling
+- CRM ↔ IS-U interaction
+- Work Management ↔ external systems / GIS
+- operational troubleshooting
+
+User-authored professional MM/WM guides will be incorporated here when each topic is reached, after confidentiality sanitization.
+
+## 02 — SAP S/4HANA
+
+S/4HANA evidence will focus on current extensibility and integration approaches instead of mechanically reproducing ECC patterns.
+
+Target evidence:
+
+- CDS View Entities
+- released APIs
+- OData
+- ABAP Cloud
+- Clean Core-oriented design
 - RAP business objects
-- behavior definitions/implementations
-- service exposure
-- authorization concepts
-- ABAP Unit / test doubles where applicable
+- behavior definitions and implementations
+- service definitions/bindings
+- automated tests
 
-No claim of ABAP Cloud proficiency will be upgraded in the public portfolio until executable artifacts exist here or in a dedicated repository.
+The S/4HANA track has its own evidence gate. A classic ECC report does not qualify as an S/4HANA artifact by itself.
 
-## Integration-focused track
+## 03 — SAP Integration
 
-The lab should eventually connect SAP concepts with the software-engineering stack demonstrated elsewhere in this portfolio.
+This line connects SAP with the broader full-stack engineering portfolio.
 
-```mermaid
-flowchart LR
-    SAP[SAP / ABAP layer]
-    API[Integration API / middleware]
-    APP[External web/mobile system]
-    OBS[Observability / audit]
+Planned patterns:
 
-    SAP -->|released interface / service| API
-    API --> APP
-    API --> OBS
-```
-
-Planned sanitized patterns:
-
-- SAP-facing REST/OData consumer examples
-- SOAP/XML transformation exercises
+- REST/OData consumption
+- SOAP/XML processing
+- message transformations
 - idempotent integration handling
-- correlation/audit IDs
-- retry/error mapping
-- secure secret/configuration separation
+- correlation IDs
+- retry and error mapping
+- audit/observability
+- safe configuration and secret separation
 
-## Evidence acceptance gate
+## Bilingual standard
 
-An artifact only counts as public SAP technical evidence when it satisfies all of the following:
+Portfolio-facing technical documentation is **English-first** for international review, with a complete Spanish version for substantial artifacts.
 
-1. Code is executable or independently reviewable.
-2. README explains scenario, assumptions and expected result.
-3. No employer/customer code or configuration is copied.
-4. All business data is synthetic.
-5. No SAP credentials, RFC destinations, hostnames or internal endpoints are published.
-6. Tests or deterministic validation are included where technically possible.
-7. Screenshots contain only demo/synthetic systems and no confidential identifiers.
-8. The profile claim matches exactly what the artifact proves.
+Preferred convention:
 
-## Current status matrix
+- `README.md` — English
+- `README.es.md` — Español
+- `EVIDENCE.md` — runtime/test record
 
-| Area | Enterprise experience evidence | Public code evidence | Portfolio status |
-|---|---|---|---|
-| SAP MM | Profile-level functional experience | Not yet published | Functional experience only |
-| SAP IS-U Work Management | Profile-level functional experience | Not yet published | Functional experience only |
-| SAP CRM / IS-U integration | Profile-level operational experience | Not yet published | Functional/integration experience only |
-| ABAP | Study/specialization track | Not yet published | In progress |
-| ABAP Cloud / RAP | Study/specialization track | Not yet published | In progress |
+Code identifiers remain in English. Functional terminology may be shown bilingually where useful:
 
-## First implementation milestone
+- Purchase Requisition / Solicitud de pedido
+- Purchase Order / Pedido de compra
+- Work Order / Orden de trabajo
+- Utility Installation / Instalación IS-U
 
-The next promotion step is to publish a small but high-quality ABAP evidence pack rather than a large collection of copied tutorials. The first milestone should contain approximately five focused exercises:
+## Confidentiality boundary
 
-1. ABAP report + internal-table transformations
-2. ABAP OO service class + interface
-3. Open SQL/query example with synthetic/demo source
-4. ABAP Unit test suite
-5. first ABAP Cloud/RAP artifact when an appropriate development environment is available
+Never publish:
 
-After that evidence exists, this roadmap can evolve into a real `SAP Integration Lab` repository or case study.
+- employer/customer source code
+- real company/customer identities
+- real contracts, installations, devices/meters or work orders
+- internal users, endpoints, hostnames or RFC destinations
+- production screenshots without sanitization
+- passwords, tokens or credentials
+- private P12/PFX/PEM material
+
+## Current evidence matrix
+
+| Track | Functional evidence | Public source | Runtime proof | Status |
+|---|---|---|---|---|
+| ECC MM | Profile-level professional experience | First inventory/reorder source in branch | Pending | `SOURCE_READY / RUNTIME_VALIDATION_PENDING` |
+| ECC IS-U / WM | Professional operational experience | Planned; guides will be incorporated | Pending | `PLANNED` |
+| S/4HANA MM | Study/specialization track | Planned | Pending | `PLANNED` |
+| ABAP Cloud / RAP | Study/specialization track | Planned | Pending | `PLANNED` |
+| SAP Integration | Enterprise integration experience + software engineering | Planned | Pending | `PLANNED` |
+
+## Next milestone
+
+**SAP ECC MM — Inventory & Reorder Evidence Pack**
+
+The target package will contain:
+
+- domain model
+- datasource abstraction
+- synthetic/demo datasource
+- ECC datasource implementation when runtime validation is available
+- executable report
+- ABAP Objects service layer
+- ABAP Unit
+- bilingual documentation
+- `EVIDENCE.md` with activation/runtime/test record
+
+Until runtime evidence exists, the artifact remains explicitly `RUNTIME_VALIDATION_PENDING`.
 
 ---
 
 Public portfolio: [Francisco Quinteros / JavierQuinan](https://github.com/JavierQuinan)  
-Repository publication policy: [Portfolio Governance](../../docs/PORTFOLIO_GOVERNANCE.md)
+Portfolio policy: [Public Repository Portfolio Governance](../../docs/PORTFOLIO_GOVERNANCE.md)
