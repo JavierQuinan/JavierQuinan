@@ -1,51 +1,113 @@
-# Runtime Evidence Record — ECC MM Inventory & Reorder
+# Runtime Evidence Record — ECC MM Inventory & Stock Risk
 
 > **Current status:** `RUNTIME_VALIDATION_PENDING`
 
 ## Target environment
 
 - SAP product/context: SAP ECC / MM
-- Environment type: TBD
+- ECC release / EHP: TBD
+- Environment type: development or sandbox preferred
 - Validation date: TBD
 - Validator: TBD
 
-## Objects
+## Source objects
 
-- `ZCL_MM_REORDER_EVALUATOR`
-- local ABAP Unit class `LTCL_MM_REORDER_EVALUATOR`
+Recommended creation/activation order:
+
+1. `ZCX_MM_STOCK_NOT_FOUND`
+2. `ZIF_MM_STOCK_SOURCE`
+3. `ZCL_MM_STOCK_SOURCE_DEMO`
+4. `ZCL_MM_STOCK_SOURCE_ECC`
+5. `ZCL_MM_STOCK_RISK_SERVICE`
+6. local test include for `ZCL_MM_STOCK_RISK_SERVICE`
+7. `ZMM_STOCK_RISK_REPORT`
 
 ## Activation record
 
-- Syntax check: PENDING
-- Class activation: PENDING
-- Test class activation: PENDING
+| Object | Syntax check | Activation | Notes |
+|---|---|---|---|
+| ZCX_MM_STOCK_NOT_FOUND | PENDING | PENDING | |
+| ZIF_MM_STOCK_SOURCE | PENDING | PENDING | |
+| ZCL_MM_STOCK_SOURCE_DEMO | PENDING | PENDING | |
+| ZCL_MM_STOCK_SOURCE_ECC | PENDING | PENDING | |
+| ZCL_MM_STOCK_RISK_SERVICE | PENDING | PENDING | |
+| ABAP Unit test classes | PENDING | PENDING | |
+| ZMM_STOCK_RISK_REPORT | PENDING | PENDING | |
 
 ## ABAP Unit record
 
-Expected tests:
+Prepared deterministic cases:
 
-1. sufficient stock → `OK`
-2. below target → `REORDER`
-3. below safety stock → `CRITICAL`
-4. exact target boundary → `OK`
+1. unrestricted stock above reorder point → `OK`
+2. unrestricted stock exactly at reorder point → `REORDER`
+3. unrestricted stock below safety stock → `CRITICAL`
+4. shortage quantity calculated up to reorder point
 
 Actual execution result: **PENDING**
 
-## Runtime scenario
+Record after execution:
 
-Current source uses synthetic scalar inputs only. No SAP standard table or production dataset is required for this first validation.
+- tests executed: TBD
+- tests passed: TBD
+- tests failed: TBD
+- runtime duration: TBD
+- screenshot/textual evidence sanitized: TBD
 
-## Evidence to capture after execution
+## ECC runtime scenario
 
-- activation status
+The executable report accepts:
+
+- material
+- plant
+- storage location
+
+The ECC datasource reads only:
+
+- `MARC-MINBE`
+- `MARC-EISBE`
+- `MARD-LABST`
+
+The report must be validated with a non-sensitive test/demo material whose organizational extension is already correct.
+
+## Functional pre-validation
+
+Before interpreting the report result, verify that:
+
+1. the material exists
+2. the material is extended to the target plant
+3. the material/storage-location combination exists
+4. reorder point and safety stock are meaningful for the selected material/MRP context
+
+The portfolio report is a diagnostic exercise and must not be presented as SAP MRP logic.
+
+## Expected runtime evidence
+
+Capture only sanitized evidence:
+
+- successful syntax checks
+- successful activation status
 - ABAP Unit result summary
-- sanitized screenshot or textual result if allowed
-- SAP release/environment description without confidential identifiers
-- any syntax/runtime adjustment required
+- report selection screen with synthetic/non-sensitive identifiers
+- SALV output with sanitized values
+- SAP ECC release/EHP description without confidential system IDs
 
-## Known limitations
+## Failure protocol
 
-- no SAP datasource yet
-- no executable report/SALV yet
-- no MARC/MARD integration yet
-- no production/runtime claim until this record is completed
+If the source requires release-specific syntax adjustment:
+
+1. record the failing object
+2. preserve the original error message without customer identifiers
+3. document the compatibility change
+4. rerun syntax/activation/tests
+5. only then update the maturity state
+
+## Promotion gate
+
+The package may be promoted to `TEST_VALIDATED` only when:
+
+- every required object is active
+- all prepared ABAP Unit tests pass
+- the executable report runs successfully
+- no real customer data is committed to Git
+
+Until then the public claim remains **SOURCE_READY / RUNTIME_VALIDATION_PENDING**.

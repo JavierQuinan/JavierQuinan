@@ -1,62 +1,101 @@
-# SAP ECC MM — Paquete de Evidencia de Inventario y Reposición
+# SAP ECC MM — Paquete de Evidencia de Inventario y Riesgo de Stock
+
+[English version](./README.md)
 
 > **Línea:** SAP ECC / Materials Management  
 > **Estado del artefacto:** `SOURCE_READY / RUNTIME_VALIDATION_PENDING`  
-> **Claim de ejecución:** ninguno todavía
+> **Claim de ejecución:** fuente preparada; activación/ejecución SAP aún no evidenciada
 
-Este paquete es el primer artefacto técnico del SAP Integration Lab.
+Este es el primer artefacto técnico ejecutable del SAP Integration Lab.
 
-Demuestra una regla de dominio MM pequeña y testeable alrededor de stock actual, punto de pedido y stock de seguridad usando ABAP Objects y ABAP Unit.
+Implementa un diagnóstico clásico ECC para material/centro/almacén. La aplicación lee campos estándar MM desde `MARC` y `MARD`, evalúa el stock de libre utilización frente al punto de pedido y stock de seguridad, y presenta el resultado mediante un reporte ejecutable SALV.
 
-## Lo que este código sí demuestra
+## Límite funcional importante
 
-- diseño de clase ABAP Objects
-- estructura de retorno tipada
-- reglas de estado de negocio explícitas
-- lógica determinista
-- estructura de clase de pruebas ABAP Unit
-- separación entre evidencia de código y claims de ejecución
+Esta aplicación **no implementa el motor MRP de SAP** ni pretende reproducir su lógica de planificación de aprovisionamiento. Es un ejercicio diagnóstico y de reporting orientado a demostrar SAP ECC MM + ingeniería ABAP clásica.
 
-## Lo que todavía no demuestra
+## Arquitectura
 
-- activación en un sistema SAP ECC real
-- ejecución contra MARC/MARD u otra fuente estándar SAP
-- ejecución exitosa de ABAP Unit dentro de SAP
-- estado production-ready
+```text
+ZMM_STOCK_RISK_REPORT
+        │
+        ▼
+ZCL_MM_STOCK_RISK_SERVICE
+        │
+        ▼
+ZIF_MM_STOCK_SOURCE
+   ├── ZCL_MM_STOCK_SOURCE_ECC  → MARC / MARD
+   └── ZCL_MM_STOCK_SOURCE_DEMO → datos sintéticos deterministas
+```
 
-Esos claims quedan bloqueados hasta documentar el resultado en `EVIDENCE.md`.
+Objeto de soporte:
 
-## Escenario funcional
+- `ZCX_MM_STOCK_NOT_FOUND` — excepción explícita cuando no se encuentran datos para material/centro/almacén.
 
-Para un contexto sintético material/centro:
+## Datos estándar ECC utilizados
 
-- `current_stock` = stock disponible
-- `reorder_point` = punto que dispara reposición
-- `safety_stock` = stock mínimo de protección
+El datasource ECC consulta:
 
-El evaluador retorna:
+- `MARC-MINBE` — punto de pedido
+- `MARC-EISBE` — stock de seguridad
+- `MARD-LABST` — stock de libre utilización para el almacén seleccionado
 
-- `OK` — stock igual o superior al objetivo
-- `REORDER` — stock por debajo del objetivo pero no por debajo del safety stock
-- `CRITICAL` — stock por debajo del safety stock
+No existe ninguna sentencia de actualización, inserción o borrado. El datasource es únicamente de lectura.
 
-También calcula la cantidad faltante para recuperar el nivel objetivo.
+## Regla diagnóstica
 
-## Próxima promoción técnica
+- `CRITICAL` — stock de libre utilización por debajo del stock de seguridad
+- `REORDER` — stock igual o inferior al punto de pedido, pero no inferior al stock de seguridad
+- `OK` — stock superior al punto de pedido
 
-La siguiente versión añadirá una abstracción de datasource y dos implementaciones:
+`shortage_qty` informa la cantidad necesaria para alcanzar el punto de pedido configurado cuando el stock actual es inferior.
 
-1. datasource demo/sintético para pruebas deterministas
-2. datasource ECC sobre stock estándar cuando exista un entorno SAP apropiado para validar runtime
+## Estructura del código
 
-Luego se añadirá un reporte ejecutable/SALV por encima del servicio de dominio.
+```text
+inventory-reorder/
+├── README.md
+├── README.es.md
+├── EVIDENCE.md
+└── source/
+    ├── zcx_mm_stock_not_found.clas.abap
+    ├── zif_mm_stock_source.intf.abap
+    ├── zcl_mm_stock_source_ecc.clas.abap
+    ├── zcl_mm_stock_source_demo.clas.abap
+    ├── zcl_mm_stock_risk_service.clas.abap
+    ├── zcl_mm_stock_risk_service.clas.testclasses.abap
+    └── zmm_stock_risk_report.prog.abap
+```
 
-## Regla de validación
+## Cobertura ABAP Unit preparada
 
-No describir este paquete como “ejecutándose en SAP” hasta completar:
+Se versionaron cuatro casos deterministas:
 
-1. creación/importación de la clase
-2. syntax check
-3. activación
-4. ejecución de ABAP Unit
-5. registro del resultado en `EVIDENCE.md`
+1. stock superior al punto de pedido → `OK`
+2. stock exactamente en el punto de pedido → `REORDER`
+3. stock por debajo del stock de seguridad → `CRITICAL`
+4. cálculo de cantidad faltante hasta alcanzar el punto de pedido
+
+Las pruebas utilizan el datasource demo y no datos productivos SAP.
+
+## Qué demuestra actualmente el código
+
+- diseño ABAP OO clásico
+- inversión de dependencias mediante interfaz
+- datasource determinista para pruebas
+- Open SQL de solo lectura sobre tablas estándar ECC MM
+- manejo explícito de errores de dominio
+- estructura de reporte ejecutable
+- salida SALV
+- fuente de pruebas ABAP Unit
+
+## Qué continúa bloqueado
+
+No se realizan los siguientes claims hasta obtener evidencia runtime en SAP:
+
+- syntax check superado en una release ECC determinada
+- activación correcta de todos los objetos
+- ABAP Unit ejecutado con éxito en SAP
+- reporte SALV ejecutado correctamente contra un sistema SAP
+
+Consulte [`EVIDENCE.md`](./EVIDENCE.md) para el protocolo de validación.
