@@ -16,7 +16,7 @@
 
 ## Profile
 
-Full Stack Engineer focused on building **enterprise SaaS products, web applications, mobile experiences and business integrations**. My core stack combines **Angular, React, TypeScript, NestJS, Node.js, PostgreSQL and Supabase**, with practical experience in multi-tenant architectures, RBAC, REST APIs, background processing and integration-heavy systems.
+Full Stack Engineer focused on building **enterprise SaaS products, web applications, mobile experiences and business integrations**. My core stack combines **Angular, React, TypeScript, NestJS, Node.js, PostgreSQL and Supabase**, with practical experience in multi-tenant architectures, RBAC, REST APIs, background processing and integration-heavy systems. My mobile evidence spans both cross-platform development and **native Android with Kotlin**.
 
 I also work with **SAP MM and SAP IS-U Work Management** in enterprise environments and I am expanding my technical specialization in **ABAP and ABAP Cloud**.
 
@@ -31,7 +31,7 @@ My background in **Software Engineering and Law** is especially useful in produc
 | Frontend | Angular · React · TypeScript · JavaScript · Tailwind CSS |
 | Backend | NestJS · Node.js · Express · REST APIs · JWT · WebSockets |
 | Data | PostgreSQL · Supabase · TypeORM · MySQL · MongoDB |
-| Mobile | React Native · Expo · Ionic · Firebase |
+| Mobile | **Kotlin · Native Android** · React Native · Expo · Ionic · Firebase |
 | Architecture | Multi-tenant SaaS · RBAC · background workers · event-driven workflows · integrations |
 | Async / Infrastructure | Redis · BullMQ · Docker · nginx · S3/MinIO-compatible storage |
 | Quality | Playwright · Jest · Supertest · GitHub Actions · linting · automated validation |
@@ -55,8 +55,9 @@ Command-line tool for comparing JSON/YAML configuration files with multiple outp
 | Repository | Evidence | Current portfolio role |
 |---|---|---|
 | [Task Manager](https://github.com/JavierQuinan/fullstack-javascript-project-141) | Fastify · SQLite · Knex · Objection.js · auth · CRUD · i18n | Full-stack supporting evidence; hardening backlog documented |
-| [Realtime Chat](https://github.com/JavierQuinan/fullstack-javascript-project-139) | React 18 · Redux Toolkit · Socket.IO · Formik/Yup · i18n | React/realtime supporting evidence; tests/demo verification pending |
-| [RSS Reader](https://github.com/JavierQuinan/fullstack-javascript-project-137) | Reactive JavaScript · Axios · RSS parsing · i18next · Webpack | Frontend supporting evidence; Playwright suite verification pending |
+| [Realtime Chat](https://github.com/JavierQuinan/fullstack-javascript-project-139) | React 18 · Redux Toolkit · Socket.IO · Formik/Yup · i18n | React/realtime supporting evidence with CI quality gate |
+| [RSS Reader](https://github.com/JavierQuinan/fullstack-javascript-project-137) | Reactive JavaScript · Axios · RSS parsing · i18next · Webpack | Frontend supporting evidence; Playwright modernization in progress |
+| [Parking Android](https://github.com/JavierQuinan/parqueadero_android) | Kotlin · Native Android · AndroidX · Material Components · HTTP/Volley | Active open-source revival; roadmap to modern Android architecture and CI |
 | [Page Loader](https://github.com/JavierQuinan/fullstack-javascript-project-138) | Node.js CLI · Axios · Cheerio · concurrency · Jest | CLI/HTTP processing supporting evidence |
 
 Repository promotion, historical classification and public-security rules are documented in [Portfolio Governance](docs/PORTFOLIO_GOVERNANCE.md).
@@ -96,9 +97,9 @@ My SAP experience is primarily functional and operational, with emphasis on:
 I deliberately separate **hands-on enterprise experience** from **training/certification claims**. Only verifiable certifications are presented as certifications.
 
 ### [SAP Integration Lab — Public Evidence Roadmap](showcases/sap-integration-lab/README.md)
-No dedicated SAP/ABAP source repository is currently public. This roadmap defines the acceptance gate and implementation sequence for building real ABAP, ABAP Objects, ABAP Unit and ABAP Cloud/RAP evidence without exposing enterprise/customer systems.
+The SAP Integration Lab now contains a source-ready **SAP ECC MM / ABAP Objects** evidence pack with ABAP Unit source, SALV reporting, bilingual build/run documentation and a custom `SE93` report-transaction design. Runtime validation in an authorized ECC DEV/sandbox remains pending before any execution claim is made.
 
-`SAP MM` `IS-U Work Management` `ABAP` `ABAP Cloud` `RAP` `Integration` — **evidence build in progress**
+`SAP MM` `IS-U Work Management` `ABAP` `ABAP Unit` `ABAP Cloud` `RAP` `Integration` — **ECC MM source-ready; runtime validation pending**
 
 ## Engineering principles
 
@@ -115,11 +116,12 @@ No dedicated SAP/ABAP source repository is currently public. This roadmap define
 2. [Motorix ERP / SaaS Showcase](showcases/motorix/README.md) — **published**
 3. [FITBA Web + Mobile Showcase](showcases/fitba/README.md) — **published**
 4. [LegalTech Platform Showcase](showcases/legaltech/README.md) — **published**
-5. [SAP Integration Lab](showcases/sap-integration-lab/README.md) — **roadmap published; executable ABAP evidence pending**
+5. [SAP Integration Lab](showcases/sap-integration-lab/README.md) — **ECC MM source-ready; runtime validation pending**
+6. [Parking Android](https://github.com/JavierQuinan/parqueadero_android) — **Kotlin/native Android open-source revival in progress**
 
 ## Español
 
-Soy **Ingeniero en Software, Abogado y Full Stack Engineer**, especializado en desarrollo de productos SaaS empresariales, aplicaciones web y móviles, arquitectura multi-tenant e integraciones. Mi stack principal incluye Angular, React, TypeScript, NestJS, Node.js, PostgreSQL y Supabase. Complemento el perfil con experiencia funcional en SAP MM / IS-U Work Management y especialización técnica progresiva en ABAP y ABAP Cloud.
+Soy **Ingeniero en Software, Abogado y Full Stack Engineer**, especializado en desarrollo de productos SaaS empresariales, aplicaciones web y móviles, arquitectura multi-tenant e integraciones. Mi stack principal incluye Angular, React, TypeScript, NestJS, Node.js, PostgreSQL y Supabase; en móvil también mantengo evidencia de **Android nativo con Kotlin**, además de React Native/Expo. Complemento el perfil con experiencia funcional en SAP MM / IS-U Work Management y especialización técnica progresiva en ABAP y ABAP Cloud.
 
 Mi objetivo profesional es construir y demostrar software empresarial con evidencia verificable: arquitectura, código, pruebas, documentación y casos de estudio sanitizados.
 
