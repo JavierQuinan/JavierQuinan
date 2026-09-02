@@ -10,6 +10,18 @@ Este es el primer artefacto técnico ejecutable del SAP Integration Lab.
 
 Implementa un diagnóstico clásico ECC para material/centro/almacén. La aplicación lee campos estándar MM desde `MARC` y `MARD`, evalúa el stock de libre utilización frente al punto de pedido y stock de seguridad, y presenta el resultado mediante un reporte ejecutable SALV.
 
+## Ruta de construcción reproducible
+
+El paquete incluye ahora un procedimiento profesional y respaldado por fuentes para crear el conjunto completo de objetos ABAP y exponer el reporte mediante la transacción Z original `ZMM_STOCK_RISK` usando `SE93`.
+
+- [Guía de construcción — Español](./BUILD_GUIDE.es.md)
+- [Build Guide — English](./BUILD_GUIDE.md)
+- [Guía de ejecución](./RUNBOOK.es.md)
+- [Runtime Runbook](./RUNBOOK.md)
+- [Registro de evidencia](./EVIDENCE.md)
+
+La guía de construcción se apoya en documentación oficial SAP para Class Builder (`SE24`), programas ejecutables (`SE38`), Transaction Maintenance (`SE93`), ABAP Unit y comportamiento de paquetes/CTS.
+
 ## Límite funcional importante
 
 Esta aplicación **no implementa el motor MRP de SAP** ni pretende reproducir su lógica de planificación de aprovisionamiento. Es un ejercicio diagnóstico y de reporting orientado a demostrar SAP ECC MM + ingeniería ABAP clásica.
@@ -17,6 +29,9 @@ Esta aplicación **no implementa el motor MRP de SAP** ni pretende reproducir su
 ## Arquitectura
 
 ```text
+ZMM_STOCK_RISK
+        │
+        ▼
 ZMM_STOCK_RISK_REPORT
         │
         ▼
@@ -56,6 +71,10 @@ No existe ninguna sentencia de actualización, inserción o borrado. El datasour
 inventory-reorder/
 ├── README.md
 ├── README.es.md
+├── BUILD_GUIDE.md
+├── BUILD_GUIDE.es.md
+├── RUNBOOK.md
+├── RUNBOOK.es.md
 ├── EVIDENCE.md
 └── source/
     ├── zcx_mm_stock_not_found.clas.abap
@@ -88,6 +107,8 @@ Las pruebas utilizan el datasource demo y no datos productivos SAP.
 - estructura de reporte ejecutable
 - salida SALV
 - fuente de pruebas ABAP Unit
+- procedimiento documentado para crear una Report Transaction Z con `SE93`
+- documentación técnica bilingüe
 
 ## Qué continúa bloqueado
 
@@ -96,6 +117,7 @@ No se realizan los siguientes claims hasta obtener evidencia runtime en SAP:
 - syntax check superado en una release ECC determinada
 - activación correcta de todos los objetos
 - ABAP Unit ejecutado con éxito en SAP
+- `ZMM_STOCK_RISK` ejecutada correctamente mediante `SE93`
 - reporte SALV ejecutado correctamente contra un sistema SAP
 
 Consulte [`EVIDENCE.md`](./EVIDENCE.md) para el protocolo de validación.

@@ -21,18 +21,20 @@ Recommended creation/activation order:
 5. `ZCL_MM_STOCK_RISK_SERVICE`
 6. local test include for `ZCL_MM_STOCK_RISK_SERVICE`
 7. `ZMM_STOCK_RISK_REPORT`
+8. `ZMM_STOCK_RISK` — SE93 Report Transaction
 
 ## Activation record
 
-| Object | Syntax check | Activation | Notes |
-|---|---|---|---|
-| ZCX_MM_STOCK_NOT_FOUND | PENDING | PENDING | |
-| ZIF_MM_STOCK_SOURCE | PENDING | PENDING | |
-| ZCL_MM_STOCK_SOURCE_DEMO | PENDING | PENDING | |
-| ZCL_MM_STOCK_SOURCE_ECC | PENDING | PENDING | |
-| ZCL_MM_STOCK_RISK_SERVICE | PENDING | PENDING | |
-| ABAP Unit test classes | PENDING | PENDING | |
-| ZMM_STOCK_RISK_REPORT | PENDING | PENDING | |
+| Object | Syntax check | Activation / Creation | Runtime | Notes |
+|---|---|---|---|---|
+| ZCX_MM_STOCK_NOT_FOUND | PENDING | PENDING | N/A | |
+| ZIF_MM_STOCK_SOURCE | PENDING | PENDING | N/A | |
+| ZCL_MM_STOCK_SOURCE_DEMO | PENDING | PENDING | N/A | |
+| ZCL_MM_STOCK_SOURCE_ECC | PENDING | PENDING | N/A | |
+| ZCL_MM_STOCK_RISK_SERVICE | PENDING | PENDING | N/A | |
+| ABAP Unit test classes | PENDING | PENDING | PENDING | |
+| ZMM_STOCK_RISK_REPORT | PENDING | PENDING | PENDING | |
+| ZMM_STOCK_RISK (SE93) | N/A | PENDING | PENDING | Report transaction -> ZMM_STOCK_RISK_REPORT |
 
 ## ABAP Unit record
 
@@ -55,7 +57,7 @@ Record after execution:
 
 ## ECC runtime scenario
 
-The executable report accepts:
+The executable report and the `ZMM_STOCK_RISK` report transaction accept:
 
 - material
 - plant
@@ -87,6 +89,8 @@ Capture only sanitized evidence:
 - successful syntax checks
 - successful activation status
 - ABAP Unit result summary
+- successful creation of the `ZMM_STOCK_RISK` report transaction in `SE93`
+- transaction launch result
 - report selection screen with synthetic/non-sensitive identifiers
 - SALV output with sanitized values
 - SAP ECC release/EHP description without confidential system IDs
@@ -108,6 +112,7 @@ The package may be promoted to `TEST_VALIDATED` only when:
 - every required object is active
 - all prepared ABAP Unit tests pass
 - the executable report runs successfully
+- `ZMM_STOCK_RISK` launches the report successfully through `SE93`
 - no real customer data is committed to Git
 
 Until then the public claim remains **SOURCE_READY / RUNTIME_VALIDATION_PENDING**.
