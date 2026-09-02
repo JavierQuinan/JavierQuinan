@@ -18,6 +18,6 @@ INTERFACE zif_mm_stock_source PUBLIC.
     RETURNING
       VALUE(rs_snapshot) TYPE ty_stock_snapshot
     RAISING
-      cx_sy_open_sql_db.
+      zcx_mm_stock_not_found.
 
 ENDINTERFACE.
