@@ -3,34 +3,27 @@
 [English version](./README.md)
 
 > **Línea:** SAP ECC / Materials Management  
-> **Estado del artefacto:** `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`  
-> **Claim de ejecución:** lógica fuente y vectores deterministas revisados; activación/ejecución SAP no se atribuye hasta contar con un DEV/sandbox autorizado
+> **Evidencia:** source ABAP original · escenarios deterministas revisados · guía reproducible de construcción
 
-Este es el primer artefacto técnico ejecutable del SAP Integration Lab.
+Este pack implementa un diagnóstico temprano de stock, clásico ECC y read-only, para material / centro / almacén. Consulta campos estándar de datos maestros/stock, separa el stock del almacén seleccionado del stock libre bruto de planta, aplica reglas transparentes y expone el resultado mediante SALV.
 
-Implementa un diagnóstico temprano de stock, clásico ECC y de solo lectura, para material / centro / almacén. La aplicación consulta campos estándar MM desde `MARC` y `MARD`, separa el stock del almacén seleccionado del stock libre bruto total de planta, aplica reglas transparentes y presenta el resultado mediante SALV.
-
-## Ruta de construcción reproducible
+## Índice de evidencia
 
 - [Guía de construcción — Español](./BUILD_GUIDE.es.md)
 - [Build Guide — English](./BUILD_GUIDE.md)
 - [Perfil de compatibilidad y hardening](./COMPATIBILITY.es.md)
 - [Compatibility & Hardening Profile](./COMPATIBILITY.md)
 - [Registro de validación estática](./STATIC_VALIDATION.md)
-- [Paquete de ejecución runtime — Español](./RUNTIME_EXECUTION.es.md)
-- [Runtime Execution Packet — English](./RUNTIME_EXECUTION.md)
-- [Guía de ejecución](./RUNBOOK.es.md)
-- [Runtime Runbook](./RUNBOOK.md)
-- [Plantilla de resultados de validación](./VALIDATION_RESULTS_TEMPLATE.md)
 - [Registro de evidencia](./EVIDENCE.md)
+- [`source/`](./source/) — source ABAP original
 
-La ruta utiliza herramientas y conceptos clásicos SAP: `SE24`, `SE38`, `SE93`, paquetes/CTS, ABAP Unit y SALV.
+La guía de construcción documenta `SE24`, `SE38`, `SE93`, consideraciones de paquete/transporte, ubicación de ABAP Unit y pasos de ejecución SALV.
 
-## Límite funcional importante
+## Límite funcional
 
 Esta aplicación **no es SAP MRP** ni reproduce la planificación por punto de pedido.
 
-SAP puede considerar stock de planta, entradas firmes y lógica adicional de planificación. Este laboratorio es deliberadamente más acotado: un diagnóstico transparente de stock y datos maestros diseñado para demostrar ECC MM + ingeniería ABAP sin atribuirse el comportamiento del motor de planificación SAP.
+Es deliberadamente más acotada: un diagnóstico transparente sobre valores de stock/datos maestros pensado para demostrar ECC MM + ingeniería ABAP sin atribuirse el comportamiento del motor de planificación SAP.
 
 ## Arquitectura
 
@@ -49,89 +42,78 @@ ZIF_MM_STOCK_SOURCE
    └── ZCL_MM_STOCK_SOURCE_DEMO → datos sintéticos deterministas
 ```
 
-Objeto de soporte:
+Excepción de soporte:
 
-- `ZCX_MM_STOCK_NOT_FOUND` — excepción estática explícita cuando no se encuentran datos para material/centro/almacén.
+- `ZCX_MM_STOCK_NOT_FOUND`
 
 ## Datos estándar ECC utilizados
 
 El datasource ECC consulta:
 
-- `MARC-DISMM` — tipo MRP
-- `MARC-MINBE` — punto de pedido
-- `MARC-EISBE` — stock de seguridad
-- `MARD-LABST` — stock de libre utilización del almacén seleccionado
-- todos los registros `MARD-LABST` del material/centro para calcular un total bruto de stock libre de planta
+- `MARC-DISMM` — tipo MRP;
+- `MARC-MINBE` — punto de pedido;
+- `MARC-EISBE` — stock de seguridad;
+- `MARD-LABST` — stock libre del almacén seleccionado;
+- registros relevantes `MARD-LABST` del material/centro para derivar stock libre bruto de planta;
+- `MARA-MEINS` — contexto de unidad base.
 
-No existen sentencias de actualización, inserción, modificación o borrado en el camino runtime.
+Este artefacto no contiene operaciones de escritura sobre materiales ni compras.
 
-## Regla diagnóstica endurecida
+## Regla diagnóstica
 
-- `NOT_CONFIGURED` — punto de pedido y stock de seguridad están iniciales
-- `CRITICAL` — stock libre de planta por debajo del stock de seguridad configurado
-- `REORDER` — stock libre de planta igual o inferior al punto de pedido configurado, sin estar por debajo del stock de seguridad
-- `OK` — ninguna de las condiciones anteriores aplica
+- `NOT_CONFIGURED` — punto de pedido y stock de seguridad iniciales;
+- `CRITICAL` — stock libre de planta inferior al stock de seguridad;
+- `REORDER` — stock libre de planta igual/inferior al punto de pedido sin estar debajo del safety stock;
+- `OK` — ninguna condición anterior aplica.
 
-`shortage_qty` informa la cantidad necesaria para alcanzar el punto de pedido configurado cuando el total de stock libre de planta es menor.
+`shortage_qty` informa la cantidad necesaria para alcanzar el punto de pedido cuando el stock libre de planta es menor.
 
-El stock del almacén seleccionado se presenta como detalle; no determina el estado a nivel planta.
+El stock del almacén seleccionado se muestra como contexto de detalle; no gobierna el resultado a nivel planta.
 
-## Validación estática + diseño ABAP Unit
+## Revisión de escenarios deterministas
 
-Los seis vectores deterministas versionados fueron trazados contra la implementación actual:
+El repositorio contiene source ABAP Unit para seis escenarios, trazados consistentemente contra la lógica actual del servicio:
 
-1. stock de planta superior al punto de pedido → `OK` — static PASS
-2. stock de planta exactamente en punto de pedido → `REORDER` — static PASS
-3. stock de planta por debajo del stock de seguridad → `CRITICAL` — static PASS
-4. faltante desde 55 hasta punto de pedido 80 → `25` — static PASS
-5. ausencia de umbrales → `NOT_CONFIGURED` — static PASS
-6. stock bajo en almacén seleccionado con planta suficiente → estado basado en planta — static PASS
+1. stock de planta superior al punto de pedido → `OK`;
+2. stock exactamente en punto de pedido → `REORDER`;
+3. stock de planta inferior al stock de seguridad → `CRITICAL`;
+4. stock 55 vs. punto de pedido 80 → faltante `25`;
+5. ausencia de umbrales → `NOT_CONFIGURED`;
+6. stock bajo en almacén seleccionado con stock de planta suficiente → prevalece el resultado de planta.
 
-**Vectores revisados: 6/6; inconsistencias lógicas encontradas: 0.**
+**Escenarios revisados a nivel de source: 6/6 consistentes; inconsistencias: 0.**
 
-Esto es validación de fuente/lógica, no un claim de que ABAP Unit haya sido ejecutado dentro de SAP. El objetivo futuro de runtime permanece en 6/6 PASS cuando exista ambiente autorizado.
+Esta afirmación corresponde a revisión source/estática, no a ejecución de ABAP Unit dentro de un sistema SAP corporativo.
 
 ## Postura de compatibilidad ECC
 
-El runtime principal favorece construcciones clásicas:
+El source favorece construcciones clásicas:
 
-- `CREATE OBJECT`
-- `CALL METHOD`
-- `DATA` explícito
-- Open SQL clásico sin host variables `@`
-- clases e interfaces globales
-- clases locales ABAP Unit
-- `CL_SALV_TABLE`
+- `CREATE OBJECT`;
+- `CALL METHOD`;
+- declaraciones `DATA` explícitas;
+- Open SQL clásico sin host variables `@`;
+- clases/interfaces globales;
+- clases locales ABAP Unit;
+- `CL_SALV_TABLE`.
 
-Se evita sintaxis moderna cuando no aporta valor. Esto mejora portabilidad, pero la release/EHP ECC exacta todavía debe validarse en runtime.
+Esto reduce dependencias innecesarias de sintaxis reciente y facilita la revisión en paisajes ECC clásicos.
 
-## Qué demuestra actualmente la evidencia
+## Qué demuestra esta evidencia
 
-- diseño ABAP OO clásico
-- inversión de dependencias mediante interfaz
-- datasource determinista para pruebas
-- seis vectores deterministas consistentes con la lógica actual
-- diseño Open SQL de solo lectura sobre tablas estándar ECC MM
-- separación stock planta vs. almacén
-- visibilidad del contexto MRP mediante `MARC-DISMM`
-- manejo de excepciones basado en clases
-- estructura de reporte SALV
-- cobertura fuente ABAP Unit
-- diseño de Report Transaction propia mediante `SE93`
-- procedimiento reproducible objeto por objeto para construcción y ejecución
-- documentación técnica bilingüe
-- límites funcionales y de evidencia explícitos
+- razonamiento SAP ECC MM sobre stock/datos maestros;
+- diseño ABAP Objects clásico;
+- inversión de dependencias mediante interfaz;
+- separación datasource ECC / sintético;
+- diseño determinista de pruebas;
+- Open SQL read-only sobre objetos MM estándar;
+- semántica planta vs. almacén;
+- manejo explícito de excepciones;
+- reporting SALV;
+- diseño de Report Transaction mediante `SE93`;
+- documentación reproducible objeto por objeto;
+- documentación técnica bilingüe.
 
-## Límite runtime
+## Límite de evidencia
 
-La ejecución runtime queda diferida porque este ejercicio de portafolio no utiliza permisos empresariales de desarrollo/CTS. Es una restricción de entorno/gobierno y no se presenta como PASS de ejecución.
-
-Continúan bloqueados los siguientes claims hasta obtener evidencia runtime en SAP:
-
-- syntax check superado en una release ECC específica
-- activación correcta de todos los objetos en SAP
-- los seis tests ABAP Unit ejecutados con éxito en SAP
-- `ZMM_STOCK_RISK` iniciada correctamente mediante `SE93`
-- SALV ejecutado correctamente contra un sistema SAP
-
-Consulte [`STATIC_VALIDATION.md`](./STATIC_VALIDATION.md) y [`EVIDENCE.md`](./EVIDENCE.md).
+El repositorio contiene source, revisión estática de escenarios e instrucciones reproducibles de construcción/ejecución. **No** presenta screenshots ni resultados atribuyendo que estos objetos custom fueron activados o ejecutados dentro de un sistema SAP corporativo específico.
