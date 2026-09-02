@@ -44,25 +44,22 @@ The evaluator returns:
 
 It also returns the quantity required to recover the target level.
 
-## Current files
+## Current branch layout
 
-```text
-inventory-reorder/
-├── README.md
-├── README.es.md
-├── EVIDENCE.md
-├── zcl_mm_reorder_evaluator.clas.abap
-└── zcl_mm_reorder_evaluator.clas.testclasses.abap
-```
+This folder already contains the bilingual package documentation and runtime-evidence record. The first ABAP class and its ABAP Unit source currently remain under the earlier `01-abap-core/` path in this same branch.
+
+They will be refactored into this package during **Task 2 — ECC MM Inventory & Reorder executable evidence**, together with the datasource abstraction, executable report and runtime-validation checklist. Until that refactor is complete, this README does not claim the source files are physically located here.
 
 ## Next technical promotion
 
-The next version of this pack will add a datasource abstraction and two implementations:
+Task 2 will add:
 
-1. synthetic/demo datasource for deterministic tests
-2. ECC datasource for standard material/plant/storage-location stock when an appropriate SAP environment is available
-
-An executable report/SALV consumer will then sit above the domain service.
+1. datasource interface
+2. synthetic/demo datasource for deterministic tests
+3. ECC datasource for standard material/plant/storage-location stock when an appropriate SAP environment is available
+4. executable report/SALV consumer
+5. ABAP Unit coverage
+6. completed `EVIDENCE.md` after SAP activation/execution
 
 ## Validation rule
 
