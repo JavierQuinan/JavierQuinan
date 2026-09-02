@@ -2,12 +2,24 @@
 
 [Versión en español](./RUNTIME_EXECUTION.es.md)
 
-> **Current public status:** `SOURCE_READY / RUNTIME_VALIDATION_PENDING`  
-> **Goal:** create, activate, test and execute the evidence pack in an authorized SAP ECC DEV/sandbox without exposing company or system-sensitive information.
+> **Current evidence status:** `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`  
+> **Purpose:** preserve a complete, reproducible SAP runtime procedure for future execution in an authorized ECC DEV/sandbox.  
+> **Important:** this document is a future execution runbook; it does not record a completed SAP runtime validation.
 
-## Working rule
+## Current closure of Task 2.1
 
-Validate **one object at a time**. Do not proceed until the current object passes Syntax Check and activation.
+The source-level stage is complete:
+
+- source/hardening review completed
+- six deterministic test vectors traced against the implementation: **6/6 static PASS**
+- object-by-object build procedure documented
+- runtime execution intentionally deferred because this portfolio exercise is not using enterprise development/CTS access
+
+See [`STATIC_VALIDATION.md`](./STATIC_VALIDATION.md) for the trace record.
+
+## Future runtime working rule
+
+When an authorized SAP environment becomes available, validate **one object at a time**. Do not proceed until the current object passes Syntax Check and activation.
 
 A sanitized result is enough:
 
@@ -19,11 +31,11 @@ ECC release/EHP: <non-sensitive technical version only>
 Notes: none
 ```
 
-For failures, share only the object, approximate line and SAP error text after removing any sensitive identifiers.
+For failures, retain only the object, approximate line and SAP error text after removing sensitive identifiers.
 
 ## Validation sequence
 
-| Step | Object | Tool | Gate |
+| Step | Object | Tool | Future runtime gate |
 |---|---|---|---|
 | 2.1.1 | `ZCX_MM_STOCK_NOT_FOUND` | SE24 / SE80 | syntax + activation |
 | 2.1.2 | `ZIF_MM_STOCK_SOURCE` | SE24 / SE80 | syntax + activation |
@@ -59,15 +71,23 @@ Prepared scenarios:
 5. no reorder/safety thresholds → `NOT_CONFIGURED`
 6. low selected-storage stock with sufficient plant stock → plant-level state remains authoritative
 
-Target runtime record after actual execution:
+Current source-level result:
 
 ```text
-Executed: 6
+Static vectors reviewed: 6
+Static expected outcomes consistent: 6
+Static mismatches: 0
+```
+
+Future SAP runtime target:
+
+```text
+ABAP Unit executed: 6
 Passed: 6
 Failed: 0
 ```
 
-This result must not be claimed until observed in SAP.
+The second block must not be claimed until observed in SAP.
 
 ## Runtime material boundary
 
@@ -84,6 +104,8 @@ RUNTIME_VALIDATED
 TEST_VALIDATED
 ```
 
-when every object is active, all six ABAP Unit tests pass, `ZMM_STOCK_RISK_REPORT` executes successfully, `ZMM_STOCK_RISK` launches through SE93 and the SALV output is observed.
+when every object is active, all six ABAP Unit tests pass, `ZMM_STOCK_RISK_REPORT` executes successfully, `ZMM_STOCK_RISK` launches through SE93 and the SALV output is observed in an authorized environment.
+
+Until then, Task 2.1 is considered **complete at source/static-validation level** and does not block the remaining SAP evidence roadmap.
 
 For the full Spanish object-by-object procedure, use [`RUNTIME_EXECUTION.es.md`](./RUNTIME_EXECUTION.es.md).
