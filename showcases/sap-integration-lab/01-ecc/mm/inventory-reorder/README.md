@@ -10,6 +10,18 @@ This is the first executable technical artifact in the SAP Integration Lab.
 
 It implements a classic ECC diagnostic around material/plant/storage-location stock. The application reads standard MM fields from `MARC` and `MARD`, evaluates unrestricted-use stock against reorder point and safety stock, and presents the result through an executable SALV report.
 
+## Reproducible build path
+
+The package now includes a professional, source-backed build procedure for creating the complete ABAP object set and exposing the report through the original custom transaction `ZMM_STOCK_RISK` using `SE93`.
+
+- [Build Guide — English](./BUILD_GUIDE.md)
+- [Guía de construcción — Español](./BUILD_GUIDE.es.md)
+- [Runtime Runbook](./RUNBOOK.md)
+- [Guía de ejecución](./RUNBOOK.es.md)
+- [Evidence record](./EVIDENCE.md)
+
+The build guide is grounded in official SAP documentation for Class Builder (`SE24`), executable programs (`SE38`), Transaction Maintenance (`SE93`), ABAP Unit and CTS/package behavior.
+
 ## Important functional boundary
 
 This application is **not an implementation of SAP MRP** and does not claim to reproduce replenishment planning. It is a focused diagnostic/reporting exercise suitable for demonstrating classic ECC MM + ABAP engineering.
@@ -17,6 +29,9 @@ This application is **not an implementation of SAP MRP** and does not claim to r
 ## Architecture
 
 ```text
+ZMM_STOCK_RISK
+        │
+        ▼
 ZMM_STOCK_RISK_REPORT
         │
         ▼
@@ -56,6 +71,10 @@ No update, insert or delete statement is used. The datasource is read-only.
 inventory-reorder/
 ├── README.md
 ├── README.es.md
+├── BUILD_GUIDE.md
+├── BUILD_GUIDE.es.md
+├── RUNBOOK.md
+├── RUNBOOK.es.md
 ├── EVIDENCE.md
 └── source/
     ├── zcx_mm_stock_not_found.clas.abap
@@ -88,6 +107,8 @@ The tests use the demo datasource, not production SAP data.
 - executable report structure
 - SALV output structure
 - ABAP Unit source coverage
+- documented creation of a custom report transaction through `SE93`
+- bilingual engineering documentation
 
 ## What remains blocked
 
@@ -96,6 +117,7 @@ The following claims are **not** made until SAP runtime evidence is captured:
 - syntax check passed in a specific ECC release
 - all objects activated successfully
 - ABAP Unit passed in SAP
+- `ZMM_STOCK_RISK` launched successfully through `SE93`
 - the SALV report executed successfully against an SAP system
 
 See [`EVIDENCE.md`](./EVIDENCE.md) for the validation protocol.
