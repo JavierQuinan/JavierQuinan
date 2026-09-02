@@ -24,7 +24,7 @@ Confirm the target release resolves:
 - `EBAN-BADAT`, `EBAN-LFDAT`, `EBAN-LOEKZ`
 - `EBAN-MATNR`, `EBAN-WERKS`, `EBAN-EKGRP`
 - `EBAN-EBELN`, `EBAN-EBELP`
-- `EKKO-BEDAT`, `EKKO-LIFNR`, `EKKO-EKORG`
+- `EKKO-BSTYP`, `EKKO-BEDAT`, `EKKO-LIFNR`, `EKKO-EKORG`
 - `EKPO-LOEKZ`, `EKPO-MENGE`, `EKPO-MEINS`
 - `EKET-EINDT`
 
@@ -37,12 +37,16 @@ EBAN
    ├── PR metadata
    └── EBELN/EBELP reference when present
            ↓
-        EKKO/EKPO
+ EKKO where BSTYP = 'F'
+           ↓
+          EKPO
            ↓
           EKET
 ```
 
-The source intentionally treats a missing PO reference as a valid `PR_ONLY` situation. It only reports `REFERENCE_GAP` when the PR contains a downstream reference that cannot be resolved by the read-only lookup.
+`BSTYP = 'F'` is used as the Purchase Order category guard. A referenced purchasing document that does not resolve as category `F` is not silently treated as a PO.
+
+The source intentionally treats a missing PO reference as a valid `PR_ONLY` situation. It reports `REFERENCE_GAP` only when the PR contains a downstream reference that cannot be resolved as the expected PO header/item.
 
 ## ABAP Unit
 
