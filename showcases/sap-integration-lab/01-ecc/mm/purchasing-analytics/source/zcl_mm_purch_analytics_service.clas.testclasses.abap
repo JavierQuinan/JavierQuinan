@@ -24,9 +24,7 @@ CLASS ltc_mm_purch_analytics IMPLEMENTATION.
     ls_snapshot-banfn = '10000001'.
     ls_snapshot-bnfpo = '00010'.
 
-    CREATE OBJECT lo_service
-      EXPORTING
-        io_source = VALUE #( ).
+    CREATE OBJECT lo_service.
 
     CALL METHOD lo_service->evaluate_snapshot
       EXPORTING is_snapshot = ls_snapshot
