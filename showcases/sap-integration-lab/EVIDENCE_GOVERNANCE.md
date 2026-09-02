@@ -8,25 +8,30 @@ This document defines the acceptance criteria for SAP evidence published in this
 |---|---|
 | `PLANNED` | Scenario and expected learning/evidence outcome documented. |
 | `SOURCE_READY` | Reviewable source exists in GitHub and has an explanation of assumptions and expected behavior. |
-| `RUNTIME_VALIDATION_PENDING` | Source is ready to activate/run, but no runtime proof from an SAP system has been recorded yet. |
+| `STATIC_VALIDATED` | Source logic, dependencies, decision paths and deterministic test vectors have been reviewed consistently at source level; this is not runtime execution. |
+| `EXECUTION_PROCEDURE_READY` | A reproducible object-by-object creation, activation, test and execution procedure is documented for an authorized SAP environment. |
+| `RUNTIME_DEFERRED` | Runtime execution is intentionally deferred because an authorized SAP DEV/sandbox or required development/CTS access is not available. This is an environment constraint, not a successful runtime result. |
 | `RUNTIME_VALIDATED` | Source was activated and executed in an appropriate SAP environment; execution evidence is documented. |
-| `TEST_VALIDATED` | Runtime validation plus reproducible automated/unit test evidence. |
+| `TEST_VALIDATED` | Runtime validation plus reproducible automated/unit-test evidence. |
 
-No artifact may be described as “executed”, “working in SAP”, “production-ready” or equivalent unless it reaches the corresponding state.
+No artifact may be described as “executed”, “working in SAP”, “6/6 ABAP Unit passed”, “production-ready” or equivalent unless it reaches the corresponding runtime/test state.
+
+`STATIC_VALIDATED` and `EXECUTION_PROCEDURE_READY` are legitimate professional evidence states. They allow a portfolio artifact to progress without inventing enterprise runtime access.
 
 ## Required evidence record
 
 Each executable artifact must eventually include an `EVIDENCE.md` containing:
 
 - SAP product/context (ECC, IS-U, S/4HANA, ABAP Cloud)
-- system type (demo/sandbox/training/private enterprise environment)
+- environment availability/boundary
 - object names used
-- activation result
+- source/static-review result
+- activation result when actually observed
 - execution steps
 - expected result
-- actual result
-- test result
-- validation date
+- actual runtime result when actually observed
+- test result, distinguishing static vectors from executed ABAP Unit
+- validation date when applicable
 - screenshots/log excerpts only when sanitized
 - known limitations
 
@@ -44,7 +49,7 @@ Classic MM evidence can demonstrate:
 - service procurement
 - classic Open SQL where appropriate
 - ALV/SALV reporting
-- ABAP Objects and ABAP Unit
+- ABAP Objects and ABAP Unit source
 
 Any direct-table example must be explicitly labelled as ECC/classic evidence and must not be reused to claim a modern S/4HANA Clean Core design.
 
@@ -105,7 +110,12 @@ Before publication, remove or replace:
 - screenshots with confidential information
 - custom object details that reveal proprietary implementation when not necessary
 
-The resulting artifact must state that it is a sanitized professional guide derived from real operational experience, not a vendor training document.
+The resulting artifact must state whether it is:
+
+- a sanitized professional guide derived from real operational experience, or
+- an original technical reference synthesized from study/training material.
+
+Third-party screenshots, logos and copyrighted training pages are not republished as portfolio assets unless explicit publication rights exist.
 
 ## Bilingual standard
 
@@ -121,12 +131,16 @@ Code identifiers remain in English unless SAP standard object naming dictates ot
 
 ## Runtime-validation gate
 
-For ABAP source, runtime validation should include at minimum:
+For ABAP source, true runtime validation still requires at minimum:
 
-1. object creation/import into an appropriate SAP development environment
+1. object creation/import into an appropriate authorized SAP development environment
 2. successful syntax check/activation
 3. executable scenario or callable class method
 4. result capture with synthetic/demo data
-5. ABAP Unit result when tests exist
+5. ABAP Unit execution result when tests exist
 
-Until these steps are documented, source remains `RUNTIME_VALIDATION_PENDING`.
+If enterprise governance prevents those steps, the correct state is:
+
+`STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+
+This state may be promoted later without redesign when an authorized sandbox/DEV environment becomes available.
