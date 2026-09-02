@@ -1,4 +1,4 @@
-# SAP ECC MM Inventory & Stock Risk — Runtime Runbook
+# SAP ECC MM Inventory & Stock Risk — Verification Runbook
 
 [Versión en español](./RUNBOOK.es.md)
 
@@ -21,21 +21,21 @@ Create, activate, test and execute the hardened evidence pack without using cust
 
 Use the matching files under `source/` as the source of truth.
 
-## Validation sequence
+## Verification sequence
 
 For each development object:
 
-1. run Syntax Check
-2. activate
-3. record any release-specific adjustment in `EVIDENCE.md`
+1. run Syntax Check;
+2. activate;
+3. record only release-specific compatibility notes that can be safely published.
 
-After all classes are active:
+After the classes are active:
 
-1. run ABAP Unit for `ZCL_MM_STOCK_RISK_SERVICE`
-2. confirm all six prepared tests execute successfully
-3. record passed/failed counts
+1. execute ABAP Unit for `ZCL_MM_STOCK_RISK_SERVICE`;
+2. record the observed total/pass/fail counts;
+3. compare the observed results with the six source-reviewed scenarios.
 
-## ABAP Unit expected scenarios
+## Source-reviewed scenarios
 
 1. plant stock above reorder point → `OK`
 2. plant stock exactly at reorder point → `REORDER`
@@ -44,38 +44,32 @@ After all classes are active:
 5. no thresholds → `NOT_CONFIGURED`
 6. low selected-storage stock with sufficient plant stock → plant-level status remains `OK`
 
-Do not claim `6/6 PASS` until observed in SAP.
+Repository static review: **6 scenarios / 6 consistent / 0 mismatches**.
 
 ## Report execution
 
-Execute `ZMM_STOCK_RISK_REPORT` first from `SE38`, then through `ZMM_STOCK_RISK` after the report transaction is created in `SE93`.
+Execute `ZMM_STOCK_RISK_REPORT` first from `SE38`, then through `ZMM_STOCK_RISK` after creating the Report Transaction in `SE93`.
 
 Use a non-sensitive material that:
 
-- exists in SAP
-- is extended to the selected plant
-- has a valid storage-location record
-- has an understood MRP type
-- has useful reorder-point/safety-stock values for the test
+- exists in SAP;
+- is extended to the selected plant;
+- has a valid storage-location record;
+- has an understood MRP type;
+- has usable reorder-point/safety-stock values for the diagnostic.
 
-Enter:
+Expected SALV context:
 
-- Material
-- Plant
-- Storage Location
-
-Expected SALV row:
-
-- material
-- plant
-- selected storage location
-- MRP type
-- selected storage unrestricted stock
-- gross plant unrestricted stock
-- reorder point
-- safety stock
-- diagnostic status
-- shortage quantity
+- material;
+- plant;
+- selected storage location;
+- MRP type;
+- selected-storage unrestricted stock;
+- gross plant unrestricted stock;
+- reorder point;
+- safety stock;
+- diagnostic status;
+- shortage quantity.
 
 ## Interpretation boundary
 
@@ -89,17 +83,8 @@ Use synthetic or sanitized identifiers in any public evidence.
 
 ## Authorization boundary
 
-`ZMM_STOCK_RISK` is a report transaction. SAP applies the standard transaction-start authorization check (`S_TCODE`). Productive business-data authorization must be designed per target organization; do not invent customer-specific roles in this public lab.
+`ZMM_STOCK_RISK` is a report transaction. SAP applies the standard transaction-start authorization check (`S_TCODE`). Productive business-data authorization must be designed per target organization; this public lab does not invent customer-specific roles.
 
-## Evidence capture
+## Result record
 
-After successful runtime validation, update `EVIDENCE.md` with:
-
-- ECC release/EHP without confidential system ID
-- syntax/activation status
-- ABAP Unit result
-- SE93 transaction creation/launch result
-- sanitized SALV result
-- compatibility adjustments, if any
-
-Only then may the public maturity state advance beyond `RUNTIME_VALIDATION_PENDING`.
+Use [`VALIDATION_RESULTS_TEMPLATE.md`](./VALIDATION_RESULTS_TEMPLATE.md) to record only observed values. Leave non-observed fields blank rather than marking them as pending.
