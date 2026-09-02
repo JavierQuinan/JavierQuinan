@@ -91,12 +91,16 @@ Operational guides in this track cover:
 
 The visual set shows:
 
-1. material-extension access screen;
-2. view selection;
-3. organizational-level selection;
-4. verification in material index.
+1. existing-material selection/access;
+2. material-master view selection;
+3. plant/storage-location organizational levels;
+4. post-process verification.
 
-Material IDs, center/storage values, descriptions and usernames are sanitized. The screenshots come from a guide supplied for this portfolio and are published only in redacted form.
+Material IDs, plant/storage-location values, descriptions and usernames are sanitized. The screenshots come from operational material supplied for this portfolio and are published only in redacted form.
+
+## Official SAP references
+
+The MM guides are cross-referenced against public SAP documentation. See the centralized [SAP Official Reference Index](../../OFFICIAL_SAP_REFERENCES.md), including SAP Help pages for material-master extension, storage-location-specific data, Class Builder, SE93 and ABAP Unit.
 
 ## What this track demonstrates
 
@@ -108,7 +112,8 @@ Material IDs, center/storage values, descriptions and usernames are sanitized. T
 - read-only Open SQL diagnostics;
 - SALV reporting;
 - deterministic test design;
-- bilingual technical documentation.
+- bilingual technical documentation;
+- evidence backed by sanitized operational material and official SAP references.
 
 ## ECC boundary
 
