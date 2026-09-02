@@ -2,204 +2,151 @@
 
 [Versión en español](./README.es.md)
 
-> **Evidence type:** Clean Core integration design based on released SAP interfaces  
-> **Status:** `RESEARCH_VALIDATED / DESIGN_READY / RUNTIME_NOT_CLAIMED`  
+> **Evidence type:** Clean Core integration evidence based on released SAP interfaces  
+> **Status:** `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_PENDING / S4_RUNTIME_NOT_CLAIMED`  
 > **Scope:** Purchase Requisitions + Purchase Orders
 
-This lab documents how the MM purchasing evidence evolves from classic ECC read-only table access to a modern S/4HANA integration approach based on released CDS/API surfaces.
+This lab demonstrates how classic ECC purchasing evidence evolves into a modern S/4HANA integration design without treating direct table access as a Clean Core integration pattern.
 
 ## Architectural contrast
 
 ```text
-Classic ECC evidence
---------------------
-ABAP report/service
-      │
-      ▼
-EKKO / EKPO
-classic Open SQL
-
-          ≠
-
-S/4HANA Clean Core evidence
----------------------------
-External/app extension
-      │
-      ▼
-Released OData / CDS API
-      │
-      ├── Purchase Requisition API
-      └── Purchase Order API
+Classic ECC evidence                 S/4HANA Clean Core evidence
+--------------------                 ---------------------------
+ABAP report/service                  External/application extension
+        │                                      │
+        ▼                                      ▼
+EKKO / EKPO                           Released OData / CDS API
+classic Open SQL                              │
+                                      ┌───────┴────────┐
+                                      ▼                ▼
+                               Purchase Requisition  Purchase Order
 ```
 
-The ECC pattern remains valid evidence for its own track. It is not reused as proof of Clean Core design.
+## Released-interface direction
 
-## Official interfaces selected
-
-### Purchase Orders
+Purchase Orders:
 
 - CDS interface: `I_PurchaseOrderAPI01`
-- OData V4 API: `API_PURCHASEORDER_2`
+- OData V4 API family: `API_PURCHASEORDER_2`
 
-### Purchase Requisitions
+Purchase Requisitions:
 
-- OData V4 API: `API_PURCHASEREQUISITION_2`
+- OData V4 API family: `API_PURCHASEREQUISITION_2`
 
-Exact availability, fields and operations must always be checked against the target S/4HANA release/API documentation before implementation.
+Exact service paths, fields, authentication and availability must always be verified against the target S/4HANA release before connecting to a real tenant.
 
-## Target portfolio scenario
+## Source implementation
 
-**Procurement Visibility Client**
+A dependency-free TypeScript client is versioned under [`client/`](./client/README.md).
 
-A small external TypeScript application will eventually demonstrate:
+Implemented source evidence:
 
-```text
-Configuration / secret provider
-            │
-            ▼
-SAP Procurement API Client
-            │
-     ┌──────┴──────┐
-     ▼             ▼
-Purchase Req.    Purchase Orders
-     │             │
-     └──────┬──────┘
-            ▼
-Normalized domain model
-            │
-            ▼
-Validation / status mapping
-            │
-            ▼
-CLI or REST facade
-            │
-            ▼
-Contract tests + mock SAP adapter
-```
+- read-only Purchase Order queries
+- read-only Purchase Requisition queries
+- injectable HTTP transport
+- OData `value` response validation
+- `$top`, `$skip` and `$filter` query construction
+- stable SAP API error mapping
+- correlation/request ID capture
+- HTTPS enforcement outside localhost
+- timeout-aware Fetch transport
+- deterministic synthetic contract tests
+- GitHub Actions quality gate
 
-## First implementation boundary
-
-Phase 1 will be **read-only**.
-
-Planned capabilities:
-
-- retrieve purchasing-document data from a configured released API
-- normalize SAP response structures into a small local domain model
-- filter/summarize PR/PO status and business references
-- expose correlation IDs for diagnostics
-- handle pagination where required
-- map HTTP/API errors into stable application errors
-- keep credentials outside Git
-- run deterministic tests against mock responses
-
-No create/change operation will be enabled until the read-only client and security model are validated.
-
-## Security model
-
-Never commit:
-
-- S/4 tenant URLs when confidential
-- usernames/passwords
-- OAuth client secrets
-- certificates/private keys
-- bearer tokens
-- cookies
-- production payloads
-
-Configuration contract:
+Architecture:
 
 ```text
-SAP_BASE_URL=<external configuration>
-SAP_AUTH_MODE=<configured outside source>
-SAP_CLIENT_ID=<secret provider>
-SAP_CLIENT_SECRET=<secret provider>
+External configuration
+        │
+        ▼
+ProcurementApiClient
+        │
+        ├── Purchase Orders
+        └── Purchase Requisitions
+        │
+        ▼
+HttpTransport abstraction
+        ├── FetchTransport
+        └── synthetic test transport
+        │
+        ▼
+Normalized ProcurementDocument[]
 ```
 
-These are documentation placeholders only.
+## Test evidence
 
-## Integration controls
+Six deterministic tests are versioned and were executed locally with Node 22:
 
-The future client must implement:
+1. Purchase Order OData normalization
+2. Purchase Requisition OData normalization
+3. empty OData page
+4. HTTP 401 mapped with correlation ID
+5. malformed/non-OData response rejected
+6. insecure non-local HTTP endpoint rejected
 
-- timeout
-- retry only for safe/transient conditions
-- no blind retry of non-idempotent writes
-- correlation/request ID logging
-- sanitized error logging
-- pagination guard
-- response schema validation
-- API-version/release documentation
-
-## Contract-test plan
-
-Synthetic fixtures will cover:
-
-1. successful purchase requisition read
-2. successful purchase order read
-3. empty result set
-4. pagination/multiple pages
-5. unauthorized response
-6. forbidden response
-7. throttling/transient server error
-8. malformed/unexpected response
-9. timeout
-10. correlation ID propagation
-
-## Clean Core decision
-
-This lab intentionally prefers a released remote API for integration rather than building an external dependency on SAP internal tables.
-
-That distinction is the key architectural evidence:
+Local result recorded during development:
 
 ```text
-Need: external procurement integration
-
-Do not couple external app
-      directly to EKKO/EKPO
-              │
-              ▼
-Use a released remote interface
-when available for the target release
+Executed: 6
+Passed:   6
+Failed:   0
 ```
 
-## Future implementation milestones
+GitHub Actions verification is tracked separately. The lab must not claim CI validation until the workflow run is observed successfully.
 
-### P1 — Source-ready TypeScript client
+## Security boundary
 
-- package isolated under this lab
-- typed request/response adapter
-- runtime configuration validation
-- mock SAP adapter
-- unit/contract tests
+No real SAP URL, user, password, OAuth client secret, bearer token, cookie, certificate/private key or production payload is stored in this lab.
 
-### P2 — CI
+The current source remains intentionally read-only. Real authentication should be supplied through an external credential/token provider rather than committed application configuration.
 
-- install
-- lint
-- typecheck
-- tests
-- secret scan
+## What this proves now
 
-### P3 — Authorized sandbox integration
+- understanding of the ECC-to-S/4HANA integration boundary
+- released-API / Clean Core-oriented design
+- TypeScript integration-client engineering
+- transport abstraction and deterministic contract testing
+- error/correlation-ID handling
+- secure-by-default endpoint validation
+- bilingual technical documentation
 
-Only if an SAP S/4HANA sandbox is legitimately available:
+## What is not claimed
 
-- connectivity test
+- connection to a real S/4HANA tenant
+- metadata verification against a specific release
+- OAuth/token acquisition
+- real SAP authorization success
+- end-to-end S/4HANA runtime
+- write/create/change operations
+
+## Next milestones
+
+### P2 — CI validation
+
+GitHub Actions executes the deterministic client tests using Node 22. Once observed green, the evidence can add `CI_VALIDATED`.
+
+### P3 — Integration hardening
+
+- pagination traversal
+- transient-error retry policy for safe reads
+- release-specific response schemas
+- metadata/capability checks
+- external auth-provider abstraction
+
+### P4 — Authorized sandbox integration
+
+Only when a legitimate S/4HANA sandbox/tenant is available:
+
+- connectivity
 - API metadata verification
 - sanitized read-only request
-- runtime evidence
+- documented runtime result
 
-Until P3, no S/4 runtime claim is made.
+Until P4, no S/4 runtime claim is made.
 
 ## Evidence maturity
 
-`RESEARCH_VALIDATED -> DESIGN_READY -> SOURCE_READY -> STATIC_VALIDATED -> RUNTIME_VALIDATED`
+`RESEARCH_VALIDATED -> DESIGN_READY -> SOURCE_READY -> LOCAL_TEST_VALIDATED -> CI_VALIDATED -> RUNTIME_VALIDATED`
 
-Current position: **`DESIGN_READY`**.
-
-## Official references
-
-- Purchase Order CDS `I_PurchaseOrderAPI01`: SAP Help Portal
-- Purchase Order OData V4 `API_PURCHASEORDER_2`: SAP Business Accelerator Hub / SAP Help
-- Purchase Requisition OData V4 `API_PURCHASEREQUISITION_2`: SAP Business Accelerator Hub / SAP Help
-- ABAP Cloud released APIs: https://help.sap.com/docs/abap-cloud/abap-cloud/public-released-apis
+Current position: **`SOURCE_READY / LOCAL_TEST_VALIDATED / CI_PENDING`**.
