@@ -1,13 +1,13 @@
-# SAP S/4HANA — RAP Evidence Roadmap
+# SAP S/4HANA — RAP Architecture Guide
 
 [Versión en español](./README.es.md)
 
-> **Status:** `DESIGN_READY / IMPLEMENTATION_PLANNED`  
+> **Evidence type:** documentation-grounded architecture guide  
 > **Runtime claim:** none
 
-This track will provide the first public S/4HANA application-development evidence using the ABAP RESTful Application Programming Model (RAP).
+This guide explains the ABAP RESTful Application Programming Model (RAP) using a bounded MM replenishment-review scenario. It is presented as architecture evidence, not as an activated RAP application.
 
-## RAP architecture target
+## RAP architecture
 
 ```text
 Persistence / released data source
@@ -37,22 +37,16 @@ Service Binding — OData V4
 Fiori / API consumer
 ```
 
-SAP documents service definitions as protocol-agnostic descriptions of which CDS entities are exposed, while service bindings connect those definitions to protocols such as OData. For transactional services, OData V4 is the preferred target where applicable.
+The guide distinguishes the protocol-agnostic service definition from the service binding that exposes the model through a protocol such as OData.
 
-## First portfolio BO
+## Architecture case: MM Replenishment Review
 
-Planned custom domain:
+The case is a **custom review/workflow business object** around a replenishment assessment. It deliberately avoids modifying SAP standard material-master or MRP persistence.
 
-**MM Replenishment Review / Reorder Review Case**
-
-This will *not* modify SAP standard material master or MRP persistence.
-
-Instead, it will model a custom review/workflow object that can store synthetic/manual review decisions around a material replenishment assessment.
-
-Possible custom fields:
+Example custom fields:
 
 - review UUID
-- material reference (synthetic in public evidence)
+- material reference
 - plant reference
 - review date
 - risk status
@@ -61,83 +55,75 @@ Possible custom fields:
 - workflow status
 - created/changed timestamps
 
-## Why this object
+Public examples use synthetic identifiers.
 
-It creates a clean bridge from the classic ECC stock-risk diagnostic to a modern S/4HANA extension without pretending that the ECC report itself is a Clean Core solution.
+## Business-object boundary
 
 ```text
-ECC evidence
-MARC/MARD read-only diagnostic
+Classic ECC diagnostic evidence
+MARC/MARD read-only stock assessment
              │
-             │ conceptual business continuity
+             │ business concept only
              ▼
-S/4HANA RAP evidence
-custom review BO + released integration/data sources
+RAP architecture guide
+custom review BO + released S/4HANA boundaries
 ```
 
-## Planned behavior
+The architecture keeps the diagnostic calculation separate from SAP standard persistence. The custom BO owns review decisions and workflow state only.
 
-Operations:
+## Behavior model
+
+Documented operations:
 
 - create review
-- update review while open
+- update an open review
 - submit review
-- approve/reject review
+- approve or reject a submitted review
 - close review
 
-Validation examples:
+Documented validations:
 
-- material/plant reference required
-- proposed action required before submit
-- closed records cannot be changed
-- approval action only from submitted state
+- material/plant reference required;
+- proposed action required before submission;
+- closed records are immutable;
+- approval/rejection is valid only from submitted state.
 
-## Test design
+## Authorization model
 
-Future evidence should include:
+The guide separates authorization from UI visibility.
 
-- behavior validation tests
-- action/state-transition tests
-- authorization tests
-- negative tests
-- EML-based test where practical
-- service metadata/runtime evidence
+Illustrative scopes for the synthetic scenario:
 
-## Authorization design
+- **viewer** — read review cases;
+- **reviewer** — create/update/submit cases;
+- **approver** — approve/reject submitted cases.
 
-Authorization will be explicit and separate from UI visibility.
+Actual SAP authorization implementation is not claimed by this artifact.
 
-Planned roles/scopes for the synthetic lab:
+## Test design guide
 
-- viewer
-- reviewer
-- approver
+A RAP implementation of this design should be reviewed against:
 
-The exact implementation depends on the ABAP Cloud environment and will be documented once source is created.
+- field/behavior validation cases;
+- state-transition cases;
+- negative authorization cases;
+- immutable-state cases;
+- EML-based behavior tests where appropriate;
+- service metadata and authorization boundaries.
 
-## Evidence gate
+These are documented acceptance criteria, not fabricated runtime results.
 
-```text
-DESIGN_READY
-    ↓
-CDS_SOURCE_READY
-    ↓
-BEHAVIOR_SOURCE_READY
-    ↓
-SERVICE_SOURCE_READY
-    ↓
-STATIC_VALIDATED
-    ↓
-RUNTIME_VALIDATED
-    ↓
-TEST_VALIDATED
-```
+## What this guide demonstrates
 
-Current position: `DESIGN_READY`.
+- RAP layer separation;
+- custom business-object ownership;
+- behavior/state-machine design;
+- validation design;
+- projection/service exposure reasoning;
+- OData V4 service-binding awareness;
+- authorization/test boundaries;
+- Clean Core separation from classic ECC logic.
 
-## Official references
+## Evidence boundary
 
-- RAP learning/architecture: https://help.sap.com/docs/abap-cloud/abap-rap/learn
-- Service Definition: https://help.sap.com/docs/abap-cloud/abap-rap/service-definition
-- Service Binding: https://help.sap.com/docs/abap-cloud/abap-rap/service-binding
-- RAP Business Object Contract: https://help.sap.com/docs/abap-cloud/abap-rap/rap-business-object-contract
+This repository contains the RAP architecture guide and related Clean Core reasoning. It does not claim CDS activation, behavior runtime, OData service publication or RAP tests executed in an SAP tenant.
