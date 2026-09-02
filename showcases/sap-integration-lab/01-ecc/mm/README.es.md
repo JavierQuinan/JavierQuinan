@@ -2,35 +2,76 @@
 
 [English version](./README.md)
 
-> **Alcance:** solo SAP ECC / MM clásico  
-> **Madurez actual:** evidencia funcional publicada; paquetes técnicos en construcción
+> **Alcance:** SAP ECC / MM clásico  
+> **Madurez actual:** evidencia funcional publicada; primer pack ABAP validado estáticamente; lab técnico de servicios diseñado
 
-Esta línea está separada intencionalmente de SAP S/4HANA. Documenta conocimiento funcional MM clásico y patrones de ingeniería ABAP adecuados para escenarios ECC.
+Esta línea se mantiene separada de SAP S/4HANA. Documenta conocimiento funcional MM clásico e ingeniería ABAP orientada a ECC sin presentar patrones de acceso directo como evidencia Clean Core.
 
-## Capas de evidencia
+## Evidencia publicada
 
-### Evidencia funcional / operativa
+### 1. Inventario y Riesgo de Stock — ingeniería ABAP
 
-Ya existe una capa pública sanitizada en [`functional-evidence`](./functional-evidence/), derivada de guías operativas reales sobre extensión de materiales, consumo de materiales en órdenes de trabajo y troubleshooting de dependencias organizativas entre material, proveedor y puesto de trabajo.
+[Inventory & Stock Risk Evidence Pack](./inventory-reorder/README.es.md)
 
-Las guías originales permanecen privadas; no se publican identificadores reales, configuración del cliente, capturas ni valores propietarios.
+Estado: `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
 
-### Evidencia técnica ABAP
+Evidencia:
 
-Paquetes técnicos activos y previstos:
+- ABAP Objects clásico
+- datasource read-only sobre `MARA` / `MARC` / `MARD`
+- separación stock de planta vs. almacén
+- contexto MRP
+- excepciones explícitas
+- diseño SALV
+- seis vectores ABAP Unit deterministas trazados consistentemente a nivel de source
+- procedimiento reproducible `SE24` / `SE38` / `SE93`
 
-1. **Inventario y riesgo de stock** — stock, punto de pedido, stock de seguridad, abstracción de datasource, servicio OO, reporte ejecutable y ABAP Unit.
-2. **Analítica de compras** — solicitudes de pedido, pedidos, posiciones/programación y transformaciones analíticas.
-3. **Contratación de servicios** — escenarios de adquisición de servicios, validaciones y reporting.
+No se afirma activación ni ejecución real de ABAP Unit mientras el ejercicio de portafolio no disponga de DEV/CTS autorizado.
 
-## Límite técnico
+### 2. Evidencia funcional MM
 
-La evidencia ECC puede utilizar objetos clásicos y Open SQL cuando corresponda. Cualquier implementación con acceso directo a tablas se rotula como evidencia ECC/clásica y no se presenta como un patrón Clean Core de S/4HANA.
+[Evidencia funcional sanitizada](./functional-evidence/)
 
-El paquete de Inventario y Riesgo de Stock es una aplicación diagnóstica de portfolio. No pretende reproducir la lógica de planificación MRP de SAP.
+Derivada de material operativo sobre:
 
-No se copia código ni configuración de empleador/cliente dentro de este laboratorio.
+- extensión organizativa de materiales
+- consumo de materiales en OT y validación de movimientos
+- troubleshooting material/proveedor/puesto de trabajo
 
-## Regla de ejecución
+### 3. Contratación de Servicios y Contratos Marco
 
-Un artefacto solo pasa a `RUNTIME_VALIDATED` después de documentar activación y ejecución exitosas en SAP dentro de su `EVIDENCE.md`. Los resultados ABAP Unit son obligatorios antes de declarar `TEST_VALIDATED`.
+[Contratación de Servicios y Contratos Marco](./service-procurement/README.es.md)
+
+Estado: `FUNCTIONAL_EVIDENCE_READY / TECHNICAL_LAB_PLANNED`
+
+Cubre:
+
+- acuerdos de largo plazo con proveedores
+- control previo para evitar duplicados
+- vigencia
+- contexto por cantidad/valor
+- posiciones de servicio
+- catálogo/actividades contratadas
+- condiciones comerciales
+- referencia del acuerdo en adquisiciones posteriores
+
+La guía operativa fuente utiliza `ME31` junto con `ME33K`; la versión pública conserva ese dato de la fuente y lo distingue de la familia estándar de contratos ECC normalmente representada por `ME31K` / `ME32K` / `ME33K`.
+
+También está diseñado un [Contract Audit read-only](./service-procurement/TECHNICAL_LAB.md) sobre `EKKO` / `EKPO`, sin afirmar creación o modificación de documentos.
+
+## Progresión técnica prevista
+
+1. implementar `ZMM_CONTRACT_AUDIT` de solo lectura
+2. añadir vectores ABAP Unit de vigencia contractual
+3. construir Purchasing Analytics para solicitudes/pedidos
+4. mantener relaciones de paquetes de servicio como release-specific hasta verificarlas formalmente
+
+## Límite ECC
+
+Se pueden utilizar objetos clásicos/Open SQL cuando correspondan a ECC y se rotulan expresamente como **ECC/clásico**.
+
+Nunca se publica código del empleador/cliente, documentos de compra reales, proveedores, materiales, precios, códigos organizativos ni screenshots.
+
+## Límite S/4HANA
+
+La evidencia moderna de procurement S/4HANA vive separada en [`../../02-s4hana`](../../02-s4hana/README.es.md) y prioriza CDS/OData/APIs liberadas en lugar de exponer mecánicamente tablas ECC a consumidores externos.

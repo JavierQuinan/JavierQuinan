@@ -2,40 +2,83 @@
 
 [Versión en español](./README.es.md)
 
-> **Scope:** SAP ECC IS-U / Work Management  
-> **Current maturity:** sanitized functional evidence published; technical ABAP artifacts planned
+> **Scope:** SAP ECC IS-U / Work Management / CRM integration  
+> **Current maturity:** multiple sanitized functional/technical evidence packs published; ABAP labs planned
 
-This track is intentionally independent from S/4HANA. It documents sanitized professional evidence derived from real operational experience in utilities processes and Work Management.
+This track is intentionally independent from S/4HANA. It converts operational utilities experience into reviewable evidence while removing customer/company configuration and real identifiers.
 
-## Published functional evidence
+## Published evidence map
 
-- [Work Management operations — sanitized version](./functional-evidence/work-management-operations/README.md)
+### Work Management operations
 
-The published evidence covers IW38 usage, work-order lifecycle, individual/mass creation, IW32 assignment/release/completion, controlled mass processing, automated release planning, SM37 monitoring, CRM ↔ WM flow and consistency between technical and commercial equipment data.
+[Work Management Operations](./functional-evidence/work-management-operations/README.md)
 
-## Evidence areas
+Covers `IW38`, work-order lifecycle, individual/mass creation concepts, `IW32` assignment/release/completion, automated planning, `SM37` monitoring and CRM↔WM process dependencies.
 
-- installation and contract lifecycle concepts
-- device management
-- work-order lifecycle
-- workflow, statuses and event handling
-- CRM ↔ IS-U operational interaction
-- Work Management ↔ GIS/external-system integration patterns
-- troubleshooting and incident-resolution guides
+### Work Order Status Audit
 
-## Functional evidence policy
+[Work Order Status Audit](./work-management/status-audit/README.md)
 
-Professional MM/WM guides are incorporated as primary functional evidence after sanitization. Public versions exclude company/customer names, people, IDs, real documents, screenshots, organizational codes, endpoints and confidential configuration. Organization-specific Z-development names are abstracted when publication would expose internal design.
+Advanced read-only troubleshooting using:
 
-The published artifact clearly states whether it is:
+- `IW33`
+- `AUFK -> OBJNR`
+- `JEST` active/historical records
+- `JSTO -> STSMA`
+- `TJ02T` / `TJ30T`
+- `JCDS`
+- `SE93`, `SE38`, `SE80`, `ST05`, `SAT`, `SU53`
 
-- sanitized professional guide derived from operational experience
-- synthetic technical exercise
-- ABAP implementation
-- runtime-validated SAP artifact
+### Batch Work-Order Governance
 
-## Technical evidence boundary
+[Batch Work-Order Closure Governance](./work-management/batch-order-governance/README.md)
 
-No real installation, contract account, contract, business partner, device/meter, work order or customer identifier may appear in public evidence.
+Documents eligibility gates, bounded input, duplicate/range checks, SAP GUI scripting awareness, per-record results and mandatory post-validation. The enterprise spreadsheet/script itself is not published.
 
-Any ABAP artifact created for this track will follow the same runtime-validation gate defined in `EVIDENCE_GOVERNANCE.md`.
+### Seal Material Enablement — MM ↔ WM
+
+[Seal Material Enablement](./work-management/seals-material-enablement/README.md)
+
+Shows the difference between a material being available in MM and being enabled/configured for a downstream Seal Management / work-order process.
+
+### Equipment Consistency — IS-U ↔ CRM
+
+[Equipment Consistency](./device-management/pec-equipment-consistency/README.md)
+
+Documents the rule that technical equipment assignment and commercial/product representation must remain consistent, and that business-level changes should follow the CRM process instead of technical shortcuts.
+
+### Photovoltaic Service Onboarding
+
+[Photovoltaic Service Onboarding](./master-data/photovoltaic-service-onboarding/README.md)
+
+Sanitized chain:
+
+`external/GIS context -> connection object -> point of supply -> installation -> CRM customer/commercial context -> specialized service contract`.
+
+### CRM ↔ IS-U Contract-End Recovery
+
+[Contract-End / DCDE Recovery](./crm-isu-integration/dcde-recovery/README.md)
+
+Shows process recovery when an incomplete CRM contract-end flow does not produce the expected downstream work order: restore the contract to a valid business state, then rerun the official process.
+
+### Occasional Metered Service
+
+[Occasional Metered Service](./crm-isu-integration/occasional-metered-service/README.md)
+
+End-to-end CRM→WM→CRM evidence covering customer/agreement/contract setup, technical work-order execution, meter-related data, final operational status, technical completion and contract completion sequencing.
+
+## Technical boundary
+
+The public evidence may document standard read-only diagnostic objects, but it does not publish direct data-manipulation shortcuts, proprietary `Z*` implementation details, credentials or customer-specific process IDs.
+
+No real installation, contract account, contract, business partner, device/meter, work order, CUEN/service identifier, customer address or employee data may appear publicly.
+
+## Planned ABAP / engineering progression
+
+1. synthetic Work Order Status Audit report/service
+2. status API vs. direct diagnostic-read comparison
+3. batch eligibility/idempotency lab with synthetic orders
+4. MM↔Seal configuration consistency checker
+5. CRM↔IS-U integration state-machine/compensation lab
+
+Any ABAP artifact follows the SAP Evidence Governance gate. Source/static evidence remains separate from SAP runtime claims.

@@ -1,39 +1,84 @@
 # SAP ECC IS-U / Work Management — Línea de Evidencia
 
-> **Alcance:** SAP ECC IS-U / Work Management  
-> **Madurez actual:** evidencia funcional sanitizada publicada; artefactos técnicos ABAP planificados
+[English version](./README.md)
 
-Esta línea está separada de S/4HANA. Documenta evidencia profesional sanitizada derivada de experiencia operativa real en procesos utilities y Work Management.
+> **Alcance:** SAP ECC IS-U / Work Management / integración CRM  
+> **Madurez actual:** múltiples packs funcionales/técnicos sanitizados publicados; labs ABAP planificados
 
-## Evidencia funcional publicada
+Esta línea está separada de S/4HANA. Convierte experiencia operativa utilities en evidencia revisable eliminando configuración e identificadores reales de empresa/cliente.
 
-- [Operación de Work Management — versión sanitizada](./functional-evidence/work-management-operations/README.es.md)
+## Mapa de evidencia publicada
 
-La evidencia publicada cubre uso de IW38, ciclo de vida de órdenes, creación individual/masiva, asignación/liberación/cierre mediante IW32, procesos masivos controlados, planificación automática de liberaciones, monitoreo SM37, integración CRM ↔ WM y consistencia de equipamiento técnico/comercial.
+### Operación Work Management
 
-## Áreas de evidencia
+[Work Management Operations](./functional-evidence/work-management-operations/README.es.md)
 
-- conceptos de ciclo de vida de instalaciones y contratos
-- device management
-- ciclo de vida de órdenes de trabajo
-- workflow, estados y manejo de eventos
-- interacción operativa CRM ↔ IS-U
-- patrones de integración Work Management ↔ GIS/sistemas externos
-- guías de troubleshooting y resolución de incidencias
+Cubre `IW38`, ciclo de OT, conceptos de creación individual/masiva, asignación/liberación/cierre en `IW32`, planificación automática, monitoreo `SM37` y dependencias CRM↔WM.
 
-## Política de evidencia funcional
+### Auditoría de Estados de OT
 
-Las guías profesionales de MM/WM se incorporan como evidencia funcional primaria después de sanitización. La versión pública excluye nombres de empresa/cliente, personas, IDs, documentos reales, capturas, códigos organizativos, endpoints y configuración confidencial. Los nombres de desarrollos Z específicos también se abstraen cuando revelarían diseño interno.
+[Auditoría de Estados de OT](./work-management/status-audit/README.es.md)
 
-El artefacto publicado indica claramente si corresponde a:
+Troubleshooting avanzado read-only con:
 
-- guía profesional sanitizada derivada de experiencia operativa
-- ejercicio técnico sintético
-- implementación ABAP
-- artefacto SAP validado en runtime
+- `IW33`
+- `AUFK -> OBJNR`
+- `JEST` activo/histórico
+- `JSTO -> STSMA`
+- `TJ02T` / `TJ30T`
+- `JCDS`
+- `SE93`, `SE38`, `SE80`, `ST05`, `SAT`, `SU53`
+
+### Gobierno de cierre masivo
+
+[Batch Work-Order Governance](./work-management/batch-order-governance/README.es.md)
+
+Documenta gates de elegibilidad, input acotado, control de duplicados/rango, SAP GUI scripting, resultado por registro y validación posterior obligatoria. No se publica el Excel/script empresarial.
+
+### Habilitación de materiales de sellos — MM ↔ WM
+
+[Seal Material Enablement](./work-management/seals-material-enablement/README.es.md)
+
+Demuestra la diferencia entre material disponible en MM y material habilitado/configurado para Seal Management / OT.
+
+### Consistencia de equipamiento — IS-U ↔ CRM
+
+[Equipment Consistency](./device-management/pec-equipment-consistency/README.es.md)
+
+Establece que la asignación técnica y la representación comercial/producto deben permanecer coherentes y que los cambios de negocio deben seguir el flujo CRM en vez de atajos técnicos.
+
+### Alta de servicio fotovoltaico
+
+[Photovoltaic Service Onboarding](./master-data/photovoltaic-service-onboarding/README.es.md)
+
+Cadena sanitizada:
+
+`contexto externo/GIS -> objeto de conexión -> punto de suministro -> instalación -> contexto cliente/comercial CRM -> contrato de servicio especializado`.
+
+### Recuperación CRM ↔ IS-U de fin de contrato/DCDE
+
+[Contract-End / DCDE Recovery](./crm-isu-integration/dcde-recovery/README.es.md)
+
+Muestra recuperación cuando un fin contractual CRM incompleto no produce la OT downstream esperada: restaurar un estado funcional válido y repetir el proceso oficial.
+
+### Servicio ocasional con medición
+
+[Occasional Metered Service](./crm-isu-integration/occasional-metered-service/README.es.md)
+
+Evidencia end-to-end CRM→WM→CRM: cliente/acuerdo/contrato, ejecución técnica de OT, datos relacionados con medidor, estado final, cierre técnico y secuencia de finalización contractual.
 
 ## Límite técnico
 
-No se publicarán instalaciones, cuentas contrato, contratos, interlocutores comerciales, dispositivos/medidores, órdenes de trabajo ni identificadores reales de clientes.
+La evidencia puede documentar objetos estándar de diagnóstico read-only, pero no publica atajos de manipulación directa de datos, implementación `Z*` propietaria, credenciales ni IDs de procesos propios del cliente.
 
-Todo artefacto ABAP de esta línea seguirá el mismo gate de validación runtime definido en `EVIDENCE_GOVERNANCE.md`.
+Nunca se publican instalaciones, cuentas contrato, contratos, interlocutores, medidores, OT, CUEN/identificadores de servicio, direcciones ni empleados reales.
+
+## Progresión ABAP/ingeniería prevista
+
+1. reporte/servicio sintético de auditoría de estados
+2. comparación APIs de status vs. lectura diagnóstica directa
+3. lab de batch eligibility/idempotencia con OT sintéticas
+4. checker MM↔Seal de consistencia de configuración
+5. state machine de integración CRM↔IS-U con retry/compensación
+
+Todo artefacto ABAP sigue Evidence Governance; source/static evidence se mantiene separado de claims runtime SAP.

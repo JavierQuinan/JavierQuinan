@@ -2,211 +2,180 @@
 
 [Versión en español](./README.es.md)
 
-> **Artifact type:** public SAP engineering and functional-evidence lab  
-> **Current status:** in construction  
-> **Primary rule:** source code is never presented as executed in SAP until activation/runtime evidence exists  
-> **Languages:** English + Spanish
+> **Artifact type:** public SAP functional + engineering evidence  
+> **Languages:** English + Spanish  
+> **Evidence rule:** functional experience, source/static validation, research/design and SAP runtime are always distinguished
 
-This lab converts SAP functional experience plus ABAP/ABAP Cloud specialization into reviewable, reproducible and non-confidential public evidence.
+This lab converts SAP operational experience and technical specialization into reviewable, non-confidential evidence. ECC, IS-U/WM, SD and S/4HANA are intentionally separated rather than blended into one generic “SAP” claim.
 
-The portfolio intentionally separates four technical contexts that must not be conflated:
+## Tracks
 
-1. **SAP ECC — Materials Management (MM)**
-2. **SAP ECC — IS-U / Work Management**
-3. **SAP S/4HANA — MM, CDS, released APIs, ABAP Cloud and RAP**
-4. **SAP Integration — OData, REST, SOAP/XML and observability patterns**
+1. **SAP ECC MM** — materials, inventory, purchasing/services, classic ABAP
+2. **SAP ECC IS-U / Work Management** — work orders, status, device/equipment, CRM integration
+3. **SAP ECC / CRM-SD** — customer/sales-area/billing process evidence
+4. **ECC Technical Diagnostics** — ABAP/debugging/runtime troubleshooting methodology
+5. **SAP S/4HANA** — MM released APIs, Migration Cockpit, ABAP Cloud, RAP
+6. **SAP Integration** — OData/REST/SOAP, resilient integration and observability patterns
 
-## Evidence maturity model
+## Evidence maturity
 
 | State | Meaning |
 |---|---|
-| `PLANNED` | Scenario designed; implementation not yet complete. |
-| `SOURCE_READY` | Reviewable source/documentation is available in GitHub. |
-| `STATIC_VALIDATED` | Source logic and deterministic test vectors have been reviewed consistently; no SAP runtime claim is implied. |
-| `EXECUTION_PROCEDURE_READY` | Reproducible SAP object-creation, activation, test and execution steps are documented. |
-| `RUNTIME_DEFERRED` | Runtime execution is deferred because an authorized development/sandbox environment or required CTS permissions are not available for the portfolio exercise. |
-| `RUNTIME_VALIDATED` | Activated/executed in an appropriate SAP environment with documented result. |
-| `TEST_VALIDATED` | Runtime validation plus reproducible automated/unit-test evidence. |
+| `PLANNED` | scenario identified |
+| `RESEARCH_VALIDATED` | design grounded in authoritative/current documentation; no runtime claim |
+| `DESIGN_READY` | architecture, boundaries and acceptance criteria documented |
+| `SOURCE_READY` | reviewable source exists |
+| `STATIC_VALIDATED` | source logic/deterministic vectors reviewed consistently; not executed in SAP |
+| `EXECUTION_PROCEDURE_READY` | reproducible build/activation/test/run procedure documented |
+| `RUNTIME_DEFERRED` | enterprise runtime deliberately deferred due authorized environment/CTS constraints |
+| `RUNTIME_VALIDATED` | execution captured in an appropriate SAP environment |
+| `TEST_VALIDATED` | runtime plus reproducible test evidence |
 
-`STATIC_VALIDATED` does **not** mean `RUNTIME_VALIDATED`.
+## ECC Technical Diagnostics
 
-See [SAP Evidence Governance](./EVIDENCE_GOVERNANCE.md).
+[ABAP Debugging & Technical Diagnostics](./01-ecc/technical-diagnostics/README.md)
 
-## Repository structure
+Published methodology:
 
-```text
-sap-integration-lab/
-├── README.md
-├── README.es.md
-├── EVIDENCE_GOVERNANCE.md
-├── 01-ecc/
-│   ├── technical-diagnostics/
-│   ├── mm/
-│   │   ├── inventory-reorder/
-│   │   ├── purchasing/
-│   │   └── service-procurement/
-│   └── isu/
-│       ├── master-data/
-│       ├── device-management/
-│       ├── work-management/
-│       └── crm-isu-integration/
-├── 02-s4hana/
-│   ├── mm/
-│   ├── cds/
-│   ├── released-apis/
-│   ├── abap-cloud/
-│   └── rap/
-└── 03-integration/
-    ├── odata/
-    ├── rest/
-    ├── soap-xml/
-    └── observability/
-```
+`SE93 -> SE24/SE37/SE38/SE80 -> /H/breakpoints/debugger -> ST22/SM21 -> SM50/SM66`.
 
-## 01 — SAP ECC
+This demonstrates troubleshooting method without claiming Basis privileges or production debugging.
 
-### ECC Technical Diagnostics
+## SAP ECC MM
 
-[ABAP Debugging & Technical Diagnostics](./01-ecc/technical-diagnostics/README.md) documents a sanitized troubleshooting workflow across:
+[MM Evidence Track](./01-ecc/mm/README.md)
 
-- `SE93` — transaction-to-object identification
-- `SE24` — ABAP classes
-- `SE37` — function modules
-- `SE38` — programs/reports
-- `SE80` — integrated repository navigation
-- `/H` and breakpoints
-- ABAP Debugger inspection
-- `ST22` — short dumps
-- `SM21` — system log context
-- `SM50` vs. `SM66` — local vs. global work-process analysis
+### Inventory & Stock Risk
 
-This track proves technical method and troubleshooting knowledge without claiming privileged Basis access or production debugging.
+Status: `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
 
-### ECC Materials Management (MM)
+- classic ABAP OO
+- read-only `MARA/MARC/MARD`
+- SALV design
+- plant/storage semantics hardened
+- six deterministic test vectors traced consistently
+- SE24/SE38/SE93 runbook
+- actual SAP activation/ABAP Unit runtime not claimed
 
-This track demonstrates classic MM domain knowledge and ABAP engineering without exposing employer/customer implementation.
+### Service Procurement & Framework Contracts
 
-Target evidence:
+Status: `FUNCTIONAL_EVIDENCE_READY / TECHNICAL_LAB_PLANNED`
 
-- material / plant / storage-location concepts
-- inventory and reorder analysis
-- purchase requisitions
-- purchase orders
-- delivery/schedule concepts
-- service procurement
-- classic Open SQL where appropriate
-- SALV/ALV reporting
-- ABAP Objects
-- ABAP Unit source and test design
+- long-term purchasing agreements
+- vendor/validity/quantity-value concepts
+- service items and service catalogue
+- duplicate-prevention controls
+- read-only `ZMM_CONTRACT_AUDIT` design over standard purchasing-document context
 
-Classic direct-table evidence, when used, is clearly labelled **ECC/classic** and is not reused as proof of modern S/4HANA Clean Core design.
+## SAP ECC IS-U / Work Management
 
-The first package, **ECC MM — Inventory & Stock Risk**, is now classified `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`:
+[IS-U / WM Evidence Track](./01-ecc/isu/README.md)
 
-- source and hardening review complete
-- six deterministic vectors traced successfully against the current implementation
-- reproducible `SE24` / `SE38` / `SE93` build and runtime procedure documented
-- SAP activation/ABAP Unit execution not claimed until an authorized development environment is available
+Published sanitized evidence now includes:
 
-### ECC IS-U / Work Management
+- [Work Management operations](./01-ecc/isu/functional-evidence/work-management-operations/README.md)
+- [Work-order status audit](./01-ecc/isu/work-management/status-audit/README.md)
+- [Batch work-order governance](./01-ecc/isu/work-management/batch-order-governance/README.md)
+- [Seal material enablement — MM↔WM](./01-ecc/isu/work-management/seals-material-enablement/README.md)
+- [Equipment consistency — IS-U↔CRM](./01-ecc/isu/device-management/pec-equipment-consistency/README.md)
+- [Photovoltaic service onboarding](./01-ecc/isu/master-data/photovoltaic-service-onboarding/README.md)
+- [CRM↔IS-U contract-end/DCDE recovery](./01-ecc/isu/crm-isu-integration/dcde-recovery/README.md)
+- [Occasional metered service CRM→WM→CRM](./01-ecc/isu/crm-isu-integration/occasional-metered-service/README.md)
 
-IS-U remains an independent evidence line rather than being grouped under S/4HANA.
+These are process/troubleshooting artifacts derived from operational guides after sanitization. They do not publish enterprise IDs, screenshots, proprietary `Z*` implementations or direct data-manipulation shortcuts.
 
-Planned functional/technical areas:
+## SAP ECC / CRM-SD
 
-- installation and contract lifecycle concepts
-- device management
-- work-order lifecycle
-- workflow/status/event handling
-- CRM ↔ IS-U interaction
-- Work Management ↔ external systems / GIS
-- operational troubleshooting
+[SD Evidence Track](./01-ecc/sd/README.md)
 
-User-authored professional MM/WM guides will be incorporated here when each topic is reached, after confidentiality sanitization.
+Published:
 
-## 02 — SAP S/4HANA
+- [Non-Energy Service Billing Workflow](./01-ecc/sd/non-energy-billing/README.md) — customer/BP preparation, commercial context, sales-area extension, billing/output review and configured fiscal-output completion.
 
-S/4HANA evidence will focus on current extensibility and integration approaches instead of mechanically reproducing ECC patterns.
+The process remains explicitly customer/process-specific rather than being generalized into unsupported standard-transaction claims.
 
-Target evidence:
+## SAP S/4HANA
 
-- CDS View Entities
-- released APIs
-- OData
-- ABAP Cloud
-- Clean Core-oriented design
-- RAP business objects
-- behavior definitions and implementations
-- service definitions/bindings
-- automated tests
-- migration-cockpit knowledge separated from classic ECC development evidence
+[S/4HANA Evidence Track](./02-s4hana/README.md)
 
-The S/4HANA track has its own evidence gate. A classic ECC report does not qualify as an S/4HANA artifact by itself.
+### MM Procurement APIs
 
-## 03 — SAP Integration
+[Procurement API Lab](./02-s4hana/mm/procurement-api-lab/README.md)
 
-This line connects SAP with the broader full-stack engineering portfolio.
+Status: `RESEARCH_VALIDATED / DESIGN_READY / RUNTIME_NOT_CLAIMED`
 
-Planned patterns:
+Interfaces selected for future Clean Core integration evidence:
 
-- REST/OData consumption
-- SOAP/XML processing
-- message transformations
-- idempotent integration handling
-- correlation IDs
-- retry and error mapping
-- audit/observability
-- safe configuration and secret separation
+- `I_PurchaseOrderAPI01`
+- `API_PURCHASEORDER_2`
+- `API_PURCHASEREQUISITION_2`
+
+### Migration Cockpit
+
+[Migration Cockpit Lab](./02-s4hana/migration-cockpit/README.md)
+
+Status: `RESEARCH_VALIDATED / RUNTIME_NOT_CLAIMED`
+
+Covers migration projects/objects, staging vs. direct transfer, mapping, simulation, migration, monitoring and reconciliation.
+
+### ABAP Cloud / Clean Core
+
+[ABAP Cloud Track](./02-s4hana/abap-cloud/README.md)
+
+Status: `RESEARCH_VALIDATED / IMPLEMENTATION_PLANNED`
+
+Covers released APIs/objects, release-contract awareness, ATC gates and Clean Core boundaries.
+
+### RAP
+
+[RAP Evidence Roadmap](./02-s4hana/rap/README.md)
+
+Status: `DESIGN_READY / IMPLEMENTATION_PLANNED`
+
+First planned BO: **MM Replenishment Review**, a custom review/workflow extension rather than a modification of standard material/MRP persistence.
 
 ## Bilingual standard
 
-Portfolio-facing technical documentation is **English-first** for international review, with a complete Spanish version for substantial artifacts.
+Substantial artifacts use:
 
-Preferred convention:
+- `README.md` — English-first international technical documentation
+- `README.es.md` — complete Spanish version
 
-- `README.md` — English
-- `README.es.md` — Español
-- `EVIDENCE.md` — evidence record
+Code identifiers remain in English. Functional terminology is translated when useful.
 
-Code identifiers remain in English. Functional terminology may be shown bilingually where useful:
-
-- Purchase Requisition / Solicitud de pedido
-- Purchase Order / Pedido de compra
-- Work Order / Orden de trabajo
-- Utility Installation / Instalación IS-U
-
-## Confidentiality boundary
+## Confidentiality / integrity rules
 
 Never publish:
 
-- employer/customer source code
-- real company/customer identities
-- real contracts, installations, devices/meters or work orders
-- internal users, endpoints, hostnames or RFC destinations
-- production screenshots without sanitization
-- passwords, tokens or credentials
-- private P12/PFX/PEM material
-- third-party training screenshots or copyrighted pages as portfolio assets without publication rights
+- company/customer identities or source code
+- real materials, vendors, contracts, installations, work orders, BP/customer IDs or meters
+- internal Z-development source/configuration
+- usernames, URLs, RFC destinations, SID/client/transport numbers
+- credentials, tokens or private certificates
+- production screenshots or third-party training pages without publication rights
 
 ## Current evidence matrix
 
-| Track | Functional evidence | Public source / guide | Runtime proof | Status |
-|---|---|---|---|---|
-| ECC Technical Diagnostics | Troubleshooting methodology | Debugging/diagnostics guide | Not required for methodology claim | `PROCEDURE_READY` |
-| ECC MM | Profile-level professional experience + technical source | Inventory/stock-risk pack | Deferred until authorized DEV/sandbox | `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY` |
-| ECC IS-U / WM | Professional operational experience | Planned; sanitized guides being incorporated | Pending | `PLANNED` |
-| S/4HANA MM | Study/specialization track | Planned | Pending | `PLANNED` |
-| ABAP Cloud / RAP | Study/specialization track | Planned | Pending | `PLANNED` |
-| SAP Integration | Enterprise integration experience + software engineering | Planned | Pending | `PLANNED` |
+| Track | Public evidence | Maturity |
+|---|---|---|
+| ECC Technical Diagnostics | debugging/diagnostics procedure | `PROCEDURE_READY` |
+| ECC MM Inventory | ABAP source + static trace + runbook | `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED` |
+| ECC MM Services | framework-contract functional guide + lab design | `FUNCTIONAL_EVIDENCE_READY / DESIGN_READY` |
+| ECC IS-U / WM | 8 sanitized operational/troubleshooting packs | `FUNCTIONAL_TECHNICAL_EVIDENCE_READY` |
+| ECC / CRM-SD | non-energy billing pack | `FUNCTIONAL_EVIDENCE_READY` |
+| S/4HANA MM APIs | procurement API architecture | `RESEARCH_VALIDATED / DESIGN_READY` |
+| S/4HANA Migration | Migration Cockpit study/design | `RESEARCH_VALIDATED` |
+| ABAP Cloud | Clean Core evidence architecture | `RESEARCH_VALIDATED / IMPLEMENTATION_PLANNED` |
+| RAP | first BO architecture | `DESIGN_READY / IMPLEMENTATION_PLANNED` |
 
-## Next milestones
+## Next engineering milestones
 
-1. expand ECC MM with purchasing and service-procurement evidence
-2. incorporate sanitized IS-U / Work Management operational guides
-3. build the S/4HANA evidence line separately, including migration-cockpit process knowledge
-4. add real ABAP runtime evidence later when an authorized sandbox/DEV environment becomes available
+1. implement the S/4HANA Procurement API TypeScript client with deterministic mocks/tests
+2. implement the ECC read-only Contract Audit source pack
+3. build a synthetic IS-U/WM status/batch technical lab
+4. create the first RAP source package when a suitable ABAP Cloud workflow/environment is available
+5. add SAP runtime proof later only through an authorized environment
 
 ---
 
-Public portfolio: [Francisco Quinteros / JavierQuinan](https://github.com/JavierQuinan)  
-Portfolio policy: [Public Repository Portfolio Governance](../../docs/PORTFOLIO_GOVERNANCE.md)
+Public profile: [Francisco Quinteros / JavierQuinan](https://github.com/JavierQuinan)
