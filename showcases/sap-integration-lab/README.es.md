@@ -2,151 +2,156 @@
 
 [English version](./README.md)
 
-> **Tipo:** evidencia pública SAP funcional + técnica  
 > **Idiomas:** Inglés + Español  
-> **Regla:** experiencia empresarial, validación source/static, CI, investigación/diseño y runtime SAP siempre se diferencian
+> **Alcance:** SAP ECC MM, SAP IS-U / Work Management, CRM/SD, diagnóstico ABAP e integración S/4HANA  
+> **Regla de evidencia:** cada afirmación de esta página apunta a material que ya existe en este repositorio
 
-Este laboratorio transforma experiencia operativa SAP y especialización técnica en evidencia revisable y no confidencial. ECC, IS-U/WM, SD y S/4HANA se mantienen separados para evitar un claim genérico e impreciso de “SAP”.
+Este laboratorio presenta conocimiento operativo sanitizado, guías técnicas originales, source ABAP revisable y un cliente de integración ejecutable. ECC y S/4HANA se mantienen separados para no presentar experiencia SAP clásica como si fuera runtime Clean Core.
 
-## Líneas
+## Evidencia disponible actualmente
 
-1. **SAP ECC MM** — materiales, inventario, compras/servicios, ABAP clásico
-2. **SAP ECC IS-U / Work Management** — OT, estados, equipos, integración CRM
-3. **SAP ECC / CRM-SD** — cliente, área de ventas y facturación
-4. **Diagnóstico técnico ECC** — ABAP/debugging/troubleshooting
-5. **SAP S/4HANA** — APIs MM, Migration Cockpit, ABAP Cloud, RAP
-6. **SAP Integration** — OData/REST/SOAP, resiliencia y observabilidad
+### SAP ECC MM
 
-## Madurez de evidencia
+[Línea de Evidencia MM](./01-ecc/mm/README.es.md)
 
-| Estado | Significado |
-|---|---|
-| `PLANNED` | escenario identificado |
-| `RESEARCH_VALIDATED` | diseño respaldado por documentación autoritativa/actual; sin runtime |
-| `DESIGN_READY` | arquitectura, límites y aceptación documentados |
-| `SOURCE_READY` | existe source revisable |
-| `STATIC_VALIDATED` | lógica/vectores revisados consistentemente; no ejecutado en SAP |
-| `LOCAL_TEST_VALIDATED` | tests automatizados ejecutados fuera de SAP con comportamiento local/mock determinista |
-| `CI_VALIDATED` | quality gate automatizado observado exitosamente en CI |
-| `EXECUTION_PROCEDURE_READY` | procedimiento SAP reproducible de creación/activación/prueba/ejecución |
-| `RUNTIME_DEFERRED` | runtime SAP diferido por restricciones de entorno/CTS autorizado |
-| `RUNTIME_VALIDATED` | ejecución real SAP documentada |
-| `TEST_VALIDATED` | runtime SAP + pruebas reproducibles |
+**Inventario y Riesgo de Stock**
 
-## SAP ECC MM
+- source original ABAP Objects
+- datasource read-only sobre `MARA / MARC / MARD`
+- separación semántica planta vs. almacén
+- source de reporte SALV
+- 6 escenarios ABAP Unit deterministas revisados a nivel de source
+- guía reproducible `SE24 / SE38 / SE93`
+- guía operativa sanitizada de MM01 con evidencia visual
 
-[MM Evidence Track](./01-ecc/mm/README.es.md)
+**Contratación de Servicios / `ZMM_CONTRACT_AUDIT`**
 
-### Inventario y Riesgo de Stock
+- guía sanitizada de contrato marco/servicios
+- source ABAP original read-only sobre `EKKO / EKPO`
+- diagnóstico de vigencia contractual
+- source SALV
+- 8 escenarios ABAP Unit deterministas revisados a nivel de source
+- guía bilingüe de construcción y evidencia
 
-`SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+**Purchasing Analytics / `ZMM_PURCH_ANALYTICS`**
 
-ABAP OO clásico, lectura `MARA/MARC/MARD`, SALV, seis vectores deterministas y procedimiento reproducible `SE24/SE38/SE93`.
+- source original read-only `EBAN → EKKO / EKPO → EKET`
+- control de categoría Purchase Order (`EKKO-BSTYP = 'F'`)
+- diagnósticos `PR_ONLY`, referencia downstream y líneas de reparto
+- source SALV
+- 7 escenarios ABAP Unit deterministas revisados a nivel de source
+- documentación bilingüe de source/build
 
-### Contratación de Servicios y `ZMM_CONTRACT_AUDIT`
+Los packs ABAP ECC se presentan como **source revisable + validación estática determinista + guías reproducibles de construcción**. No se afirma activación corporativa SAP ni ejecución de ABAP Unit dentro de un sistema empresarial.
 
-[Contratación de Servicios y Contratos Marco](./01-ecc/mm/service-procurement/README.es.md)
+### SAP ECC IS-U / Work Management
 
-`FUNCTIONAL_EVIDENCE_READY / ABAP_SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
+[Línea de Evidencia IS-U / WM](./01-ecc/isu/README.es.md)
 
-Source read-only `EKKO/EKPO`, diagnóstico de vigencia contractual, SALV, ocho vectores deterministas y documentación bilingüe.
+**`ZWM_STATUS_AUDIT_LAB`**
 
-### Purchasing Analytics y `ZMM_PURCH_ANALYTICS`
+- source ABAP original read-only sobre `AUFK`, `JSTO`, `JEST`, `TJ02T`, `TJ30T` y `JCDS`
+- interpretación de estados activos vs. históricos
+- consideración del perfil de estado de usuario mediante `STSMA`
+- datasource ECC + datasource sintético
+- servicio ABAP Objects y reporte SALV
+- 6 escenarios ABAP Unit deterministas revisados a nivel de source
+- guía bilingüe `SE24 / SE38 / SE93`
 
-[Purchasing Analytics](./01-ecc/mm/purchasing-analytics/README.es.md)
+**Evidencia operativa**
 
-`SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+Las guías sanitizadas cubren:
 
-Visibilidad read-only PR→PO→líneas de reparto usando `EBAN`, `EKKO`, `EKPO` y `EKET`, con abstracción de datasource, SALV y siete vectores ABAP Unit. Una PR sin PO se considera un estado válido `PR_ONLY`, no un error automático.
+- análisis de órdenes y layouts con `IW38`
+- ciclo de vida de OT y cierre técnico
+- conceptos de asignación/liberación/cierre mediante `IW32`
+- monitoreo de background jobs con `SM37`
+- procesamiento masivo controlado
+- habilitación de materiales de sellos MM ↔ WM
+- consistencia de equipamiento IS-U ↔ CRM
+- alta de servicio fotovoltaico
+- recuperación CRM ↔ IS-U de fin contractual/DCDE
+- servicio ocasional con medición CRM → WM → CRM
 
-## SAP ECC IS-U / Work Management
-
-[IS-U / WM Evidence Track](./01-ecc/isu/README.es.md)
-
-### `ZWM_STATUS_AUDIT_LAB`
-
-[Auditoría de Estados de OT](./01-ecc/isu/work-management/status-audit/README.es.md)
-
-`FUNCTIONAL_TECHNICAL_EVIDENCE_READY / SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
-
-Source original read-only sobre `AUFK/JSTO/JEST/TJ02T/TJ30T/JCDS`, datasource ECC/demo, servicio ABAP OO, SALV y seis vectores deterministas.
-
-La línea también contiene evidencia sanitizada de operación de OT, gobierno batch, sellos MM↔WM, consistencia de equipamiento, alta fotovoltaica, recuperación de fin contractual y servicio ocasional con medición.
-
-## Diagnóstico técnico ECC
+### Diagnóstico técnico ECC
 
 [ABAP Debugging & Technical Diagnostics](./01-ecc/technical-diagnostics/README.es.md)
 
-Metodología: `SE93 -> SE24/SE37/SE38/SE80 -> /H/breakpoints/debugger -> ST22/SM21 -> SM50/SM66`.
+Secuencia documentada:
 
-## SAP ECC / CRM-SD
+`SE93 → SE24 / SE37 / SE38 / SE80 → /H / breakpoints / debugger → ST22 / SM21 → SM50 / SM66`
 
-[SD Evidence Track](./01-ecc/sd/README.es.md) — evidencia sanitizada de facturación de servicios no energéticos.
+Las guías explican identificación de objetos, debugging, análisis de dumps, monitoreo de procesos y límites de escalamiento sin publicar credenciales corporativas ni source propietario.
 
-## SAP S/4HANA
+### SAP ECC / CRM-SD
 
-[S/4HANA Evidence Track](./02-s4hana/README.es.md)
+[Línea de Evidencia CRM-SD](./01-ecc/sd/README.es.md)
 
-### MM Procurement API Client
+La evidencia publicada cubre un flujo sanitizado de facturación de servicios no energéticos: preparación de cliente/BP, contexto comercial, extensión de área de ventas, revisión de facturación/output y finalización del output fiscal configurado.
 
-[Procurement API Lab](./02-s4hana/mm/procurement-api-lab/README.es.md)
+### SAP S/4HANA
 
-`SOURCE_READY / LOCAL_TEST_VALIDATED / CI_VALIDATED / S4_RUNTIME_NOT_CLAIMED`
+[Línea de Evidencia S/4HANA](./02-s4hana/README.es.md)
 
-Cliente TypeScript read-only con lectura de pedidos/solicitudes, validación OData, correlation/request IDs, HTTPS obligatorio y quality gate observado en GitHub Actions: **6 tests / 6 pass / 0 fail** con Node 22.
+**MM Procurement API Client**
 
-Dirección de interfaces:
+- cliente TypeScript read-only sin dependencias externas
+- lectura de Purchase Orders y Purchase Requisitions
+- validación de respuestas OData
+- abstracción de transporte
+- correlation/request IDs
+- obligación de HTTPS
+- tests automatizados deterministas
+- quality gate de GitHub Actions observado en **6 tests / 6 pass / 0 fail** con Node 22
 
-- `I_PurchaseOrderAPI01`
-- `API_PURCHASEORDER_2`
-- `API_PURCHASEREQUISITION_2`
+El cliente demuestra ingeniería del lado de integración. No se afirma conectividad con un tenant S/4HANA real.
 
-### Migration Cockpit
+**Guía Técnica Migration Cockpit**
 
-[Migration Cockpit Lab](./02-s4hana/migration-cockpit/README.es.md) — `RESEARCH_VALIDATED / RUNTIME_NOT_CLAIMED`
+Guía basada en documentación que cubre objetos de migración, enfoques staging/direct transfer, mapping, simulación, monitoreo de migración y reconciliación.
 
-### ABAP Cloud / Clean Core
+**Guía Técnica ABAP Cloud / Clean Core**
 
-[ABAP Cloud Track](./02-s4hana/abap-cloud/README.es.md) — `RESEARCH_VALIDATED / IMPLEMENTATION_PLANNED`
+Guía basada en documentación sobre objetos/APIs liberados, release contracts, gobierno orientado a ATC y límites Clean Core.
 
-### RAP
+**Guía de Arquitectura RAP**
 
-[RAP Evidence Roadmap](./02-s4hana/rap/README.es.md) — `DESIGN_READY / IMPLEMENTATION_PLANNED`
+Guía que cubre CDS data model, behavior definition/implementation, projection, service definition/binding y exposición OData V4 usando un escenario de revisión de reposición MM.
+
+### SAP Integration
+
+[Guía de Ingeniería de Integración](./03-integration/README.es.md)
+
+Documenta límites OData/REST/SOAP, idempotencia, mapeo de errores, correlation IDs, observabilidad y separación de secretos. El S/4 Procurement API Client es el ejemplo ejecutable de integración de este repositorio.
 
 ## Evidencia visual
 
-La [Política de Evidencia Visual](./VISUAL_EVIDENCE_POLICY.es.md) define cuándo pueden agregarse capturas, qué sanitización es obligatoria y la regla de no republicar material de terceros sin derechos claros.
+[Índice de Evidencia Visual](./visual-evidence/README.es.md)
 
-Las capturas son evidencia de apoyo; source, tests y documentación reproducible siguen siendo la evidencia principal.
+La evidencia visual se utiliza cuando la imagen puede publicarse legítimamente y sanitizarse sin perder su valor técnico. Actualmente se incluyen capturas sanitizadas de SAP MM01 que muestran acceso, selección de vistas, niveles organizativos y verificación de extensión de material.
+
+No se republican screenshots de manuales elaborados por terceros ni material formativo externo. Su contenido técnico se transforma en guías explicativas originales.
+
+## Matriz de evidencia
+
+| Área | Evidencia disponible |
+|---|---|
+| ECC MM Inventario | ABAP source · SALV · 6 escenarios revisados · guía de construcción · visuales MM01 sanitizados |
+| ECC MM Servicios | guía funcional · `ZMM_CONTRACT_AUDIT` · SALV · 8 escenarios revisados |
+| ECC MM Purchasing | `ZMM_PURCH_ANALYTICS` · SALV · 7 escenarios revisados |
+| ECC IS-U / WM | guías operativas · `ZWM_STATUS_AUDIT_LAB` · SALV · 6 escenarios revisados |
+| ECC Diagnóstico | SE24/SE37/SE38/SE80/SE93 · debugger · ST22 · SM21 · SM50/SM66 |
+| ECC CRM/SD | flujo sanitizado de facturación no energética |
+| S/4HANA MM | cliente TypeScript Procurement API · **6/6 tests CI** |
+| S/4HANA Migration | guía técnica de estudio/operación |
+| ABAP Cloud / Clean Core | guía técnica de arquitectura/gobierno |
+| RAP | guía técnica de arquitectura |
+| Integración | guía de resiliencia/observabilidad OData/REST/SOAP + cliente TypeScript ejecutable |
 
 ## Política bilingüe
 
-`README.md` usa inglés técnico orientado al mercado internacional; `README.es.md` mantiene la versión completa en español. Los identificadores de código permanecen en inglés.
+Los artefactos principales usan `README.md` para documentación técnica English-first y `README.es.md` para la versión completa en español. Los identificadores de código permanecen en inglés.
 
-## Confidencialidad / integridad
+## Confidencialidad e integridad
 
-Nunca se publica empresa/cliente ni código propietario, materiales/proveedores/contratos/instalaciones/OT/BP/medidores reales, source Z propietario, endpoints internos, credenciales, transportes, certificados privados o capturas empresariales no sanitizadas.
-
-## Matriz actual
-
-| Línea | Evidencia | Madurez |
-|---|---|---|
-| Diagnóstico ECC | debugging/troubleshooting | `PROCEDURE_READY` |
-| ECC MM Inventario | ABAP source + 6 vectores + runbook | `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED` |
-| ECC MM Servicios | `ZMM_CONTRACT_AUDIT` + 8 vectores | `SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED` |
-| ECC MM Purchasing | `ZMM_PURCH_ANALYTICS` + 7 vectores | `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED` |
-| ECC IS-U / WM Estados | `ZWM_STATUS_AUDIT_LAB` + 6 vectores | `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED` |
-| ECC IS-U / WM Operación | packs sanitizados | `FUNCTIONAL_TECHNICAL_EVIDENCE_READY` |
-| ECC / CRM-SD | facturación no energética | `FUNCTIONAL_EVIDENCE_READY` |
-| S/4 MM APIs | cliente TypeScript + CI | `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_VALIDATED` |
-| S/4 Migration | Migration Cockpit | `RESEARCH_VALIDATED` |
-| ABAP Cloud | arquitectura Clean Core | `RESEARCH_VALIDATED / IMPLEMENTATION_PLANNED` |
-| RAP | arquitectura del primer BO | `DESIGN_READY / IMPLEMENTATION_PLANNED` |
-
-## Próximos hitos
-
-1. construir `ZWM_ORDER_MONITOR_LAB` read-only/sintético
-2. profundizar MM purchasing solo mediante escenarios acotados y verificados (por ejemplo historial/GR)
-3. endurecer cliente S/4 con paginación/retry/schemas por release
-4. crear primer source RAP cuando exista workflow/entorno ABAP Cloud adecuado
-5. añadir runtime SAP solo mediante entorno autorizado
+La evidencia pública excluye empresa/cliente, materiales/proveedores/contratos/instalaciones/OT/BP/medidores reales, source Z propietario, endpoints internos, credenciales, transportes, certificados privados y capturas corporativas no sanitizadas.
