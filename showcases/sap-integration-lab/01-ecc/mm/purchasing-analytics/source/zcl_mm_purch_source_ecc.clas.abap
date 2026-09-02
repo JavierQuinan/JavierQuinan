@@ -45,10 +45,13 @@ CLASS zcl_mm_purch_source_ecc IMPLEMENTATION.
       INTO (rs_snapshot-po_document_date,
             rs_snapshot-vendor,
             rs_snapshot-purchasing_org)
-      WHERE ebeln = rs_snapshot-po_number.
+      WHERE ebeln = rs_snapshot-po_number
+        AND bstyp = 'F'.
 
     IF sy-subrc = 0.
       rs_snapshot-po_header_found = abap_true.
+    ELSE.
+      RETURN.
     ENDIF.
 
     SELECT SINGLE loekz menge meins
