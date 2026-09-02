@@ -3,30 +3,26 @@
 [English version](./README.md)
 
 > **Línea:** SAP ECC / Materials Management / Compras y Servicios  
-> **Estado:** `FUNCTIONAL_EVIDENCE_READY / ABAP_SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
+> **Evidencia:** guía operativa sanitizada · source ABAP original read-only · revisión determinista de source
 
-Este paquete combina conocimiento profesional sanitizado de acuerdos de compra de largo plazo con un artefacto ABAP original, de solo lectura y revisable públicamente.
+Este paquete combina conocimiento profesional sanitizado de acuerdos de compra de largo plazo con un artefacto ABAP original, de solo lectura y revisable.
 
 ## Evidencia funcional
 
-La guía operativa de origen demuestra trabajo con:
+La guía operativa respalda trabajo con:
 
-- verificación de contratos existentes para evitar duplicados
-- contexto de proveedor y organización de compras
-- inicio/fin de vigencia
-- acuerdos orientados a cantidad o valor
-- posiciones orientadas a servicios
-- unidad, cantidad y contexto comercial
-- catálogo de prestaciones/actividades
-- compras posteriores que referencian el acuerdo vigente
+- verificación de acuerdos existentes para evitar duplicados;
+- contexto de proveedor y organización de compras;
+- inicio/fin de vigencia;
+- acuerdos orientados a cantidad o valor;
+- posiciones de servicio;
+- unidades, cantidades y valores comerciales;
+- catálogo de prestaciones/actividades;
+- compras posteriores referenciando un acuerdo existente.
 
-La guía fuente utiliza `ME31` dentro de su contexto operativo y `ME33K` para revisar contratos existentes. La evidencia pública conserva ese dato sin presentarlo como regla universal; el procesamiento clásico de contratos SAP utiliza habitualmente la familia `ME31K / ME32K / ME33K`.
-
-No se publica empresa, proveedor, contrato, organización de compras, importe, usuario ni captura real.
+La guía fuente utiliza `ME31` dentro de su contexto operativo específico y `ME33K` para revisar contratos existentes. La versión pública conserva ese dato sin convertirlo en regla universal; el procesamiento clásico de contratos SAP utiliza habitualmente la familia `ME31K / ME32K / ME33K`.
 
 ## Evidencia técnica — `ZMM_CONTRACT_AUDIT`
-
-El auditor previsto ya está implementado como source revisable:
 
 ```text
 ZMM_CONTRACT_AUDIT
@@ -43,25 +39,25 @@ ZIF_MM_CONTRACT_SOURCE
    └── ZCL_MM_CONTRACT_SOURCE_DEMO → datos sintéticos
 ```
 
-Objeto de soporte:
+Excepción de soporte:
 
 `ZCX_MM_CONTRACT_NOT_FOUND`
 
 ## Modelo ECC read-only
 
-La primera versión utiliza campos estándar de contratos de compras documentados de forma independiente:
+El source utiliza:
 
-- `EKKO-KDATB` / `EKKO-KDATE` — inicio/fin de vigencia
-- `EKKO-LIFNR` — proveedor
-- `EKKO-EKORG` — organización de compras
-- `EKKO-KTWRT` — valor objetivo
-- `EKPO-KTMNG` — cantidad objetivo a nivel de posición
-- `EKPO-ZWERT` — valor objetivo de posición
-- `EKPO-LOEKZ` — exclusión de posiciones eliminadas
+- `EKKO-KDATB` / `EKKO-KDATE` — inicio/fin de vigencia;
+- `EKKO-LIFNR` — proveedor;
+- `EKKO-EKORG` — organización de compras;
+- `EKKO-KTWRT` — valor objetivo;
+- `EKPO-KTMNG` — cantidad objetivo;
+- `EKPO-ZWERT` — valor objetivo de posición;
+- `EKPO-LOEKZ` — exclusión de posiciones eliminadas.
 
-El datasource ECC acepta únicamente documentos de compras con `BSTYP = 'K'`.
+El datasource ECC acepta únicamente documentos con `BSTYP = 'K'`.
 
-La primera versión **no recorre** jerarquías de paquetes de servicios; esa extensión se reserva para una validación específica por release/escenario.
+El source no recorre jerarquías de paquetes de servicios porque esa relación depende de release/escenario y no es necesaria para demostrar la lógica de auditoría contractual implementada.
 
 ## Estados diagnósticos
 
@@ -73,21 +69,21 @@ La primera versión **no recorre** jerarquías de paquetes de servicios; esa ext
 - `VALIDITY_INCOMPLETE`
 - `NO_ITEMS`
 
-El reporte también muestra días hasta vencimiento, número de posiciones activas e indicadores de objetivos por cantidad/valor.
+El reporte muestra además días hasta vencimiento, cantidad de posiciones activas e indicadores target por cantidad/valor.
 
-## Diseño de pruebas
+## Revisión de escenarios deterministas
 
-Se versionaron ocho vectores ABAP Unit y fueron trazados a nivel de source:
+Se versionaron ocho escenarios ABAP Unit y fueron trazados consistentemente contra el source actual:
 
 ```text
-Vectores revisados: 8
-Consistentes:       8
-Diferencias:        0
+Escenarios revisados: 8
+Consistentes:         8
+Diferencias:          0
 ```
 
-Esto es **validación estática/source**, no ejecución de ABAP Unit dentro de SAP.
+Esto corresponde a revisión source/estática, no a un claim de ejecución ABAP Unit dentro de un sistema SAP corporativo.
 
-## Reproducibilidad
+## Evidencia reproducible
 
 - [Technical Lab](./TECHNICAL_LAB.md)
 - [Build Guide](./BUILD_GUIDE.md)
@@ -96,22 +92,24 @@ Esto es **validación estática/source**, no ejecución de ABAP Unit dentro de S
 - [Evidence Record](./EVIDENCE.md)
 - [`source/`](./source/)
 
+## Qué demuestra esta evidencia
+
+- razonamiento de service procurement y contratos marco;
+- estructura clásica de documentos de compras ECC;
+- ABAP Objects y abstracción de datasource;
+- reglas explícitas de vigencia contractual;
+- datos sintéticos deterministas para pruebas;
+- reporting SALV;
+- documentación funcional/técnica bilingüe;
+- diseño read-only y disciplina de confidencialidad.
+
 ## Límite de evidencia
 
-El desarrollo no crea ni modifica documentos de compras y no contiene sentencias de escritura ni `COMMIT`.
+El artefacto no crea ni modifica documentos de compras y no contiene escrituras de base ni `COMMIT`.
 
-No pretende reemplazar:
+No afirma reemplazar estrategia de liberación, entrada de servicios, pricing/técnica de condiciones, determinación de fuentes, consumo contractual, imputación, verificación de facturas ni procesamiento de paquetes de servicios.
 
-- estrategia de liberación
-- entrada de servicios
-- pricing / técnica de condiciones
-- determinación de fuentes
-- consumo contractual
-- imputación
-- verificación de facturas
-- procesamiento de paquetes de servicios
-
-La activación SAP, ejecución ABAP Unit y transacción SE93 quedan diferidas hasta disponer de un DEV/sandbox autorizado.
+El repositorio presenta source/revisión estática e instrucciones reproducibles de construcción; no afirma activación o ejecución de estos objetos custom dentro de un sistema SAP corporativo específico.
 
 ## Terminología bilingüe
 
