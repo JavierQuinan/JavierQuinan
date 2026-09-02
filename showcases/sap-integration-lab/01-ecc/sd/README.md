@@ -2,45 +2,37 @@
 
 [Versión en español](./README.es.md)
 
-> **Scope:** customer/commercial setup, sales-area context and billing evidence derived from real operational guides  
-> **Current maturity:** first sanitized functional evidence published
+> **Scope:** customer/commercial setup, sales-area context and billing evidence derived from operational guides
 
-This track is separate from MM and IS-U/WM even when the enterprise process crosses module boundaries.
+This track is separate from MM and IS-U/WM even when enterprise processes cross module boundaries.
 
-## Published evidence
+## Evidence available now
 
 ### Non-Energy Service Billing
 
 [Non-Energy Service Billing Workflow](./non-energy-billing/README.md)
 
-Status: `FUNCTIONAL_EVIDENCE_READY`
+The sanitized source-derived workflow covers:
 
-The source-derived workflow covers:
+- customer/business-partner identification or creation;
+- contact and preferred-channel validation;
+- commercial agreement/account context;
+- customer sales-area extension;
+- sales organization / distribution channel / division context;
+- creation of a non-energy service billing document through the configured enterprise process;
+- output review before finalization;
+- configured fiscal/output completion.
 
-- customer/business-partner identification or creation
-- contact and preferred-channel validation
-- commercial agreement/account context
-- customer sales-area extension
-- sales organization / distribution channel / division context
-- creation of a non-energy service billing document through the configured enterprise process
-- output review before finalization
-- configured fiscal/output completion
+This is deliberately documented as the **specific CRM/SD-oriented process supported by the source guide**. It is not generalized into an unsupported universal `VF01` tutorial.
 
-This is explicitly documented as a customer-specific CRM/SD-oriented business process. It is **not** generalized into a fake universal `VF01` tutorial.
+## What this evidence demonstrates
 
-## Planned progression
-
-Future SD evidence will be added only when supported by a real guide, synthetic lab or official research clearly labelled by source type.
-
-Target topics:
-
-- order-to-cash fundamentals
-- customer/sales-area master data
-- billing/output troubleshooting
-- pricing/output concepts
-- MM-SD / FI-SD integration boundaries
-- S/4HANA Sales modernization as a separate track
+- customer/BP preparation before billing;
+- sales-area context awareness;
+- billing/output review discipline;
+- understanding of CRM ↔ SD process boundaries;
+- ability to document customer-specific SAP flows without exposing customer configuration.
 
 ## Confidentiality boundary
 
-No company, customer, BP ID, address, sales-area code, invoice number, amount, tax endpoint or enterprise screenshot is published.
+No company/customer identity, BP ID, address, sales-area code, invoice number, amount, fiscal endpoint or enterprise screenshot is published.
