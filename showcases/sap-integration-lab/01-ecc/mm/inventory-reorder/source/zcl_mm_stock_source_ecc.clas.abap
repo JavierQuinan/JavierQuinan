@@ -9,11 +9,29 @@ ENDCLASS.
 
 CLASS zcl_mm_stock_source_ecc IMPLEMENTATION.
   METHOD zif_mm_stock_source~get_stock_snapshot.
+    DATA lt_unrestricted TYPE STANDARD TABLE OF mard-labst WITH DEFAULT KEY.
+    DATA lv_unrestricted TYPE mard-labst.
+
     CLEAR rs_snapshot.
 
-    SELECT SINGLE minbe eisbe
+    SELECT SINGLE meins
+      FROM mara
+      INTO rs_snapshot-base_uom
+      WHERE matnr = iv_matnr.
+
+    IF sy-subrc <> 0.
+      RAISE EXCEPTION TYPE zcx_mm_stock_not_found
+        EXPORTING
+          iv_matnr = iv_matnr
+          iv_werks = iv_werks
+          iv_lgort = iv_lgort.
+    ENDIF.
+
+    SELECT SINGLE dismm minbe eisbe
       FROM marc
-      INTO (rs_snapshot-reorder_point, rs_snapshot-safety_stock)
+      INTO (rs_snapshot-mrp_type,
+            rs_snapshot-reorder_point,
+            rs_snapshot-safety_stock)
       WHERE matnr = iv_matnr
         AND werks = iv_werks.
 
@@ -27,7 +45,7 @@ CLASS zcl_mm_stock_source_ecc IMPLEMENTATION.
 
     SELECT SINGLE labst
       FROM mard
-      INTO rs_snapshot-unrestricted
+      INTO rs_snapshot-storage_unrestricted
       WHERE matnr = iv_matnr
         AND werks = iv_werks
         AND lgort = iv_lgort.
@@ -39,6 +57,17 @@ CLASS zcl_mm_stock_source_ecc IMPLEMENTATION.
           iv_werks = iv_werks
           iv_lgort = iv_lgort.
     ENDIF.
+
+    SELECT labst
+      FROM mard
+      INTO TABLE lt_unrestricted
+      WHERE matnr = iv_matnr
+        AND werks = iv_werks.
+
+    CLEAR rs_snapshot-plant_unrestricted.
+    LOOP AT lt_unrestricted INTO lv_unrestricted.
+      ADD lv_unrestricted TO rs_snapshot-plant_unrestricted.
+    ENDLOOP.
 
     rs_snapshot-matnr = iv_matnr.
     rs_snapshot-werks = iv_werks.

@@ -2,12 +2,15 @@ INTERFACE zif_mm_stock_source PUBLIC.
 
   TYPES:
     BEGIN OF ty_stock_snapshot,
-      matnr         TYPE mara-matnr,
-      werks         TYPE marc-werks,
-      lgort         TYPE mard-lgort,
-      unrestricted  TYPE mard-labst,
-      reorder_point TYPE marc-minbe,
-      safety_stock  TYPE marc-eisbe,
+      matnr                TYPE mara-matnr,
+      werks                TYPE marc-werks,
+      lgort                TYPE mard-lgort,
+      base_uom             TYPE mara-meins,
+      mrp_type             TYPE marc-dismm,
+      storage_unrestricted TYPE mard-labst,
+      plant_unrestricted   TYPE mard-labst,
+      reorder_point        TYPE marc-minbe,
+      safety_stock         TYPE marc-eisbe,
     END OF ty_stock_snapshot.
 
   METHODS get_stock_snapshot
