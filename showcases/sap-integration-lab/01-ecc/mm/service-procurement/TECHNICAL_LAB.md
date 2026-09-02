@@ -1,6 +1,6 @@
 # ECC MM Technical Lab — Read-Only Contract Audit
 
-> **Status:** `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+> **Evidence classification:** `REVIEWABLE_SOURCE / STATIC_SCENARIO_VALIDATION / REPRODUCIBLE_BUILD_GUIDE`
 
 This lab transforms functional framework-contract knowledge into reviewable ABAP engineering evidence without creating or changing purchasing documents.
 
@@ -21,13 +21,11 @@ ZIF_MM_CONTRACT_SOURCE
    └── ZCL_MM_CONTRACT_SOURCE_DEMO → synthetic data
 ```
 
-Supporting exception:
-
-`ZCX_MM_CONTRACT_NOT_FOUND`
+Supporting exception: `ZCX_MM_CONTRACT_NOT_FOUND`.
 
 ## Standard ECC boundary
 
-The ECC datasource reads only transparent purchasing-contract information needed for this first diagnostic:
+The ECC datasource reads only transparent purchasing-contract information required by this diagnostic.
 
 ### EKKO
 
@@ -47,7 +45,7 @@ The ECC datasource reads only transparent purchasing-contract information needed
 
 Only purchasing documents with category `BSTYP = 'K'` are accepted. Deleted items are excluded from item counts.
 
-No service-package hierarchy is traversed in this version.
+The source does not traverse service-package hierarchy; that capability is outside the artifact's stated scope.
 
 ## Transparent diagnostic outcomes
 
@@ -61,19 +59,19 @@ No service-package hierarchy is traversed in this version.
 
 The service also exposes `days_to_expiry` and preserves target-value/target-item indicators returned by the datasource.
 
-## First-version selection screen
+## Selection screen
 
-The first executable report intentionally audits **one contract at a time**:
+The executable report audits **one contract at a time** using:
 
 - purchasing contract
 - key date
 - warning days
 
-This keeps the result deterministic and explainable. Multi-contract/vendor/purchasing-organization monitoring is a future extension.
+This keeps the result deterministic and explainable.
 
 ## ABAP Unit source
 
-Eight deterministic test vectors are versioned:
+Eight deterministic scenarios are versioned:
 
 1. active agreement
 2. expiring agreement
@@ -84,17 +82,16 @@ Eight deterministic test vectors are versioned:
 7. no active items
 8. target indicators preserved
 
-Source-level review: **8/8 consistent**. This is not an SAP runtime test claim.
+Source-level review: **8/8 consistent / 0 mismatches**. This is not represented as an executed SAP runtime result.
 
 ## Security and governance
 
 - read-only Open SQL
-- no `UPDATE`, `INSERT`, `MODIFY` or `DELETE`
+- no `UPDATE`, `INSERT`, database `MODIFY` or `DELETE`
 - no `BAPI_TRANSACTION_COMMIT`
 - no document creation/change API
 - no copied internal `Z*` implementation
 - no enterprise identifiers or values
-- SAP runtime remains deferred until an authorized DEV/sandbox is available
 
 ## Reproducibility
 
@@ -104,6 +101,6 @@ Source-level review: **8/8 consistent**. This is not an SAP runtime test claim.
 - [Evidence Record](./EVIDENCE.md)
 - [`source/`](./source/)
 
-## Evidence gate
+## Evidence represented
 
-`DESIGN_READY -> SOURCE_READY -> STATIC_VALIDATED -> EXECUTION_PROCEDURE_READY -> RUNTIME_DEFERRED/RUNTIME_VALIDATED -> TEST_VALIDATED`
+This directory represents implemented source, reviewed deterministic scenarios, a SALV report design and reproducible construction/verification documentation. It does not present unobserved enterprise runtime as completed evidence.
