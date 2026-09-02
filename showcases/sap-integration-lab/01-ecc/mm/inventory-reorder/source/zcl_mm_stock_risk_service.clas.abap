@@ -15,6 +15,7 @@ CLASS zcl_mm_stock_risk_service DEFINITION
         matnr                TYPE mara-matnr,
         werks                TYPE marc-werks,
         lgort                TYPE mard-lgort,
+        base_uom             TYPE mara-meins,
         mrp_type             TYPE marc-dismm,
         storage_unrestricted TYPE mard-labst,
         plant_unrestricted   TYPE mard-labst,
@@ -61,6 +62,7 @@ CLASS zcl_mm_stock_risk_service IMPLEMENTATION.
     rs_result-matnr = ls_snapshot-matnr.
     rs_result-werks = ls_snapshot-werks.
     rs_result-lgort = ls_snapshot-lgort.
+    rs_result-base_uom = ls_snapshot-base_uom.
     rs_result-mrp_type = ls_snapshot-mrp_type.
     rs_result-storage_unrestricted = ls_snapshot-storage_unrestricted.
     rs_result-plant_unrestricted = ls_snapshot-plant_unrestricted.
