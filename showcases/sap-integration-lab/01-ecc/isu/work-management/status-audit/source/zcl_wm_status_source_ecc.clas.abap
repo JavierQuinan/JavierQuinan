@@ -76,7 +76,7 @@ CLASS zcl_wm_status_source_ecc IMPLEMENTATION.
         ls_status-status_kind = 'OTHER'.
       ENDIF.
 
-      MODIFY lt_statuses FROM ls_status.
+      MODIFY lt_statuses FROM ls_status INDEX sy-tabix.
     ENDLOOP.
 
     rs_snapshot-statuses = lt_statuses.
