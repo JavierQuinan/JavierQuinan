@@ -3,8 +3,8 @@
 [English version](./README.md)
 
 > **Línea:** SAP ECC / Materials Management  
-> **Estado del artefacto:** `SOURCE_READY / RUNTIME_VALIDATION_PENDING`  
-> **Claim de ejecución:** fuente revisada y endurecida; activación/ejecución SAP aún no evidenciada
+> **Estado del artefacto:** `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`  
+> **Claim de ejecución:** lógica fuente y vectores deterministas revisados; activación/ejecución SAP no se atribuye hasta contar con un DEV/sandbox autorizado
 
 Este es el primer artefacto técnico ejecutable del SAP Integration Lab.
 
@@ -16,6 +16,7 @@ Implementa un diagnóstico temprano de stock, clásico ECC y de solo lectura, pa
 - [Build Guide — English](./BUILD_GUIDE.md)
 - [Perfil de compatibilidad y hardening](./COMPATIBILITY.es.md)
 - [Compatibility & Hardening Profile](./COMPATIBILITY.md)
+- [Registro de validación estática](./STATIC_VALIDATION.md)
 - [Paquete de ejecución runtime — Español](./RUNTIME_EXECUTION.es.md)
 - [Runtime Execution Packet — English](./RUNTIME_EXECUTION.md)
 - [Guía de ejecución](./RUNBOOK.es.md)
@@ -75,18 +76,20 @@ No existen sentencias de actualización, inserción, modificación o borrado en 
 
 El stock del almacén seleccionado se presenta como detalle; no determina el estado a nivel planta.
 
-## Cobertura ABAP Unit preparada
+## Validación estática + diseño ABAP Unit
 
-Se versionaron seis casos deterministas:
+Los seis vectores deterministas versionados fueron trazados contra la implementación actual:
 
-1. stock de planta superior al punto de pedido → `OK`
-2. stock de planta exactamente en punto de pedido → `REORDER`
-3. stock de planta por debajo del stock de seguridad → `CRITICAL`
-4. cálculo de cantidad faltante hasta el punto de pedido
-5. ausencia de umbrales → `NOT_CONFIGURED`
-6. stock bajo en el almacén seleccionado pero suficiente en planta → el estado sigue basándose en planta
+1. stock de planta superior al punto de pedido → `OK` — static PASS
+2. stock de planta exactamente en punto de pedido → `REORDER` — static PASS
+3. stock de planta por debajo del stock de seguridad → `CRITICAL` — static PASS
+4. faltante desde 55 hasta punto de pedido 80 → `25` — static PASS
+5. ausencia de umbrales → `NOT_CONFIGURED` — static PASS
+6. stock bajo en almacén seleccionado con planta suficiente → estado basado en planta — static PASS
 
-Las pruebas utilizan un datasource sintético y no datos productivos SAP. Los métodos de prueba declaran explícitamente la excepción `CX_STATIC_CHECK` propagada.
+**Vectores revisados: 6/6; inconsistencias lógicas encontradas: 0.**
+
+Esto es validación de fuente/lógica, no un claim de que ABAP Unit haya sido ejecutado dentro de SAP. El objetivo futuro de runtime permanece en 6/6 PASS cuando exista ambiente autorizado.
 
 ## Postura de compatibilidad ECC
 
@@ -102,29 +105,33 @@ El runtime principal favorece construcciones clásicas:
 
 Se evita sintaxis moderna cuando no aporta valor. Esto mejora portabilidad, pero la release/EHP ECC exacta todavía debe validarse en runtime.
 
-## Qué demuestra actualmente la fuente
+## Qué demuestra actualmente la evidencia
 
 - diseño ABAP OO clásico
 - inversión de dependencias mediante interfaz
 - datasource determinista para pruebas
-- Open SQL de solo lectura sobre tablas estándar ECC MM
+- seis vectores deterministas consistentes con la lógica actual
+- diseño Open SQL de solo lectura sobre tablas estándar ECC MM
 - separación stock planta vs. almacén
 - visibilidad del contexto MRP mediante `MARC-DISMM`
 - manejo de excepciones basado en clases
 - estructura de reporte SALV
 - cobertura fuente ABAP Unit
 - diseño de Report Transaction propia mediante `SE93`
+- procedimiento reproducible objeto por objeto para construcción y ejecución
 - documentación técnica bilingüe
 - límites funcionales y de evidencia explícitos
 
-## Qué continúa bloqueado
+## Límite runtime
 
-No se realizan los siguientes claims hasta obtener evidencia runtime en SAP:
+La ejecución runtime queda diferida porque este ejercicio de portafolio no utiliza permisos empresariales de desarrollo/CTS. Es una restricción de entorno/gobierno y no se presenta como PASS de ejecución.
 
-- syntax check superado en la release ECC objetivo
-- activación correcta de todos los objetos
+Continúan bloqueados los siguientes claims hasta obtener evidencia runtime en SAP:
+
+- syntax check superado en una release ECC específica
+- activación correcta de todos los objetos en SAP
 - los seis tests ABAP Unit ejecutados con éxito en SAP
 - `ZMM_STOCK_RISK` iniciada correctamente mediante `SE93`
 - SALV ejecutado correctamente contra un sistema SAP
 
-Consulte [`EVIDENCE.md`](./EVIDENCE.md) para el protocolo de promoción.
+Consulte [`STATIC_VALIDATION.md`](./STATIC_VALIDATION.md) y [`EVIDENCE.md`](./EVIDENCE.md).

@@ -96,10 +96,12 @@ My SAP experience is primarily functional and operational, with emphasis on:
 
 I deliberately separate **hands-on enterprise experience** from **training/certification claims**. Only verifiable certifications are presented as certifications.
 
-### [SAP Integration Lab — Public Evidence Roadmap](showcases/sap-integration-lab/README.md)
-The SAP Integration Lab now contains a source-ready **SAP ECC MM / ABAP Objects** evidence pack with ABAP Unit source, SALV reporting, bilingual build/run documentation and a custom `SE93` report-transaction design. Runtime validation in an authorized ECC DEV/sandbox remains pending before any execution claim is made.
+### [SAP Integration Lab — Public Engineering Evidence](showcases/sap-integration-lab/README.md)
+The SAP Integration Lab contains a **SAP ECC MM / ABAP Objects evidence pack** with read-only MM source design, ABAP Unit test source, SALV reporting, bilingual build/run documentation and a custom `SE93` report-transaction design. Its six deterministic test vectors have been statically traced against the current implementation with 6/6 expected outcomes consistent and zero source-level mismatches. A separate ECC troubleshooting guide documents `SE24`, `SE37`, `SE38`, `SE80`, `SE93`, `/H`, breakpoints, `ST22`, `SM21`, `SM50` and `SM66`.
 
-`SAP MM` `IS-U Work Management` `ABAP` `ABAP Unit` `ABAP Cloud` `RAP` `Integration` — **ECC MM source-ready; runtime validation pending**
+Enterprise SAP runtime execution is explicitly deferred until an authorized DEV/sandbox is available; no activation or ABAP Unit runtime result is invented.
+
+`SAP MM` `IS-U Work Management` `ABAP` `ABAP Unit` `Debugging` `ABAP Cloud` `RAP` `Integration` — **ECC MM static-validated; execution procedure ready**
 
 ## Engineering principles
 
@@ -116,12 +118,14 @@ The SAP Integration Lab now contains a source-ready **SAP ECC MM / ABAP Objects*
 2. [Motorix ERP / SaaS Showcase](showcases/motorix/README.md) — **published**
 3. [FITBA Web + Mobile Showcase](showcases/fitba/README.md) — **published**
 4. [LegalTech Platform Showcase](showcases/legaltech/README.md) — **published**
-5. [SAP Integration Lab](showcases/sap-integration-lab/README.md) — **ECC MM source-ready; runtime validation pending**
+5. [SAP Integration Lab](showcases/sap-integration-lab/README.md) — **ECC MM static-validated + execution procedure ready; ECC diagnostics published**
 6. [Parking Android](https://github.com/JavierQuinan/parqueadero_android) — **Kotlin/native Android open-source revival in progress**
 
 ## Español
 
-Soy **Ingeniero en Software, Abogado y Full Stack Engineer**, especializado en desarrollo de productos SaaS empresariales, aplicaciones web y móviles, arquitectura multi-tenant e integraciones. Mi stack principal incluye Angular, React, TypeScript, NestJS, Node.js, PostgreSQL y Supabase; en móvil también mantengo evidencia de **Android nativo con Kotlin**, además de React Native/Expo. Complemento el perfil con experiencia funcional en SAP MM / IS-U Work Management y especialización técnica progresiva en ABAP y ABAP Cloud.
+Soy **Ingeniero en Software, Abogado y Full Stack Engineer**, especializado en desarrollo de productos SaaS empresariales, aplicaciones web y móviles, arquitectura multi-tenant e integraciones. Mi stack principal incluye Angular, React, TypeScript, NestJS, Node.js, PostgreSQL y Supabase; en móvil también mantengo evidencia de **Android nativo con Kotlin**, además de React Native/Expo.
+
+En SAP complemento la experiencia funcional MM / IS-U Work Management con una línea técnica pública de ABAP: código fuente revisable, validación estática trazable, guías reproducibles de creación de objetos y documentación de debugging/troubleshooting. Mantengo separado lo comprobado en fuente de cualquier claim de ejecución que requiera un sistema SAP autorizado.
 
 Mi objetivo profesional es construir y demostrar software empresarial con evidencia verificable: arquitectura, código, pruebas, documentación y casos de estudio sanitizados.
 
