@@ -49,7 +49,15 @@ Classic ABAP OO, read-only `MARA/MARC/MARD`, SALV, six deterministic vectors and
 
 `FUNCTIONAL_EVIDENCE_READY / ABAP_SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
 
-Read-only `EKKO/EKPO` source, contract validity diagnostics, SALV, eight deterministic vectors and bilingual build/evidence documentation.
+Read-only `EKKO/EKPO` source, contract-validity diagnostics, SALV, eight deterministic vectors and bilingual build/evidence documentation.
+
+### Purchasing Analytics & `ZMM_PURCH_ANALYTICS`
+
+[Purchasing Analytics](./01-ecc/mm/purchasing-analytics/README.md)
+
+`SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+
+Read-only PR→PO→schedule-line visibility using `EBAN`, `EKKO`, `EKPO` and `EKET`, with datasource abstraction, SALV and seven deterministic ABAP Unit vectors. The lab treats a PR without a PO as a valid `PR_ONLY` state rather than automatically calling it an error.
 
 ## SAP ECC IS-U / Work Management
 
@@ -61,18 +69,7 @@ Read-only `EKKO/EKPO` source, contract validity diagnostics, SALV, eight determi
 
 `FUNCTIONAL_TECHNICAL_EVIDENCE_READY / SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
 
-The first WM ABAP source pack combines sanitized operational troubleshooting with original read-only engineering source:
-
-- `AUFK -> OBJNR`
-- `JSTO -> STSMA`
-- `JEST` active/historical status records
-- `TJ02T` / `TJ30T` text resolution
-- `JCDS` change-summary context
-- ECC + demo datasource abstraction
-- ABAP OO audit service
-- SALV report
-- six deterministic ABAP Unit vectors traced consistently
-- bilingual `SE24/SE38/SE93` build guide
+Original read-only source over `AUFK/JSTO/JEST/TJ02T/TJ30T/JCDS`, ECC/demo datasource abstraction, ABAP OO service, SALV and six deterministic vectors.
 
 Additional sanitized WM/IS-U evidence includes work-order operations, batch governance, seal-material enablement, equipment consistency, photovoltaic onboarding, CRM contract-end recovery and occasional metered-service flow.
 
@@ -137,6 +134,7 @@ Never publish customer/company identities, real materials/vendors/contracts/inst
 | ECC Technical Diagnostics | debugging/diagnostics procedure | `PROCEDURE_READY` |
 | ECC MM Inventory | ABAP source + 6-vector static trace + runbook | `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED` |
 | ECC MM Services | `ZMM_CONTRACT_AUDIT` + 8-vector trace | `SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED` |
+| ECC MM Purchasing | `ZMM_PURCH_ANALYTICS` + 7-vector trace | `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED` |
 | ECC IS-U / WM Status | `ZWM_STATUS_AUDIT_LAB` + 6-vector trace | `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED` |
 | ECC IS-U / WM Operations | sanitized operational/troubleshooting packs | `FUNCTIONAL_TECHNICAL_EVIDENCE_READY` |
 | ECC / CRM-SD | non-energy billing pack | `FUNCTIONAL_EVIDENCE_READY` |
@@ -147,8 +145,8 @@ Never publish customer/company identities, real materials/vendors/contracts/inst
 
 ## Next engineering milestones
 
-1. build **ECC MM Purchasing Analytics** for PR/PO visibility
-2. build `ZWM_ORDER_MONITOR_LAB` for read-only/synthetic work-order monitoring
+1. build `ZWM_ORDER_MONITOR_LAB` for read-only/synthetic work-order monitoring
+2. deepen MM purchasing evidence only through bounded, verified scenarios (for example GR/history visibility)
 3. harden the S/4 Procurement client with pagination/retry/release-specific schemas
 4. create the first RAP source package when an appropriate ABAP Cloud workflow/environment is available
 5. add SAP runtime proof only through an authorized environment
