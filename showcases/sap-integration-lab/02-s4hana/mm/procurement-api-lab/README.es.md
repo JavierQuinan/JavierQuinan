@@ -3,7 +3,7 @@
 [English version](./README.md)
 
 > **Tipo de evidencia:** integración Clean Core basada en interfaces SAP liberadas  
-> **Estado:** `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_PENDING / S4_RUNTIME_NOT_CLAIMED`  
+> **Estado:** `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_VALIDATED / S4_RUNTIME_NOT_CLAIMED`  
 > **Alcance:** Solicitudes de Pedido + Pedidos de Compra
 
 Este laboratorio demuestra cómo evoluciona la evidencia de compras desde ECC clásico hacia un diseño moderno S/4HANA, sin presentar el acceso directo a tablas como patrón de integración Clean Core.
@@ -45,47 +45,27 @@ Capacidades implementadas:
 - consultas read-only de pedidos
 - consultas read-only de solicitudes
 - transporte HTTP inyectable
-- validación de respuesta OData `value`
+- validación OData `value`
 - construcción de `$top`, `$skip` y `$filter`
 - mapeo estable de errores SAP API
 - captura de correlation/request ID
 - HTTPS obligatorio fuera de localhost
-- transporte Fetch con timeout
-- tests deterministas con respuestas sintéticas
-- quality gate en GitHub Actions
-
-Arquitectura:
-
-```text
-Configuración externa
-        │
-        ▼
-ProcurementApiClient
-        │
-        ├── Pedidos de compra
-        └── Solicitudes de pedido
-        │
-        ▼
-Abstracción HttpTransport
-        ├── FetchTransport
-        └── transporte sintético de pruebas
-        │
-        ▼
-ProcurementDocument[] normalizado
-```
+- Fetch transport con timeout
+- tests deterministas sintéticos
+- GitHub Actions con permiso `contents: read`
 
 ## Evidencia de tests
 
-Se versionaron y ejecutaron localmente seis pruebas deterministas con Node 22:
+Los seis tests deterministas pasaron tanto localmente como en GitHub Actions con Node 22:
 
 1. normalización OData de pedido
 2. normalización OData de solicitud
 3. página OData vacía
 4. HTTP 401 mapeado con correlation ID
-5. rechazo de respuesta no compatible con OData
+5. rechazo de respuesta inesperada/no OData
 6. rechazo de endpoint HTTP inseguro no local
 
-Resultado local registrado durante el desarrollo:
+Resultado CI registrado:
 
 ```text
 Ejecutados: 6
@@ -93,13 +73,13 @@ Aprobados:  6
 Fallidos:   0
 ```
 
-La validación de GitHub Actions se registra por separado. No se declara `CI_VALIDATED` hasta observar el workflow verde.
+Esto valida el **cliente/source**, no un runtime real de tenant SAP S/4HANA.
 
 ## Frontera de seguridad
 
-No se versiona URL real de SAP, usuario, contraseña, OAuth client secret, bearer token, cookie, certificado/llave privada ni payload productivo.
+No se versiona URL SAP real, usuario, contraseña, OAuth client secret, bearer token, cookie, certificado/llave privada ni payload productivo.
 
-El source actual sigue siendo deliberadamente **solo lectura**. La autenticación real deberá provenir de un proveedor externo de credenciales/tokens.
+La implementación sigue siendo deliberadamente **solo lectura**. La autenticación real deberá provenir de un proveedor externo de credenciales/tokens.
 
 ## Qué demuestra actualmente
 
@@ -109,30 +89,27 @@ El source actual sigue siendo deliberadamente **solo lectura**. La autenticació
 - abstracción de transporte y contract testing determinista
 - manejo de errores/correlation IDs
 - validación segura de endpoints
-- documentación técnica bilingüe
+- CI reproducible
+- documentación bilingüe
 
 ## Qué no se afirma
 
 - conexión con tenant S/4HANA real
-- metadata validada en una release concreta
+- metadata validada para una release concreta
 - adquisición OAuth/token
 - autorización SAP real
 - runtime end-to-end S/4HANA
-- operaciones de creación/modificación
+- operaciones create/change
 
 ## Próximos hitos
-
-### P2 — Validación CI
-
-GitHub Actions ejecutará los seis tests deterministas con Node 22. Cuando el workflow quede verde podrá agregarse `CI_VALIDATED`.
 
 ### P3 — Hardening de integración
 
 - recorrido de paginación
-- retry de errores transitorios únicamente para lecturas seguras
+- retry de errores transitorios solo en lecturas seguras
 - schemas por release
-- comprobación metadata/capabilities
-- abstracción de proveedor de autenticación
+- metadata/capabilities
+- proveedor externo de autenticación
 
 ### P4 — Sandbox autorizado
 
@@ -149,4 +126,4 @@ Hasta entonces no se afirma runtime S/4.
 
 `RESEARCH_VALIDATED -> DESIGN_READY -> SOURCE_READY -> LOCAL_TEST_VALIDATED -> CI_VALIDATED -> RUNTIME_VALIDATED`
 
-Posición actual: **`SOURCE_READY / LOCAL_TEST_VALIDATED / CI_PENDING`**.
+Posición actual: **`SOURCE_READY / LOCAL_TEST_VALIDATED / CI_VALIDATED`**.
