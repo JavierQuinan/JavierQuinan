@@ -1,13 +1,13 @@
-# SAP S/4HANA — Roadmap de Evidencia RAP
+# SAP S/4HANA — Guía de Arquitectura RAP
 
 [English version](./README.md)
 
-> **Estado:** `DESIGN_READY / IMPLEMENTATION_PLANNED`  
+> **Tipo de evidencia:** guía de arquitectura basada en documentación  
 > **Claim runtime:** ninguno
 
-Esta línea generará la primera evidencia pública de desarrollo de aplicaciones S/4HANA usando ABAP RESTful Application Programming Model (RAP).
+Esta guía explica ABAP RESTful Application Programming Model (RAP) mediante un escenario acotado de revisión de reposición MM. Se presenta como evidencia de arquitectura, no como aplicación RAP activada.
 
-## Arquitectura objetivo
+## Arquitectura RAP
 
 ```text
 Persistencia / fuente liberada
@@ -37,22 +37,16 @@ Service Binding — OData V4
 Fiori / consumidor API
 ```
 
-SAP documenta la service definition como descripción independiente del protocolo de qué entidades CDS se exponen, mientras la service binding conecta esa definición con un protocolo como OData. Para servicios transaccionales, OData V4 será el objetivo preferido cuando aplique.
+La guía diferencia la service definition independiente del protocolo de la service binding que expone el modelo mediante un protocolo como OData.
 
-## Primer Business Object del portafolio
+## Caso de arquitectura: MM Replenishment Review
 
-Dominio previsto:
+El caso representa un **business object custom de revisión/workflow** alrededor de una evaluación de reposición. Evita deliberadamente modificar maestro de materiales o persistencia MRP estándar SAP.
 
-**MM Replenishment Review / Caso de Revisión de Reposición**
-
-No modificará maestro de materiales ni persistencia MRP estándar SAP.
-
-Modelará un business object custom para registrar decisiones/revisiones alrededor de un análisis de reposición.
-
-Campos posibles:
+Campos custom de ejemplo:
 
 - UUID de revisión
-- referencia de material (sintética en evidencia pública)
+- referencia de material
 - referencia de centro
 - fecha de revisión
 - nivel de riesgo
@@ -61,83 +55,75 @@ Campos posibles:
 - estado workflow
 - timestamps de creación/modificación
 
-## Por qué este objeto
+Los ejemplos públicos utilizan identificadores sintéticos.
 
-Crea un puente limpio entre el diagnóstico ECC clásico y una extensión moderna S/4HANA sin presentar el reporte ECC como solución Clean Core.
+## Límite del business object
 
 ```text
-Evidencia ECC
-Diagnóstico MARC/MARD read-only
+Evidencia diagnóstica ECC clásica
+MARC/MARD read-only
              │
-             │ continuidad conceptual de negocio
+             │ solo continuidad conceptual de negocio
              ▼
-Evidencia S/4HANA RAP
-BO custom de revisión + fuentes/APIs liberadas
+Guía de arquitectura RAP
+BO custom de revisión + límites S/4HANA liberados
 ```
 
-## Behavior previsto
+La arquitectura mantiene el diagnóstico separado de la persistencia estándar SAP. El BO custom es dueño únicamente de las decisiones de revisión y del estado del workflow.
 
-Operaciones:
+## Modelo de behavior
+
+Operaciones documentadas:
 
 - crear revisión
-- modificar mientras está abierta
-- enviar a revisión/aprobación
-- aprobar/rechazar
-- cerrar
+- modificar una revisión abierta
+- enviar revisión
+- aprobar o rechazar una revisión enviada
+- cerrar revisión
 
-Validaciones:
+Validaciones documentadas:
 
-- material/centro requeridos
-- acción propuesta requerida antes de submit
-- registros cerrados no modificables
-- aprobación únicamente desde estado submitted
+- material/centro requeridos;
+- acción propuesta requerida antes del submit;
+- registros cerrados inmutables;
+- aprobación/rechazo únicamente desde estado submitted.
 
-## Estrategia de pruebas
+## Modelo de autorización
 
-La evidencia futura incluirá:
+La guía separa autorización de visibilidad UI.
 
-- pruebas de validaciones de behavior
-- pruebas de acciones/transiciones
-- autorizaciones
-- casos negativos
-- pruebas con EML cuando sea viable
-- metadata/runtime del servicio
+Scopes ilustrativos del escenario sintético:
 
-## Autorización
+- **viewer** — lectura de casos;
+- **reviewer** — crear/modificar/enviar;
+- **approver** — aprobar/rechazar casos enviados.
 
-Autorización explícita y separada de visibilidad UI.
+Este artefacto no afirma implementación de autorizaciones SAP.
 
-Roles/scopes previstos para el lab sintético:
+## Guía de diseño de pruebas
 
-- viewer
-- reviewer
-- approver
+Una implementación RAP basada en esta arquitectura debe revisarse contra:
 
-La implementación exacta dependerá del ambiente ABAP Cloud y se documentará cuando exista el source.
+- validaciones de campos/behavior;
+- transiciones de estado;
+- casos negativos de autorización;
+- inmutabilidad de estados cerrados;
+- pruebas EML cuando corresponda;
+- metadata del servicio y límites de autorización.
 
-## Gate de evidencia
+Son criterios de aceptación documentados, no resultados runtime inventados.
 
-```text
-DESIGN_READY
-    ↓
-CDS_SOURCE_READY
-    ↓
-BEHAVIOR_SOURCE_READY
-    ↓
-SERVICE_SOURCE_READY
-    ↓
-STATIC_VALIDATED
-    ↓
-RUNTIME_VALIDATED
-    ↓
-TEST_VALIDATED
-```
+## Qué demuestra esta guía
 
-Posición actual: `DESIGN_READY`.
+- separación de capas RAP;
+- ownership de un business object custom;
+- diseño de behavior/state machine;
+- diseño de validaciones;
+- razonamiento projection/service;
+- conocimiento de service binding OData V4;
+- límites de autorización/pruebas;
+- separación Clean Core frente a lógica ECC clásica.
 
-## Referencias oficiales
+## Límite de evidencia
 
-- RAP: https://help.sap.com/docs/abap-cloud/abap-rap/learn
-- Service Definition: https://help.sap.com/docs/abap-cloud/abap-rap/service-definition
-- Service Binding: https://help.sap.com/docs/abap-cloud/abap-rap/service-binding
-- RAP Business Object Contract: https://help.sap.com/docs/abap-cloud/abap-rap/rap-business-object-contract
+El repositorio contiene esta guía de arquitectura RAP y el razonamiento Clean Core relacionado. No afirma activación CDS, runtime de behavior, publicación OData ni tests RAP ejecutados en un tenant SAP.
