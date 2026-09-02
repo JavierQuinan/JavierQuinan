@@ -27,10 +27,10 @@ The objective is not to make every historical repository look production-ready. 
 | `fullstack-javascript-project-139` | PORTFOLIO EVIDENCE | React 18, Redux Toolkit, Socket.IO, forms and i18n. |
 | `fullstack-javascript-project-141` | PORTFOLIO EVIDENCE | Fastify, SQLite, Knex/Objection, authentication, CRUD and i18n; hardening backlog documented. |
 | `Listas` | HARDENING CANDIDATE | Angular 18 + PHP MVC/SQLite academic system with real functional breadth. Requires sanitization, reproducible database setup and security hardening before promotion. |
+| `parqueadero_android` | HARDENING CANDIDATE | Native Android/Kotlin project under active open-source revival; architecture, network security, tests and CI roadmap published before portfolio promotion. |
 | `Eva` | LEARNING / HISTORICAL | Educational Node.js/Python server comparison. |
 | `Eventos_P_2` | LEARNING / HISTORICAL | Angular/backend academic project; useful historical full-stack evidence but not current first-line portfolio. |
 | `fullstack-javascript-project-98` | LEARNING / HISTORICAL | Earlier Node.js CLI learning evidence. |
-| `parqueadero_android` | LEARNING / HISTORICAL | Native Android/Kotlin prototype; technical debt explicitly documented. |
 | `formularios` | LEARNING / HISTORICAL | Earlier PHP/MVC/form-processing work; not production-positioned. |
 | `Gestion_Biblioteca` | LEARNING / HISTORICAL | Earlier PHP/MVC library-management practice. |
 | `ingreso` | LEARNING / HISTORICAL | Earlier PHP authentication/MVC practice. |
