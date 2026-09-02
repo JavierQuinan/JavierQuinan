@@ -4,27 +4,29 @@
 
 > **Track:** SAP ECC / Materials Management  
 > **Artifact status:** `SOURCE_READY / RUNTIME_VALIDATION_PENDING`  
-> **Runtime claim:** source prepared; SAP activation/execution not yet evidenced
+> **Runtime claim:** source reviewed and hardened; SAP activation/execution not yet evidenced
 
 This is the first executable technical artifact in the SAP Integration Lab.
 
-It implements a classic ECC diagnostic around material/plant/storage-location stock. The application reads standard MM fields from `MARC` and `MARD`, evaluates unrestricted-use stock against reorder point and safety stock, and presents the result through an executable SALV report.
+It implements a classic ECC, read-only stock early-warning diagnostic for material / plant / storage-location analysis. The application reads standard MM master/stock fields from `MARC` and `MARD`, separates selected storage-location stock from gross plant unrestricted-use stock, applies transparent threshold rules, and presents the result through SALV.
 
 ## Reproducible build path
 
-The package now includes a professional, source-backed build procedure for creating the complete ABAP object set and exposing the report through the original custom transaction `ZMM_STOCK_RISK` using `SE93`.
-
 - [Build Guide — English](./BUILD_GUIDE.md)
 - [Guía de construcción — Español](./BUILD_GUIDE.es.md)
+- [Compatibility & Hardening Profile](./COMPATIBILITY.md)
+- [Perfil de compatibilidad y hardening](./COMPATIBILITY.es.md)
 - [Runtime Runbook](./RUNBOOK.md)
 - [Guía de ejecución](./RUNBOOK.es.md)
 - [Evidence record](./EVIDENCE.md)
 
-The build guide is grounded in official SAP documentation for Class Builder (`SE24`), executable programs (`SE38`), Transaction Maintenance (`SE93`), ABAP Unit and CTS/package behavior.
+The build path uses classic SAP development tools and concepts: `SE24`, `SE38`, `SE93`, packages/CTS, ABAP Unit and SALV.
 
 ## Important functional boundary
 
-This application is **not an implementation of SAP MRP** and does not claim to reproduce replenishment planning. It is a focused diagnostic/reporting exercise suitable for demonstrating classic ECC MM + ABAP engineering.
+This application is **not SAP MRP** and does not reproduce reorder-point planning.
+
+SAP reorder-point planning can consider plant stock, firmed receipts and additional planning logic. This lab is intentionally narrower: it is a transparent stock/master-data diagnostic designed to demonstrate ECC MM + ABAP engineering without pretending to reproduce SAP planning behavior.
 
 ## Architecture
 
@@ -45,79 +47,81 @@ ZIF_MM_STOCK_SOURCE
 
 Supporting object:
 
-- `ZCX_MM_STOCK_NOT_FOUND` — explicit error when material/plant/storage-location data cannot be resolved.
+- `ZCX_MM_STOCK_NOT_FOUND` — explicit static exception when material/plant/storage-location data cannot be resolved.
 
 ## Standard ECC data used
 
 The ECC datasource reads:
 
+- `MARC-DISMM` — MRP type
 - `MARC-MINBE` — reorder point
 - `MARC-EISBE` — safety stock
 - `MARD-LABST` — unrestricted-use stock for the selected storage location
+- all `MARD-LABST` records for the material/plant to calculate a gross plant unrestricted-use total
 
-No update, insert or delete statement is used. The datasource is read-only.
+No update, insert, modify or delete statement exists in the runtime path.
 
-## Diagnostic rule
+## Hardened diagnostic rule
 
-- `CRITICAL` — unrestricted stock is below safety stock
-- `REORDER` — unrestricted stock is at or below reorder point, but not below safety stock
-- `OK` — unrestricted stock is above reorder point
+- `NOT_CONFIGURED` — both reorder point and safety stock are initial
+- `CRITICAL` — plant unrestricted-use stock is below configured safety stock
+- `REORDER` — plant unrestricted-use stock is at or below configured reorder point, but not below safety stock
+- `OK` — none of the above conditions applies
 
-`shortage_qty` reports the quantity required to reach the configured reorder point when current unrestricted stock is lower.
+`shortage_qty` reports the quantity required to reach the configured reorder point when the plant unrestricted-use total is lower.
 
-## Source layout
-
-```text
-inventory-reorder/
-├── README.md
-├── README.es.md
-├── BUILD_GUIDE.md
-├── BUILD_GUIDE.es.md
-├── RUNBOOK.md
-├── RUNBOOK.es.md
-├── EVIDENCE.md
-└── source/
-    ├── zcx_mm_stock_not_found.clas.abap
-    ├── zif_mm_stock_source.intf.abap
-    ├── zcl_mm_stock_source_ecc.clas.abap
-    ├── zcl_mm_stock_source_demo.clas.abap
-    ├── zcl_mm_stock_risk_service.clas.abap
-    ├── zcl_mm_stock_risk_service.clas.testclasses.abap
-    └── zmm_stock_risk_report.prog.abap
-```
+The selected storage-location stock is displayed as drill-down evidence; it does not drive the plant-level status.
 
 ## ABAP Unit coverage prepared
 
-Four deterministic cases are versioned:
+Six deterministic cases are versioned:
 
-1. stock above reorder point → `OK`
-2. stock exactly at reorder point → `REORDER`
-3. stock below safety stock → `CRITICAL`
-4. shortage quantity is calculated up to the reorder point
+1. plant stock above reorder point → `OK`
+2. plant stock exactly at reorder point → `REORDER`
+3. plant stock below safety stock → `CRITICAL`
+4. shortage quantity is calculated to reorder point
+5. missing thresholds → `NOT_CONFIGURED`
+6. low selected-storage stock with sufficient plant stock → status remains plant-based
 
-The tests use the demo datasource, not production SAP data.
+The tests use a synthetic datasource and no production SAP data. Test methods explicitly declare the propagated `CX_STATIC_CHECK` exception.
+
+## ECC compatibility posture
+
+The core runtime intentionally favors classic constructs:
+
+- `CREATE OBJECT`
+- `CALL METHOD`
+- explicit `DATA`
+- classic Open SQL without `@` host variables
+- global classes/interfaces
+- local ABAP Unit classes
+- `CL_SALV_TABLE`
+
+Modern syntax is avoided where it does not add value. This improves portability, but the exact ECC release/EHP still has to be runtime-validated.
 
 ## What this source proves now
 
 - classic ABAP OO design
-- interface-based dependency inversion
+- dependency inversion through an interface
 - deterministic test datasource
 - read-only Open SQL against standard ECC MM tables
-- domain-specific exception handling
-- executable report structure
-- SALV output structure
+- plant vs. storage-location stock separation
+- MRP-context visibility through `MARC-DISMM`
+- class-based exception handling
+- SALV report structure
 - ABAP Unit source coverage
-- documented creation of a custom report transaction through `SE93`
-- bilingual engineering documentation
+- custom report-transaction design through `SE93`
+- bilingual technical documentation
+- explicit functional and runtime evidence boundaries
 
 ## What remains blocked
 
-The following claims are **not** made until SAP runtime evidence is captured:
+The following claims are not made until SAP runtime evidence is captured:
 
-- syntax check passed in a specific ECC release
+- syntax check passed in the target ECC release
 - all objects activated successfully
-- ABAP Unit passed in SAP
+- all six ABAP Unit tests passed in SAP
 - `ZMM_STOCK_RISK` launched successfully through `SE93`
-- the SALV report executed successfully against an SAP system
+- SALV executed successfully against an SAP system
 
-See [`EVIDENCE.md`](./EVIDENCE.md) for the validation protocol.
+See [`EVIDENCE.md`](./EVIDENCE.md) for the promotion protocol.
