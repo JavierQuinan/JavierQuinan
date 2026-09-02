@@ -1,6 +1,6 @@
 # Evidence Record — `ZMM_PURCH_ANALYTICS`
 
-> **Current maturity:** `SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+> **Evidence classification:** `REVIEWABLE_SOURCE / STATIC_SCENARIO_VALIDATION / REPRODUCIBLE_BUILD_GUIDE`
 
 ## Reviewable source
 
@@ -23,16 +23,16 @@ The ECC datasource is limited to:
 - `EKPO` — PO item context and deletion indicator
 - `EKET` — schedule-line delivery-date context
 
+The downstream header is accepted as a Purchase Order only when `EKKO-BSTYP = 'F'`.
+
 No purchase-document creation/change API is used.
 
-## Static validation
-
-Prepared deterministic vectors: **7**.
+## Static scenario validation
 
 ```text
-Vectors reviewed: 7
-Consistent:       7
-Mismatches:       0
+Scenarios reviewed: 7
+Consistent:        7
+Mismatches:        0
 ```
 
 Covered diagnostics:
@@ -45,7 +45,7 @@ Covered diagnostics:
 6. `PO_ITEM_DELETED`
 7. synthetic demo-source roundtrip
 
-This is source/static evidence, not executed ABAP Unit runtime.
+A Purchase Requisition without a downstream PO is deliberately represented as `PR_ONLY`, not as an automatic error.
 
 ## Integrity controls
 
@@ -58,15 +58,10 @@ This is source/static evidence, not executed ABAP Unit runtime.
 - no employer/customer source copied
 - no real PR/PO/vendor/material values published
 
-## Runtime promotion gate
+## Reproducible verification procedure
 
-Future promotion requires an authorized SAP ECC DEV/sandbox and recorded sanitized evidence for:
+The build guide documents the object sequence, syntax/activation checkpoints, ABAP Unit execution, `SE38` report execution and `SE93` report-transaction configuration. Any runtime result must be recorded only when actually observed and with enterprise identifiers removed.
 
-- syntax checks
-- object activation
-- ABAP Unit execution
-- `SE38` report execution
-- `SE93` transaction execution
-- SALV output
+## Evidence boundary
 
-Until then: `RUNTIME_DEFERRED`.
+The repository demonstrates the ECC data model, source architecture, diagnostic logic, deterministic scenarios and construction procedure. It does **not** represent SAP activation or ABAP Unit execution inside a specific enterprise system as completed evidence.

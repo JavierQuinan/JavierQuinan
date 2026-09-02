@@ -2,8 +2,8 @@
 
 > **Validation date:** 2026-09-02  
 > **Scope:** source-level deterministic review  
-> **Result:** `6/6 vectors consistent`  
-> **SAP runtime:** not claimed
+> **Result:** `6/6 scenarios consistent`  
+> **Runtime boundary:** no SAP activation or executed ABAP Unit result is asserted here
 
 ## Standard model reviewed
 
@@ -20,7 +20,7 @@ AUFK-OBJNR
     └── JCDS → change count + latest change date/time
 ```
 
-## Deterministic vectors
+## Deterministic scenarios
 
 | # | Scenario | Expected result | Source review |
 |---|---|---|---|
@@ -32,9 +32,9 @@ AUFK-OBJNR
 | 6 | synthetic status plus JCDS summary metadata | change count/date preserved | consistent |
 
 ```text
-Vectors reviewed: 6
-Consistent:       6
-Mismatches:       0
+Scenarios reviewed: 6
+Consistent:        6
+Mismatches:        0
 ```
 
 ## Diagnostic precedence
@@ -50,29 +50,16 @@ The service uses this transparent precedence:
 
 ## Security boundary
 
-The public source does not return or publish:
+The public source does not return or publish real work-order identifiers, users from change history, internal custom transaction codes, installations/contracts/accounts, production screenshots or direct status-modification procedures. The ECC datasource reads status/history tables only.
 
-- real work-order identifiers
-- users from change history
-- internal custom transaction codes
-- installations/contracts/accounts
-- production screenshots
-- direct status modification procedures
+## Functional limits
 
-The ECC datasource reads status/history tables only.
+The source does not decide whether an order should be technically complete, infer customer-specific status meaning beyond text resolution, reproduce workflow/event logic, change `JEST/JSTO/JCDS`, inspect proprietary Z tables, expose JCDS user/TCode fields or replace standard status APIs and functional process controls.
 
-## Known limits
+## Reproducible verification guide
 
-The first version does not:
+The bilingual build guide documents object creation, syntax/activation checks, ABAP Unit execution, `SE38` report execution and `SE93` transaction configuration for an authorized ECC development/sandbox environment. Results are recorded only when directly observed and sanitized.
 
-- decide whether an order should be technically complete
-- infer customer-specific status meaning beyond text resolution
-- reproduce workflow/event logic
-- change `JEST`, `JSTO` or `JCDS`
-- inspect proprietary Z tables
-- expose JCDS user/TCode fields
-- replace standard status APIs or functional process controls
+## Public evidence claim
 
-## Maturity
-
-`SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+> Read-only ECC IS-U / Work Management status-audit source using `AUFK/JSTO/JEST/TJ02T/TJ30T/JCDS`, six deterministic scenarios reviewed consistently, SALV reporting and a reproducible bilingual build/verification guide.

@@ -2,8 +2,7 @@
 
 [Versión en español](./BUILD_GUIDE.es.md)
 
-> **Goal:** reproduce the read-only purchasing analytics lab in an authorized SAP ECC DEV/sandbox.  
-> **Runtime status:** deferred until real SAP evidence exists.
+> **Goal:** reproduce the read-only purchasing analytics source in an authorized SAP ECC development/sandbox using the versioned files in this repository.
 
 ## Object order
 
@@ -44,9 +43,9 @@ EBAN
           EKET
 ```
 
-`BSTYP = 'F'` is used as the Purchase Order category guard. A referenced purchasing document that does not resolve as category `F` is not silently treated as a PO.
+`BSTYP = 'F'` is the Purchase Order category guard. A referenced purchasing document that does not resolve as category `F` is not treated as a PO.
 
-The source intentionally treats a missing PO reference as a valid `PR_ONLY` situation. It reports `REFERENCE_GAP` only when the PR contains a downstream reference that cannot be resolved as the expected PO header/item.
+A missing PO reference is a valid `PR_ONLY` situation. `REFERENCE_GAP` is used only when the PR carries a downstream reference that cannot be resolved as the expected PO header/item.
 
 ## ABAP Unit
 
@@ -54,9 +53,15 @@ Use:
 
 `source/zcl_mm_purch_analytics_service.clas.testclasses.abap`
 
-Prepared vectors: **7**.
+Repository source review:
 
-Do not claim runtime `7/7 PASS` until observed in SAP.
+```text
+Scenarios reviewed: 7
+Consistent:        7
+Mismatches:        0
+```
+
+When executing ABAP Unit in SAP, record only observed total/pass/fail values. Do not infer runtime `7/7 PASS` from source review.
 
 ## Executable report
 
@@ -92,20 +97,24 @@ Program:     ZMM_PURCH_ANALYTICS_REPORT
 Short text:  MM Purchasing Analytics
 ```
 
-## Runtime gate
+## Result recording
 
-Future authorized validation should record only sanitized results:
+For an authorized execution, record only observed and sanitized values:
 
 ```text
-Exception .............. PASS
-Datasource interface ... PASS
-Demo datasource ........ PASS
-ECC datasource ......... PASS
-Analytics service ...... PASS
-ABAP Unit .............. x/7 PASS
-SE38 report ............ PASS
-SE93 transaction ....... PASS
-SALV ................... PASS
+Exception:
+Datasource interface:
+Demo datasource:
+ECC datasource:
+Analytics service:
+ABAP Unit total/pass/fail:
+SE38 report:
+SE93 transaction:
+SALV observed:
 ```
 
-Until then: `RUNTIME_DEFERRED`.
+Leave non-observed fields blank. Do not publish real PR/PO/vendor/material, organizational, SID/client, user or transport data.
+
+## Evidence represented by this guide
+
+This guide is complete as a **reproducible construction and verification procedure** for the versioned source. Runtime values are claimed only when separately recorded from an actual authorized SAP execution.

@@ -1,6 +1,6 @@
 # Design — `ZMM_PURCH_ANALYTICS`
 
-> **Status:** `SOURCE_READY / STATIC_VALIDATED`
+> **Evidence classification:** `REVIEWABLE_SOURCE / STATIC_SCENARIO_VALIDATION`
 
 Implemented source architecture:
 
@@ -60,9 +60,9 @@ These labels are portfolio diagnostics, not SAP standard document statuses.
 5. Resolved PO item with no schedule lines → `PO_WITHOUT_SCHEDULE`.
 6. Resolved PO item with schedule-line context → `PO_WITH_SCHEDULE`.
 
-## Non-goals
+## Scope exclusions
 
-The first version does not:
+This artifact does not:
 
 - create/change PRs or POs
 - release purchasing documents
@@ -73,6 +73,8 @@ The first version does not:
 - modify source lists/info records
 - claim S/4HANA Clean Core behavior
 
+These are explicit scope boundaries, not promised extensions.
+
 ## Test strategy
 
-A demo datasource supports a synthetic end-to-end source/service vector. Six additional snapshot vectors isolate the decision rules. All seven are currently source/static evidence rather than SAP ABAP Unit runtime evidence.
+A demo datasource supports a synthetic end-to-end source/service scenario. Six additional snapshot scenarios isolate the decision rules. All seven are documented as source/static evidence rather than executed SAP ABAP Unit runtime evidence.

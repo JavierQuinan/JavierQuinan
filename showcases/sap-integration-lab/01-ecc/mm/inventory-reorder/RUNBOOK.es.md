@@ -1,4 +1,4 @@
-# SAP ECC MM Inventario y Riesgo de Stock — Guía de Ejecución
+# SAP ECC MM Inventario y Riesgo de Stock — Guía de Verificación
 
 [English version](./RUNBOOK.md)
 
@@ -19,23 +19,23 @@ Crear, activar, probar y ejecutar el paquete endurecido sin utilizar código de 
 7. `ZMM_STOCK_RISK_REPORT`
 8. `ZMM_STOCK_RISK` en `SE93`
 
-Los archivos ubicados en `source/` son la fuente de verdad.
+Los archivos en `source/` son la fuente de verdad.
 
-## Secuencia de validación
+## Secuencia de verificación
 
 Para cada objeto de desarrollo:
 
-1. ejecutar Syntax Check
-2. activar
-3. registrar en `EVIDENCE.md` cualquier ajuste específico requerido por la release
+1. ejecutar Syntax Check;
+2. activar;
+3. registrar únicamente ajustes de compatibilidad específicos de la release que puedan publicarse de forma segura.
 
-Después de activar todas las clases:
+Después de activar las clases:
 
-1. ejecutar ABAP Unit sobre `ZCL_MM_STOCK_RISK_SERVICE`
-2. confirmar la ejecución correcta de los seis casos preparados
-3. registrar cantidad de pruebas aprobadas/fallidas
+1. ejecutar ABAP Unit sobre `ZCL_MM_STOCK_RISK_SERVICE`;
+2. registrar los valores observados total/pass/fail;
+3. comparar el resultado observado con los seis escenarios revisados a nivel de source.
 
-## Escenarios ABAP Unit esperados
+## Escenarios revisados en source
 
 1. stock de planta superior al punto de pedido → `OK`
 2. stock de planta exactamente en punto de pedido → `REORDER`
@@ -44,42 +44,36 @@ Después de activar todas las clases:
 5. sin umbrales → `NOT_CONFIGURED`
 6. stock bajo en almacén seleccionado con stock suficiente en planta → el estado de planta permanece `OK`
 
-No afirmar `6/6 PASS` hasta observarlo realmente en SAP.
+Revisión estática en repositorio: **6 escenarios / 6 consistentes / 0 inconsistencias**.
 
 ## Ejecución del reporte
 
-Ejecutar primero `ZMM_STOCK_RISK_REPORT` desde `SE38` y luego mediante `ZMM_STOCK_RISK` después de crear la Report Transaction en `SE93`.
+Ejecutar primero `ZMM_STOCK_RISK_REPORT` desde `SE38` y después mediante `ZMM_STOCK_RISK` tras crear la Report Transaction en `SE93`.
 
-Utilizar un material no sensible que:
+Usar un material no sensible que:
 
-- exista en SAP
-- esté extendido al centro seleccionado
-- tenga registro válido en el almacén
-- tenga un tipo MRP comprendido
-- disponga de valores útiles de punto de pedido/stock de seguridad para la prueba
+- exista en SAP;
+- esté extendido al centro seleccionado;
+- tenga registro válido en el almacén;
+- tenga un tipo MRP comprendido;
+- disponga de valores útiles de punto de pedido/stock de seguridad para el diagnóstico.
 
-Ingresar:
+Contexto SALV esperado:
 
-- Material
-- Centro
-- Almacén
-
-Fila SALV esperada:
-
-- material
-- centro
-- almacén seleccionado
-- tipo MRP
-- stock libre del almacén seleccionado
-- stock libre bruto de planta
-- punto de pedido
-- stock de seguridad
-- estado diagnóstico
-- cantidad faltante
+- material;
+- centro;
+- almacén seleccionado;
+- tipo MRP;
+- stock libre del almacén seleccionado;
+- stock libre bruto de planta;
+- punto de pedido;
+- stock de seguridad;
+- estado diagnóstico;
+- cantidad faltante.
 
 ## Límite de interpretación
 
-El reporte es un diagnóstico temprano basado únicamente en stock. No calcula disponibilidad MRP de SAP y no incorpora entradas firmes, necesidades, alcance de áreas MRP, exclusiones de almacenes, lotificación, tiempos de aprovisionamiento ni forecast.
+El reporte es un diagnóstico temprano basado únicamente en stock. No calcula disponibilidad MRP de SAP ni incorpora entradas firmes, necesidades, alcance de áreas MRP, exclusiones de almacenes, lotificación, tiempos de aprovisionamiento o forecast.
 
 ## Límite de seguridad
 
@@ -89,17 +83,8 @@ Usar identificadores sintéticos o sanitizados en cualquier evidencia pública.
 
 ## Límite de autorizaciones
 
-`ZMM_STOCK_RISK` es una Report Transaction. SAP aplica el control estándar de inicio (`S_TCODE`). Las autorizaciones productivas sobre datos de negocio deben diseñarse para la organización objetivo; este laboratorio público no inventa roles específicos de un cliente.
+`ZMM_STOCK_RISK` es una Report Transaction. SAP aplica el control estándar de inicio (`S_TCODE`). Las autorizaciones productivas sobre datos de negocio deben diseñarse para la organización objetivo; este laboratorio público no inventa roles específicos de cliente.
 
-## Registro de evidencia
+## Registro de resultados
 
-Después de validar runtime correctamente, actualizar `EVIDENCE.md` con:
-
-- release/EHP ECC sin identificar el sistema confidencial
-- resultado de syntax check/activación
-- resultado ABAP Unit
-- creación/ejecución de la transacción SE93
-- resultado SALV sanitizado
-- ajustes de compatibilidad realizados, si existieron
-
-Solo entonces el estado público podrá avanzar más allá de `RUNTIME_VALIDATION_PENDING`.
+Usar [`VALIDATION_RESULTS_TEMPLATE.md`](./VALIDATION_RESULTS_TEMPLATE.md) para registrar únicamente valores observados. Los campos no observados se dejan vacíos en lugar de marcarlos como pendientes.

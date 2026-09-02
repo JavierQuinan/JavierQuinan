@@ -1,9 +1,8 @@
-# Guía de construcción — `ZMM_CONTRACT_AUDIT`
+# Guía de Construcción — `ZMM_CONTRACT_AUDIT`
 
 [English version](./BUILD_GUIDE.md)
 
-> **Objetivo:** reproducir el auditor read-only de contratos en un SAP ECC DEV/sandbox autorizado.  
-> **Estado runtime público:** diferido hasta obtener evidencia real de ejecución SAP.
+> **Objetivo:** reproducir el auditor read-only de contratos en un SAP ECC de desarrollo/sandbox autorizado usando el source versionado en este repositorio.
 
 ## Orden de objetos
 
@@ -14,15 +13,15 @@ Crear y activar uno por uno:
 3. `ZCL_MM_CONTRACT_SOURCE_DEMO` — `SE24`
 4. `ZCL_MM_CONTRACT_SOURCE_ECC` — `SE24`
 5. `ZCL_MM_CONTRACT_AUDIT_SERVICE` — `SE24`
-6. clases locales ABAP Unit del servicio
+6. clases locales ABAP Unit
 7. `ZMM_CONTRACT_AUDIT_REPORT` — `SE38` / `SE80`
 8. `ZMM_CONTRACT_AUDIT` — Report Transaction mediante `SE93`
 
 Usar únicamente paquete/CTS autorizado o `$TMP` para un experimento local permitido.
 
-## Prerrequisitos DDIC
+## Prerrequisitos DDIC estándar
 
-Verificar que la release ECC resuelva:
+Confirmar que la release ECC resuelva:
 
 - `EKKO-EBELN`
 - `EKKO-LIFNR`
@@ -43,12 +42,7 @@ Crear `ZCX_MM_CONTRACT_NOT_FOUND` heredando de `CX_STATIC_CHECK` usando:
 
 `source/zcx_mm_contract_not_found.clas.abap`
 
-Gate:
-
-```text
-Syntax ........ PASS
-Activation .... PASS
-```
+Punto de verificación: Syntax Check + activación.
 
 ## 2 — Interfaz de datasource
 
@@ -56,13 +50,13 @@ Crear `ZIF_MM_CONTRACT_SOURCE` desde:
 
 `source/zif_mm_contract_source.intf.abap`
 
-Devuelve un snapshot transparente de un contrato de compras.
+La interfaz devuelve un snapshot transparente de un contrato de compras.
 
 ## 3 — Datasource sintético
 
 Crear `ZCL_MM_CONTRACT_SOURCE_DEMO`.
 
-Permite validar reglas de dominio sin usar información empresarial.
+Permite verificar reglas de dominio de forma determinista sin usar información empresarial.
 
 ## 4 — Datasource ECC
 
@@ -78,13 +72,15 @@ EKPO
  └── posiciones activas e indicadores target
 ```
 
-La primera versión no recorre tablas de paquetes de servicios.
+Solo se aceptan contratos con `EKKO-BSTYP = 'K'`. Las posiciones borradas se excluyen del conteo activo.
+
+La jerarquía de paquetes de servicios está fuera del alcance declarado de este artefacto; no se presenta como una promesa pendiente.
 
 ## 5 — Servicio de auditoría
 
 Crear `ZCL_MM_CONTRACT_AUDIT_SERVICE`.
 
-Estados:
+Estados transparentes:
 
 - `ACTIVE`
 - `EXPIRING_SOON`
@@ -100,17 +96,19 @@ Añadir:
 
 `source/zcl_mm_contract_audit_service.clas.testclasses.abap`
 
-Vectores preparados: **8**.
+Revisión de source en repositorio:
 
-No declarar `8/8 PASS` runtime hasta observar realmente la ejecución en SAP.
+```text
+Escenarios revisados: 8
+Consistentes:         8
+Inconsistencias:      0
+```
+
+Al ejecutar ABAP Unit en SAP, registrar únicamente el resultado observado. No inferir un `8/8 PASS` runtime desde la revisión de source.
 
 ## 7 — Reporte ejecutable
 
-Crear:
-
-`ZMM_CONTRACT_AUDIT_REPORT`
-
-Source:
+Crear `ZMM_CONTRACT_AUDIT_REPORT` desde:
 
 `source/zmm_contract_audit_report.prog.abap`
 
@@ -120,13 +118,11 @@ Parámetros:
 - fecha clave
 - días de advertencia
 
-Salida esperada: una fila SALV con el resultado de auditoría.
-
-Primero ejecutar mediante `SE38`.
+Salida esperada: una fila SALV con el resultado de auditoría. Ejecutar primero mediante `SE38` antes de crear el código de transacción.
 
 ## 8 — Código de transacción
 
-En `SE93` crear:
+En `SE93`, crear:
 
 ```text
 Transacción: ZMM_CONTRACT_AUDIT
@@ -135,20 +131,24 @@ Programa:    ZMM_CONTRACT_AUDIT_REPORT
 Texto:       MM Contract Audit
 ```
 
-## Gate futuro de evidencia runtime
+## Registro de resultados
 
-Si posteriormente se ejecuta en un entorno autorizado, registrar únicamente evidencia sanitizada:
+En una ejecución autorizada registrar únicamente valores observados y sanitizados:
 
 ```text
-Exception class ........ PASS
-Datasource interface ... PASS
-Demo datasource ........ PASS
-ECC datasource ......... PASS
-Domain service ......... PASS
-ABAP Unit .............. x/8 PASS
-Report SE38 ............ PASS
-SE93 transaction ....... PASS
-SALV ................... PASS
+Clase de excepción:
+Interfaz datasource:
+Datasource demo:
+Datasource ECC:
+Servicio de dominio:
+ABAP Unit total/pass/fail:
+Reporte SE38:
+Transacción SE93:
+SALV observado:
 ```
 
-Hasta entonces permanece `RUNTIME_DEFERRED`.
+Los campos no observados se dejan vacíos. No publicar proveedor, contrato, organización, centro, importes, SID/mandante, usuario ni transportes.
+
+## Evidencia representada por esta guía
+
+Esta guía está cerrada como **procedimiento reproducible de construcción y verificación** del source versionado. Los resultados runtime se afirman únicamente si existe un registro separado proveniente de una ejecución SAP real y autorizada.

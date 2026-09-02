@@ -1,13 +1,13 @@
 # Static Validation — ECC MM Contract Audit
 
 > **Validation date:** 2026-09-02  
-> **Scope:** source-level logic review only  
-> **Result:** `8/8 deterministic vectors consistent`  
-> **SAP runtime:** not claimed
+> **Scope:** source-level deterministic trace  
+> **Result:** `8/8 deterministic scenarios consistent`  
+> **Runtime boundary:** no SAP activation or executed ABAP Unit result is asserted here
 
 ## Source model reviewed
 
-The source-ready lab uses standard classic ECC purchasing context:
+The lab uses standard classic ECC purchasing context:
 
 - `EKKO-EBELN` — purchasing document
 - `EKKO-LIFNR` — vendor
@@ -23,7 +23,7 @@ The source-ready lab uses standard classic ECC purchasing context:
 
 The ECC datasource accepts only purchasing documents with `EKKO-BSTYP = 'K'` and counts only non-deleted `EKPO` items.
 
-## Deterministic vectors traced
+## Deterministic scenarios traced
 
 | # | Input condition | Expected | Source-review result |
 |---|---|---|---|
@@ -36,9 +36,15 @@ The ECC datasource accepts only purchasing documents with `EKKO-BSTYP = 'K'` and
 | 7 | structurally valid agreement with zero active items | `NO_ITEMS` | consistent |
 | 8 | target value/item-target counters supplied by datasource | values preserved in result | consistent |
 
+```text
+Scenarios reviewed: 8
+Consistent:        8
+Mismatches:        0
+```
+
 ## Precedence reviewed
 
-The service deliberately applies diagnostic precedence in this order:
+The service applies diagnostic precedence in this order:
 
 1. incomplete validity
 2. invalid validity interval
@@ -48,35 +54,16 @@ The service deliberately applies diagnostic precedence in this order:
 6. expiring within warning window
 7. active
 
-This avoids classifying a structurally invalid agreement as active simply because its end date is in the future.
+This avoids classifying a structurally invalid agreement as active simply because its end date is later than the key date.
 
-## Important functional boundary
+## Functional boundary
 
-The lab is a **read-only contract/master-data diagnostic**, not a replacement for SAP purchasing contract processing.
+The lab is a **read-only contract diagnostic**, not a replacement for SAP purchasing-contract processing. It does not calculate or validate release strategy, release-order consumption, source determination, service entry sheets, invoice verification, condition technique/pricing completeness, budget/account assignment, commitment consumption or service-package hierarchy.
 
-It does not calculate or validate:
+## Reproducible verification guide
 
-- release strategy
-- release-order consumption
-- source determination
-- service entry sheets
-- invoice verification
-- condition technique / pricing completeness
-- budget/account assignment
-- commitment consumption
-- service-package hierarchy
+The build guide documents object creation, syntax/activation checks, ABAP Unit execution, `SE38` execution and `SE93` report-transaction configuration for an authorized ECC development/sandbox environment. Results are recorded only when directly observed.
 
-Those remain outside the first source pack.
+## Public evidence claim
 
-## Runtime boundary
-
-No claim is made that:
-
-- the objects have been activated in a target ECC release
-- ABAP Unit has executed in SAP
-- the report has executed through `SE38`
-- `ZMM_CONTRACT_AUDIT` has been created through `SE93`
-
-The current maturity is:
-
-`SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+> SAP ECC MM contract-audit source over read-only `EKKO/EKPO`, eight deterministic validity scenarios reviewed consistently, SALV report source and bilingual reproducible construction/verification guides.

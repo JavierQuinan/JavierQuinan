@@ -2,8 +2,7 @@
 
 [Versión en español](./BUILD_GUIDE.es.md)
 
-> **Goal:** reproduce the read-only work-order status audit in an authorized SAP ECC DEV/sandbox.  
-> **Runtime status:** deferred until real SAP evidence exists.
+> **Goal:** reproduce the read-only work-order status audit in an authorized SAP ECC development/sandbox using the versioned source in this repository.
 
 ## Object order
 
@@ -48,9 +47,15 @@ Use:
 
 `source/zcl_wm_status_audit_service.clas.testclasses.abap`
 
-Prepared vectors: **6**.
+Repository source review:
 
-Do not claim runtime `6/6 PASS` until observed in SAP.
+```text
+Scenarios reviewed: 6
+Consistent:        6
+Mismatches:        0
+```
+
+When executing ABAP Unit in SAP, record only observed total/pass/fail values. Do not infer runtime `6/6 PASS` from source review.
 
 ## Executable report
 
@@ -62,11 +67,11 @@ Selection:
 
 - work order number
 
-SALV displays status rows plus:
+SALV displays:
 
-- active/system/user classification
+- system/user/other classification
 - status-profile context
-- active vs historical distinction
+- active vs. historical distinction
 - status texts
 - change number
 - summary counts
@@ -84,20 +89,24 @@ Program:     ZWM_STATUS_AUDIT_REPORT
 Short text:  WM Status Audit Lab
 ```
 
-## Runtime gate
+## Result recording
 
-Future authorized validation should record only sanitized results:
+For an authorized execution, record only observed and sanitized values:
 
 ```text
-Exception .............. PASS
-Datasource interface ... PASS
-Demo datasource ........ PASS
-ECC datasource ......... PASS
-Audit service .......... PASS
-ABAP Unit .............. x/6 PASS
-SE38 report ............ PASS
-SE93 transaction ....... PASS
-SALV ................... PASS
+Exception:
+Datasource interface:
+Demo datasource:
+ECC datasource:
+Audit service:
+ABAP Unit total/pass/fail:
+SE38 report:
+SE93 transaction:
+SALV observed:
 ```
 
-Until then: `RUNTIME_DEFERRED`.
+Leave non-observed fields blank. Do not publish real work-order numbers, user history, proprietary transaction codes, SID/client, internal URLs or transports.
+
+## Evidence represented by this guide
+
+This guide is complete as a **reproducible construction and verification procedure** for the versioned source. Runtime values are claimed only when separately recorded from an actual authorized SAP execution.

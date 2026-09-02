@@ -1,9 +1,9 @@
 # Static Validation — `ZMM_PURCH_ANALYTICS`
 
 > **Validation type:** source-level deterministic trace  
-> **SAP runtime:** not claimed
+> **Runtime boundary:** this record does not claim executed ABAP Unit results inside SAP
 
-## Reviewed vectors
+## Reviewed scenarios
 
 | # | Scenario | Expected result | Source trace |
 |---|---|---|---|
@@ -15,12 +15,10 @@
 | 6 | PO item deletion indicator is set | `PO_ITEM_DELETED` | consistent |
 | 7 | Demo datasource resolves synthetic PR→PO→schedule data | `PO_WITH_SCHEDULE` | consistent |
 
-Result:
-
 ```text
-Vectors reviewed: 7
-Consistent:       7
-Mismatches:       0
+Scenarios reviewed: 7
+Consistent:        7
+Mismatches:        0
 ```
 
 ## Data-flow review
@@ -57,6 +55,10 @@ Source contains no purchasing-document write operation:
 - no BAPI document creation/change
 - no `BAPI_TRANSACTION_COMMIT`
 
-## Runtime boundary
+## Reproducible verification guide
 
-The 7 vectors are **not** presented as executed ABAP Unit results. Future runtime promotion requires syntax check, activation, ABAP Unit execution, report execution and SE93 transaction execution in an authorized SAP ECC DEV/sandbox.
+The build guide documents syntax/activation checks, ABAP Unit execution, `SE38` report execution and `SE93` report-transaction configuration for an authorized ECC development/sandbox environment. Runtime values are recorded only when actually observed.
+
+## Public evidence claim
+
+> Read-only SAP ECC MM purchasing analytics source using `EBAN → EKKO/EKPO → EKET`, a Purchase Order category guard, seven deterministic scenarios reviewed consistently, SALV report source and a reproducible build/verification guide.

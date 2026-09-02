@@ -2,8 +2,7 @@
 
 [English version](./BUILD_GUIDE.md)
 
-> **Objetivo:** reproducir la auditoría read-only de estados de órdenes de trabajo en un SAP ECC DEV/sandbox autorizado.  
-> **Estado runtime:** diferido hasta disponer de evidencia SAP real.
+> **Objetivo:** reproducir la auditoría read-only de estados de órdenes de trabajo en un SAP ECC de desarrollo/sandbox autorizado usando el source versionado en este repositorio.
 
 ## Orden de objetos
 
@@ -40,7 +39,7 @@ E.... → texto de estado de usuario en TJ30T usando JSTO-STSMA
 
 `INACT` se preserva para diferenciar registros activos de históricos.
 
-La lectura de historial expone únicamente conteo y última fecha/hora; usuario y TCode se excluyen deliberadamente del lab público.
+La lectura de historial expone únicamente conteo y última fecha/hora; usuario y TCode se excluyen deliberadamente del laboratorio público.
 
 ## ABAP Unit
 
@@ -48,9 +47,15 @@ Usar:
 
 `source/zcl_wm_status_audit_service.clas.testclasses.abap`
 
-Vectores preparados: **6**.
+Revisión de source en repositorio:
 
-No afirmar `6/6 PASS` runtime hasta observarlo realmente en SAP.
+```text
+Escenarios revisados: 6
+Consistentes:         6
+Inconsistencias:      0
+```
+
+Al ejecutar ABAP Unit en SAP, registrar únicamente total/pass/fail observado. No inferir un `6/6 PASS` runtime desde la revisión de source.
 
 ## Reporte ejecutable
 
@@ -84,20 +89,24 @@ Programa:    ZWM_STATUS_AUDIT_REPORT
 Texto corto: WM Status Audit Lab
 ```
 
-## Gate de runtime
+## Registro de resultados
 
-Una futura validación autorizada debería registrar únicamente resultados sanitizados:
+En una ejecución autorizada registrar únicamente valores observados y sanitizados:
 
 ```text
-Excepción ............... PASS
-Interfaz datasource ..... PASS
-Datasource demo ......... PASS
-Datasource ECC .......... PASS
-Servicio de auditoría ... PASS
-ABAP Unit ............... x/6 PASS
-Reporte SE38 ............ PASS
-Transacción SE93 ........ PASS
-SALV .................... PASS
+Excepción:
+Interfaz datasource:
+Datasource demo:
+Datasource ECC:
+Servicio de auditoría:
+ABAP Unit total/pass/fail:
+Reporte SE38:
+Transacción SE93:
+SALV observado:
 ```
 
-Hasta entonces: `RUNTIME_DEFERRED`.
+Los campos no observados se dejan vacíos. No publicar OT reales, usuarios del historial, transacciones propietarias, SID/mandante, URLs internas ni transportes.
+
+## Evidencia representada por esta guía
+
+Esta guía está cerrada como **procedimiento reproducible de construcción y verificación** del source versionado. Los valores runtime se afirman únicamente si existe un registro separado proveniente de una ejecución SAP real y autorizada.

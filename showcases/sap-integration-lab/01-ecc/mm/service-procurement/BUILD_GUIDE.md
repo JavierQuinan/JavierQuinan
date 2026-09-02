@@ -2,8 +2,7 @@
 
 [Versión en español](./BUILD_GUIDE.es.md)
 
-> **Goal:** reproduce the read-only Contract Audit in an authorized SAP ECC DEV/sandbox.  
-> **Public runtime status:** deferred until actual SAP execution evidence exists.
+> **Goal:** reproduce the read-only Contract Audit in an authorized SAP ECC development/sandbox using the versioned source in this repository.
 
 ## Object order
 
@@ -14,7 +13,7 @@ Create and activate one object at a time:
 3. `ZCL_MM_CONTRACT_SOURCE_DEMO` — `SE24`
 4. `ZCL_MM_CONTRACT_SOURCE_ECC` — `SE24`
 5. `ZCL_MM_CONTRACT_AUDIT_SERVICE` — `SE24`
-6. local ABAP Unit test classes for the service
+6. local ABAP Unit test classes
 7. `ZMM_CONTRACT_AUDIT_REPORT` — `SE38` / `SE80`
 8. `ZMM_CONTRACT_AUDIT` — `SE93` Report Transaction
 
@@ -22,7 +21,7 @@ Use an authorized customer package or `$TMP` only for an approved local experime
 
 ## Standard DDIC prerequisites
 
-Before activation, confirm the target ECC release resolves:
+Confirm the target ECC release resolves:
 
 - `EKKO-EBELN`
 - `EKKO-LIFNR`
@@ -39,18 +38,11 @@ Before activation, confirm the target ECC release resolves:
 
 ## 1 — Exception
 
-Create global class `ZCX_MM_CONTRACT_NOT_FOUND`, inheriting from `CX_STATIC_CHECK`.
-
-Use:
+Create global class `ZCX_MM_CONTRACT_NOT_FOUND`, inheriting from `CX_STATIC_CHECK`, using:
 
 `source/zcx_mm_contract_not_found.clas.abap`
 
-Gate:
-
-```text
-Syntax ........ PASS
-Activation .... PASS
-```
+Verification checkpoint: Syntax Check + activation.
 
 ## 2 — Datasource contract
 
@@ -64,7 +56,7 @@ The interface returns one transparent snapshot for one purchasing contract.
 
 Create `ZCL_MM_CONTRACT_SOURCE_DEMO`.
 
-This source exists so the domain rules can be tested without enterprise data.
+This source supports deterministic domain-rule verification without enterprise data.
 
 ## 4 — ECC datasource
 
@@ -80,7 +72,9 @@ EKPO
  └── active item target indicators
 ```
 
-The first version does not traverse service-package tables.
+Only `EKKO-BSTYP = 'K'` purchasing contracts are accepted. Deleted items are excluded from active-item counts.
+
+Service-package hierarchy is outside this artifact's scope; the guide does not present it as an unimplemented promise.
 
 ## 5 — Audit service
 
@@ -98,21 +92,23 @@ Transparent states:
 
 ## 6 — ABAP Unit
 
-Add the local test source:
+Add:
 
 `source/zcl_mm_contract_audit_service.clas.testclasses.abap`
 
-Prepared vectors: **8**.
+Repository source review:
 
-Do not publish a runtime `8/8 PASS` claim until it is actually observed in SAP.
+```text
+Scenarios reviewed: 8
+Consistent:        8
+Mismatches:        0
+```
+
+When executing ABAP Unit in SAP, record only the observed result. Do not infer a runtime `8/8 PASS` from source review.
 
 ## 7 — Executable report
 
-Create executable program:
-
-`ZMM_CONTRACT_AUDIT_REPORT`
-
-Source:
+Create executable program `ZMM_CONTRACT_AUDIT_REPORT` from:
 
 `source/zmm_contract_audit_report.prog.abap`
 
@@ -122,9 +118,7 @@ Selection parameters:
 - key date
 - warning days
 
-Expected output: one SALV audit row.
-
-Execute first from `SE38` before creating a transaction code.
+Expected output: one SALV audit row. Execute first from `SE38` before creating the transaction code.
 
 ## 8 — Transaction code
 
@@ -137,20 +131,24 @@ Program:     ZMM_CONTRACT_AUDIT_REPORT
 Short text:  MM Contract Audit
 ```
 
-## Runtime evidence gate
+## Result recording
 
-If this lab is eventually executed in an authorized SAP system, record only sanitized evidence:
+For an authorized execution, record only observed, sanitized values:
 
 ```text
-Exception class ........ PASS
-Datasource interface ... PASS
-Demo datasource ........ PASS
-ECC datasource ......... PASS
-Domain service ......... PASS
-ABAP Unit .............. x/8 PASS
-Report SE38 ............ PASS
-SE93 transaction ....... PASS
-SALV ................... PASS
+Exception class:
+Datasource interface:
+Demo datasource:
+ECC datasource:
+Domain service:
+ABAP Unit total/pass/fail:
+Report SE38:
+SE93 transaction:
+SALV observed:
 ```
 
-Until then the source remains `RUNTIME_DEFERRED`.
+Leave non-observed fields blank. Do not publish vendor, contract, organization, plant, amount, SID/client, user or transport values.
+
+## Evidence represented by this guide
+
+This guide is complete as a **reproducible construction and verification procedure** for the versioned source. Runtime results are claimed only when separately recorded from an actual authorized SAP execution.
