@@ -132,6 +132,12 @@ Visual evidence is used when the source image can be published legitimately and 
 
 Screenshots from employer-authored manuals or third-party training material are **not republished**. Their technical content is converted into original explanatory guides instead.
 
+## Official SAP references
+
+[SAP Official Reference Index](./OFFICIAL_SAP_REFERENCES.md)
+
+The index links the portfolio guides to authoritative SAP Help documentation for material-master extension/MM01, Class Builder/SE24, report transactions/SE93, ABAP Unit, work-order status data, S/4HANA procurement APIs, Migration Cockpit, ABAP Cloud released APIs and RAP. Official references validate standard concepts; they do not replace the evidence boundaries stated in each artifact.
+
 ## Evidence matrix
 
 | Area | Evidence available |
