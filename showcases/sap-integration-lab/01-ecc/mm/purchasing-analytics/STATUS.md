@@ -1,5 +1,25 @@
 # Status — `ZMM_PURCH_ANALYTICS`
 
-Current maturity: `DESIGN_READY / SOURCE_NOT_YET_IMPLEMENTED`.
+Current maturity:
 
-This milestone has been intentionally seeded after completion of the WM status-audit source pack. Source implementation will occur in its own branch/PR so the evidence history remains auditable.
+`SOURCE_READY / STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`
+
+## Completed
+
+- read-only ECC datasource over `EBAN/EKKO/EKPO/EKET`
+- synthetic demo datasource
+- domain service
+- 7 deterministic ABAP Unit vectors prepared
+- SALV executable report
+- bilingual build guide
+- static-validation record
+- evidence boundary
+
+## Not claimed
+
+- SAP syntax/activation runtime
+- executed ABAP Unit `7/7 PASS`
+- live enterprise PR/PO data
+- S/4HANA runtime or Clean Core implementation
+
+Future SAP runtime remains a separate promotion gate.
