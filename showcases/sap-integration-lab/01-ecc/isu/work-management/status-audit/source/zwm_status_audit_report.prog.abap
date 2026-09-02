@@ -6,16 +6,23 @@ START-OF-SELECTION.
 
   TYPES:
     BEGIN OF ty_output,
-      aufnr             TYPE aufk-aufnr,
-      objnr             TYPE aufk-objnr,
-      stsma             TYPE jsto-stsma,
-      stat              TYPE jest-stat,
-      status_kind       TYPE char10,
-      active            TYPE char1,
-      txt04             TYPE char4,
-      txt30             TYPE char30,
-      chgnr             TYPE jest-chgnr,
-      diagnostic_result TYPE char24,
+      aufnr                TYPE aufk-aufnr,
+      objnr                TYPE aufk-objnr,
+      stsma                TYPE jsto-stsma,
+      stat                 TYPE jest-stat,
+      status_kind          TYPE char10,
+      active               TYPE char1,
+      txt04                TYPE char4,
+      txt30                TYPE char30,
+      chgnr                TYPE jest-chgnr,
+      active_system_count  TYPE i,
+      active_user_count    TYPE i,
+      historical_count     TYPE i,
+      unresolved_text_count TYPE i,
+      change_count         TYPE i,
+      latest_change_date   TYPE sy-datum,
+      latest_change_time   TYPE sy-uzeit,
+      diagnostic_result    TYPE char24,
     END OF ty_output.
 
   DATA lo_source TYPE REF TO zif_wm_status_source.
@@ -59,6 +66,13 @@ START-OF-SELECTION.
         ls_output-txt04 = ls_status-txt04.
         ls_output-txt30 = ls_status-txt30.
         ls_output-chgnr = ls_status-chgnr.
+        ls_output-active_system_count = ls_result-active_system_count.
+        ls_output-active_user_count = ls_result-active_user_count.
+        ls_output-historical_count = ls_result-historical_count.
+        ls_output-unresolved_text_count = ls_result-unresolved_text_count.
+        ls_output-change_count = ls_result-change_count.
+        ls_output-latest_change_date = ls_result-latest_change_date.
+        ls_output-latest_change_time = ls_result-latest_change_time.
         ls_output-diagnostic_result = ls_result-diagnostic_result.
 
         IF ls_status-inact IS INITIAL.
@@ -70,11 +84,18 @@ START-OF-SELECTION.
         APPEND ls_output TO lt_output.
       ENDLOOP.
 
-      IF lt_output IS INITIAL.
+      IF lt_output[] IS INITIAL.
         CLEAR ls_output.
         ls_output-aufnr = ls_snapshot-aufnr.
         ls_output-objnr = ls_snapshot-objnr.
         ls_output-stsma = ls_snapshot-stsma.
+        ls_output-active_system_count = ls_result-active_system_count.
+        ls_output-active_user_count = ls_result-active_user_count.
+        ls_output-historical_count = ls_result-historical_count.
+        ls_output-unresolved_text_count = ls_result-unresolved_text_count.
+        ls_output-change_count = ls_result-change_count.
+        ls_output-latest_change_date = ls_result-latest_change_date.
+        ls_output-latest_change_time = ls_result-latest_change_time.
         ls_output-diagnostic_result = ls_result-diagnostic_result.
         APPEND ls_output TO lt_output.
       ENDIF.
