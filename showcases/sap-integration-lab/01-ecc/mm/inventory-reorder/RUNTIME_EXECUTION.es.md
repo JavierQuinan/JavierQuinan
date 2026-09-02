@@ -1,11 +1,23 @@
 # SAP ECC MM — Paquete de ejecución para validación runtime
 
-> **Estado público actual:** `SOURCE_READY / RUNTIME_VALIDATION_PENDING`  
-> **Objetivo:** crear, activar, probar y ejecutar el evidence pack en un ambiente SAP ECC DEV/sandbox autorizado sin exponer información de empresa, usuarios, SID, mandante, transportes ni datos productivos.
+> **Estado de evidencia actual:** `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`  
+> **Objetivo:** conservar el procedimiento completo para crear, activar, probar y ejecutar el evidence pack cuando exista un ambiente SAP ECC DEV/sandbox autorizado.  
+> **Importante:** esta guía documenta el procedimiento reproducible; no afirma que la activación o ejecución runtime ya se haya realizado en SAP.
 
-## Regla de trabajo
+## Cierre actual de la Tarea 2.1
 
-Validar **un objeto por vez**. No continuar con el siguiente objeto si el anterior no supera `Syntax Check` y activación.
+La etapa de fuente queda cerrada con:
+
+- revisión y hardening de código completados
+- seis vectores deterministas trazados contra la implementación: **6/6 static PASS**
+- procedimiento objeto por objeto completamente documentado
+- ejecución SAP diferida porque este ejercicio de portafolio no utiliza permisos empresariales de desarrollo/CTS
+
+Ver [`STATIC_VALIDATION.md`](./STATIC_VALIDATION.md).
+
+## Regla para una futura ejecución SAP
+
+Cuando exista un ambiente autorizado, validar **un objeto por vez**. No continuar con el siguiente objeto si el anterior no supera `Syntax Check` y activación.
 
 Para comunicar resultados fuera de SAP basta con texto sanitizado:
 
@@ -53,21 +65,18 @@ Excepción estática y explícita cuando no se puede resolver la combinación ma
 5. Crear como clase global pública.
 6. Superclase: `CX_STATIC_CHECK`.
 7. Asignar paquete Z autorizado o `$TMP` únicamente para una prueba local autorizada.
-8. Si la release permite edición source-based, utilizar el archivo:
-   `source/zcx_mm_stock_not_found.clas.abap`.
+8. Si la release permite edición source-based, utilizar el archivo `source/zcx_mm_stock_not_found.clas.abap`.
 9. Si se utiliza mantenimiento clásico, crear los atributos públicos read-only y el constructor equivalentes a la fuente versionada.
 10. Ejecutar `Syntax Check`.
 11. Activar.
 
-### Gate
+### Gate futuro
 
 ```text
 ZCX_MM_STOCK_NOT_FOUND
 Syntax ........ PASS
 Activation .... PASS
 ```
-
-No continuar hasta lograr ambos.
 
 ---
 
@@ -98,12 +107,11 @@ La release debe resolver los tipos estándar utilizados por la interfaz:
 
 1. Crear interfaz global `ZIF_MM_STOCK_SOURCE`.
 2. Asignar el mismo paquete del lab.
-3. Implementar la estructura `TY_STOCK_SNAPSHOT` y el método `GET_STOCK_SNAPSHOT` según:
-   `source/zif_mm_stock_source.intf.abap`.
+3. Implementar la estructura `TY_STOCK_SNAPSHOT` y el método `GET_STOCK_SNAPSHOT` según `source/zif_mm_stock_source.intf.abap`.
 4. `Syntax Check`.
 5. Activar.
 
-### Gate
+### Gate futuro
 
 ```text
 ZIF_MM_STOCK_SOURCE
@@ -132,7 +140,7 @@ Permite ejecutar ABAP Unit con datos sintéticos sin depender de datos de negoci
 5. `Syntax Check`.
 6. Activar.
 
-### Gate
+### Gate futuro
 
 ```text
 ZCL_MM_STOCK_SOURCE_DEMO
@@ -173,7 +181,7 @@ Este lab **no contiene** `UPDATE`, `INSERT`, `MODIFY`, `DELETE`, debug para edic
 4. `Syntax Check`.
 5. Activar.
 
-### Gate
+### Gate futuro
 
 ```text
 ZCL_MM_STOCK_SOURCE_ECC
@@ -212,7 +220,7 @@ El servicio **no es SAP MRP**. Es un early-warning stock diagnostic transparente
 4. `Syntax Check`.
 5. Activar.
 
-### Gate
+### Gate futuro
 
 ```text
 ZCL_MM_STOCK_RISK_SERVICE
@@ -232,16 +240,24 @@ Clases locales de prueba asociadas a `ZCL_MM_STOCK_RISK_SERVICE`.
 
 `source/zcl_mm_stock_risk_service.clas.testclasses.abap`
 
-### Casos preparados
+### Casos preparados y validados estáticamente
 
-1. stock de planta superior al punto de pedido → `OK`
-2. stock de planta exactamente en el punto de pedido → `REORDER`
-3. stock de planta debajo del stock de seguridad → `CRITICAL`
-4. cálculo de shortage hasta el punto de pedido
-5. punto de pedido y safety stock iniciales → `NOT_CONFIGURED`
-6. almacén con poco stock pero planta suficiente → estado basado en planta
+1. stock de planta superior al punto de pedido → `OK` — static PASS
+2. stock de planta exactamente en el punto de pedido → `REORDER` — static PASS
+3. stock de planta debajo del stock de seguridad → `CRITICAL` — static PASS
+4. cálculo de shortage desde 55 hasta 80 → `25` — static PASS
+5. punto de pedido y safety stock iniciales → `NOT_CONFIGURED` — static PASS
+6. almacén con poco stock pero planta suficiente → estado basado en planta — static PASS
 
-### Validación
+Resultado de inspección de fuente:
+
+```text
+Static vectors reviewed ..... 6
+Expected outcomes consistent  6
+Static mismatches ........... 0
+```
+
+### Validación futura en SAP
 
 1. Insertar las clases locales de prueba.
 2. `Syntax Check`.
@@ -249,7 +265,7 @@ Clases locales de prueba asociadas a `ZCL_MM_STOCK_RISK_SERVICE`.
 4. Ejecutar ABAP Unit.
 5. Registrar número total/pass/fail.
 
-### Gate esperado
+### Gate runtime objetivo
 
 ```text
 ABAP Unit
@@ -258,7 +274,7 @@ Passed ........ 6
 Failed ........ 0
 ```
 
-No declarar este resultado públicamente hasta observarlo realmente en SAP.
+Ese segundo resultado no se declara como hecho hasta observarlo realmente en SAP.
 
 ---
 
@@ -288,11 +304,11 @@ No declarar este resultado públicamente hasta observarlo realmente en SAP.
 - Centro
 - Almacén
 
-### Resultado
+### Resultado esperado
 
 Una fila SALV con contexto de material, unidad base, tipo MRP, stock del almacén, stock bruto de planta, umbrales y estado diagnóstico.
 
-### Gate
+### Gate futuro
 
 ```text
 ZMM_STOCK_RISK_REPORT
@@ -326,7 +342,7 @@ SALV .......... PASS
 
 Guardar bajo el mismo paquete/solicitud autorizada y ejecutar desde SAP Easy Access.
 
-### Gate
+### Gate futuro
 
 ```text
 ZMM_STOCK_RISK
@@ -337,7 +353,7 @@ SALV runtime .. PASS
 
 ---
 
-## Selección del material para runtime
+## Selección del material para una futura ejecución
 
 Usar solo un material de prueba/no sensible que:
 
@@ -351,26 +367,26 @@ Para el registro público basta describirlo como `synthetic/non-sensitive valida
 
 ---
 
-## Resultado final de la Tarea 2.1
-
-Solo cuando todos los gates hayan sido observados:
+## Resultado actual de la Tarea 2.1
 
 ```text
-SAP ECC MM — Runtime Validation
+SAP ECC MM — Task 2.1
 
-ZCX_MM_STOCK_NOT_FOUND .... PASS
-ZIF_MM_STOCK_SOURCE ....... PASS
-ZCL_MM_STOCK_SOURCE_DEMO .. PASS
-ZCL_MM_STOCK_SOURCE_ECC ... PASS
-ZCL_MM_STOCK_RISK_SERVICE . PASS
-ABAP Unit ................. 6/6 PASS
-ZMM_STOCK_RISK_REPORT ..... PASS
-ZMM_STOCK_RISK (SE93) ..... PASS
-SALV runtime .............. PASS
+Source review ................ PASS
+Hardening review ............. PASS
+Deterministic vectors ........ 6/6 STATIC PASS
+Object creation guide ........ READY
+SE24 class/interface guide ... READY
+SE38 report guide ............ READY
+SE93 transaction guide ....... READY
+Runtime authorization ........ DEFERRED
+SAP activation result ........ NOT CLAIMED
+ABAP Unit runtime ............ NOT EXECUTED
 
 Evidence maturity:
-RUNTIME_VALIDATED
-TEST_VALIDATED
+STATIC_VALIDATED
+EXECUTION_PROCEDURE_READY
+RUNTIME_DEFERRED
 ```
 
-Hasta entonces conservar `RUNTIME_VALIDATION_PENDING`.
+La Tarea 2.1 queda **finalizada a nivel de fuente, validación estática y procedimiento reproducible**, por lo que ya no bloquea la incorporación de nuevas evidencias SAP. Cuando exista un ambiente autorizado, este mismo documento permite promover el artefacto posteriormente a `RUNTIME_VALIDATED / TEST_VALIDATED`.
