@@ -16,8 +16,11 @@ Implementa un diagnóstico temprano de stock, clásico ECC y de solo lectura, pa
 - [Build Guide — English](./BUILD_GUIDE.md)
 - [Perfil de compatibilidad y hardening](./COMPATIBILITY.es.md)
 - [Compatibility & Hardening Profile](./COMPATIBILITY.md)
+- [Paquete de ejecución runtime — Español](./RUNTIME_EXECUTION.es.md)
+- [Runtime Execution Packet — English](./RUNTIME_EXECUTION.md)
 - [Guía de ejecución](./RUNBOOK.es.md)
 - [Runtime Runbook](./RUNBOOK.md)
+- [Plantilla de resultados de validación](./VALIDATION_RESULTS_TEMPLATE.md)
 - [Registro de evidencia](./EVIDENCE.md)
 
 La ruta utiliza herramientas y conceptos clásicos SAP: `SE24`, `SE38`, `SE93`, paquetes/CTS, ABAP Unit y SALV.
