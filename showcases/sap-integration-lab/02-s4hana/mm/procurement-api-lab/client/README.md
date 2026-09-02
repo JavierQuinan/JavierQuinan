@@ -2,7 +2,7 @@
 
 [Versión en español](./README.es.md)
 
-> **Status:** `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_PENDING`  
+> **Status:** `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_VALIDATED`  
 > **Runtime boundary:** local/mock execution only; no SAP S/4HANA tenant connection is claimed.
 
 This package is a dependency-free TypeScript implementation of the client architecture described by the S/4HANA Procurement API lab.
@@ -18,11 +18,7 @@ This package is a dependency-free TypeScript implementation of the client archit
 - stable `SapApiError` with HTTP status and correlation/request ID capture
 - timeout-aware Fetch transport
 - six deterministic Node tests with synthetic responses
-- GitHub Actions quality gate
-
-## Why dependency-free
-
-Node 22 type stripping lets this focused lab execute erasable TypeScript syntax without adding a runtime/test framework solely for portfolio evidence.
+- GitHub Actions quality gate with read-only repository permission
 
 ## Run
 
@@ -38,7 +34,7 @@ Equivalent command:
 node --experimental-strip-types --test src/*.test.ts
 ```
 
-## Test vectors
+## Validated test vectors
 
 1. Purchase Order OData page normalization
 2. Purchase Requisition OData page normalization
@@ -47,19 +43,19 @@ node --experimental-strip-types --test src/*.test.ts
 5. malformed/non-OData response rejected
 6. insecure non-local HTTP base URL rejected
 
-Recorded local result:
+Observed in GitHub Actions with Node 22.23.2:
 
 ```text
-Executed: 6
-Passed:   6
-Failed:   0
+Tests:  6
+Pass:   6
+Fail:   0
 ```
 
-CI validation is a separate evidence gate and is only claimed after the GitHub Actions run is observed green.
+This proves deterministic client behavior in CI. It does **not** prove connectivity or authorization against a real S/4HANA tenant.
 
 ## Configuration boundary
 
-No real SAP URL or credential is stored in the package. A real adapter would receive configuration externally, including service paths and authentication through a credential/token-provider abstraction.
+No real SAP URL or credential is stored in the package. A real adapter would receive service paths and authentication externally through a credential/token-provider abstraction.
 
 The current `authHeader` option is a minimal source-lab transport boundary. A production-grade integration should not retain long-lived credentials in committed application configuration.
 
