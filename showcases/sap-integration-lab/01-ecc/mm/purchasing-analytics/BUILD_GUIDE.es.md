@@ -2,8 +2,7 @@
 
 [English version](./BUILD_GUIDE.md)
 
-> **Objetivo:** reproducir el lab read-only de purchasing analytics en un SAP ECC DEV/sandbox autorizado.  
-> **Estado runtime:** diferido hasta disponer de evidencia SAP real.
+> **Objetivo:** reproducir el source read-only de purchasing analytics en un SAP ECC de desarrollo/sandbox autorizado usando los archivos versionados en este repositorio.
 
 ## Orden de objetos
 
@@ -44,9 +43,9 @@ EBAN
           EKET
 ```
 
-`BSTYP = 'F'` se utiliza como guard de categoría **Purchase Order**. Un purchasing document referenciado que no resuelva como categoría `F` no se presenta silenciosamente como PO.
+`BSTYP = 'F'` es el control de categoría **Purchase Order**. Un purchasing document referenciado que no resuelva como categoría `F` no se presenta como PO.
 
-La ausencia de referencia a PO se considera una situación válida `PR_ONLY`. `REFERENCE_GAP` se utiliza cuando la PR contiene referencia downstream pero el lookup read-only no puede resolverla como la cabecera/posición PO esperada.
+La ausencia de referencia a PO se considera una situación válida `PR_ONLY`. `REFERENCE_GAP` se utiliza únicamente cuando la PR contiene una referencia downstream que no puede resolverse como la cabecera/posición PO esperada.
 
 ## ABAP Unit
 
@@ -54,9 +53,15 @@ Usar:
 
 `source/zcl_mm_purch_analytics_service.clas.testclasses.abap`
 
-Vectores preparados: **7**.
+Revisión de source en repositorio:
 
-No afirmar `7/7 PASS` runtime hasta observarlo realmente en SAP.
+```text
+Escenarios revisados: 7
+Consistentes:         7
+Inconsistencias:      0
+```
+
+Al ejecutar ABAP Unit en SAP, registrar únicamente total/pass/fail observado. No inferir un `7/7 PASS` runtime desde la revisión de source.
 
 ## Reporte ejecutable
 
@@ -92,20 +97,24 @@ Programa:    ZMM_PURCH_ANALYTICS_REPORT
 Texto corto: MM Purchasing Analytics
 ```
 
-## Gate de runtime
+## Registro de resultados
 
-Validación futura autorizada:
+En una ejecución autorizada registrar únicamente valores observados y sanitizados:
 
 ```text
-Excepción ............... PASS
-Interfaz datasource ..... PASS
-Datasource demo ......... PASS
-Datasource ECC .......... PASS
-Servicio analytics ...... PASS
-ABAP Unit ............... x/7 PASS
-Reporte SE38 ............ PASS
-Transacción SE93 ........ PASS
-SALV .................... PASS
+Excepción:
+Interfaz datasource:
+Datasource demo:
+Datasource ECC:
+Servicio analytics:
+ABAP Unit total/pass/fail:
+Reporte SE38:
+Transacción SE93:
+SALV observado:
 ```
 
-Hasta entonces: `RUNTIME_DEFERRED`.
+Los campos no observados se dejan vacíos. No publicar PR/PO/proveedor/material reales, datos organizativos, SID/mandante, usuario o transportes.
+
+## Evidencia representada por esta guía
+
+Esta guía está cerrada como **procedimiento reproducible de construcción y verificación** del source versionado. Los valores runtime se afirman únicamente si existe un registro separado proveniente de una ejecución SAP real y autorizada.
