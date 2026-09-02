@@ -3,8 +3,8 @@
 [Versión en español](./README.es.md)
 
 > **Track:** SAP ECC / Materials Management  
-> **Artifact status:** `SOURCE_READY / RUNTIME_VALIDATION_PENDING`  
-> **Runtime claim:** source reviewed and hardened; SAP activation/execution not yet evidenced
+> **Artifact status:** `STATIC_VALIDATED / EXECUTION_PROCEDURE_READY / RUNTIME_DEFERRED`  
+> **Runtime claim:** source logic and deterministic test vectors reviewed; SAP activation/execution remains unclaimed until an authorized DEV/sandbox is available
 
 This is the first executable technical artifact in the SAP Integration Lab.
 
@@ -16,6 +16,7 @@ It implements a classic ECC, read-only stock early-warning diagnostic for materi
 - [Guía de construcción — Español](./BUILD_GUIDE.es.md)
 - [Compatibility & Hardening Profile](./COMPATIBILITY.md)
 - [Perfil de compatibilidad y hardening](./COMPATIBILITY.es.md)
+- [Static Validation Record](./STATIC_VALIDATION.md)
 - [Runtime Execution Packet — English](./RUNTIME_EXECUTION.md)
 - [Paquete de ejecución runtime — Español](./RUNTIME_EXECUTION.es.md)
 - [Runtime Runbook](./RUNBOOK.md)
@@ -75,18 +76,20 @@ No update, insert, modify or delete statement exists in the runtime path.
 
 The selected storage-location stock is displayed as drill-down evidence; it does not drive the plant-level status.
 
-## ABAP Unit coverage prepared
+## Static validation + ABAP Unit design
 
-Six deterministic cases are versioned:
+Six deterministic test vectors are versioned and were traced against the current source implementation:
 
-1. plant stock above reorder point → `OK`
-2. plant stock exactly at reorder point → `REORDER`
-3. plant stock below safety stock → `CRITICAL`
-4. shortage quantity is calculated to reorder point
-5. missing thresholds → `NOT_CONFIGURED`
-6. low selected-storage stock with sufficient plant stock → status remains plant-based
+1. plant stock above reorder point → `OK` — static PASS
+2. plant stock exactly at reorder point → `REORDER` — static PASS
+3. plant stock below safety stock → `CRITICAL` — static PASS
+4. shortage quantity from 55 to reorder point 80 → `25` — static PASS
+5. missing thresholds → `NOT_CONFIGURED` — static PASS
+6. low selected-storage stock with sufficient plant stock → status remains plant-based — static PASS
 
-The tests use a synthetic datasource and no production SAP data. Test methods explicitly declare the propagated `CX_STATIC_CHECK` exception.
+**Static vectors reviewed: 6/6; source-level mismatches: 0.**
+
+This is source/static validation, not a claim that ABAP Unit has been executed in SAP. The runtime test target remains 6/6 PASS when an authorized environment is available.
 
 ## ECC compatibility posture
 
@@ -102,29 +105,33 @@ The core runtime intentionally favors classic constructs:
 
 Modern syntax is avoided where it does not add value. This improves portability, but the exact ECC release/EHP still has to be runtime-validated.
 
-## What this source proves now
+## What this evidence proves now
 
 - classic ABAP OO design
 - dependency inversion through an interface
 - deterministic test datasource
-- read-only Open SQL against standard ECC MM tables
+- six deterministic test vectors consistent with current source logic
+- read-only Open SQL design against standard ECC MM tables
 - plant vs. storage-location stock separation
 - MRP-context visibility through `MARC-DISMM`
 - class-based exception handling
 - SALV report structure
 - ABAP Unit source coverage
 - custom report-transaction design through `SE93`
+- reproducible object-by-object build/runtime procedure
 - bilingual technical documentation
 - explicit functional and runtime evidence boundaries
 
-## What remains blocked
+## Runtime boundary
 
-The following claims are not made until SAP runtime evidence is captured:
+Runtime execution is currently deferred because this portfolio exercise is not using enterprise development/CTS access. This is an environment/governance constraint, not represented as an execution PASS.
 
-- syntax check passed in the target ECC release
-- all objects activated successfully
+The following claims remain intentionally blocked until SAP runtime evidence exists:
+
+- syntax check passed in a specific ECC release
+- all objects activated successfully in SAP
 - all six ABAP Unit tests passed in SAP
 - `ZMM_STOCK_RISK` launched successfully through `SE93`
 - SALV executed successfully against an SAP system
 
-See [`EVIDENCE.md`](./EVIDENCE.md) for the promotion protocol.
+See [`STATIC_VALIDATION.md`](./STATIC_VALIDATION.md) and [`EVIDENCE.md`](./EVIDENCE.md).
