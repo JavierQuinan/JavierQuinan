@@ -3,73 +3,30 @@
 [English version](./README.md)
 
 > **Línea:** SAP ECC / Materials Management / Compras y Servicios  
-> **Estado:** `FUNCTIONAL_EVIDENCE_READY / TECHNICAL_LAB_PLANNED`  
-> **Claim runtime:** este paquete no afirma ejecución de un desarrollo ABAP propio
+> **Estado:** `FUNCTIONAL_EVIDENCE_READY / ABAP_SOURCE_READY / STATIC_VALIDATED / RUNTIME_DEFERRED`
 
-Este evidence pack documenta de forma sanitizada un procedimiento profesional para acuerdos de compras de largo plazo utilizados para adquisiciones recurrentes de materiales o servicios.
+Este paquete combina conocimiento profesional sanitizado de acuerdos de compra de largo plazo con un artefacto ABAP original, de solo lectura y revisable públicamente.
 
-El material fuente describe el contrato marco como un acuerdo de largo plazo con un proveedor, con vigencia, condiciones y límites por cantidad o valor, que posteriormente puede ser referenciado por nuevas compras o prestaciones de servicio.
+## Evidencia funcional
 
-La guía operativa recibida utiliza un flujo de creación ingresado por `ME31` y una validación previa mediante `ME33K`. Esta evidencia conserva ese flujo como dato derivado de la fuente. Para evitar presentarlo como regla universal, se documenta por separado que SAP ECC estándar identifica `ME31K`, `ME32K` y `ME33K` para crear, modificar y visualizar contratos de compras.
+La guía operativa de origen demuestra trabajo con:
 
-## Escenario funcional
+- verificación de contratos existentes para evitar duplicados
+- contexto de proveedor y organización de compras
+- inicio/fin de vigencia
+- acuerdos orientados a cantidad o valor
+- posiciones orientadas a servicios
+- unidad, cantidad y contexto comercial
+- catálogo de prestaciones/actividades
+- compras posteriores que referencian el acuerdo vigente
 
-```text
-Necesidad de compra/servicio recurrente
-              │
-              ▼
-Verificar si ya existe contrato
-              │
-              ▼
-Proveedor + organización de compras + vigencia
-              │
-              ▼
-Cabecera del acuerdo
-              │
-              ▼
-Posición de material/servicio
-              │
-              ▼
-Cantidad / valor / condiciones comerciales
-              │
-              ▼
-Catálogo de prestaciones / actividades contratadas
-              │
-              ▼
-Guardar + comunicar referencia
-              │
-              ▼
-Compras posteriores referencian el acuerdo
-```
+La guía fuente utiliza `ME31` dentro de su contexto operativo y `ME33K` para revisar contratos existentes. La evidencia pública conserva ese dato sin presentarlo como regla universal; el procesamiento clásico de contratos SAP utiliza habitualmente la familia `ME31K / ME32K / ME33K`.
 
-## Controles operativos derivados de la guía
+No se publica empresa, proveedor, contrato, organización de compras, importe, usuario ni captura real.
 
-1. Verificar primero si ya existe un contrato para evitar duplicidad.
-2. Seleccionar el proveedor y el contexto organizativo de compras.
-3. Definir fechas de inicio y fin de vigencia.
-4. Mantener valor ofertado/contratado y referencia comercial.
-5. Crear posiciones de servicio cuando el objeto del acuerdo sea prestación de servicios.
-6. Mantener unidad, cantidad y precio dentro del contexto del contrato.
-7. Registrar las actividades/servicios contratados y sus cantidades en el área de catálogo de prestaciones.
-8. Guardar y comunicar la referencia generada mediante el proceso autorizado.
+## Evidencia técnica — `ZMM_CONTRACT_AUDIT`
 
-No se publican proveedor real, empresa, número de contrato, organización de compras, centro, almacén, empleado, correo ni configuración particular.
-
-## Qué demuestra profesionalmente
-
-- acuerdos marco / contratos de compras
-- contexto de proveedor
-- vigencia contractual
-- contratos por cantidad y por valor
-- posiciones de servicio
-- catálogo de prestaciones
-- controles contra duplicados
-- condiciones comerciales
-- compras posteriores referenciadas a un acuerdo vigente
-
-## Laboratorio técnico ECC — siguiente artefacto
-
-El siguiente desarrollo será un **auditor de contratos de solo lectura**, no un programa que cree o modifique documentos de compras.
+El auditor previsto ya está implementado como source revisable:
 
 ```text
 ZMM_CONTRACT_AUDIT
@@ -82,38 +39,79 @@ ZCL_MM_CONTRACT_AUDIT_SERVICE
         │
         ▼
 ZIF_MM_CONTRACT_SOURCE
-      /                      \
-Datasource ECC             Datasource demo
-EKKO / EKPO               datos sintéticos
+   ├── ZCL_MM_CONTRACT_SOURCE_ECC  → EKKO / EKPO
+   └── ZCL_MM_CONTRACT_SOURCE_DEMO → datos sintéticos
 ```
 
-Primera versión prevista:
+Objeto de soporte:
 
-- vigencia del acuerdo
-- contexto del proveedor
-- número de posiciones
-- clasificación cantidad/valor cuando pueda determinarse con seguridad
-- riesgo de vencimiento
-- vigencia ausente/expirada
-- SALV de solo lectura
-- vectores ABAP Unit deterministas
+`ZCX_MM_CONTRACT_NOT_FOUND`
 
-Los detalles de paquetes de servicios se añadirán únicamente después de verificar las relaciones exactas de documentos de servicio para la release ECC objetivo.
+## Modelo ECC read-only
+
+La primera versión utiliza campos estándar de contratos de compras documentados de forma independiente:
+
+- `EKKO-KDATB` / `EKKO-KDATE` — inicio/fin de vigencia
+- `EKKO-LIFNR` — proveedor
+- `EKKO-EKORG` — organización de compras
+- `EKKO-KTWRT` — valor objetivo
+- `EKPO-KTMNG` — cantidad objetivo a nivel de posición
+- `EKPO-ZWERT` — valor objetivo de posición
+- `EKPO-LOEKZ` — exclusión de posiciones eliminadas
+
+El datasource ECC acepta únicamente documentos de compras con `BSTYP = 'K'`.
+
+La primera versión **no recorre** jerarquías de paquetes de servicios; esa extensión se reserva para una validación específica por release/escenario.
+
+## Estados diagnósticos
+
+- `ACTIVE`
+- `EXPIRING_SOON`
+- `EXPIRED`
+- `NOT_YET_VALID`
+- `INVALID_VALIDITY`
+- `VALIDITY_INCOMPLETE`
+- `NO_ITEMS`
+
+El reporte también muestra días hasta vencimiento, número de posiciones activas e indicadores de objetivos por cantidad/valor.
+
+## Diseño de pruebas
+
+Se versionaron ocho vectores ABAP Unit y fueron trazados a nivel de source:
+
+```text
+Vectores revisados: 8
+Consistentes:       8
+Diferencias:        0
+```
+
+Esto es **validación estática/source**, no ejecución de ABAP Unit dentro de SAP.
+
+## Reproducibilidad
+
+- [Technical Lab](./TECHNICAL_LAB.md)
+- [Build Guide](./BUILD_GUIDE.md)
+- [Guía de construcción](./BUILD_GUIDE.es.md)
+- [Static Validation](./STATIC_VALIDATION.md)
+- [Evidence Record](./EVIDENCE.md)
+- [`source/`](./source/)
 
 ## Límite de evidencia
 
-Este documento es **evidencia funcional profesional**. No es prueba de que un desarrollo propio de compras haya sido ejecutado en SAP.
+El desarrollo no crea ni modifica documentos de compras y no contiene sentencias de escritura ni `COMMIT`.
 
-Nunca se publica:
+No pretende reemplazar:
 
-- nombres de empresa o cliente
-- IDs de proveedor
-- números de contrato
-- códigos organizativos reales
-- precios o importes reales
-- capturas del sistema corporativo
-- transacciones Z internas
-- credenciales o transportes
+- estrategia de liberación
+- entrada de servicios
+- pricing / técnica de condiciones
+- determinación de fuentes
+- consumo contractual
+- imputación
+- verificación de facturas
+- procesamiento de paquetes de servicios
+
+La activación SAP, ejecución ABAP Unit y transacción SE93 quedan diferidas hasta disponer de un DEV/sandbox autorizado.
 
 ## Terminología bilingüe
 
@@ -127,7 +125,3 @@ Nunca se publica:
 | Value contract | Contrato por valor |
 | Service item | Posición de servicio |
 | Service catalog | Catálogo de prestaciones/servicios |
-
-## Nota de fuente
-
-Documento público creado a partir de una guía operativa aportada por el usuario. La versión pública no reproduce capturas, marcas, identificadores organizativos ni formato propietario del documento fuente.
