@@ -87,16 +87,11 @@ Las guías operativas cubren:
 
 ### Evidencia visual — MM01
 
-[Capturas MM01 sanitizadas](../../visual-evidence/mm01-material-extension/README.es.md)
+[Evidencia MM01 suministrada](../../visual-evidence/mm01-material-extension/README.es.md)
 
-El set visual muestra:
+El set conserva la guía evidencial entregada para el caso de extensión de material y una captura real de verificación final en formato WebP. Los cuatro archivos de imagen generados anteriormente durante la preparación del portafolio fueron eliminados para evitar referencias rotas o evidencia visual que no proviniera directamente del material suministrado.
 
-1. acceso/selección de material existente;
-2. selección de vistas del maestro;
-3. niveles organizativos centro/almacén;
-4. verificación posterior del resultado.
-
-Se sanitizan material, centro/almacén, descripción y usuario. Las capturas provienen de material operativo suministrado para este portafolio y se publican únicamente en versión redactada.
+Las nuevas capturas SAP se incorporarán únicamente a medida que sean suministradas para el portafolio.
 
 ## Referencias oficiales SAP
 
@@ -113,13 +108,13 @@ Las guías MM se contrastan con documentación pública SAP. Consulte el [Índic
 - reporting SALV;
 - diseño determinista de pruebas;
 - documentación técnica bilingüe;
-- evidencia respaldada por material operativo sanitizado y referencias oficiales SAP.
+- evidencia respaldada por material operativo suministrado y referencias oficiales SAP.
 
 ## Límite ECC
 
 Se utilizan objetos clásicos/Open SQL únicamente cuando corresponden a ECC y se rotulan expresamente como **ECC/clásico**.
 
-No se publica código del empleador/cliente, documentos de compras reales, proveedores, materiales, precios, códigos organizativos ni screenshots no sanitizados.
+No se publica código del empleador/cliente, documentos de compras reales, proveedores, precios, credenciales ni screenshots adicionales fuera del material suministrado para el portafolio.
 
 ## Límite S/4HANA
 

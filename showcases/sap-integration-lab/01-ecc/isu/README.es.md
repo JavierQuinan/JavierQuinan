@@ -3,9 +3,22 @@
 [English version](./README.md)
 
 > **Alcance:** SAP ECC IS-U / Work Management / integración CRM / GIS  
-> **Evidencia representada:** guías operativas sanitizadas · source ABAP original read-only · revisión determinista de source · guías técnicas reproducibles
+> **Evidencia representada:** guías operativas aportadas · source ABAP original read-only · revisión determinista de source · guías técnicas reproducibles
 
-Esta línea está separada de S/4HANA. Convierte experiencia operativa utilities en evidencia revisable eliminando configuración e identificadores reales de empresa/cliente.
+Esta línea está separada de S/4HANA y organiza la evidencia operativa SAP entregada para este portafolio dentro del módulo al que corresponde.
+
+## Guías evidenciales aportadas
+
+- [Revisión de estados de órdenes de trabajo](./work-management/status-audit/OPERATIONAL_GUIDE.es.md)
+- [Cierre y anulación de OT mediante script](./work-management/batch-order-governance/GUIDE.es.md)
+- [Ampliación del rango de numeración AUFTRAG](./work-management/number-range-governance/AMPLIACION_RANGO_GUIDE.es.md)
+- [Monitoreo de rangos de OT con RSNUMHOT](./work-management/number-range-governance/MONITOREO_RANGOS_GUIDE.es.md)
+- [ZCONS_SELLOS — Consumo de sellos](./work-management/seals-material-enablement/CONSUMO_SELLOS_GUIDE.es.md)
+- [Regularización del doble estatus ALMA-MONT](./device-management/device-status-regularization/GUIDE.es.md)
+- [Solución de generación incompleta de OT DCDE desde CRM](./crm-isu-integration/dcde-recovery/GUIDE.es.md)
+- [Monitoreo y reproceso de CUEN GIS–SAP](./crm-isu-integration/gis-cuen-reprocessing/GUIDE.es.md)
+
+La guía MM01 está ubicada en la línea ECC MM: [Extensión de material mediante MM01](../../visual-evidence/mm01-material-extension/GUIDE.es.md).
 
 ## Mapa de evidencia publicada
 
@@ -39,13 +52,13 @@ Evidencia de monitoreo preventivo `RSNUMHOT` y mantenimiento controlado `SNRO / 
 
 [Seal Material Enablement](./work-management/seals-material-enablement/README.es.md)
 
-Documenta la diferencia entre disponibilidad en MM y habilitación/configuración para Seal Management / OT.
+Documenta la diferencia entre disponibilidad en MM y habilitación/configuración para Seal Management / OT, además de la guía `ZCONS_SELLOS` y el uso de `MMPV` documentado para ambientes de prueba/réplica.
 
 ### Regularización de estado técnico de medidor
 
 [Device Status Regularization](./device-management/device-status-regularization/README.es.md)
 
-Caso operativo sanitizado de Device Management con secuencia `IQ09 → EG35 → EG36 → EG50 → EG34 → IQ09`, validación de historial de lecturas, consistencia de fecha operacional y contingencia logística `MIGO` cuando aplica.
+Caso operativo de Device Management con secuencia `IQ09 → EG35 → EG36 → EG50 → EG34 → IQ09`, validación de historial de lecturas, consistencia de fecha operacional y contingencia logística `MIGO` cuando aplica.
 
 ### Consistencia de equipamiento — IS-U ↔ CRM
 
@@ -96,8 +109,8 @@ Para el modelo de estados, la documentación SAP expone campos estándar como `A
 - diseño original de diagnóstico ABAP clásico read-only;
 - documentación técnica/operativa bilingüe.
 
-## Límite técnico y de confidencialidad
+## Límite técnico
 
-La evidencia pública documenta objetos estándar read-only y source original del portafolio. No publica atajos de manipulación directa, implementaciones `Z*` propietarias, credenciales, OT/instalaciones/contratos/medidores/CUEN/usuarios reales, endpoints internos ni capturas empresariales sin sanitizar.
+Las guías se publican conforme a la versión aportada para el portafolio. No se añaden credenciales, endpoints internos ni source propietario que no forme parte de la evidencia entregada.
 
 El source ABAP de auditoría de estados se presenta como evidencia source/static con guía reproducible de verificación. No se atribuye un resultado runtime corporativo cuando no existe un registro real de ejecución.

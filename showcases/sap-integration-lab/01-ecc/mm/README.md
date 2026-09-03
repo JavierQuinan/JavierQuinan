@@ -87,16 +87,11 @@ Operational guides in this track cover:
 
 ### Visual evidence — MM01
 
-[Sanitized MM01 screenshots](../../visual-evidence/mm01-material-extension/README.md)
+[Supplied MM01 evidence](../../visual-evidence/mm01-material-extension/README.md)
 
-The visual set shows:
+The set retains the supplied evidence guide for the material-extension case and one real final-verification screenshot in WebP format. The four image files generated earlier during portfolio preparation were removed to avoid broken references or visual evidence that did not come directly from the supplied material.
 
-1. existing-material selection/access;
-2. material-master view selection;
-3. plant/storage-location organizational levels;
-4. post-process verification.
-
-Material IDs, plant/storage-location values, descriptions and usernames are sanitized. The screenshots come from operational material supplied for this portfolio and are published only in redacted form.
+New SAP screenshots will be added only as they are explicitly supplied for the portfolio.
 
 ## Official SAP references
 
@@ -113,13 +108,13 @@ The MM guides are cross-referenced against public SAP documentation. See the cen
 - SALV reporting;
 - deterministic test design;
 - bilingual technical documentation;
-- evidence backed by sanitized operational material and official SAP references.
+- evidence backed by supplied operational material and official SAP references.
 
 ## ECC boundary
 
 Classic objects and Open SQL are used only where appropriate to ECC and remain clearly labelled **ECC/classic**.
 
-No employer/customer source, real purchasing documents, vendor IDs, material IDs, prices, organizational codes or unsanitized screenshots are published.
+No employer/customer source, real purchasing documents, vendor IDs, prices, credentials or additional screenshots outside the material supplied for the portfolio are published.
 
 ## S/4HANA boundary
 

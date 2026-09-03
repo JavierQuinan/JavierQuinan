@@ -1,8 +1,8 @@
-# Evidencia Visual SAP — Capturas Sanitizadas
+# Evidencia Visual SAP
 
 [English version](./README.md)
 
-Esta carpeta contiene evidencia visual que puede publicarse legítimamente y ha sido sanitizada para eliminar identificadores empresariales.
+Esta carpeta reúne únicamente evidencia visual suministrada para el portafolio y conservada en formatos que GitHub puede renderizar correctamente.
 
 ## Evidencia disponible
 
@@ -10,20 +10,20 @@ Esta carpeta contiene evidencia visual que puede publicarse legítimamente y ha 
 
 [Abrir set de evidencia visual](./mm01-material-extension/README.es.md)
 
-El set contiene cuatro capturas SAP GUI sanitizadas extraídas de una guía operativa MM01 suministrada para este portafolio:
+El set conserva:
 
-1. pantalla de acceso para extensión de material;
-2. selección de vistas;
-3. niveles organizativos;
-4. verificación en índice de materiales.
+- la guía evidencial en español, fiel al documento suministrado;
+- una captura real de verificación final extraída de la misma guía (`mm01-result.webp`).
 
-## Reglas de publicación
+Las capturas anteriores generadas durante la preparación del portafolio fueron eliminadas. No se mantienen montajes SVG ni archivos de imagen rotos.
 
-La evidencia visual se incluye únicamente cuando:
+### Evidencia visual ubicada dentro de sus módulos
 
-- la captura fue suministrada para este portafolio o los derechos de publicación son claros;
-- se pueden eliminar identificadores de empresa/cliente;
-- el significado técnico permanece comprensible después de sanitizar;
-- no expone credenciales, usuarios, URLs internas ni configuración sensible.
+La evidencia de rangos de órdenes y MMPV se conserva junto a las guías funcionales correspondientes para mantener contexto técnico:
 
-No se republican manuales elaborados por terceros ni screenshots de material formativo externo. Su contenido técnico se transforma en documentación original.
+- `01-ecc/isu/work-management/number-range-governance/evidence/`
+- `01-ecc/isu/work-management/seals-material-enablement/evidence/`
+
+## Regla de publicación
+
+A partir de este punto se incorporarán nuevas capturas únicamente cuando sean suministradas expresamente para el portafolio. No se recrearán pantallas SAP ni se generarán sustitutos visuales.
