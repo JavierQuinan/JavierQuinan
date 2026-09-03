@@ -12,14 +12,12 @@ La versión pública **no** publica la hoja/script original, números de OT, amb
 
 ## Gate de elegibilidad
 
-Una OT entra al lote solo si cumple simultáneamente todos los criterios requeridos.
+Una OT entra al lote solo si cumple simultáneamente los criterios requeridos:
 
-Criterios derivados de la fuente:
-
-- la orden permanece en el estado abierto/pendiente configurado
-- no tiene puesto de trabajo operativo asignado
-- el identificador de la orden fue validado
-- el objetivo autorizado es cerrar/anularla para impedir ejecución posterior
+- permanece en el estado abierto/pendiente configurado;
+- no tiene puesto de trabajo operativo asignado;
+- el identificador de la orden fue validado;
+- el objetivo autorizado es cerrar/anularla para impedir ejecución posterior.
 
 Si una orden no cumple todo, debe excluirse.
 
@@ -29,74 +27,73 @@ Si una orden no cumple todo, debe excluirse.
 OT candidatas
      │
      ▼
-Validar elegibilidad en SAP
+validar elegibilidad en SAP
      │
      ▼
-Preparar conjunto de entrada acotado
+preparar conjunto de entrada acotado
      │
      ▼
-Revisar duplicados / vacíos / rango
+revisar duplicados / vacíos / rango
      │
      ▼
-Autorizar acceso de automatización
+autorizar SAP GUI Scripting
      │
      ▼
-Ejecutar sin operaciones concurrentes
+ejecutar sin operaciones concurrentes
      │
      ▼
-Registrar resultado por OT
+registrar resultado por OT
      │
      ▼
-Validar estado final en SAP
-     │
-   ┌─┴────┐
-   ▼      ▼
-Éxito   Error
-   │      │
-cerrar  conservar mensaje + diagnosticar antes de reintentar
+validar estado final en SAP
 ```
 
-## Controles previos
+## Evidencia de plantilla entregada
 
-Antes de ejecutar:
+La guía fuente documenta una plantilla controlada donde:
 
-1. validar que cada OT siga cumpliendo elegibilidad;
-2. eliminar duplicados;
-3. asegurar que el rango de procesamiento contenga solo filas intencionales;
-4. excluir registros vacíos/ambiguos;
-5. evitar trabajo concurrente no relacionado en la misma sesión SAP;
-6. ejecutar solo desde una fuente de automatización autorizada;
-7. preferir una ventana controlada cuando los bloqueos puedan afectar otros procesos.
+- `C2` define la fila inicial;
+- `C3` define la fila final;
+- columna A marca los registros seleccionados;
+- columna B contiene el identificador de OT;
+- columna D registra el resultado devuelto por la ejecución.
+
+Los identificadores reales no se reproducen en la versión pública.
+
+Antes de ejecutar se valida que el rango contenga exactamente las filas previstas y que no existan filas vacías, duplicados ni registros marcados por error.
 
 ## Disciplina de ejecución
 
-La fuente utiliza automatización SAP GUI iniciada desde una plantilla controlada.
+La automatización se inicia con SAP abierto y una plantilla autorizada. SAP GUI solicita confirmación cuando un script intenta acceder a la sesión.
 
-Lecciones públicas:
+Controles públicos reproducibles:
 
-- mantener la sesión SAP activa;
-- autorizar explícitamente SAP GUI Scripting cuando el sistema lo solicite;
-- no interrumpir el batch a mitad de ejecución;
-- capturar resultado por registro, no únicamente un mensaje global de fin.
+1. mantener la sesión SAP activa;
+2. autorizar explícitamente SAP GUI Scripting cuando el sistema lo solicite;
+3. no interrumpir el batch a mitad de ejecución;
+4. evitar operaciones concurrentes en la misma sesión;
+5. capturar resultado por registro, no únicamente un mensaje global.
 
-## Modelo de resultado por registro
+## Interpretación del resultado
 
-Un batch profesional debería exponer, al menos:
+La evidencia fuente muestra un estado de procesamiento por fila y un resultado de ejecución satisfactorio por orden. En la versión pública se conserva la semántica, no los números reales:
 
 ```text
-orden de entrada
-seleccionada sí/no
-estado de procesamiento
-código/mensaje de resultado
-estado de validación
-criterio de retry/escalamiento
+registro seleccionado
+    │
+    ▼
+procesado por automatización
+    │
+    ▼
+resultado satisfactorio / mensaje de error
+    │
+    ▼
+validación independiente en SAP
 ```
 
-Que el script termine no demuestra que todas las órdenes hayan alcanzado el estado deseado.
+Que la automatización termine no demuestra por sí sola que todas las órdenes hayan alcanzado el estado deseado.
 
 ## Validación posterior
-
-Después del batch, comprobar de forma independiente el estado final en SAP.
 
 Si una orden falla:
 
@@ -106,57 +103,28 @@ Si una orden falla:
 4. diagnosticar antes de reintentar;
 5. evitar reejecuciones masivas a ciegas.
 
-## Limitación de automatización
+## Limitación documentada
 
-La guía fuente indica que la automatización no puede registrar una observación explicativa durante el cierre/anulación. La trazabilidad adicional debe registrarse mediante el mecanismo institucional autorizado.
-
-## Laboratorio futuro
-
-Podremos recrear públicamente este patrón con OT sintéticas:
-
-```text
-entrada CSV/JSON
-     │
-     ▼
-validator
-     │
-     ▼
-dry-run / matriz de elegibilidad
-     │
-     ▼
-abstracción de command executor
-     │
-     ▼
-log por registro
-     │
-     ▼
-cola de retry idempotente
-     │
-     ▼
-reporte de auditoría
-```
-
-Así demostramos batch safety, idempotencia, auditabilidad y aislamiento de errores sin tocar un SAP empresarial real.
+La guía fuente indica que la automatización no puede registrar una observación explicativa durante el cierre/anulación. La trazabilidad adicional debe conservarse mediante el mecanismo institucional autorizado.
 
 ## Límite de confidencialidad
 
 No se publica:
 
-- Excel/VBA original
-- números de OT
-- nombres de sistema/mandante
-- usuarios
-- empresas
-- rutas internas de automatización
-- screenshots productivos
+- Excel/VBA original;
+- números reales de OT;
+- nombres de sistema/mandante;
+- usuarios o empresas;
+- rutas internas de automatización;
+- capturas productivas sin sanitizar.
 
 ## Qué demuestra
 
-- gobierno de procesamiento masivo
-- diseño de reglas de elegibilidad
-- validación preflight
-- conocimiento de SAP GUI automation
-- manejo de errores por registro
-- validación post-ejecución
-- reducción de riesgo operativo
-- trazabilidad/auditoría
+- gobierno de procesamiento masivo;
+- diseño de reglas de elegibilidad;
+- validación preflight;
+- conocimiento operativo de SAP GUI Scripting;
+- control de errores por registro;
+- validación post-ejecución;
+- reducción de riesgo operativo;
+- trazabilidad y disciplina de reintento.
