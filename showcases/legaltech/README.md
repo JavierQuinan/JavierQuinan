@@ -3,7 +3,8 @@
 > **Source repository:** private  
 > **Public artifact type:** sanitized architecture / product-engineering evidence  
 > **Domain:** legal operations and workflow software  
-> **Maturity represented here:** active prototype/product development, not production-certified legal AI
+> **Maturity represented here:** active prototype/product development, not production-certified legal AI  
+> **Future direction:** [Product Vision Roadmap](./ROADMAP.md) — explicitly not current implementation evidence
 
 This case study documents verifiable engineering work from a private LegalTech platform while deliberately excluding case data, client information, credentials and proprietary source code.
 
@@ -174,6 +175,10 @@ The strongest verified portfolio evidence is:
 ## Next engineering gate
 
 The next maturity step is not adding more marketing features. It is to make the platform auditable and reproducible: remove remaining repository hygiene debt, establish automated tests, tighten authorization boundaries, define a provider abstraction for AI, add document/privacy threat models and create a synthetic demo tenant.
+
+## Future product direction
+
+The public [Product Vision Roadmap](./ROADMAP.md) describes `NEXT / LATER / EXPLORE` outcomes separately from current evidence. It is intentionally non-binding and does not convert planned AI, client-portal or automation capabilities into current claims.
 
 ---
 
