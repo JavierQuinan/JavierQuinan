@@ -10,6 +10,12 @@ Esta evidencia consolida dos actividades reales y complementarias: monitoreo de 
 
 La versión pública conserva el flujo técnico y elimina códigos de empresa, grupos internos, números reales de intervalo, mandante y valores operativos que permitan reconstruir configuración corporativa.
 
+## Evidencia visual sanitizada
+
+![Mantenimiento sanitizado del objeto AUFTRAG](../../../../visual-evidence/number-range-governance/auftrg-interval-sanitized.jpg)
+
+La captura conserva el objeto estándar `AUFTRAG`, la pantalla de actualización de intervalo y la estructura de mantenimiento. El grupo y los límites numéricos reales fueron sustituidos antes de publicarse.
+
 ## Flujo operativo demostrado
 
 ```text
