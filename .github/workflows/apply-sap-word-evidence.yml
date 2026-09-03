@@ -1,0 +1,33 @@
+name: Apply SAP Word evidence payload
+
+on:
+  push:
+    branches:
+      - docs/sap-word-screenshots-2026-09-03
+    paths:
+      - .tmp/sap-evidence-payload.b64
+
+permissions:
+  contents: write
+
+jobs:
+  apply-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: docs/sap-word-screenshots-2026-09-03
+      - name: Restore supplied Word screenshots and guides
+        shell: bash
+        run: |
+          set -euo pipefail
+          base64 --decode .tmp/sap-evidence-payload.b64 > /tmp/sap-evidence-payload.tar.gz
+          tar -xzf /tmp/sap-evidence-payload.tar.gz -C .
+          rm -f .tmp/sap-evidence-payload.b64 .sap-evidence-write-ok
+          rm -f .github/workflows/apply-sap-word-evidence.yml
+          rmdir .tmp 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "docs(sap): restore supplied Word guide screenshots"
+          git push origin HEAD:docs/sap-word-screenshots-2026-09-03
