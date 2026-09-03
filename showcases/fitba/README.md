@@ -3,7 +3,8 @@
 > **Source repository:** private  
 > **Public artifact type:** sanitized product architecture / engineering evidence  
 > **Domain:** fitness operations, training, nutrition and client engagement  
-> **Evidence basis:** current package metadata plus private synchronization/compliance audit records
+> **Evidence basis:** current package metadata plus private synchronization/compliance audit records  
+> **Future direction:** [Product Vision Roadmap](./ROADMAP.md) — explicitly not current implementation evidence
 
 This case study exposes technical evidence from the private FITBA/GYMORA ecosystem without publishing customer data, health/fitness records, private environment configuration or commercial source code.
 
@@ -182,6 +183,10 @@ FITBA/GYMORA is useful public evidence for:
 ## Portfolio status
 
 This is a **published sanitized case study**, while the underlying product remains private. A future public mobile demo should use a dedicated demo tenant and synthetic fitness data before screenshots/video are added.
+
+## Future product direction
+
+The public [Product Vision Roadmap](./ROADMAP.md) separates `NEXT / LATER / EXPLORE` product direction from current evidence. It covers organization/coach expansion, lifecycle/retention capabilities and explicitly bounded fitness-intelligence ideas without presenting them as implemented today.
 
 ---
 

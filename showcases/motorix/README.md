@@ -3,7 +3,8 @@
 > **Source repository:** private  
 > **Public artifact type:** sanitized architecture / engineering evidence  
 > **Domain:** automotive workshop management SaaS  
-> **Evidence basis:** current private repository metadata, architecture documentation and security/RBAC audit records
+> **Evidence basis:** current private repository metadata, architecture documentation and security/RBAC audit records  
+> **Future direction:** [Product Vision Roadmap](./ROADMAP.md) — explicitly not current implementation evidence
 
 This case study documents engineering work from the private MOTORIX/TecnoAuto product without publishing commercial source code, production credentials, customer records or deployment secrets.
 
@@ -161,6 +162,10 @@ MOTORIX is stronger as a portfolio case study when its limits are explicit:
 MOTORIX is evidence of work on a product where **multi-tenancy, RBAC, branch scoping, domain modeling, SaaS entitlements, migrations and operational hardening** interact in the same codebase.
 
 It is particularly relevant to enterprise/full-stack roles because the engineering work extends beyond frontend implementation into authorization, persistence, deployment discipline and security review.
+
+## Future product direction
+
+The public [Product Vision Roadmap](./ROADMAP.md) describes `NEXT / LATER / EXPLORE` outcomes separately from current evidence. It includes workshop-flow hardening, customer/parts/payment lifecycle expansion and bounded intelligent-workshop exploration without presenting those items as implemented today.
 
 ---
 
