@@ -2,26 +2,20 @@
 
 [Versión en español](./README.es.md)
 
-> **Evidence type:** original operational screenshots supplied as evidence + reproducible guide  
-> **Source:** working guide used to document a real material-extension case
+> **Evidence type:** supplied operational guide + supplied visual evidence  
+> **Transaction:** `MM01`
 
-This set documents the operational pattern for extending an existing material to additional organizational levels using `MM01`.
+This set documents extension of an existing material to the required plant/storage-location context using `MM01`, based on the supplied operational guide.
 
-The images in this section are shown as supplied in the working guide. No additional color blocks, blur or visual replacement is applied to degrade the evidence.
+## Evidence guide
 
-## Available visual evidence
+- [Spanish operational guide](./GUIDE.es.md)
 
-### Organizational levels
+## Visual evidence
 
-![MM01 organizational levels — original evidence](./mm01-org-levels-original.svg)
+![MM01 post-extension result supplied in the guide](./mm01-result.webp)
 
-Demonstrates plant selection, storage-location context and organizational-level assignment before maintaining the selected views.
-
-### Post-process verification
-
-![MM01 verification — original evidence](./mm01-verification-original.svg)
-
-Demonstrates the independent check that the material is available in the expected organizational context.
+The image corresponds to the final verification contained in the supplied guide.
 
 ## Documented operational flow
 
@@ -43,13 +37,6 @@ Save
 Verify the material at the intended organizational level
 ```
 
-## Practical controls
-
-- Do not create a duplicate material when the requirement is only an organizational extension.
-- Confirm target plant and storage location before saving.
-- Select only the views required by the process and authorization scope.
-- Verify the result after saving.
-
 ## Official SAP references
 
 - [Extending a Material Master Record — SAP Help](https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/f7fddfe4caca43dd967ac4c9ce6a70e4/e614c453f57eb44ce10000000a174cb4.html)
@@ -61,4 +48,4 @@ Verify the material at the intended organizational level
 - organizational extension of an existing material;
 - organizational-level selection;
 - post-change validation;
-- operational documentation backed by real visual evidence.
+- operational documentation backed by supplied visual evidence.
