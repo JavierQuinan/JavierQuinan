@@ -1,8 +1,8 @@
-# SAP Visual Evidence — Sanitized Screenshots
+# SAP Visual Evidence
 
 [Versión en español](./README.es.md)
 
-This folder contains visual evidence that can be published legitimately and has been sanitized to remove enterprise identifiers.
+This folder contains only visual evidence supplied for the portfolio and retained in formats that GitHub renders correctly.
 
 ## Available evidence
 
@@ -10,20 +10,20 @@ This folder contains visual evidence that can be published legitimately and has 
 
 [Open visual evidence set](./mm01-material-extension/README.md)
 
-The set contains four sanitized SAP GUI screenshots extracted from a portfolio-supplied MM01 operational guide:
+The set retains:
 
-1. material-extension access screen;
-2. view selection;
-3. organizational levels;
-4. material-index verification.
+- the Spanish evidence guide, faithful to the supplied document;
+- one real final-verification screenshot extracted from the same guide (`mm01-result.webp`).
 
-## Publication rules
+Earlier generated screenshots used during portfolio preparation were removed. No generated SVG montages or broken image files are retained.
 
-Visual evidence is included only when:
+### Visual evidence stored with its functional module
 
-- the screenshot is supplied for this portfolio or publication rights are clear;
-- customer/company identifiers can be removed;
-- the technical meaning remains understandable after sanitization;
-- the screenshot does not expose credentials, users, internal URLs or sensitive configuration.
+Work-order number-range and MMPV evidence is stored next to the corresponding functional guides to preserve technical context:
 
-Employer-authored manuals and third-party training screenshots are not republished. Their technical content is rewritten as original documentation instead.
+- `01-ecc/isu/work-management/number-range-governance/evidence/`
+- `01-ecc/isu/work-management/seals-material-enablement/evidence/`
+
+## Publication rule
+
+From this point onward, new screenshots are added only when they are explicitly supplied for the portfolio. SAP screens will not be recreated and visual substitutes will not be generated.
