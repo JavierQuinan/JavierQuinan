@@ -25,4 +25,6 @@ Presione Enter y complete los campos obligatorios correspondientes a las vistas 
 
 **5. Verificar la extensión del material**
 
+![Resultado de extensión MM01 aportado en la guía](./mm01-result.webp)
+
 **Resultado esperado: el material debe constar habilitado para el centro 0700 y el almacén general de la empresa solicitante.**
