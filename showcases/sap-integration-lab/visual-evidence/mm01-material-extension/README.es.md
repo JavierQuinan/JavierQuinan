@@ -13,7 +13,7 @@ Este set documenta la extensión de un material existente al centro/almacén req
 
 ## Evidencia visual
 
-![Resultado de extensión MM01 aportado en la guía](./mm01-result.webp)
+![Resultado de extensión MM01 aportado en la guía](./evidence/figure-09.webp)
 
 La captura corresponde a la validación final incluida en la guía aportada: el material queda disponible en el contexto organizativo requerido.
 

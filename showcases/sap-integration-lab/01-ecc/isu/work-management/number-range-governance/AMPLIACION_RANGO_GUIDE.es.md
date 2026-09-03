@@ -28,7 +28,7 @@ Esta actividad modifica la asignación de números de órdenes. Antes de realiza
 
 Ejecute la transacción SNRO. El sistema mostrará la pantalla de mantenimiento de objetos de rango de números.
 
-*Figura 1. Pantalla inicial para la actualización de objetos de rango de números.*
+![Figura 1. Pantalla inicial para la actualización de objetos de rango de números.](./evidence/ampliacion/figure-01.webp)
 
 **Paso 2. Seleccionar el objeto AUFTRAG**
 
@@ -36,31 +36,31 @@ En el campo Objeto, ingrese AUFTRAG. Verifique que el valor sea correcto antes d
 
 Damos clic en “Actualización de intervalo”.
 
-*Figura 2. Selección del objeto de rango AUFTRAG.*
+![Figura 2. Selección del objeto de rango AUFTRAG.](./evidence/ampliacion/figure-02.webp)
 
 **Paso 3. Acceder a la actualización de intervalos**
 
 Ingrese en Actualización de intervalo. En la pantalla siguiente se presentan las opciones para consultar o modificar grupos e intervalos del objeto AUFTRAG.
 
-*Figura 3. Opciones de grupos e intervalos del objeto AUFTRAG.*
+![Figura 3. Opciones de grupos e intervalos del objeto AUFTRAG.](./evidence/ampliacion/figure-03.webp)
 
 **Paso 4. Revisar los grupos existentes**
 
 Seleccione Grupos con el ícono de lápiz. Revise la relación de elementos y grupos existentes para identificar el grupo correcto y evitar crear una asignación duplicada.
 
-*Figura 4. Listado de grupos y elementos asignados al objeto AUFTRAG.*
+![Figura 4. Listado de grupos y elementos asignados al objeto AUFTRAG.](./evidence/ampliacion/figure-04.webp)
 
 **Paso 5. Crear un nuevo grupo**
 
 Pulse el ícono de hoja en blanco (Nuevo). Registre el código o denominación del grupo conforme al requerimiento funcional. Para el ejemplo mostrado, el grupo corresponde a OPEC.
 
-*Figura 5. Opción Nuevo en la actualización de grupos AUFTRAG.*
+![Figura 5. Opción Nuevo en la actualización de grupos AUFTRAG.](./evidence/ampliacion/figure-05.webp)
 
 **Paso 6. Definir el intervalo numérico**
 
 En la actualización del intervalo, complete los campos De número y A número. Para el ejemplo OPEC se registra 80000000 como valor inicial y 89999999 como valor final. No seleccione Ext., ya que el ejemplo corresponde a numeración interna.
 
-*Figura 6. Definición del intervalo interno 80000000–89999999 para OPEC.*
+![Figura 6. Definición del intervalo interno 80000000–89999999 para OPEC.](./evidence/ampliacion/figure-06.webp)
 
 **Control obligatorio:** Antes de guardar, compare el intervalo contra todos los grupos existentes. Los extremos del nuevo rango tampoco pueden estar contenidos dentro de otro intervalo.
 
@@ -72,9 +72,9 @@ Confirme los datos ingresados y utilice Guardar. Atienda el mensaje emitido por 
 
 Regrese al listado de grupos y localice el registro creado. Compruebe el número de grupo, el código, el rango inicial y el rango final.
 
-*Figura 7. Verificación del grupo OPEC dentro de la relación de rangos AUFTRAG.*
+![Figura 7. Verificación del grupo OPEC dentro de la relación de rangos AUFTRAG.](./evidence/ampliacion/figure-07.webp)
 
-*Figura 8. Grupo 54 asignado a OPEC con rango 80000000–89999999.*
+![Figura 8. Grupo 54 asignado a OPEC con rango 80000000–89999999.](./evidence/ampliacion/figure-08.webp)
 
 # 4. Validación final
 

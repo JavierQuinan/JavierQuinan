@@ -16,7 +16,7 @@ La estructura de carga documentada utiliza las columnas `MATERIAL`, `ORDEN`, `SE
 
 ### Evidencia MMPV
 
-![MMPV en ambiente de prueba](./evidence/mmpv-test-period.webp)
+![MMPV en ambiente de prueba](./evidence/figure-03.webp)
 
 La captura corresponde a la guía entregada y documenta la ampliación del período contable en ambientes de prueba mediante `MMPV`.
 

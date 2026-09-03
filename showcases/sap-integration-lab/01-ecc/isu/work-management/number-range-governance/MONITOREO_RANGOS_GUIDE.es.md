@@ -4,17 +4,29 @@
 
 ## 1. Consulta de intervalos — transacción SNRO/SNUM
 
+![Monitoreo de rangos — objeto AUFTRAG en SNRO](./evidence/monitoreo/figure-01.webp)
+
 Ingrese el objeto AUFTRAG y seleccione «Actualización de intervalo».
 
+![Monitoreo de rangos — grupos e intervalos disponibles](./evidence/monitoreo/figure-02.webp)
+
 Revise las opciones disponibles e identifique los grupos e intervalos correspondientes a cada tipo de orden.
+
+![Monitoreo de rangos — acceso a SE38](./evidence/monitoreo/figure-03.webp)
 
 ## 2. Monitoreo de consumo — transacción SE38
 
 Ingrese a la transacción SE38 y ejecute el programa RSNUMHOT. Este reporte permite consultar el porcentaje de utilización de los intervalos y detectar los rangos próximos a agotarse.
 
+![Monitoreo de rangos — ejecución del programa RSNUMHOT](./evidence/monitoreo/figure-04.webp)
+
 Digite RSNUMHOT y presione Enter para continuar.
 
+![Monitoreo de rangos — resultado filtrado por AUFTRAG](./evidence/monitoreo/figure-05.webp)
+
 Desmarque los criterios que no correspondan, establezca 60 % en el campo «Visualizar a partir de %» y ejecute el reporte. En el resultado, filtre por el objeto AUFTRAG y priorice los intervalos con mayor porcentaje de utilización.
+
+![Monitoreo de rangos — intervalo al 100 % de utilización](./evidence/monitoreo/figure-06.webp)
 
 ## 3. Ampliación del rango al alcanzar el 100 %
 

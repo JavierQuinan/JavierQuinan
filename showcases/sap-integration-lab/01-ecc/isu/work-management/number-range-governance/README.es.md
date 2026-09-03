@@ -13,7 +13,7 @@ Esta evidencia consolida dos actividades reales y complementarias: monitoreo de 
 - [Ampliación del rango de numeración de órdenes](./AMPLIACION_RANGO_GUIDE.es.md)
 - [Monitoreo de rangos de órdenes de trabajo](./MONITOREO_RANGOS_GUIDE.es.md)
 
-![Verificación final del rango AUFTRAG aportada en la guía](./evidence/range-final.webp)
+![Verificación final del rango AUFTRAG aportada en la guía](./evidence/ampliacion/figure-08.webp)
 
 La evidencia visual corresponde a la guía entregada para este caso y muestra la verificación final del grupo y del intervalo configurado.
 

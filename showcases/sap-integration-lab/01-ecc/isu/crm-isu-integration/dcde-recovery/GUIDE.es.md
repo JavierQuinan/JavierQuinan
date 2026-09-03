@@ -14,7 +14,7 @@ Establecer el procedimiento para corregir los casos en los que la orden de traba
 | Acuerdo comercial | 2000300***** |
 | CUEN | 130035*** |
 
-*Figura 1. Orden DCDE utilizada como referencia para el diagnóstico.*
+![Figura 1. Orden DCDE utilizada como referencia para el diagnóstico.](./evidence/figure-01.webp)
 
 # 3. Procedimiento
 
@@ -22,7 +22,7 @@ Establecer el procedimiento para corregir los casos en los que la orden de traba
 
 Ingresar el acuerdo comercial en la transacción ES32 y verificar el CUEN asociado. Para el caso de referencia, el acuerdo comercial 200030060632 corresponde al CUEN 1300353940.
 
-*Figura 2. Identificación del CUEN asociado al acuerdo comercial.*
+![Figura 2. Identificación del CUEN asociado al acuerdo comercial.](./evidence/figure-02.webp)
 
 **Paso 2. Enlazar el CUEN en CRM**
 
@@ -32,17 +32,19 @@ Con el CUEN identificado, ingresar a CRM y ejecutar el enlace correspondiente pa
 
 En CRM, ingresar a Gestión de contratos, seleccionar el contrato correspondiente y hacer clic en Modificar contratos.
 
+![CRM — acceso a Modificar contrato](./evidence/figure-03.webp)
+
 **Paso 4. Cancelar el fin de contrato**
 
 En la pantalla Posiciones a tratar, seleccionar el proceso Cancelar fin de contrato (CONTEND_CANCEL) y hacer clic en Iniciar proceso.
 
-*Figura 4. Selección del proceso Cancelar fin de contrato.*
+![Figura 4. Selección del proceso Cancelar fin de contrato.](./evidence/figure-04.webp)
 
 **Paso 5. Finalizar el proceso**
 
 Verificar que el proceso seleccionado sea Cancelar fin de contrato y hacer clic en Finalizar proceso. Confirmar la operación mediante OK cuando el sistema lo solicite.
 
-*Figura 5. Finalización del proceso de cancelación del fin de contrato.*
+![Figura 5. Finalización del proceso de cancelación del fin de contrato.](./evidence/figure-05.webp)
 
 **Paso 6. Ejecutar nuevamente la baja**
 
