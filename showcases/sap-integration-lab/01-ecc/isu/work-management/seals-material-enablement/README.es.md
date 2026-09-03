@@ -1,14 +1,24 @@
-# SAP ECC MM ↔ IS-U/WM — Habilitación de Materiales de Sellos
+# SAP ECC MM ↔ IS-U/WM — Habilitación y Consumo de Sellos
 
 [English version](./README.md)
 
-> **Tipo de evidencia:** caso de soporte cross-module sanitizado  
+> **Tipo de evidencia:** caso operativo cross-module  
 > **Estado:** `FUNCTIONAL_EVIDENCE_READY`  
-> **Alcance:** disponibilidad del material → habilitación en Seal Management → uso en OT
+> **Alcance:** disponibilidad de material → gestión de sellos → consumo en OT → soporte de ambiente de prueba
 
-Esta evidencia documenta un escenario cross-module donde los materiales de sellos ya existen en el maestro SAP MM, pero todavía requieren habilitación/configuración en el proceso de gestión de sellos antes de poder utilizarse operativamente en órdenes de trabajo.
+Esta evidencia documenta la relación entre SAP MM, Seal Management y Work Management, complementada con la guía operativa aportada para `ZCONS_SELLOS` y el uso de `MMPV` en ambientes de prueba y réplica.
 
-El ticket fuente contenía empresa, IDs del caso y números reales de material. Ninguno se publica.
+## Guía evidencial aportada
+
+- [ZCONS_SELLOS: Consumo de sellos](./CONSUMO_SELLOS_GUIDE.es.md)
+
+La estructura de carga documentada utiliza las columnas `MATERIAL`, `ORDEN`, `SERIE` y `UBICACIÓN`.
+
+### Evidencia MMPV
+
+![MMPV en ambiente de prueba](./evidence/mmpv-test-period.webp)
+
+La captura corresponde a la guía entregada y documenta la ampliación del período contable en ambientes de prueba mediante `MMPV`.
 
 ## Relación del proceso
 
@@ -17,9 +27,6 @@ Necesidad de material para campo
           │
           ▼
 Material creado/extendido en SAP MM
-          │
-          ▼
-Validar atributos/contexto del material
           │
           ▼
 Habilitar/configurar en Seal Management
@@ -31,7 +38,7 @@ Disponibilizar tipo de sello para WM
 Uso en OT / ejecución de campo
           │
           ▼
-Registrar/consumir material según proceso
+ZCONS_SELLOS / consumo según proceso
 ```
 
 ## Principio de troubleshooting
@@ -61,35 +68,10 @@ Disponibilidad en maestro MM
 Disponibilidad en aplicación WM
 ```
 
-El análisis debe seguir la dependencia completa y no recrear el material ni forzar su ingreso en una OT.
-
-## Límite público
-
-Nunca publicar:
-
-- números reales de material
-- IDs de tickets
-- empresas/unidades de negocio
-- categorías/configuración interna de sellos
-- screenshots operativos
-- programas o transportes custom
-
-## Lab futuro
-
-Podemos modelar con datos sintéticos:
-
-- reglas de elegibilidad de material
-- mapping material↔tipo de sello
-- selección en OT
-- validación de consumo
-- reporte de consistencia de configuración
-
-sin copiar configuración propietaria.
-
 ## Qué demuestra
 
-- integración SAP MM ↔ IS-U/WM
-- distinción maestro vs. configuración de aplicación
-- troubleshooting de habilitación de materiales de campo
-- razonamiento de consumo downstream
-- sanitización de casos de soporte
+- integración SAP MM ↔ IS-U/WM;
+- gestión y consumo de sellos mediante proceso operativo;
+- estructura de archivo de carga para `ZCONS_SELLOS`;
+- uso de `MMPV` en ambientes de prueba/réplica;
+- troubleshooting de habilitación de materiales de campo.
