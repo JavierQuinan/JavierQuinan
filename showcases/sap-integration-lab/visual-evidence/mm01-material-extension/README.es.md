@@ -2,26 +2,20 @@
 
 [English version](./README.md)
 
-> **Tipo de evidencia:** capturas operativas originales aportadas como evidencia + guía reproducible  
-> **Fuente:** guía de trabajo utilizada para documentar un caso real de extensión de material
+> **Tipo de evidencia:** guía operativa y evidencia visual aportadas para el portafolio  
+> **Transacción:** `MM01`
 
-Este set documenta el patrón operativo para extender un material existente a niveles organizativos adicionales mediante `MM01`.
+Este set documenta la extensión de un material existente al centro/almacén requerido mediante `MM01`, siguiendo la guía entregada.
 
-Las imágenes publicadas en este apartado se muestran como fueron aportadas en la guía de trabajo. No se aplican bloques de color, desenfoque adicional ni sustitución visual que degrade la evidencia.
+## Guía evidencial
 
-## Evidencia disponible
+- [Guía de extensión de material — MM01](./GUIDE.es.md)
 
-### Niveles organizativos
+## Evidencia visual
 
-![Niveles organizativos MM01 — evidencia original](./mm01-org-levels-original.svg)
+![Resultado de extensión MM01 aportado en la guía](./mm01-result.webp)
 
-Demuestra la selección de centro, el contexto de almacén y la asignación del nivel organizativo antes de mantener las vistas seleccionadas.
-
-### Verificación posterior
-
-![Verificación MM01 — evidencia original](./mm01-verification-original.svg)
-
-Demuestra la comprobación posterior de que el material se encuentra disponible en el contexto organizativo esperado.
+La captura corresponde a la validación final incluida en la guía aportada: el material queda disponible en el contexto organizativo requerido.
 
 ## Flujo operativo documentado
 
@@ -42,13 +36,6 @@ Guardar
         ↓
 Verificar el material en el nivel organizativo esperado
 ```
-
-## Controles prácticos
-
-- No crear un material duplicado si la necesidad es únicamente una extensión organizativa.
-- Confirmar centro y almacén destino antes de guardar.
-- Seleccionar únicamente las vistas necesarias para el proceso y alcance autorizado.
-- Verificar el resultado después del guardado.
 
 ## Referencias oficiales SAP
 
