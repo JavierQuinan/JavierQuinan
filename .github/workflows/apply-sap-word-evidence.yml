@@ -1,11 +1,11 @@
-name: Apply supplied SAP Word evidence
+name: Apply SAP Word evidence payload
 
 on:
   push:
     branches:
       - docs/sap-word-screenshots-2026-09-03
     paths:
-      - .tmp/final15/READY
+      - .tmp/F600_READY
 
 permissions:
   contents: write
@@ -23,20 +23,20 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-
-          cat .tmp/final15/chunk_* | base64 --decode > /tmp/sap-final-q16.tar.gz
-          echo "7f705a83fe7d438989a2c640e227c3b3638569cfd6dac53d1599c70c91888da5  /tmp/sap-final-q16.tar.gz" | sha256sum -c -
+          cat .tmp/f600/chunk_* | tr -d '\n' | base64 --decode > /tmp/sap-evidence-payload.tar.gz
+          echo '58a1fbf81ddffd11b7014b1ba1ed3f24363b1b4883f7eccd277c314d985d3871  /tmp/sap-evidence-payload.tar.gz' | sha256sum -c -
 
           rm -f showcases/sap-integration-lab/visual-evidence/mm01-material-extension/mm01-result.webp
           rm -f showcases/sap-integration-lab/01-ecc/isu/work-management/number-range-governance/evidence/range-final.webp
           rm -f showcases/sap-integration-lab/01-ecc/isu/work-management/number-range-governance/evidence/rsnumhot-monitor.webp
           rm -f showcases/sap-integration-lab/01-ecc/isu/work-management/seals-material-enablement/evidence/mmpv-test-period.webp
 
-          tar -xzf /tmp/sap-final-q16.tar.gz -C .
-
+          tar -xzf /tmp/sap-evidence-payload.tar.gz -C .
           manifest='showcases/sap-integration-lab/.word-evidence-manifest.txt'
           test -f "$manifest"
-          test "$(wc -l < "$manifest" | tr -d ' ')" -eq 59
+          expected=59
+          actual=$(wc -l < "$manifest" | tr -d ' ')
+          test "$actual" -eq "$expected"
 
           while IFS= read -r path; do
             test -s "$path"
