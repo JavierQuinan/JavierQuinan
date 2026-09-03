@@ -2,19 +2,20 @@
 
 [English version](./README.md)
 
-> **Tipo de evidencia:** parametrización operativa sanitizada + monitoreo preventivo  
+> **Tipo de evidencia:** parametrización operativa + monitoreo preventivo  
 > **Objeto estándar:** `AUFTRAG`  
 > **Transacciones / reportes:** `SNRO` / `SNUM` · `SE38` · `RSNUMHOT`
 
 Esta evidencia consolida dos actividades reales y complementarias: monitoreo de consumo de rangos de órdenes y mantenimiento controlado del objeto de rango `AUFTRAG` cuando existe riesgo de agotamiento.
 
-La versión pública conserva el flujo técnico y elimina códigos de empresa, grupos internos, números reales de intervalo, mandante y valores operativos que permitan reconstruir configuración corporativa.
+## Guías evidenciales aportadas
 
-## Evidencia visual sanitizada
+- [Ampliación del rango de numeración de órdenes](./AMPLIACION_RANGO_GUIDE.es.md)
+- [Monitoreo de rangos de órdenes de trabajo](./MONITOREO_RANGOS_GUIDE.es.md)
 
-![Mantenimiento sanitizado del objeto AUFTRAG](../../../../visual-evidence/number-range-governance/auftrg-interval-sanitized.jpg)
+![Verificación final del rango AUFTRAG aportada en la guía](./evidence/range-final.webp)
 
-La captura conserva el objeto estándar `AUFTRAG`, la pantalla de actualización de intervalo y la estructura de mantenimiento. El grupo y los límites numéricos reales fueron sustituidos antes de publicarse.
+La evidencia visual corresponde a la guía entregada para este caso y muestra la verificación final del grupo y del intervalo configurado.
 
 ## Flujo operativo demostrado
 
@@ -93,7 +94,3 @@ Los rangos de números requieren una validación específica por ambiente. La gu
 - control de solapamientos;
 - trazabilidad de cambios;
 - validación posterior a parametrización.
-
-## Límite de confidencialidad
-
-No se publican rangos corporativos reales, grupos internos, sociedades, mandantes, órdenes de transporte ni identificadores operativos. La evidencia pública conserva únicamente la lógica estándar y el procedimiento reproducible.
