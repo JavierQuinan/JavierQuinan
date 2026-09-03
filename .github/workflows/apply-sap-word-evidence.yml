@@ -5,7 +5,7 @@ on:
     branches:
       - docs/sap-word-screenshots-2026-09-03
     paths:
-      - .tmp/sap-evidence-payload.b64
+      - .tmp/READY
 
 permissions:
   contents: write
@@ -21,11 +21,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          base64 --decode .tmp/sap-evidence-payload.b64 > /tmp/sap-evidence-payload.tar.gz
+          cat .tmp/sap-evidence-payload.b64.part-* | base64 --decode > /tmp/sap-evidence-payload.tar.gz
           tar -xzf /tmp/sap-evidence-payload.tar.gz -C .
-          rm -f .tmp/sap-evidence-payload.b64 .sap-evidence-write-ok
+          rm -rf .tmp .sap-evidence-write-ok
           rm -f .github/workflows/apply-sap-word-evidence.yml
-          rmdir .tmp 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
