@@ -6,157 +6,123 @@
 > **Status:** `FUNCTIONAL_EVIDENCE_READY`  
 > **Scope:** controlled batch closure/cancellation of eligible work orders
 
-This evidence documents the controls around a batch process used to prevent execution of work orders that remain open but are not assigned to an operational work center.
+This evidence documents the controls around a batch process used to prevent field execution of work orders that remain open but have no operational work-center assignment.
 
-The public artifact intentionally does **not** publish the original spreadsheet/script implementation, internal order numbers, environment details or enterprise automation code. The focus is governance: eligibility, pre-validation, controlled execution, per-record results and post-validation in SAP.
+The public artifact does **not** publish the original spreadsheet/script implementation, enterprise order numbers, environment details or proprietary automation code. The focus is governance: eligibility, pre-validation, controlled execution, per-record results and independent SAP post-validation.
 
 ## Eligibility gate
 
-A work order enters the batch only when all required conditions are true.
+A work order enters the batch only when all required criteria are true:
 
-Example source-derived criteria:
+- it remains in the configured open/pending state;
+- no operational work center is assigned;
+- the order identifier has been validated;
+- closure/cancellation is the approved business objective.
 
-- order remains in the configured open/pending state
-- no operational work center is assigned
-- order identifier is known and validated
-- closing/cancelling it is the approved business objective
-
-If a record does not meet every criterion, it must be excluded from the batch.
-
-## Controlled batch flow
+## Controlled flow
 
 ```text
-Candidate work orders
+candidate work orders
         │
         ▼
-Eligibility validation in SAP
+validate eligibility in SAP
         │
         ▼
-Prepare bounded input set
+prepare bounded input set
         │
         ▼
-Check duplicates / blanks / range
+check duplicates / blanks / range
         │
         ▼
-Authorize automation access
+authorize SAP GUI Scripting
         │
         ▼
-Execute batch without concurrent user actions
+execute without concurrent session work
         │
         ▼
-Capture result per work order
+capture result per work order
         │
         ▼
-Validate final status in SAP
-        │
-    ┌───┴────┐
-    ▼        ▼
-Success    Failure
-    │        │
-close log  preserve error + diagnose before retry
+independently validate final SAP state
 ```
 
-## Pre-execution controls
+## Supplied template evidence
 
-Before the batch starts:
+The source guide documents a controlled spreadsheet where:
 
-1. verify each order still satisfies the functional eligibility criteria;
-2. remove duplicates;
-3. ensure the selected processing range contains only intended rows;
-4. exclude blank/ambiguous records;
-5. avoid unrelated concurrent work in the same SAP session;
-6. execute only from an authorized automation source;
-7. prefer a controlled time window when batch locking could affect other processes.
+- `C2` defines the first row;
+- `C3` defines the last row;
+- column A marks selected records;
+- column B contains the work-order identifier;
+- column D stores the execution result.
+
+Real order identifiers are omitted from the public artifact.
+
+Before execution, the range is checked for blanks, duplicates and unintended selected rows.
 
 ## Execution discipline
 
-The source process uses SAP GUI automation initiated from a controlled spreadsheet/template.
+The process runs with SAP open and an authorized template. SAP GUI requests confirmation when a script attempts to access the active session.
 
-Public lessons:
+Reproducible controls:
 
-- the SAP session must remain active;
-- the user must explicitly authorize GUI scripting access when prompted;
-- the process should not be interrupted mid-batch;
-- results must be captured per record rather than only as a global success message.
+1. keep the SAP session active;
+2. explicitly authorize GUI scripting access when prompted;
+3. do not interrupt the batch mid-run;
+4. avoid unrelated concurrent operations in the same session;
+5. capture per-record outcome, not only a global completion message.
 
-## Per-record result model
+## Result interpretation
 
-A professional batch should expose at least:
+The supplied evidence shows a processing status and a successful execution result per order. The public version preserves the semantics rather than real identifiers:
 
 ```text
-input order
-selected? yes/no
-processing status
-result code/message
-validation status
-retry/escalation decision
+selected record
+    │
+    ▼
+processed by automation
+    │
+    ▼
+success / error message
+    │
+    ▼
+independent SAP validation
 ```
 
-Do not treat “script finished” as proof that every work order reached the desired SAP state.
+A finished script is not proof that every work order reached the desired state.
 
-## Post-validation
-
-After execution, independently verify the resulting work-order state in SAP.
+## Post-validation and retries
 
 If a record fails:
 
-1. preserve the sanitized error message;
+1. preserve the sanitized error;
 2. re-check eligibility;
-3. confirm current order status and assignment;
-4. diagnose the cause before retrying;
+3. confirm current status and work-center assignment;
+4. diagnose before retry;
 5. avoid blind mass re-execution.
 
-## Automation limitations
+## Documented limitation
 
-The source guide notes that the automation cannot add an explanatory observation to the work order during closure/cancellation. Therefore, additional traceability must be stored through the authorized institutional mechanism rather than assumed to exist in the batch tool.
-
-## Future engineering lab
-
-A modern public lab can reproduce the governance pattern using synthetic orders:
-
-```text
-CSV/JSON batch input
-     │
-     ▼
-validator
-     │
-     ▼
-dry-run / eligibility matrix
-     │
-     ▼
-command executor abstraction
-     │
-     ▼
-per-item result log
-     │
-     ▼
-idempotent retry queue
-     │
-     ▼
-audit report
-```
-
-This future implementation would demonstrate batch safety, idempotency, auditability and error isolation without interacting with any real enterprise SAP system.
+The source guide states that the automation cannot add an explanatory observation during closure/cancellation. Additional traceability therefore belongs in the authorized institutional mechanism.
 
 ## Confidentiality boundary
 
 Not published:
 
-- original Excel/VBA script
-- enterprise order numbers
-- system/client names
-- usernames
-- company names
-- internal automation paths
-- production screenshots
+- original Excel/VBA implementation;
+- real work-order numbers;
+- system/client names;
+- usernames or companies;
+- internal automation paths;
+- unsanitized productive screenshots.
 
-## What this proves
+## What this demonstrates
 
-- mass-processing governance
-- eligibility-rule design
-- preflight validation
-- SAP GUI automation awareness
-- per-item error handling
-- post-execution verification
-- operational risk reduction
-- audit/traceability thinking
+- mass-processing governance;
+- eligibility-rule design;
+- preflight validation;
+- operational SAP GUI Scripting knowledge;
+- per-record error control;
+- post-execution verification;
+- operational-risk reduction;
+- traceability and retry discipline.
