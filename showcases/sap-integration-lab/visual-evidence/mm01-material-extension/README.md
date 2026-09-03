@@ -13,7 +13,7 @@ This set documents extension of an existing material to the required plant/stora
 
 ## Visual evidence
 
-![MM01 post-extension result supplied in the guide](./mm01-result.webp)
+![MM01 post-extension result supplied in the guide](./evidence/figure-09.webp)
 
 The image corresponds to the final verification contained in the supplied guide.
 
