@@ -3,7 +3,8 @@
 > **Source repository:** private  
 > **Public artifact type:** sanitized architecture / engineering evidence  
 > **Domain:** Ecuador electronic invoicing and enterprise SaaS  
-> **Evidence reviewed:** private repository documentation and code metadata through July 2026
+> **Evidence reviewed:** private repository documentation and code metadata through July 2026  
+> **Future direction:** [Product Vision Roadmap](./ROADMAP.md) — explicitly not current implementation evidence
 
 This case study exposes enough technical evidence to evaluate the engineering work behind KOVI without publishing commercial source code, tenant data, certificates, credentials or fiscal documents.
 
@@ -155,6 +156,10 @@ The private roadmap explicitly excluded several features from the early scope in
 ## Why this project matters in my portfolio
 
 KOVI demonstrates the intersection of **enterprise SaaS architecture, asynchronous backend engineering, security-sensitive credential handling and regulated business integration**. It is stronger evidence of my current engineering direction than publishing commercial source code would be.
+
+## Future product direction
+
+The public [Product Vision Roadmap](./ROADMAP.md) describes `NEXT / LATER / EXPLORE` outcomes separately from current evidence. Roadmap items are not implementation claims and intentionally omit delivery dates.
 
 ---
 
