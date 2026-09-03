@@ -54,13 +54,14 @@ Command-line tool for comparing JSON/YAML configuration files with multiple outp
 
 | Repository | Evidence | Portfolio role |
 |---|---|---|
-| [Task Manager](https://github.com/JavierQuinan/fullstack-javascript-project-141) | Fastify · SQLite · Knex · Objection.js · auth · CRUD · i18n · CI | Full-stack supporting evidence |
-| [Realtime Chat](https://github.com/JavierQuinan/fullstack-javascript-project-139) | React 18 · Redux Toolkit · Socket.IO · Formik/Yup · i18n · CI | React/realtime supporting evidence |
-| [RSS Reader](https://github.com/JavierQuinan/fullstack-javascript-project-137) | Reactive JavaScript · Axios · RSS parsing · i18next · Webpack | Frontend supporting evidence |
-| [Parking Android](https://github.com/JavierQuinan/parqueadero_android) | Kotlin · Native Android · AndroidX · Material Components · HTTP/Volley · CRUD/parking flow | Native Android open-source evidence |
+| [Billing & Inventory](https://github.com/JavierQuinan/Listas) | Angular 18 · PHP MVC · SQLite/PDO · auth hardening · deterministic DB bootstrap · smoke tests · CI | Angular/full-stack supporting evidence |
+| [Task Manager](https://github.com/JavierQuinan/fullstack-javascript-project-141) | Fastify 5 · SQLite · Knex · Objection.js · bcrypt/auth · CRUD · i18n · independent CI | Backend/full-stack supporting evidence |
+| [Realtime Chat](https://github.com/JavierQuinan/fullstack-javascript-project-139) | React 18 · Redux Toolkit · Socket.IO · Formik/Yup · i18n · automated tests · CI | React/realtime supporting evidence |
+| [RSS Reader](https://github.com/JavierQuinan/fullstack-javascript-project-137) | Reactive JavaScript · Axios · RSS parsing · i18next · Webpack · ESLint · Playwright Chromium CI | Frontend/testing supporting evidence |
+| [Parking Android](https://github.com/JavierQuinan/parqueadero_android) | Kotlin · Native Android · environment-aware networking · pure Kotlin domain rules · 14 versioned unit-test methods · lint/test/build CI | Native Android supporting evidence |
 | [Page Loader](https://github.com/JavierQuinan/fullstack-javascript-project-138) | Node.js CLI · Axios · Cheerio · concurrency · Jest | CLI/HTTP processing supporting evidence |
 
-Repository classification and public-security rules are documented in [Portfolio Governance](docs/PORTFOLIO_GOVERNANCE.md).
+Repository classification, public-security rules and the audited pin recommendation are documented in [Portfolio Governance](docs/PORTFOLIO_GOVERNANCE.md) and the [September 2026 Public Portfolio Audit](docs/PUBLIC_PORTFOLIO_AUDIT_2026-09.md).
 
 ## Sanitized private-product case studies
 
@@ -134,7 +135,8 @@ ECC ABAP artifacts are presented as reviewable source/static evidence, not as co
 3. [FITBA Web + Mobile Showcase](showcases/fitba/README.md)
 4. [LegalTech Platform Showcase](showcases/legaltech/README.md)
 5. [SAP Integration Lab](showcases/sap-integration-lab/README.md)
-6. [Parking Android](https://github.com/JavierQuinan/parqueadero_android)
+6. [Billing & Inventory — Angular + PHP](https://github.com/JavierQuinan/Listas)
+7. [Parking Android — Kotlin](https://github.com/JavierQuinan/parqueadero_android)
 
 ## Español
 
