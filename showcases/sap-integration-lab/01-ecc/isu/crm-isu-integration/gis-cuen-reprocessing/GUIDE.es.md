@@ -24,13 +24,13 @@ El monitoreo se ejecuta por sociedad y división. Deben revisarse las diez empre
 
 Ingrese a la transacción ZMONICUEN.
 
-*Figura 1. Parámetros de selección de la transacción ZMONICUEN.*
+![Figura 1. Parámetros de selección de la transacción ZMONICUEN.](./evidence/figure-01.webp)
 
 **Paso 2. Completar los parámetros de selección**
 
 Ingrese la sociedad, la división y el período que se va a revisar. En cada ejecución cambie la sociedad y la división hasta completar el monitoreo de todas las empresas eléctricas y, en el caso de CNEL, de sus once divisiones. Seleccione el estado «Respondido por GIS pero con error» y ejecute la consulta.
 
-*Figura 2. Resultado del control de creación de CUEN.*
+![Figura 2. Resultado del control de creación de CUEN.](./evidence/figure-02.webp)
 
 **Paso 3. Clasificar los resultados**
 
@@ -42,15 +42,15 @@ Revise la columna Mensaje y aplique el criterio de tratamiento indicado en la se
 
 Abra una nueva ventana e ingrese a la transacción SE16. Consulte la tabla ZDMTB_DATTEC_IN y ubique el campo CUEN.
 
-*Figura 3. Campo CUEN en la tabla ZDMTB_DATTEC_IN.*
+![Figura 3. Campo CUEN en la tabla ZDMTB_DATTEC_IN.](./evidence/figure-03.webp)
 
-*Figura 4. Carga de varios CUEN mediante selección múltiple.*
+![Figura 4. Carga de varios CUEN mediante selección múltiple.](./evidence/figure-04.webp)
 
 **Paso 5. Obtener los identificadores de novedad**
 
 Ingrese los CUEN identificados. Si existen varios registros, utilice Selección múltiple, pegue un CUEN por fila, confirme la selección y ejecute la consulta.
 
-*Figura 5. Resultado de la consulta en la tabla ZDMTB_DATTEC_IN.*
+![Figura 5. Resultado de la consulta en la tabla ZDMTB_DATTEC_IN.](./evidence/figure-05.webp)
 
 Copie el valor del campo ID_NOVEDAD correspondiente a cada CUEN. Estos identificadores se utilizarán para ejecutar el reproceso en la interfaz GIS–SAP.
 
@@ -58,23 +58,23 @@ Copie el valor del campo ID_NOVEDAD correspondiente a cada CUEN. Estos identific
 
 Acceda a la transacción ZGISDMT. En el campo ID de novedad, utilice Selección múltiple para cargar todos los valores obtenidos en el paso anterior.
 
-*Figura 6. Pantalla inicial de la transacción ZGISDMT.*
+![Figura 6. Pantalla inicial de la transacción ZGISDMT.](./evidence/figure-06.webp)
 
-*Figura 7. Carga de ID_NOVEDAD mediante selección múltiple.*
+![Figura 7. Carga de ID_NOVEDAD mediante selección múltiple.](./evidence/figure-07.webp)
 
 **Paso 7. Ejecutar la consulta sin restricción de fecha**
 
 Elimine el valor del campo Creado el. Mantenga los ID de novedad cargados y ejecute la consulta.
 
-*Figura 8. Ejecución de ZGISDMT sin fecha de creación.*
+![Figura 8. Ejecución de ZGISDMT sin fecha de creación.](./evidence/figure-08.webp)
 
-*Figura 9. Registros recuperados para reproceso.*
+![Figura 9. Registros recuperados para reproceso.](./evidence/figure-09.webp)
 
 **Paso 8. Procesar y validar**
 
 Seleccione todos los registros recuperados y pulse Procesar. Espere a que el sistema finalice la ejecución.
 
-*Figura 10. Resultado satisfactorio del reproceso.*
+![Figura 10. Resultado satisfactorio del reproceso.](./evidence/figure-10.webp)
 
 # 4. Validación final
 

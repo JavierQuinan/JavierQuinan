@@ -13,16 +13,20 @@ This folder contains only visual evidence supplied for the portfolio and retaine
 The set retains:
 
 - the Spanish evidence guide, faithful to the supplied document;
-- one real final-verification screenshot extracted from the same guide (`mm01-result.webp`).
+- the 9 real screenshots extracted from the same guide, in `mm01-material-extension/evidence/`.
 
-Earlier generated screenshots used during portfolio preparation were removed. No generated SVG montages or broken image files are retained.
+Earlier partial screenshots used during portfolio preparation were removed. No generated SVG montages or broken image files are retained.
 
 ### Visual evidence stored with its functional module
 
-Work-order number-range and MMPV evidence is stored next to the corresponding functional guides to preserve technical context:
+Number-range governance, RSNUMHOT monitoring, batch order cancellation, device dual-status regularization, DCDE, CUEN and seal-consumption evidence is stored next to the corresponding functional guides to preserve technical context:
 
 - `01-ecc/isu/work-management/number-range-governance/evidence/`
+- `01-ecc/isu/work-management/batch-order-governance/evidence/`
 - `01-ecc/isu/work-management/seals-material-enablement/evidence/`
+- `01-ecc/isu/device-management/device-status-regularization/evidence/`
+- `01-ecc/isu/crm-isu-integration/dcde-recovery/evidence/`
+- `01-ecc/isu/crm-isu-integration/gis-cuen-reprocessing/evidence/`
 
 ## Publication rule
 

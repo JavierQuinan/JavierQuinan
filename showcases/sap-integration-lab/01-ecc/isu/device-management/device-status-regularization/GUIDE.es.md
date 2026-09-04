@@ -12,12 +12,12 @@ Aplique este procedimiento cuando un medidor permanezca con doble estatus ALMA-M
 ## 1. Consultar el medidor en la transacción IQ09
 Ingrese a la transacción IQ09, registre el número de medidor y ejecute la consulta. Para el caso de referencia se utiliza el serial 5212015483.
 
-Figura 1. Consulta del medidor 5212015483 en IQ09.
+![Figura 1. Consulta del medidor 5212015483 en IQ09.](./evidence/figure-01.webp)
 
 ## 2. Revisar el resultado de lecturas
 Seleccione la opción “Result.lectura” para visualizar el historial de lecturas asociado al medidor.
 
-Figura 2. Historial de lecturas del medidor.
+![Figura 2. Historial de lecturas del medidor.](./evidence/figure-02.webp)
 
 ## 3. Identificar la última lectura registrada
 Localice la lectura más reciente. En este caso, la última lectura corresponde al 06.04.2026. Esta fecha determina la fecha de operación que se utilizará en los pasos posteriores.
@@ -25,49 +25,49 @@ Localice la lectura más reciente. En este caso, la última lectura corresponde 
 ## 4. Ejecutar el desmontaje para cálculo en EG35
 Ingrese a la transacción EG35. Registre la instalación y establezca como fecha de operación una fecha posterior a la última lectura. Para este caso se utiliza el 08.04.2026, es decir, dos días después de la lectura del 06.04.2026.
 
-Figura 3. Datos iniciales para el desmontaje de cálculo en EG35.
+![Figura 3. Datos iniciales para el desmontaje de cálculo en EG35.](./evidence/figure-03.webp)
 
 Presione Enter para cargar la información relacionada con el medidor y la instalación.
 
-Figura 4. Datos recuperados para el desmontaje de cálculo.
+![Figura 4. Datos recuperados para el desmontaje de cálculo.](./evidence/figure-04.webp)
 
 Verifique los datos mostrados y guarde la operación.
 
 ## 5. Completar el desmontaje para cálculo en EG36
 Ingrese a la transacción EG36, registre el serial del medidor y utilice la misma fecha de operación definida en EG35. En el caso de referencia: medidor 5212015483 y fecha 08.04.2026.
 
-Figura 5. Datos de entrada en EG36.
+![Figura 5. Datos de entrada en EG36.](./evidence/figure-05.webp)
 
 Presione Enter, compruebe la información técnica y guarde.
 
-Figura 6. Información técnica previa a completar el desmontaje.
+![Figura 6. Información técnica previa a completar el desmontaje.](./evidence/figure-06.webp)
 
 Después de guardar, valide el estado actualizado del equipo.
 
-Figura 7. Verificación del estado del equipo después de EG36.
+![Figura 7. Verificación del estado del equipo después de EG36.](./evidence/figure-07.webp)
 
 ## 6. Anular el desmontaje mediante EG50
 Para restablecer el estado necesario antes del montaje, ingrese a la transacción EG50 y registre el serial 5212015483.
 
-Figura 8. Pantalla inicial de EG50.
+![Figura 8. Pantalla inicial de EG50.](./evidence/figure-08.webp)
 
 Presione Enter. En la lista de operaciones seleccione la ruta “Desmontaje → Anulable → Aparato” y guarde la operación.
 
-Figura 9. Selección de la operación anulable en EG50.
+![Figura 9. Selección de la operación anulable en EG50.](./evidence/figure-09.webp)
 
 ## 7. Montar nuevamente el medidor en EG34
 Ingrese a la transacción EG34. Registre la instalación, la fecha de operación y el número de medidor. En el caso de referencia se utiliza la instalación 4003309630, la fecha 08.04.2026 y el medidor 5212015483.
 
-Figura 10. Datos iniciales para el montaje en EG34.
+![Figura 10. Datos iniciales para el montaje en EG34.](./evidence/figure-10.webp)
 
 Presione Enter. Complete los campos “Cl.tarf.” y “Gr.val.” con los valores que correspondan al caso, valide la información y guarde.
 
-Figura 11. Datos técnicos del montaje en EG34.
+![Figura 11. Datos técnicos del montaje en EG34.](./evidence/figure-11.webp)
 
 ## 8. Verificar el resultado final
 Consulte nuevamente el serial del medidor en IQ09. Confirme que el equipo tenga un único estatus MONT y que ya no figure el doble estatus ALMA-MONT.
 
-Figura 12. Resultado final: medidor con estatus único MONT.
+![Figura 12. Resultado final: medidor con estatus único MONT.](./evidence/figure-12.webp)
 
 # Procedimiento de contingencia
 
