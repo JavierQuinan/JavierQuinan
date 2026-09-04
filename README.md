@@ -106,7 +106,7 @@ Evidence available now:
 - **ECC MM Inventory & Stock Risk** — original ABAP OO source, read-only `MARA/MARC/MARD`, SALV, 6 source-reviewed deterministic scenarios, `SE24/SE38/SE93` guide and sanitized MM01 visual evidence.
 - **ECC MM Service Procurement / `ZMM_CONTRACT_AUDIT`** — sanitized framework-contract guide, original read-only `EKKO/EKPO` ABAP source, SALV and 8 source-reviewed deterministic scenarios.
 - **ECC MM Purchasing Analytics / `ZMM_PURCH_ANALYTICS`** — original read-only `EBAN → EKKO/EKPO → EKET` source, PO-category guard, SALV and 7 source-reviewed deterministic scenarios.
-- **ECC IS-U / Work Management / `ZWM_STATUS_AUDIT_LAB`** — original read-only `AUFK/JSTO/JEST/TJ02T/TJ30T/JCDS` source, datasource abstraction, SALV and 6 source-reviewed deterministic scenarios, backed by sanitized operational troubleshooting guidance.
+- **ECC IS-U / Work Management / `ZWM_STATUS_AUDIT_LAB`** — original read-only `AUFK/JSTO/JEST/TJ02T/TJ30T/JCDS` source, datasource abstraction, SALV and 6 source-reviewed deterministic scenarios, backed by sanitized operational troubleshooting guidance and 50 sanitized visual-evidence screenshots (number-range governance, batch order cancellation, device status regularization, DCDE recovery, CUEN reprocessing, seal consumption).
 - **ECC Technical Diagnostics** — original bilingual guides for transaction/object discovery, debugging, dump analysis and process monitoring.
 - **ECC / CRM-SD** — sanitized non-energy service billing workflow.
 - **S/4HANA MM Procurement API Client** — actual TypeScript read-only source with OData validation, correlation-ID handling, HTTPS enforcement and **6/6 tests PASS in GitHub Actions**.
