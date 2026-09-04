@@ -67,10 +67,14 @@ Las guías sanitizadas cubren:
 - conceptos de asignación/liberación/cierre mediante `IW32`
 - monitoreo de background jobs con `SM37`
 - procesamiento masivo controlado
+- gobierno de rangos de numeración de órdenes `AUFTRAG` (`SNRO`) y monitoreo de consumo con `RSNUMHOT`
+- cierre/anulación de órdenes de trabajo mediante SAP GUI Scripting
+- regularización de doble estatus de medidor (`IQ09 / EG35 / EG36 / EG50 / EG34`)
 - habilitación de materiales de sellos MM ↔ WM
 - consistencia de equipamiento IS-U ↔ CRM
 - alta de servicio fotovoltaico
 - recuperación CRM ↔ IS-U de fin contractual/DCDE
+- monitoreo y reproceso de CUEN entre GIS y SAP (`ZMONICUEN / ZGISDMT`)
 - servicio ocasional con medición CRM → WM → CRM
 
 ### Diagnóstico técnico ECC
@@ -128,7 +132,7 @@ Documenta límites OData/REST/SOAP, idempotencia, mapeo de errores, correlation 
 
 [Índice de Evidencia Visual](./visual-evidence/README.es.md)
 
-La evidencia visual se utiliza cuando la imagen puede publicarse legítimamente y sanitizarse sin perder su valor técnico. Actualmente se incluyen capturas sanitizadas de SAP MM01 que muestran acceso, selección de vistas, niveles organizativos y verificación de extensión de material.
+La evidencia visual se utiliza cuando la imagen puede publicarse legítimamente y sanitizarse sin perder su valor técnico. Actualmente se incluyen 59 capturas sanitizadas repartidas en 8 guías operativas: extensión de material MM01, ampliación de rango `AUFTRAG`/`SNRO`, monitoreo de rangos `RSNUMHOT`, cierre de órdenes por SAP GUI Scripting, regularización de doble estatus de medidor, recuperación DCDE (CRM ↔ IS-U), monitoreo/reproceso de CUEN (GIS ↔ SAP) y consumo de sellos `ZCONS_SELLOS`/`MMPV`.
 
 No se republican screenshots de manuales elaborados por terceros ni material formativo externo. Su contenido técnico se transforma en guías explicativas originales.
 
@@ -145,7 +149,7 @@ El índice conecta las guías del portafolio con documentación autoritativa de 
 | ECC MM Inventario | ABAP source · SALV · 6 escenarios revisados · guía de construcción · visuales MM01 sanitizados |
 | ECC MM Servicios | guía funcional · `ZMM_CONTRACT_AUDIT` · SALV · 8 escenarios revisados |
 | ECC MM Purchasing | `ZMM_PURCH_ANALYTICS` · SALV · 7 escenarios revisados |
-| ECC IS-U / WM | guías operativas · `ZWM_STATUS_AUDIT_LAB` · SALV · 6 escenarios revisados |
+| ECC IS-U / WM | guías operativas · `ZWM_STATUS_AUDIT_LAB` · SALV · 6 escenarios revisados · 50 capturas sanitizadas (rangos, batch OT, estatus de medidor, DCDE, CUEN, sellos) |
 | ECC Diagnóstico | SE24/SE37/SE38/SE80/SE93 · debugger · ST22 · SM21 · SM50/SM66 |
 | ECC CRM/SD | flujo sanitizado de facturación no energética |
 | S/4HANA MM | cliente TypeScript Procurement API · **6/6 tests CI** |

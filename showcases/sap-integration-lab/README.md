@@ -67,10 +67,14 @@ Sanitized guides cover:
 - `IW32` assignment/release/completion concepts
 - background-job monitoring with `SM37`
 - controlled batch processing
+- `AUFTRAG` work-order number-range governance (`SNRO`) and `RSNUMHOT` consumption monitoring
+- batch work-order cancellation via SAP GUI Scripting
+- meter dual-status regularization (`IQ09 / EG35 / EG36 / EG50 / EG34`)
 - seal-material enablement across MM ↔ WM
 - equipment consistency across IS-U ↔ CRM
 - photovoltaic service onboarding
 - CRM ↔ IS-U contract-end/DCDE recovery
+- GIS ↔ SAP CUEN monitoring and reprocessing (`ZMONICUEN / ZGISDMT`)
 - occasional metered-service flow CRM → WM → CRM
 
 ### ECC Technical Diagnostics
@@ -128,7 +132,7 @@ Documents OData/REST/SOAP integration boundaries, idempotency, error mapping, co
 
 [Visual Evidence Index](./visual-evidence/README.md)
 
-Visual evidence is used when the source image can be published legitimately and sanitized without losing its technical value. Current visual evidence includes sanitized SAP MM01 screenshots showing access, view selection, organizational levels and verification of a material extension.
+Visual evidence is used when the source image can be published legitimately and sanitized without losing its technical value. Current visual evidence includes 59 sanitized screenshots across 8 operational guides: MM01 material extension, `AUFTRAG`/`SNRO` number-range expansion, `RSNUMHOT` range monitoring, batch work-order cancellation via SAP GUI Scripting, meter dual-status regularization, CRM ↔ IS-U DCDE recovery, GIS ↔ SAP CUEN monitoring/reprocessing and `ZCONS_SELLOS`/`MMPV` seal consumption.
 
 Screenshots from employer-authored manuals or third-party training material are **not republished**. Their technical content is converted into original explanatory guides instead.
 
@@ -145,7 +149,7 @@ The index links the portfolio guides to authoritative SAP Help documentation for
 | ECC MM Inventory | ABAP source · SALV · 6 source-reviewed scenarios · build guide · sanitized MM01 visuals |
 | ECC MM Services | functional guide · `ZMM_CONTRACT_AUDIT` source · SALV · 8 source-reviewed scenarios |
 | ECC MM Purchasing | `ZMM_PURCH_ANALYTICS` source · SALV · 7 source-reviewed scenarios |
-| ECC IS-U / WM | operational guides · `ZWM_STATUS_AUDIT_LAB` source · SALV · 6 source-reviewed scenarios |
+| ECC IS-U / WM | operational guides · `ZWM_STATUS_AUDIT_LAB` source · SALV · 6 source-reviewed scenarios · 50 sanitized visuals (number-range, batch OT, device status, DCDE, CUEN, seals) |
 | ECC Diagnostics | SE24/SE37/SE38/SE80/SE93 · debugger · ST22 · SM21 · SM50/SM66 guides |
 | ECC CRM/SD | sanitized non-energy billing workflow |
 | S/4HANA MM | TypeScript Procurement API client · **6/6 CI tests** |
