@@ -196,7 +196,7 @@ This is intentionally different from deleting roadmaps. A good roadmap demonstra
 
 These repositories preserve educational chronology but should not compete visually with the selected engineering evidence.
 
-## Archive candidates
+## Archived (2026-09)
 
 - `clientePedido`
 - `cliente_pedido`
@@ -204,7 +204,7 @@ These repositories preserve educational chronology but should not compete visual
 - `codica-js_1`
 - `sucursales`
 
-No repository was archived or deleted by this audit. Archive/visibility changes remain explicit manual decisions because they can affect links and historical context.
+These five were confirmed as trivial/duplicate academic exercises (no stars, no forks, no unique evidence, no dependents) and archived, not deleted — history and links remain intact. Visibility changes and deletions remain explicit manual decisions.
 
 ## Known current constraints
 
