@@ -87,18 +87,16 @@ Private product evidence includes fiscal-monitoring and readiness concepts, oper
 
 ## Quality evidence
 
-A later private validation record documents:
+The most recent verified backend baseline (full Jest run, 2026-09) documents:
 
 - TypeScript checks with zero errors across web, API and worker
 - successful builds for the three application surfaces
-- 33 Jest suites
-- 341 passed tests
-- 2 skipped tests documented as pre-existing/justified
-- 0 failed tests in that recorded run
+- 35 Jest suites: 33 passed, 2 blocked by a pre-existing `express` module-resolution issue under pnpm (not a business-logic failure)
+- 348 tests: 346 passed, 2 skipped (documented as pre-existing/justified)
 - focused backend coverage for certificate/fiscal-readiness failure paths
 - secret scanning of the reviewed diff
 
-The same evidence explicitly states that a browser-based visual validation flow was still pending in that session. This case study preserves that distinction rather than converting code/test evidence into an unsupported end-to-end claim.
+A browser-based end-to-end visual validation flow remains outside this backend baseline. This case study preserves that distinction rather than converting code/test evidence into an unsupported end-to-end claim.
 
 ## Security model highlighted by this project
 
