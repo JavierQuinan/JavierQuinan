@@ -24,6 +24,16 @@ My background in **Software Engineering and Law** is especially useful in produc
 
 > I prefer verifiable engineering evidence over inflated claims: code, architecture, tests, documentation, sanitized operational guides and reproducible technical decisions.
 
+## Verified engineering highlights
+
+| Signal | Reviewable evidence |
+|---|---|
+| Enterprise SaaS | Sanitized engineering case studies for **KOVI**, **Motorix / TecnoAuto**, **FITBA / GYMORA** and **LegalTech**, covering multi-tenancy, RBAC/RLS-aware design, asynchronous processing, integrations and operational boundaries. |
+| Public engineering | Versioned **AI Dev Team Marketplace**, **GenDiff CLI**, Angular/full-stack evidence, React realtime work, Playwright-backed frontend evidence and native Android/Kotlin code with CI. |
+| SAP engineering | Four reviewable ECC ABAP source packs across **MM and IS-U / Work Management**, sanitized operational evidence, technical diagnostics and a tested S/4HANA Procurement API client. |
+| Quality & delivery | GitHub Actions, Jest, Supertest, Playwright, linting, static validation, build gates, security review and evidence-first release/readiness documentation. |
+| Regulated systems | Traceability, tenant isolation, electronic-invoicing workflows, digital-evidence awareness and compliance-sensitive product design informed by a combined software-engineering and legal background. |
+
 ## Core stack
 
 | Area | Technologies / capabilities |
