@@ -1,167 +1,131 @@
-# SAP Integration Lab — Evidencia Pública de Ingeniería
+# SAP Engineering Evidence Lab — Portafolio Técnico Público
 
 [English version](./README.md)
 
 > **Idiomas:** Inglés + Español  
-> **Alcance:** SAP ECC MM, SAP IS-U / Work Management, CRM/SD, diagnóstico ABAP e integración S/4HANA  
-> **Regla de evidencia:** cada afirmación de esta página apunta a material que ya existe en este repositorio
+> **Alcance:** SAP ECC MM, SAP IS-U / Work Management, CRM/SD, diagnóstico técnico ABAP, laboratorios históricos hands-on de ABAP Cloud y ejemplos no-live de ingeniería client-side para S/4HANA.  
+> **Regla de evidencia:** las clases de evidencia son explícitas; documentación, ejecución histórica de laboratorio, source público y runtime actual no se tratan como equivalentes.
 
-Este laboratorio presenta conocimiento operativo sanitizado, guías técnicas originales, source ABAP revisable y un cliente de integración ejecutable. ECC y S/4HANA se mantienen separados para no presentar experiencia SAP clásica como si fuera runtime Clean Core.
+Este showcase combina conocimiento enterprise sanitizado con artefactos de ingeniería revisables. **No** afirma runtime de integración real con S/4HANA, implementación SAP Integration Suite/CPI, interfaces OData/SOAP productivas ni ejecución actual de los laboratorios históricos ABAP Cloud salvo que un artefacto específico lo indique.
+
+## Modelo de evidencia
+
+| Clase | Significado |
+|---|---|
+| `ENTERPRISE_VERIFIED` | Conocimiento operativo sanitizado derivado de trabajo SAP real |
+| `HANDS_ON_HISTORICAL` | Source de laboratorio personal con evidencia histórica de ejecución; la reejecución actual puede seguir pendiente |
+| `CURRENT_RUNTIME_VERIFIED` | Reejecutado en un entorno actual con evidencia nueva |
+| `PUBLIC_SOURCE_EVIDENCE` | Existe source público revisable |
+| `EXECUTABLE_NON_LIVE_EXAMPLE` | Ejemplo ejecutable/testeado sin afirmar conectividad SAP real |
+| `DOCUMENTATION_GROUNDED` | Estudio técnico/arquitectónico basado en documentación de producto |
+| `TRAINING_ONLY` | Formación completada sin evidencia runtime hands-on independiente |
+| `NOT_YET_EVIDENCED` | Actualmente no existe evidencia de portfolio para sostener un claim hands-on |
 
 ## Evidencia disponible actualmente
 
-### SAP ECC MM
+### SAP ECC MM — `ENTERPRISE_VERIFIED` + `PUBLIC_SOURCE_EVIDENCE`
 
 [Línea de Evidencia MM](./01-ecc/mm/README.es.md)
 
-**Inventario y Riesgo de Stock**
+- Análisis de inventario/riesgo de stock con source ABAP read-only sobre `MARA / MARC / MARD`, SALV y escenarios revisados a nivel de source.
+- Diagnóstico de contratación de servicios/contratos marco con `EKKO / EKPO`.
+- Analítica de compras sobre `EBAN → EKKO / EKPO → EKET`.
+- Documentación operativa sanitizada y guías reproducibles de construcción.
 
-- source original ABAP Objects
-- datasource read-only sobre `MARA / MARC / MARD`
-- separación semántica planta vs. almacén
-- source de reporte SALV
-- 6 escenarios ABAP Unit deterministas revisados a nivel de source
-- guía reproducible `SE24 / SE38 / SE93`
-- guía operativa sanitizada de MM01 con evidencia visual
+Los packs ECC se presentan como source revisable más revisión determinista del código/escenarios. No se afirma runtime corporativo de ABAP Unit.
 
-**Contratación de Servicios / `ZMM_CONTRACT_AUDIT`**
-
-- guía sanitizada de contrato marco/servicios
-- source ABAP original read-only sobre `EKKO / EKPO`
-- diagnóstico de vigencia contractual
-- source SALV
-- 8 escenarios ABAP Unit deterministas revisados a nivel de source
-- guía bilingüe de construcción y evidencia
-
-**Purchasing Analytics / `ZMM_PURCH_ANALYTICS`**
-
-- source original read-only `EBAN → EKKO / EKPO → EKET`
-- control de categoría Purchase Order (`EKKO-BSTYP = 'F'`)
-- diagnósticos `PR_ONLY`, referencia downstream y líneas de reparto
-- source SALV
-- 7 escenarios ABAP Unit deterministas revisados a nivel de source
-- documentación bilingüe de source/build
-
-Los packs ABAP ECC se presentan como **source revisable + validación estática determinista + guías reproducibles de construcción**. No se afirma activación corporativa SAP ni ejecución de ABAP Unit dentro de un sistema empresarial.
-
-### SAP ECC IS-U / Work Management
+### SAP ECC IS-U / Work Management — `ENTERPRISE_VERIFIED` + `PUBLIC_SOURCE_EVIDENCE`
 
 [Línea de Evidencia IS-U / WM](./01-ecc/isu/README.es.md)
 
-**`ZWM_STATUS_AUDIT_LAB`**
+La evidencia publicada incluye `ZWM_STATUS_AUDIT_LAB`, análisis de estados/históricos de OT, `IW38/IW32`, jobs, gobierno de rangos, regularización de estados de dispositivos, sellos, recuperación CRM ↔ IS-U, monitoreo/reproceso GIS ↔ SAP y otros flujos operativos sanitizados.
 
-- source ABAP original read-only sobre `AUFK`, `JSTO`, `JEST`, `TJ02T`, `TJ30T` y `JCDS`
-- interpretación de estados activos vs. históricos
-- consideración del perfil de estado de usuario mediante `STSMA`
-- datasource ECC + datasource sintético
-- servicio ABAP Objects y reporte SALV
-- 6 escenarios ABAP Unit deterministas revisados a nivel de source
-- guía bilingüe `SE24 / SE38 / SE93`
-
-**Evidencia operativa**
-
-Las guías sanitizadas cubren:
-
-- análisis de órdenes y layouts con `IW38`
-- ciclo de vida de OT y cierre técnico
-- conceptos de asignación/liberación/cierre mediante `IW32`
-- monitoreo de background jobs con `SM37`
-- procesamiento masivo controlado
-- gobierno de rangos de numeración de órdenes `AUFTRAG` (`SNRO`) y monitoreo de consumo con `RSNUMHOT`
-- cierre/anulación de órdenes de trabajo mediante SAP GUI Scripting
-- regularización de doble estatus de medidor (`IQ09 / EG35 / EG36 / EG50 / EG34`)
-- habilitación de materiales de sellos MM ↔ WM
-- consistencia de equipamiento IS-U ↔ CRM
-- alta de servicio fotovoltaico
-- recuperación CRM ↔ IS-U de fin contractual/DCDE
-- monitoreo y reproceso de CUEN entre GIS y SAP (`ZMONICUEN / ZGISDMT`)
-- servicio ocasional con medición CRM → WM → CRM
-
-### Diagnóstico técnico ECC
+### Diagnóstico técnico ECC — `ENTERPRISE_VERIFIED`
 
 [ABAP Debugging & Technical Diagnostics](./01-ecc/technical-diagnostics/README.es.md)
 
 Secuencia documentada:
 
-`SE93 → SE24 / SE37 / SE38 / SE80 → /H / breakpoints / debugger → ST22 / SM21 → SM50 / SM66`
+`SE93 → SE24 / SE37 / SE38 / SE80 → debugger → ST22 / SM21 → SM50 / SM66`
 
-Las guías explican identificación de objetos, debugging, análisis de dumps, monitoreo de procesos y límites de escalamiento sin publicar credenciales corporativas ni source propietario.
-
-### SAP ECC / CRM-SD
+### SAP ECC / CRM-SD — `ENTERPRISE_VERIFIED`
 
 [Línea de Evidencia CRM-SD](./01-ecc/sd/README.es.md)
 
-La evidencia publicada cubre un flujo sanitizado de facturación de servicios no energéticos: preparación de cliente/BP, contexto comercial, extensión de área de ventas, revisión de facturación/output y finalización del output fiscal configurado.
+La evidencia sanitizada cubre un flujo de facturación de servicios no energéticos: preparación cliente/BP, contexto de área de ventas, revisión billing/output y finalización del output fiscal configurado.
 
-### SAP S/4HANA
+### Laboratorios históricos ABAP Cloud — `HANDS_ON_HISTORICAL`
+
+[Laboratorios Históricos ABAP Cloud](./04-abap-labs/README.es.md)
+
+- 10 archivos source de clases ABAP personales en 8 temas base.
+- Evidencia histórica de ejecución: **10/10** documentada en entregas fuente privadas.
+- Revalidación de runtime actual: **0/10 — pendiente**.
+- Temas históricos demostrados: ABAP Core, ABAP Objects, classrun, tablas internas, field symbols, Open SQL y manejo de excepciones.
+- Cinco guías derivadas de formación cubren DDIC, abapGit, ATC, ABAP Cleaner y autorizaciones sin presentarlas como labs ejecutados.
+
+No se republican screenshots históricos ni material bruto de los cursos.
+
+### SAP S/4HANA — clases de evidencia mixtas
 
 [Línea de Evidencia S/4HANA](./02-s4hana/README.es.md)
 
-**MM Procurement API Client**
+**MM Procurement API Client — `EXECUTABLE_NON_LIVE_EXAMPLE`**
 
-- cliente TypeScript read-only sin dependencias externas
-- lectura de Purchase Orders y Purchase Requisitions
-- validación de respuestas OData
-- abstracción de transporte
-- correlation/request IDs
-- obligación de HTTPS
-- tests automatizados deterministas
-- quality gate de GitHub Actions observado en **6 tests / 6 pass / 0 fail** con Node 22
+- Cliente TypeScript read-only para PO/PR sin dependencias externas.
+- Validación de respuestas OData, obligación HTTPS y correlación de requests.
+- Tests automatizados deterministas con un gate de GitHub Actions previamente observado de **6/6 pass**.
+- **No se afirma conectividad con un tenant S/4HANA real.**
 
-El cliente demuestra ingeniería del lado de integración. No se afirma conectividad con un tenant S/4HANA real.
+**Migration Cockpit — `DOCUMENTATION_GROUNDED`**  
+Guía de estudio/técnica sobre objetos de migración, staging/direct transfer, mapping, simulación, monitoreo y reconciliación.
 
-**Guía Técnica Migration Cockpit**
+**ABAP Cloud / Clean Core — `DOCUMENTATION_GROUNDED` + contexto de formación**  
+Guía sobre objetos/APIs liberados, release contracts y gobierno orientado a ATC.
 
-Guía basada en documentación que cubre objetos de migración, enfoques staging/direct transfer, mapping, simulación, monitoreo de migración y reconciliación.
+**RAP — `DOCUMENTATION_GROUNDED`**  
+Arquitectura CDS → behavior → projection → service definition/binding → OData V4. No se afirma runtime RAP.
 
-**Guía Técnica ABAP Cloud / Clean Core**
+### Arquitectura de integración y patrones client-side — `DOCUMENTATION_GROUNDED` + `EXECUTABLE_NON_LIVE_EXAMPLE`
 
-Guía basada en documentación sobre objetos/APIs liberados, release contracts, gobierno orientado a ATC y límites Clean Core.
+[Guía de Arquitectura de Integración](./03-integration/README.es.md)
 
-**Guía de Arquitectura RAP**
+El material documenta límites OData/REST/SOAP, idempotencia, mapeo de errores, correlation IDs, observabilidad y separación de secretos. El cliente de procurement S/4 es el ejemplo ejecutable. **Esto no se presenta como evidencia de una integración SAP real en runtime.**
 
-Guía que cubre CDS data model, behavior definition/implementation, projection, service definition/binding y exposición OData V4 usando un escenario de revisión de reposición MM.
+## Claims que explícitamente no se hacen
 
-### SAP Integration
+El portfolio actual no afirma evidencia hands-on/runtime para:
 
-[Guía de Ingeniería de Integración](./03-integration/README.es.md)
-
-Documenta límites OData/REST/SOAP, idempotencia, mapeo de errores, correlation IDs, observabilidad y separación de secretos. El S/4 Procurement API Client es el ejemplo ejecutable de integración de este repositorio.
+- SAP Integration Suite / CPI;
+- conectividad real a APIs S/4HANA;
+- implementación productiva de servicios OData o SOAP;
+- runtime IDoc o RFC/BAPI;
+- Event Mesh;
+- runtime RAP/service binding;
+- ejecución actual de ABAP Unit para el set histórico de labs.
 
 ## Evidencia visual
 
 [Índice de Evidencia Visual](./visual-evidence/README.es.md)
 
-La evidencia visual se utiliza cuando la imagen puede publicarse legítimamente y sanitizarse sin perder su valor técnico. Actualmente se incluyen 59 capturas sanitizadas repartidas en 8 guías operativas: extensión de material MM01, ampliación de rango `AUFTRAG`/`SNRO`, monitoreo de rangos `RSNUMHOT`, cierre de órdenes por SAP GUI Scripting, regularización de doble estatus de medidor, recuperación DCDE (CRM ↔ IS-U), monitoreo/reproceso de CUEN (GIS ↔ SAP) y consumo de sellos `ZCONS_SELLOS`/`MMPV`.
-
-No se republican screenshots de manuales elaborados por terceros ni material formativo externo. Su contenido técnico se transforma en guías explicativas originales.
+Solo se publican capturas operativas legítimas y sanitizadas. No se republican manuales del empleador, screenshots de formación de terceros ni evidencia bruta de los cursos.
 
 ## Referencias oficiales SAP
 
 [Índice de Referencias Oficiales SAP](./OFFICIAL_SAP_REFERENCES.es.md)
 
-El índice conecta las guías del portafolio con documentación autoritativa de SAP Help sobre extensión de materiales/MM01, Class Builder/SE24, report transactions/SE93, ABAP Unit, estados de órdenes, APIs de compras S/4HANA, Migration Cockpit, APIs liberadas de ABAP Cloud y RAP. Las referencias oficiales respaldan conceptos estándar; no sustituyen los límites de evidencia indicados en cada artefacto.
+La documentación oficial SAP respalda conceptos estándar; no sustituye evidencia runtime.
 
-## Matriz de evidencia
+## Matriz global de capacidades
 
-| Área | Evidencia disponible |
-|---|---|
-| ECC MM Inventario | ABAP source · SALV · 6 escenarios revisados · guía de construcción · visuales MM01 sanitizados |
-| ECC MM Servicios | guía funcional · `ZMM_CONTRACT_AUDIT` · SALV · 8 escenarios revisados |
-| ECC MM Purchasing | `ZMM_PURCH_ANALYTICS` · SALV · 7 escenarios revisados |
-| ECC IS-U / WM | guías operativas · `ZWM_STATUS_AUDIT_LAB` · SALV · 6 escenarios revisados · 50 capturas sanitizadas (rangos, batch OT, estatus de medidor, DCDE, CUEN, sellos) |
-| ECC Diagnóstico | SE24/SE37/SE38/SE80/SE93 · debugger · ST22 · SM21 · SM50/SM66 |
-| ECC CRM/SD | flujo sanitizado de facturación no energética |
-| S/4HANA MM | cliente TypeScript Procurement API · **6/6 tests CI** |
-| S/4HANA Migration | guía técnica de estudio/operación |
-| ABAP Cloud / Clean Core | guía técnica de arquitectura/gobierno |
-| RAP | guía técnica de arquitectura |
-| Integración | guía de resiliencia/observabilidad OData/REST/SOAP + cliente TypeScript ejecutable |
+[Matriz de Capacidades SAP](./00-profile/SAP_CAPABILITY_MATRIX.es.md)
+
+La matriz central reconcilia experiencia enterprise, labs históricos, source público, ejemplos ejecutables no-live, estudio basado en documentación y formación.
 
 ## Política bilingüe
 
-Los artefactos principales usan `README.md` para documentación técnica English-first y `README.es.md` para la versión completa en español. Los identificadores de código permanecen en inglés.
+Los artefactos principales usan `README.md` para documentación English-first y `README.es.md` para la versión completa en español. Los identificadores de código se conservan.
 
 ## Confidencialidad e integridad
 
-La evidencia pública excluye empresa/cliente, materiales/proveedores/contratos/instalaciones/OT/BP/medidores reales, source Z propietario, endpoints internos, credenciales, transportes, certificados privados y capturas corporativas no sanitizadas.
+La evidencia pública excluye identidades de empresa/cliente, objetos reales de negocio, source propietario, endpoints internos, credenciales, certificados privados y screenshots enterprise/formativos no sanitizados.
