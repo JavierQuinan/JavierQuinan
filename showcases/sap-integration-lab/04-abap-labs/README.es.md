@@ -5,7 +5,7 @@
 > **Alcance:** evidencia pública curada proveniente de entregas personales históricas de laboratorio ABAP Cloud.  
 > **Límite de evidencia:** la ejecución histórica está documentada de forma privada; la reverificación runtime actual sigue pendiente para los 10 archivos de código.
 
-Este track complementa el [SAP Integration Lab](../README.es.md). No reemplaza la [Matriz de Capacidades SAP](../00-profile/SAP_CAPABILITY_MATRIX.es.md) global del portfolio.
+Este track complementa el [SAP Engineering Evidence Lab](../README.es.md). No reemplaza la [Matriz de Capacidades SAP](../00-profile/SAP_CAPABILITY_MATRIX.es.md) global del portfolio.
 
 ## Evidencia publicada
 
@@ -19,7 +19,7 @@ Este track complementa el [SAP Integration Lab](../README.es.md). No reemplaza l
 
 No se republican capturas históricas ni documentos crudos de los cursos. Los metadatos del documento respaldan la procedencia bajo el perfil de Office de Francisco Quinteros, pero no se tratan como prueba independiente de cada elemento incrustado. El contexto del curso, las dependencias externas y la sanitización de literales exclusiva de publicación se declaran en el [catálogo de laboratorios](./labs/README.es.md).
 
-Un estado como `NOT_FOUND_IN_THIS_LAB_SET` se limita a este track histórico. El portfolio global ya contiene arquitectura RAP basada en documentación, patrones ABAP Unit revisados a nivel de source y evidencia ejecutable de integración OData.
+Un estado como `NOT_FOUND_IN_THIS_LAB_SET` se limita a este track histórico. El portfolio global ya contiene arquitectura RAP basada en documentación, patrones ABAP Unit revisados a nivel de source y un ejemplo ejecutable no-live de cliente OData.
 
 ## Navegación
 

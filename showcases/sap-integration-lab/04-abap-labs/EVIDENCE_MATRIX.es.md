@@ -38,8 +38,8 @@ Los estados anteriores son deliberadamente locales a este conjunto de laboratori
 
 - arquitectura RAP respaldada por documentación;
 - patrones ABAP Unit revisados a nivel de código en otros packs ABAP;
-- evidencia ejecutable de integración OData en el cliente de compras S/4HANA;
-- evidencia empresarial sanitizada de debugging e integración.
+- un ejemplo ejecutable no-live de cliente OData en el cliente de compras S/4HANA;
+- evidencia enterprise sanitizada de debugging y flujos operativos específicos entre sistemas, sin un claim genérico de plataforma de integración.
 
 Esos artefactos continúan clasificados por separado en la [Matriz de Capacidades SAP](../00-profile/SAP_CAPABILITY_MATRIX.es.md).
 
