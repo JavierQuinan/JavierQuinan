@@ -22,7 +22,7 @@
 | Service definition / binding | None in this historical lab set | Original service exposure | Extend the RAP scenario |
 | OData hands-on ABAP exposure | None in this historical lab set | Service/runtime evidence | Extend the RAP scenario |
 
-The broader SAP Integration Lab already contains documentation-grounded RAP material and executable OData integration evidence; the items above are specifically about creating **new hands-on ABAP labs**.
+The broader SAP Integration Lab already contains documentation-grounded RAP material and an executable non-live OData client-side example; the items above are specifically about creating **new hands-on ABAP labs**.
 
 ## P2 — Close training-to-lab gaps
 

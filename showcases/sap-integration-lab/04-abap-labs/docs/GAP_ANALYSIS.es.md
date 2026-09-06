@@ -22,7 +22,7 @@
 | Service definition / binding | Ninguna en este conjunto histórico | Exposición de servicio original | Extender el escenario RAP |
 | OData hands-on en ABAP | Ninguna en este conjunto histórico | Evidencia de servicio/runtime | Extender el escenario RAP |
 
-El SAP Integration Lab global ya contiene material RAP respaldado por documentación y evidencia ejecutable de integración OData; los puntos anteriores se refieren específicamente a crear **nuevos laboratorios ABAP hands-on**.
+El SAP Integration Lab global ya contiene material RAP respaldado por documentación y un ejemplo ejecutable no-live de cliente OData; los puntos anteriores se refieren específicamente a crear **nuevos laboratorios ABAP hands-on**.
 
 ## P2 — Cerrar gaps formación → laboratorio
 

@@ -5,7 +5,7 @@
 > **Scope:** curated public evidence from historical personal ABAP Cloud lab submissions.  
 > **Evidence boundary:** historical execution is documented privately; current runtime re-verification is still pending for all 10 source files.
 
-This track complements the broader [SAP Integration Lab](../README.md). It does not replace the portfolio-wide [SAP Capability Matrix](../00-profile/SAP_CAPABILITY_MATRIX.md).
+This track complements the broader [SAP Engineering Evidence Lab](../README.md). It does not replace the portfolio-wide [SAP Capability Matrix](../00-profile/SAP_CAPABILITY_MATRIX.md).
 
 ## Published evidence
 
@@ -19,7 +19,7 @@ This track complements the broader [SAP Integration Lab](../README.md). It does 
 
 Historical screenshots and raw course documents are not republished. Document metadata supports provenance under Francisco Quinteros' Office profile, but is not treated as independent proof of every embedded element. Course context, external dependencies and publication-only literal sanitization are disclosed in the [lab catalog](./labs/README.md).
 
-A status such as `NOT_FOUND_IN_THIS_LAB_SET` is local to this historical track. The broader portfolio already contains documentation-grounded RAP architecture, source-reviewed ABAP Unit design patterns and executable OData integration evidence.
+A status such as `NOT_FOUND_IN_THIS_LAB_SET` is local to this historical track. The broader portfolio already contains documentation-grounded RAP architecture, source-reviewed ABAP Unit design patterns and an executable non-live OData client-side example.
 
 ## Navigation
 

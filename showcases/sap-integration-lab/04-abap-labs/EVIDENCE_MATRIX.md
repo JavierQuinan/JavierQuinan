@@ -38,8 +38,8 @@ The statuses above are deliberately local to this lab set. Elsewhere in the SAP 
 
 - documentation-grounded RAP architecture;
 - source-reviewed ABAP Unit design patterns in other ABAP packs;
-- executable OData integration evidence in the S/4HANA procurement client;
-- enterprise-sanitized debugging and integration evidence.
+- an executable non-live OData client-side example in the S/4HANA procurement client;
+- enterprise-sanitized debugging and specific cross-system operational evidence, without a generic integration-platform claim.
 
 Those artifacts remain classified separately in the central [SAP Capability Matrix](../00-profile/SAP_CAPABILITY_MATRIX.md).
 
