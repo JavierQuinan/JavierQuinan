@@ -1,0 +1,75 @@
+name: Validate SAP ABAP Evidence
+
+on:
+  pull_request:
+    paths:
+      - 'showcases/sap-integration-lab/**'
+      - '.github/workflows/sap-abap-evidence.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'showcases/sap-integration-lab/**'
+      - '.github/workflows/sap-abap-evidence.yml'
+
+jobs:
+  evidence-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate curated ABAP evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          root='showcases/sap-integration-lab/04-abap-labs'
+          test -f "$root/README.md"
+          test -f "$root/README.es.md"
+          test -f "$root/EVIDENCE_MATRIX.md"
+          test -f "$root/EVIDENCE_MATRIX.es.md"
+          count=$(find "$root/labs/source" -maxdepth 1 -type f -name '*.abap' | wc -l | tr -d ' ')
+          test "$count" = '10'
+
+          if grep -RniE '(clientsecret|clientid|subaccountid|BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|Bearer[[:space:]]+[A-Za-z0-9._-]+)' "$root"; then
+            echo 'Potential credential material detected in public ABAP evidence.' >&2
+            exit 1
+          fi
+
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          root = Path('showcases/sap-integration-lab/04-abap-labs')
+          missing = []
+          for md in root.rglob('*.md'):
+              text = md.read_text(encoding='utf-8')
+              for target in re.findall(r'\[[^\]]+\]\(([^)]+)\)', text):
+                  if target.startswith(('http://', 'https://', '#', 'mailto:')):
+                      continue
+                  target = target.split('#', 1)[0]
+                  if not target:
+                      continue
+                  resolved = (md.parent / target).resolve()
+                  if not resolved.exists():
+                      missing.append(f'{md}: {target}')
+          if missing:
+              raise SystemExit('Broken relative links:\n' + '\n'.join(missing))
+
+          required_pairs = [
+              root / 'README.md',
+              root / 'EVIDENCE_MATRIX.md',
+              root / 'NAMING_CONVENTIONS.md',
+              root / 'labs/README.md',
+              root / 'docs/GAP_ANALYSIS.md',
+              root / 'docs/FUTURE_LAB_ROADMAP.md',
+              root / 'guides/ABAPGIT_WORKFLOW_GUIDE.md',
+              root / 'guides/ABAP_CLEANER_GUIDE.md',
+              root / 'guides/ABAP_CLOUD_DICTIONARY_GUIDE.md',
+              root / 'guides/ATC_IMPLEMENTATION_GUIDE.md',
+              root / 'guides/AUTHORIZATIONS_GUIDE.md',
+          ]
+          for en in required_pairs:
+              es = en.with_name(en.stem + '.es.md')
+              if not es.exists():
+                  missing.append(f'Missing Spanish pair for {en}')
+          if missing:
+              raise SystemExit('\n'.join(missing))
+          PY
