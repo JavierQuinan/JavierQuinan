@@ -2,45 +2,31 @@
 
 [English version](./GAP_ANALYSIS.md)
 
-> Este documento cubre únicamente `04-abap-labs/`. Es un análisis de gaps del track, no una afirmación de que el SAP Integration Lab global carezca de estas capacidades.
+> Este documento cubre únicamente `04-abap-labs/`. Es un análisis de gaps a nivel de track, no una afirmación de que el SAP Integration Lab más amplio carezca de estas capacidades. **El alcance actual de este track está completo** — nada de lo siguiente es un bloqueador para ello; todo aquí es `OPTIONAL_FUTURE_EXPANSION`, listado por transparencia sobre lo que un futuro conjunto de laboratorios de siguiente generación podría añadir.
 
-## P0 — Reproducibilidad de los laboratorios existentes
+## Ya cerrado por este track
 
-| Gap | Evidencia actual | Evidencia faltante | Acción recomendada | Verificación |
-|---|---|---|---|---|
-| Verificación runtime actual de los 10 labs históricos | Código + evidencia privada de ejecución histórica | Ejecución fresca en un entorno SAP actual | Reejecutar cada copia pública, recreando únicamente las dependencias documentadas | Evidencia limpia de activación/ejecución por laboratorio |
-| Dependencia reproducible para labs basados en `ZEMP_LOGALI` | El código público documenta la dependencia | Reemplazo público y neutral de la tabla o un adapter | Crear una tabla/modelo sintético original con nomenclatura `_fq` y adaptar la variante pública | Ejecución actual sin dependencia de la tabla propietaria de formación |
-| Dependencia de símbolo de texto en lab-04 | El código documenta `TEXT-001` | Símbolo público recreado o refactor | Recrear el símbolo o reemplazarlo por una constante autocontenida en una futura rama runtime | Ejecución actual |
+- **10 laboratorios históricos**, `HISTORICAL_EXECUTION_VERIFIED`, sin claim de runtime actual afirmado ni exigido.
+- **Práctica hands-on de abapGit, ATC, ABAP Cleaner, Autorizaciones** — antes listado aquí como gaps solo-formación, ahora cerrado vía [Prácticas de Formación de Curso 3](../training-practices/README.es.md) (`OWNER_CONFIRMED_HANDS_ON_EXECUTION`, source normalizado `_fq` publicado).
+- **Reproducibilidad de `ZEMP_LOGALI` y la dependencia `TEXT-001`** — analizadas y documentadas en la [referencia opcional de runtime-readiness](../runtime-readiness/README.es.md), incluyendo una fixture sintética `_fq` y 3 borradores de source runtime-ready. Esta referencia existe porque tiene valor técnico, no porque este track la requiera para cerrar.
 
-## P1 — Testing y ampliación ABAP Cloud moderna
+## `OPTIONAL_FUTURE_EXPANSION` — laboratorios originales de siguiente generación
 
-| Capacidad | Evidencia en este track | Faltante | Próximo lab recomendado |
-|---|---|---|---|
-| ABAP Unit | Ninguna en este conjunto histórico | Clase de test + evidencia runtime verde | Añadir una clase local de test a un lab de lógica pura como aritmética/conversiones |
-| CDS | Ninguna en este conjunto histórico | Fuente CDS original + preview/runtime | Vista CDS read-only sobre datos sintéticos o demo liberados |
-| RAP | Ninguna en este conjunto histórico | BO, behavior y runtime originales | Escenario RAP managed mínimo sobre datos sintéticos |
-| Service definition / binding | Ninguna en este conjunto histórico | Exposición de servicio original | Extender el escenario RAP |
-| OData hands-on en ABAP | Ninguna en este conjunto histórico | Evidencia de servicio/runtime | Extender el escenario RAP |
-
-El SAP Integration Lab global ya contiene material RAP respaldado por documentación y un ejemplo ejecutable no-live de cliente OData; los puntos anteriores se refieren específicamente a crear **nuevos laboratorios ABAP hands-on**.
-
-## P2 — Cerrar gaps formación → laboratorio
-
-| Capacidad | Estado actual en este track | Evidencia recomendada |
+| Capacidad | Evidencia en este track | Laboratorio siguiente recomendado, si se persigue |
 |---|---|---|
-| ATC | Solo guía derivada de formación | Ejecutar una variante ATC adecuada contra el paquete público y registrar hallazgos reales |
-| abapGit | Solo guía derivada de formación | Vincular un paquete/repositorio real y capturar un flujo real de branch/push |
-| ABAP Cleaner | Guía derivada + ilustración manual | Ejecutar la herramienta real sobre uno o dos labs y revisar el diff |
-| Autorizaciones | Solo guía derivada de formación | Crear un escenario original de objeto/check adecuado al entorno objetivo |
-| Consumo de API | Sin lab hands-on en este track | Consumir una API read-only segura usando un cliente HTTP liberado disponible en el entorno ABAP Cloud elegido |
+| ABAP Unit | Ninguna en este conjunto histórico | Una clase de test local añadida a un laboratorio de lógica pura como aritmética/conversiones |
+| CDS | Ninguna en este conjunto histórico | Una vista CDS de solo lectura sobre datos demo sintéticos o liberados |
+| RAP | Ninguna en este conjunto histórico | Un escenario RAP managed mínimo sobre datos sintéticos |
+| Definición/binding de servicio | Ninguna en este conjunto histórico | Una extensión del escenario RAP anterior |
+| Exposición OData hands-on en ABAP | Ninguna en este conjunto histórico | Una extensión del escenario RAP anterior |
+| Consumo de API | Sin laboratorio hands-on en este track | Un laboratorio de cliente HTTP de solo lectura seguro en el entorno ABAP Cloud |
 
-## P3 — Ampliación opcional
+El SAP Integration Lab más amplio ya contiene material RAP basado en documentación y un ejemplo ejecutable no-live de cliente OData; los ítems anteriores tratan específicamente de una **futura generación de laboratorios ABAP hands-on originales** — nunca un requisito para cerrar el track actual.
 
-- Walkthrough de debugging sobre un laboratorio existente.
-- Análisis runtime/performance del lab de tablas internas más grande.
-- Evidencia de gestión de transportes cuando el entorno disponible lo permita.
-- RAP avanzado solo después de completar el escenario end-to-end P1.
+## `OPTIONAL_FUTURE_EXPANSION` — laboratorios originales de Curso 2
+
+Curso 2 (formación hands-on de ABAP Dictionary: dominios, elementos de datos, tablas, objetos de bloqueo, ajustes de persistencia, relaciones de tablas, Dynamic Cache) es `TRAINING_ONLY` — practicado hands-on, pero no se guardó ningún artefacto de source para normalizar o publicar. Un futuro laboratorio DDIC completamente original (escenario propio, nomenclatura `_fq` propia, construido y ejecutado de forma independiente al ejercicio del curso) podría cerrar este gap, pero es trabajo futuro opcional, no un requisito del alcance actual.
 
 ## Contexto global del portfolio
 
-Usa la [Matriz de Capacidades SAP](../../00-profile/SAP_CAPABILITY_MATRIX.es.md) para claims globales. `NOT_FOUND_IN_THIS_LAB_SET` se limita deliberadamente a este track.
+Usa la [Matriz de Capacidades SAP](../../00-profile/SAP_CAPABILITY_MATRIX.es.md) central para claims globales. `NOT_FOUND_IN_THIS_LAB_SET` es intencionalmente local a este track.

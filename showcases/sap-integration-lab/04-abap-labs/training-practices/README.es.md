@@ -6,13 +6,13 @@
 
 ## Qué es esto
 
-Cuatro prácticas, cada una siguiendo el patrón: una plantilla de ejercicio suministrada por el instructor → la propia ejecución hands-on del propietario en su propio entorno trial de SAP → normalización para portfolio (renombrado a la convención `_fq`, eliminación de declaraciones muertas) → reverificación pendiente. Ninguna de las cuatro se reclama como un algoritmo inventado de forma independiente; cada página en `docs/` indica la procedencia precisa.
+Cuatro prácticas, cada una siguiendo el patrón: una plantilla de ejercicio suministrada por el instructor → la propia ejecución hands-on del propietario en su propio entorno trial de SAP, confirmada directamente por el propietario → normalización para portfolio (renombrado a la convención `_fq`, eliminación de declaraciones muertas). Ninguna de las cuatro se reclama como un algoritmo inventado de forma independiente; cada página en `docs/` indica la procedencia precisa.
 
 ## Estado actual
 
 - **Formación:** SÍ tanto para Curso 2 como para Curso 3.
-- **Ejecución hands-on:** confirmada por el propietario para las 4 prácticas de Curso 3 siguientes. Curso 2 no produjo ningún artefacto de fuente guardado — ver `EVIDENCE_MATRIX.es.md`.
-- **Verificación de runtime actual:** 0/4 para las prácticas siguientes. Sin cambios respecto al propio 0/10 del track histórico.
+- **Ejecución hands-on:** `OWNER_CONFIRMED_HANDS_ON_EXECUTION` para las 4 prácticas de Curso 3 siguientes — el propietario confirma directamente haber tecleado, creado y ejecutado personalmente cada una durante formación estructurada. Curso 2 no produjo ningún artefacto de fuente guardado — ver `EVIDENCE_MATRIX.es.md`.
+- **Source de portfolio:** `PUBLIC_NORMALIZED_SOURCE` — publicado bajo la propia nomenclatura `_fq` del portfolio. La copia renombrada en sí no ha sido reejecutada de forma independiente; la ejecución se refiere a la práctica de formación hands-on original confirmada por el propietario. No se afirma runtime actual para las copias renombradas.
 
 ## Prácticas
 
@@ -25,7 +25,7 @@ Cuatro prácticas, cada una siguiendo el patrón: una plantilla de ejercicio sum
 
 ## Curso 2
 
-Revisado por completo. No se encontró ningún fuente ABAP, texto de objeto DDIC, ni documento con código más allá del material de tutorial genérico propio del instructor — representado honestamente en `EVIDENCE_MATRIX.es.md` como `TRAINING = YES`, `HANDS_ON_PRACTICE = YES`, `SAVED_SOURCE_ARTIFACT = NO`, `CURRENT_RUNTIME_VERIFIED = NO`, en lugar de fabricar un archivo fuente.
+Revisado por completo. No se encontró ningún fuente ABAP, texto de objeto DDIC, ni documento con código más allá del material de tutorial genérico propio del instructor — representado honestamente en `EVIDENCE_MATRIX.es.md` como `TRAINING = YES`, `HANDS_ON_PRACTICE = YES`, `OWNER_CONFIRMED_HANDS_ON_EXECUTION = YES`, `SAVED_SOURCE_ARTIFACT = NO`, `NO_CURRENT_RUNTIME_CLAIM`, en lugar de fabricar un archivo fuente.
 
 ## Navegación
 

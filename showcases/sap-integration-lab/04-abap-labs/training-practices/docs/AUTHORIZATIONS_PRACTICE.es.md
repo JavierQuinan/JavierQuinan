@@ -4,7 +4,7 @@
 
 ## Estado
 
-`USER_AUTHORED_PRACTICE` / `PORTFOLIO_NORMALIZED` / `NORMALIZED_NOT_EXECUTED` / `NEEDS_ADT_VERIFICATION`
+`USER_AUTHORED_PRACTICE` / `OWNER_CONFIRMED_HANDS_ON_EXECUTION` / `PORTFOLIO_NORMALIZED` / `PUBLIC_NORMALIZED_SOURCE` / `NO_CURRENT_RUNTIME_CLAIM`
 
 ## Procedencia
 
@@ -38,7 +38,7 @@ El ejercicio original usaba un placeholder de instancia de curso en el nombre de
 
 ## Estado de runtime
 
-`NORMALIZED_NOT_EXECUTED`. Esta clase y sus prerrequisitos DDIC no han sido creados ni activados en esta forma. `NEEDS_ADT_VERIFICATION` antes de cualquier afirmación de runtime actual.
+`NO_CURRENT_RUNTIME_CLAIM`. Esta clase renombrada y sus prerrequisitos DDIC renombrados no han sido creados ni activados por sí mismos bajo estos nombres `_fq`; el elemento de datos, campo de autorización, objeto de autorización, creación de clase y ejecución de `AUTHORITY-CHECK` originales se refieren a la práctica de formación hands-on original confirmada por el propietario.
 
 ## Dependencias
 

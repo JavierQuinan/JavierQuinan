@@ -4,30 +4,30 @@
 
 > **Regla de alcance:** esta matriz describe únicamente el material de `04-abap-labs/`. No es la matriz global de capacidades SAP. Para la vista completa, consulta la [Matriz de Capacidades SAP](../00-profile/SAP_CAPABILITY_MATRIX.es.md).
 
-`Historical Runtime Evidence: YES` significa que la entrega privada de origen contiene evidencia de ejecución consistente con la implementación entregada. `Current Runtime Verification: PENDING` significa que la copia pública aún no se ha reejecutado en un entorno SAP actual.
+`Historical Runtime Evidence: YES` significa que la entrega privada de origen contiene evidencia de ejecución consistente con la implementación entregada. `NO_CURRENT_RUNTIME_CLAIM` significa que este track no afirma reejecución en un entorno actual — es un enunciado de alcance factual y cerrado, no una tarea abierta.
 
-| Capacidad | Contexto de formación | Lab existente en este conjunto | Código | Evidencia histórica de runtime | Verificación runtime actual | Guía | Estado del track |
+| Capacidad | Contexto de formación | Lab existente en este conjunto | Código | Evidencia histórica de runtime | Claim de runtime actual | Guía | Estado del track |
 |---|---|---|---|---|---|---|---|
-| ABAP Core | SÍ | SÍ (8/10 unidades) | SÍ | SÍ | PENDIENTE | — | `VERIFIED_HISTORICAL` |
-| ABAP Objects | SÍ | SÍ (10/10) | SÍ | SÍ | PENDIENTE | — | `VERIFIED_HISTORICAL` |
-| Patrón classrun de ABAP Cloud | SÍ | SÍ (10/10) | SÍ | SÍ | PENDIENTE | — | `VERIFIED_HISTORICAL` |
-| ADT / Eclipse | SÍ | Indirecto mediante todos los labs classrun | N/A | SÍ (indirecta) | PENDIENTE | — | `LAB_FOUND` |
-| Tablas internas | SÍ | SÍ (`lab-07`, `lab-07a`) | SÍ | SÍ | PENDIENTE | — | `VERIFIED_HISTORICAL` |
-| Field Symbols | SÍ | SÍ (`lab-08`) | SÍ | SÍ | PENDIENTE | — | `VERIFIED_HISTORICAL` |
-| Open SQL | SÍ | SÍ (`lab-05`, `lab-06`, `lab-07`, `lab-07a`) | SÍ | SÍ | PENDIENTE | — | `VERIFIED_HISTORICAL` |
-| Manejo de excepciones | SÍ | SÍ (`lab-06`) | SÍ | SÍ | PENDIENTE | — | `VERIFIED_HISTORICAL` |
+| ABAP Core | SÍ | SÍ (8/10 unidades) | SÍ | SÍ | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
+| ABAP Objects | SÍ | SÍ (10/10) | SÍ | SÍ | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
+| Patrón classrun de ABAP Cloud | SÍ | SÍ (10/10) | SÍ | SÍ | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
+| ADT / Eclipse | SÍ | Indirecto mediante todos los labs classrun | N/A | SÍ (indirecta) | NO_CURRENT_RUNTIME_CLAIM | — | `LAB_FOUND` |
+| Tablas internas | SÍ | SÍ (`lab-07`, `lab-07a`) | SÍ | SÍ | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
+| Field Symbols | SÍ | SÍ (`lab-08`) | SÍ | SÍ | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
+| Open SQL | SÍ | SÍ (`lab-05`, `lab-06`, `lab-07`, `lab-07a`) | SÍ | SÍ | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
+| Manejo de excepciones | SÍ | SÍ (`lab-06`) | SÍ | SÍ | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
 | Autoría de interfaces propias (`zif_*`) | NO | NO | NO | NO | N/A | — | `NOT_FOUND_IN_THIS_LAB_SET` |
 | ABAP Dictionary / DDIC | SÍ | NO | NO | NO | N/A | SÍ | `TRAINING_ONLY_IN_THIS_TRACK` |
-| CDS | NO en este conjunto fuente | NO | NO | NO | N/A | NO | `NOT_FOUND_IN_THIS_LAB_SET` |
-| RAP | NO en este conjunto fuente | NO | NO | NO | N/A | NO | `NOT_FOUND_IN_THIS_LAB_SET` |
-| Behavior Definitions | NO | NO | NO | NO | N/A | NO | `NOT_FOUND_IN_THIS_LAB_SET` |
-| Service Definitions / Bindings | NO | NO | NO | NO | N/A | NO | `NOT_FOUND_IN_THIS_LAB_SET` |
-| Lab práctico OData en ABAP | NO | NO | NO | NO | N/A | NO | `NOT_FOUND_IN_THIS_LAB_SET` |
-| Lab ABAP Unit | NO | NO | NO | NO | N/A | NO | `NOT_FOUND_IN_THIS_LAB_SET` |
-| Evidencia runtime ATC | SÍ | NO | NO | NO | N/A | SÍ | `TRAINING_ONLY_IN_THIS_TRACK` |
-| Evidencia runtime ABAP Cleaner | SÍ | NO | NO | NO | N/A | SÍ | `TRAINING_ONLY_IN_THIS_TRACK` |
-| Evidencia runtime abapGit | SÍ | NO | NO | NO | N/A | SÍ | `TRAINING_ONLY_IN_THIS_TRACK` |
-| Lab práctico de autorizaciones | SÍ | NO | NO | NO | N/A | SÍ | `TRAINING_ONLY_IN_THIS_TRACK` |
+| CDS | NO en este conjunto fuente | NO | NO | NO | N/A | NO | `OPTIONAL_FUTURE_EXPANSION` |
+| RAP | NO en este conjunto fuente | NO | NO | NO | N/A | NO | `OPTIONAL_FUTURE_EXPANSION` |
+| Behavior Definitions | NO | NO | NO | NO | N/A | NO | `OPTIONAL_FUTURE_EXPANSION` |
+| Service Definitions / Bindings | NO | NO | NO | NO | N/A | NO | `OPTIONAL_FUTURE_EXPANSION` |
+| Lab práctico OData en ABAP | NO | NO | NO | NO | N/A | NO | `OPTIONAL_FUTURE_EXPANSION` |
+| Lab ABAP Unit | NO | NO | NO | NO | N/A | NO | `OPTIONAL_FUTURE_EXPANSION` |
+| Práctica hands-on ATC | SÍ | SÍ — [`training-practices/`](./training-practices/README.es.md) (`zcl_c3_02_atc_demo_fq`) | SÍ | N/A (práctica de formación, no evidencia de lab histórico) | NO_CURRENT_RUNTIME_CLAIM | SÍ | `OWNER_CONFIRMED_HANDS_ON_EXECUTION` |
+| Práctica hands-on ABAP Cleaner | SÍ | SÍ — [`training-practices/`](./training-practices/README.es.md) (`zcl_c3_03_cleaner_demo_fq`) | SÍ | N/A (práctica de formación, no evidencia de lab histórico) | NO_CURRENT_RUNTIME_CLAIM | SÍ | `OWNER_CONFIRMED_HANDS_ON_EXECUTION` |
+| Práctica hands-on abapGit | SÍ | SÍ — [`training-practices/`](./training-practices/README.es.md) (`zcl_c3_01_projects_fq`) | SÍ | N/A (práctica de formación, no evidencia de lab histórico) | NO_CURRENT_RUNTIME_CLAIM | SÍ | `OWNER_CONFIRMED_HANDS_ON_EXECUTION` |
+| Práctica hands-on de autorizaciones | SÍ | SÍ — [`training-practices/`](./training-practices/README.es.md) (`zcl_c3_04_dept_auth_fq`) | SÍ | N/A (práctica de formación, no evidencia de lab histórico) | NO_CURRENT_RUNTIME_CLAIM | SÍ | `OWNER_CONFIRMED_HANDS_ON_EXECUTION` |
 | Debugging | SÍ (teoría) | NO | NO | NO | N/A | NO | `TRAINING_ONLY_IN_THIS_TRACK` |
 | Performance | SÍ (teoría) | NO | NO | NO | N/A | NO | `TRAINING_ONLY_IN_THIS_TRACK` |
 | Gestión de transportes | SÍ (tema) | NO | NO | NO | N/A | NO | `TRAINING_ONLY_IN_THIS_TRACK` |
@@ -45,8 +45,10 @@ Esos artefactos continúan clasificados por separado en la [Matriz de Capacidade
 
 ## Leyenda de estados
 
-- `VERIFIED_HISTORICAL`: existe código entregado más evidencia histórica de ejecución; la reejecución actual sigue pendiente.
+- `HISTORICAL_EXECUTION_VERIFIED`: existe código entregado más evidencia documentada de ejecución histórica. No se afirma ni se exige runtime actual.
+- `OWNER_CONFIRMED_HANDS_ON_EXECUTION`: el propietario confirma directamente haber tecleado, creado y ejecutado personalmente esta práctica de formación; ver [Prácticas de Formación](./training-practices/README.es.md) para la redacción de procedencia exacta por práctica.
 - `LAB_FOUND`: existe evidencia indirecta o parcial de laboratorio.
-- `TRAINING_ONLY_IN_THIS_TRACK`: estudiado y documentado aquí, pero sin lab práctico dentro de este conjunto histórico.
+- `TRAINING_ONLY_IN_THIS_TRACK`: estudiado y documentado aquí, sin artefacto de source guardado y sin claim de lab práctico dentro de este conjunto histórico.
 - `NOT_FOUND_IN_THIS_LAB_SET`: no existe evidencia de lab/código en este conjunto histórico; **no** implica ausencia global en el portfolio.
-- `PENDING`: todavía no se completó la reverificación runtime actual.
+- `OPTIONAL_FUTURE_EXPANSION`: no forma parte del alcance actual de este track; puede construirse como un futuro laboratorio original — nunca un bloqueador para cerrar este track.
+- `NO_CURRENT_RUNTIME_CLAIM`: este track no afirma reejecución en un entorno actual.

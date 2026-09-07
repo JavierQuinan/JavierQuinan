@@ -2,12 +2,12 @@
 
 [Versión en español](./README.es.md)
 
-> **Purpose:** prepare the 10 historical ABAP labs in [`../labs/`](../labs/README.md) for current, reproducible execution — without altering any historical source and without claiming re-execution that hasn't happened.
+> **Status:** `OPTIONAL_REPRODUCIBILITY_REFERENCE`. The 10 historical labs in [`../labs/`](../labs/README.md) are `HISTORICAL_EXECUTION_VERIFIED` and require nothing further to close that track. This folder is supporting technical material for anyone who later chooses to re-execute them in a current SAP environment — dependency analysis, a synthetic fixture, runtime-ready source drafts and ADT execution guidance — not a pending task or a blocker.
 
 ## Current status
 
 - **Historical execution:** 10/10 (documented privately, per the parent [Evidence Matrix](../EVIDENCE_MATRIX.md)).
-- **Current runtime verification:** 0/10 — unchanged by this workspace.
+- **Current-runtime claim:** none — this track does not assert current-environment re-execution. Re-executing the material in this folder is optional future work, should the account owner choose to pursue it.
 
 ## What this folder contains
 
@@ -29,11 +29,11 @@ Only 3 of the 10 historical labs needed a code variant to remove a reproducibili
 
 | Historical | Runtime-ready | Status |
 |---|---|---|
-| `zcl_lab_05_invoice_fq` | [`source/zcl_lab_05_invoice_rt_fq.abap`](./source/zcl_lab_05_invoice_rt_fq.abap) | `RUNTIME_READY_DRAFT` / `NEEDS_ADT_VERIFICATION` |
-| `zcl_lab_06_condition_fq` | [`source/zcl_lab_06_condition_rt_fq.abap`](./source/zcl_lab_06_condition_rt_fq.abap) | `RUNTIME_READY_DRAFT` / `NEEDS_ADT_VERIFICATION` |
-| `zcl_lab_08_fieldsymbols_fq` | [`source/zcl_lab_08_fieldsymbols_rt_fq.abap`](./source/zcl_lab_08_fieldsymbols_rt_fq.abap) | `RUNTIME_READY_DRAFT` / `NEEDS_ADT_VERIFICATION` |
+| `zcl_lab_05_invoice_fq` | [`source/zcl_lab_05_invoice_rt_fq.abap`](./source/zcl_lab_05_invoice_rt_fq.abap) | `PUBLIC_RUNTIME_READY_DRAFT` |
+| `zcl_lab_06_condition_fq` | [`source/zcl_lab_06_condition_rt_fq.abap`](./source/zcl_lab_06_condition_rt_fq.abap) | `PUBLIC_RUNTIME_READY_DRAFT` |
+| `zcl_lab_08_fieldsymbols_fq` | [`source/zcl_lab_08_fieldsymbols_rt_fq.abap`](./source/zcl_lab_08_fieldsymbols_rt_fq.abap) | `PUBLIC_RUNTIME_READY_DRAFT` |
 
-None of these three has been activated or executed in any ABAP system yet. **They are drafts pending ADT verification, not verified code.**
+None of these three has been activated or executed in any ABAP system yet, and none needs to be for this portfolio track to be complete. They are optional reference drafts — useful if anyone later exercises them in ADT, not a requirement of this track.
 
 ## Synthetic support
 
@@ -43,7 +43,9 @@ None of these three has been activated or executed in any ABAP system yet. **The
 
 **These are not the same thing.** The 10 files in [`../labs/source/`](../labs/README.md) are the historical, byte-for-byte-unchanged submissions with their own execution evidence from 2025. The 4 files in [`source/`](./source/) here are new, original, unexecuted drafts written specifically to remove the `ZEMP_LOGALI` reproducibility blocker. Nothing in `../labs/source/` was modified to produce this folder.
 
-## Remaining external checks
+## If this material is ever exercised in ADT
+
+None of the following blocks this track's completion — they are only relevant if the account owner chooses to re-execute this material later:
 
 - `/DMO/*` availability in the target system — `AVAILABILITY = UNKNOWN` for all objects (see [DMO Dependency Check](./DMO_DEPENDENCY_CHECK.md)).
 - `TEXT-001` decision and creation in ADT — documented but not executed (see [Lab 04 Text Element Decision](./LAB04_TEXT_ELEMENT_DECISION.md)).

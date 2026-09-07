@@ -129,6 +129,12 @@ ECC ABAP artifacts are presented as reviewable source/static evidence, not as co
 
 `SAP MM` `IS-U Work Management` `CRM` `SD` `ABAP` `Debugging` `S/4HANA` `ABAP Cloud` `Clean Core` `RAP` `OData` `TypeScript` `Integration`
 
+## Training & Credentials
+
+- [General credentials index](docs/CREDENTIALS.md) — SAP training, Odoo, and other relevant technical credentials, recruiter-facing.
+- [SAP training & credentials](showcases/sap-integration-lab/00-profile/TRAINING_AND_CREDENTIALS.md) — full detail behind the SAP-related entries above.
+- [Odoo 18 Functional Certificate](docs/CREDENTIALS.md#odoo) — Odoo Inc. Certificate of Achievement.
+
 ## Engineering principles
 
 - Evidence before claims

@@ -3,7 +3,7 @@
 [English version](./README.md)
 
 > **Alcance:** evidencia pública curada proveniente de entregas personales históricas de laboratorio ABAP Cloud.  
-> **Límite de evidencia:** la ejecución histórica está documentada de forma privada; la reverificación runtime actual sigue pendiente para los 10 archivos de código.
+> **Límite de evidencia:** los 10 laboratorios históricos conservan su evidencia documentada de ejecución histórica. No se afirma ni se exige una reejecución de runtime actual para este track del portfolio.
 
 Este track complementa el [SAP Engineering Evidence Lab](../README.es.md). No reemplaza la [Matriz de Capacidades SAP](../00-profile/SAP_CAPABILITY_MATRIX.es.md) global del portfolio.
 
@@ -11,8 +11,9 @@ Este track complementa el [SAP Engineering Evidence Lab](../README.es.md). No re
 
 - **10 archivos de clases ABAP** en 8 temas base: tipos, aritmética, conversiones, procesamiento de texto/strings, estructuras de control, tablas internas y field symbols.
 - **Evidencia histórica de ejecución:** 10/10 documentada en entregas fuente privadas.
-- **Reverificación runtime actual:** 0/10 — pendiente.
+- **Claim de runtime actual:** ninguno — este track queda cerrado sobre evidencia histórica documentada; ver [Referencia de Runtime-Readiness](./runtime-readiness/README.es.md) para material opcional de reproducibilidad, no bloqueante.
 - **5 guías derivadas de formación:** ABAP Dictionary/DDIC, abapGit, ATC, ABAP Cleaner y autorizaciones.
+- **4 prácticas hands-on de Curso 3**, confirmadas por el propietario y normalizadas a source `_fq` — ver [Prácticas de Formación](./training-practices/README.es.md).
 - **Documentación bilingüe:** inglés + español.
 
 ## Límites de evidencia
@@ -25,6 +26,8 @@ Un estado como `NOT_FOUND_IN_THIS_LAB_SET` se limita a este track histórico. El
 
 - [Matriz de Evidencia](./EVIDENCE_MATRIX.es.md)
 - [Catálogo Histórico de Labs y Source](./labs/README.es.md)
+- [Referencia de Runtime-Readiness](./runtime-readiness/README.es.md) (material opcional de reproducibilidad)
+- [Prácticas de Formación de Curso 3](./training-practices/README.es.md)
 - [Convenciones de Nomenclatura](./NAMING_CONVENTIONS.es.md)
 - [Análisis de Gaps](./docs/GAP_ANALYSIS.es.md)
 - [Roadmap de Laboratorios Futuros](./docs/FUTURE_LAB_ROADMAP.es.md)
@@ -33,4 +36,4 @@ Un estado como `NOT_FOUND_IN_THIS_LAB_SET` se limita a este track histórico. El
 
 ## Política de publicación
 
-Este track excluye archivos crudos de cursos, PDFs de certificados, QR/identificadores de credenciales, capturas históricas, credenciales y registros privados de auditoría. La evidencia runtime actual se añadirá únicamente después de reejecutar y sanitizar.
+Este track excluye archivos crudos de cursos, PDFs de certificados, QR/identificadores de credenciales, capturas históricas, credenciales y registros privados de auditoría. El alcance de este track queda completo sobre evidencia de ejecución histórica documentada y formación hands-on confirmada por el propietario; una reverificación de runtime actual opcional, si se realiza más adelante, se añadiría como evidencia complementaria, no como requisito de cierre.

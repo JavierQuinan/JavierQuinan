@@ -85,6 +85,6 @@ ENDCLASS.
 
 ## 5. What this does NOT do
 
-- It does not modify, replace, or delete `zcl_lab_05_invoice_fq`, `zcl_lab_06_condition_fq`, or `zcl_lab_08_fieldsymbols_fq` — those remain byte-for-byte as published, still referencing `zemp_logali`, still `HISTORICAL_EXECUTION_EVIDENCE = YES` / `CURRENT_RUNTIME_VERIFICATION = PENDING`.
+- It does not modify, replace, or delete `zcl_lab_05_invoice_fq`, `zcl_lab_06_condition_fq`, or `zcl_lab_08_fieldsymbols_fq` — those remain byte-for-byte as published, still referencing `zemp_logali`, still `HISTORICAL_EXECUTION_EVIDENCE = YES` / `CURRENT_RUNTIME_VERIFICATION = NO_CURRENT_RUNTIME_CLAIM`.
 - It does not attempt to reconstruct the real `ZEMP_LOGALI` table, its actual field list, or any Logali-authored content.
 - It does not touch any database table, real or synthetic — everything happens in an ABAP internal table in memory.

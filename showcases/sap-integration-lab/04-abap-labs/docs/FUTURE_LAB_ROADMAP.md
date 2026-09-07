@@ -2,42 +2,34 @@
 
 [Versión en español](./FUTURE_LAB_ROADMAP.es.md)
 
-> Proposal only. Nothing in this roadmap is claimed as implemented until source and runtime evidence exist.
+> Proposal only. Nothing in this roadmap is claimed as implemented until source and runtime evidence exist. **None of this is required to close the current 10-labs + Course 3 practices scope** — see [FINAL_STATUS.md](../../FINAL_STATUS.md). Everything here is `OPTIONAL_FUTURE_EXPANSION`, not `MISSING_REQUIREMENT`, `P0`, or a blocker.
 
-## P0 — Make the 10 historical labs reproducible
+## Already delivered (moved out of this roadmap)
 
-1. Re-execute all 10 public lab copies in a current SAP environment.
-2. Replace the private `ZEMP_LOGALI` dependency with an original synthetic `_fq` data model or adapter for the affected labs.
-3. Recreate or remove the `TEXT-001` dependency in lab-04.
-4. Add sanitized current-runtime evidence only after each class activates and runs successfully.
+- Historical labs reproducibility analysis, a synthetic `_fq` fixture, and 3 runtime-ready source drafts — now the [optional runtime-readiness reference](../runtime-readiness/README.md).
+- abapGit, ATC, ABAP Cleaner and Authorizations hands-on evidence — now [Course 3 Training Practices](../training-practices/README.md), `OWNER_CONFIRMED_HANDS_ON_EXECUTION`.
 
-## P1 — Build original modern ABAP Cloud labs
+## `OPTIONAL_FUTURE_EXPANSION` — a next-generation original lab set
 
-5. ABAP Unit on a pure-logic existing class.
-6. CDS fundamentals over synthetic/released demo data.
-7. Minimal RAP business object.
-8. Service definition + binding for the RAP object.
-9. OData service exposure and verification.
+1. ABAP Unit on a pure-logic existing class.
+2. CDS fundamentals over synthetic/released demo data.
+3. Minimal RAP business object.
+4. Service definition + binding for the RAP object.
+5. OData service exposure and verification.
+6. A safe API-consumption lab using a released HTTP client.
+7. An original, own-scenario Course 2 DDIC lab (domains/data elements/tables/lock objects), independent of the course exercise, with its own `_fq` naming.
 
-## P2 — Convert training-only tooling into hands-on evidence
+## `OPTIONAL_FUTURE_EXPANSION` — additional depth on existing evidence
 
-10. Run ATC against the lab package and record actual findings.
-11. Create a real abapGit package/repository workflow.
-12. Run ABAP Cleaner on selected labs and review the resulting diff.
-13. Build an authorization scenario appropriate to the chosen ABAP environment.
-14. Add a safe API-consumption lab using a released HTTP client.
-
-## P3 — Optional depth
-
-15. Debugging walkthrough.
-16. Runtime/performance analysis of the advanced internal-table lab.
-17. Transport-management evidence where the environment supports it.
-18. Advanced RAP scenario after the P1 slice is complete.
+8. Debugging walkthrough on one existing lab.
+9. Runtime/performance analysis of the advanced internal-table lab.
+10. Transport-management evidence where the environment supports it.
+11. Optional current-runtime re-verification of the 10 historical labs and/or the 3 runtime-ready drafts, using the [runtime-readiness reference](../runtime-readiness/README.md) — supplementary evidence if pursued, not a completion requirement.
 
 ## Evidence rule
 
-Every future item must be promoted through:
+Every future item, if pursued, must be promoted through:
 
 `PROPOSED → SOURCE_CREATED → CURRENT_RUNTIME_VERIFIED → PUBLIC_EVIDENCE`
 
-No training-only topic is promoted directly to `VERIFIED`.
+No training-only topic is promoted directly to `CURRENT_RUNTIME_VERIFIED`.

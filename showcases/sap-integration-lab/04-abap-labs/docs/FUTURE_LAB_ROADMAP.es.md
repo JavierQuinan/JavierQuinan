@@ -2,42 +2,34 @@
 
 [English version](./FUTURE_LAB_ROADMAP.md)
 
-> Solo propuesta. Ningún punto de este roadmap se presenta como implementado hasta que exista código y evidencia runtime.
+> Solo propuesta. Nada en este roadmap se afirma como implementado hasta que exista source y evidencia de runtime. **Nada de esto es requisito para cerrar el alcance actual de 10 laboratorios + prácticas de Curso 3** — ver [FINAL_STATUS.es.md](../../FINAL_STATUS.es.md). Todo aquí es `OPTIONAL_FUTURE_EXPANSION`, no `MISSING_REQUIREMENT`, `P0`, ni un bloqueador.
 
-## P0 — Hacer reproducibles los 10 laboratorios históricos
+## Ya entregado (movido fuera de este roadmap)
 
-1. Reejecutar las 10 copias públicas en un entorno SAP actual.
-2. Reemplazar la dependencia privada `ZEMP_LOGALI` por un modelo de datos o adapter sintético original con nomenclatura `_fq` en los labs afectados.
-3. Recrear o eliminar la dependencia `TEXT-001` del lab-04.
-4. Añadir evidencia runtime actual sanitizada únicamente después de que cada clase active y ejecute correctamente.
+- Análisis de reproducibilidad de los laboratorios históricos, una fixture sintética `_fq`, y 3 borradores de source runtime-ready — ahora la [referencia opcional de runtime-readiness](../runtime-readiness/README.es.md).
+- Evidencia hands-on de abapGit, ATC, ABAP Cleaner y Autorizaciones — ahora [Prácticas de Formación de Curso 3](../training-practices/README.es.md), `OWNER_CONFIRMED_HANDS_ON_EXECUTION`.
 
-## P1 — Construir labs originales de ABAP Cloud moderno
+## `OPTIONAL_FUTURE_EXPANSION` — un conjunto de laboratorios originales de siguiente generación
 
-5. ABAP Unit sobre una clase existente de lógica pura.
-6. Fundamentos CDS sobre datos sintéticos/demo liberados.
-7. Business object RAP mínimo.
-8. Service definition + binding para el objeto RAP.
-9. Exposición y verificación de servicio OData.
+1. ABAP Unit sobre una clase existente de lógica pura.
+2. Fundamentos de CDS sobre datos demo sintéticos/liberados.
+3. Objeto de negocio RAP mínimo.
+4. Definición de servicio + binding para el objeto RAP.
+5. Exposición y verificación de servicio OData.
+6. Un laboratorio de consumo de API seguro usando un cliente HTTP liberado.
+7. Un laboratorio DDIC de Curso 2 original con escenario propio (dominios/elementos de datos/tablas/objetos de bloqueo), independiente del ejercicio del curso, con nomenclatura `_fq` propia.
 
-## P2 — Convertir tooling solo-formación en evidencia hands-on
+## `OPTIONAL_FUTURE_EXPANSION` — profundidad adicional sobre evidencia existente
 
-10. Ejecutar ATC contra el paquete de labs y registrar hallazgos reales.
-11. Crear un flujo real de paquete/repositorio con abapGit.
-12. Ejecutar ABAP Cleaner sobre labs seleccionados y revisar el diff.
-13. Construir un escenario de autorización adecuado al entorno ABAP elegido.
-14. Añadir un lab seguro de consumo de API usando un cliente HTTP liberado.
-
-## P3 — Profundidad opcional
-
-15. Walkthrough de debugging.
-16. Análisis runtime/performance del lab avanzado de tablas internas.
-17. Evidencia de gestión de transportes donde el entorno lo permita.
-18. Escenario RAP avanzado después de completar la vertical P1.
+8. Recorrido de debugging sobre un laboratorio existente.
+9. Análisis de runtime/performance del laboratorio avanzado de tablas internas.
+10. Evidencia de gestión de transportes donde el entorno lo permita.
+11. Reverificación de runtime actual opcional de los 10 laboratorios históricos y/o los 3 borradores runtime-ready, usando la [referencia de runtime-readiness](../runtime-readiness/README.es.md) — evidencia complementaria si se persigue, no un requisito de cierre.
 
 ## Regla de evidencia
 
-Cada punto futuro debe avanzar por:
+Todo ítem futuro, si se persigue, debe promoverse a través de:
 
 `PROPOSED → SOURCE_CREATED → CURRENT_RUNTIME_VERIFIED → PUBLIC_EVIDENCE`
 
-Ningún tema solo-formación pasa directamente a `VERIFIED`.
+Ningún tema solo-formación se promueve directamente a `CURRENT_RUNTIME_VERIFIED`.

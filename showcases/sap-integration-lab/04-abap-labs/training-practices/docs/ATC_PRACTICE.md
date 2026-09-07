@@ -4,7 +4,7 @@
 
 ## Status
 
-`USER_AUTHORED_PRACTICE` / `PORTFOLIO_NORMALIZED` / `NORMALIZED_NOT_EXECUTED` / `NEEDS_ADT_VERIFICATION`
+`USER_AUTHORED_PRACTICE` / `OWNER_CONFIRMED_HANDS_ON_EXECUTION` / `PORTFOLIO_NORMALIZED` / `PUBLIC_NORMALIZED_SOURCE` / `NO_CURRENT_RUNTIME_CLAIM`
 
 ## Provenance
 
@@ -28,7 +28,7 @@ The original exercise used a course-instance placeholder in the class name. The 
 
 ## Runtime status
 
-`NORMALIZED_NOT_EXECUTED`. This file has not been activated, run, or ATC-checked in this form. `NEEDS_ADT_VERIFICATION` before any current-runtime or current-ATC-result claim.
+`NO_CURRENT_RUNTIME_CLAIM`. The normalized, renamed copy in this repository has not itself been re-activated, re-run, or re-checked with ATC; execution and the original ATC findings/fix/exemption refer to the original hands-on training practice confirmed by the account owner. No `ATC_CLEAN`/current-ATC-result claim is made for the renamed copy.
 
 ## Dependencies
 

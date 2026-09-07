@@ -6,13 +6,13 @@ Original exercise names are not reproduced here in full (they carry a course-ins
 
 | Practice | Portfolio object | Ownership | Changes | Runtime status |
 |---|---|---|---|---|
-| abapGit | `zcl_c3_01_projects_fq` | `USER_AUTHORED_PRACTICE` | Renamed to the `_fq` convention, removed an unused empty class section; parameter-passing style and literals unchanged | `NORMALIZED_NOT_EXECUTED` |
-| ATC | `zcl_c3_02_atc_demo_fq` | `USER_AUTHORED_PRACTICE` | Renamed to the `_fq` convention, removed an unused empty class section; the unfiltered query and the `##NO_TEXT` pragma fix are deliberately unchanged — they are the exercise's own ATC-finding/fix/exemption teaching content | `NORMALIZED_NOT_EXECUTED` |
-| ABAP Cleaner | `zcl_c3_03_cleaner_demo_fq` | `USER_AUTHORED_PRACTICE` | Renamed to the `_fq` convention, removed an unused empty class section; logic otherwise unchanged — no fabricated "after cleanup" version | `NORMALIZED_NOT_EXECUTED` |
-| Authorizations | `zcl_c3_04_dept_auth_fq` | `USER_AUTHORED_PRACTICE` | Renamed to the `_fq` convention, removed an unused empty class section; `AUTHORITY-CHECK`/query logic unchanged | `NORMALIZED_NOT_EXECUTED` |
-| Authorizations — data element | `zde_dept_fq` | `USER_AUTHORED_PRACTICE` | Renamed per the already-documented `zde_<topic>_fq` convention (see [`../NAMING_CONVENTIONS.md`](../NAMING_CONVENTIONS.md)) | `NORMALIZED_NOT_EXECUTED` (DDIC object — created via ADT wizard, no `.abap` file) |
-| Authorizations — authorization field | `ZAFDEPTFQ` | `USER_AUTHORED_PRACTICE` | New short, unsuffixed-style name (9 characters) — the SAP 10-character authorization-field name limit does not fit an underscore-suffixed `_fq` pattern | `NORMALIZED_NOT_EXECUTED` (DDIC object — no `.abap` file) |
-| Authorizations — authorization object | `ZAODEPTFQ` | `USER_AUTHORED_PRACTICE` | New short, unsuffixed-style name (9 characters) — same 10-character constraint | `NORMALIZED_NOT_EXECUTED` (DDIC object — no `.abap` file) |
+| abapGit | `zcl_c3_01_projects_fq` | `USER_AUTHORED_PRACTICE` | Renamed to the `_fq` convention, removed an unused empty class section; parameter-passing style and literals unchanged | `NO_CURRENT_RUNTIME_CLAIM` |
+| ATC | `zcl_c3_02_atc_demo_fq` | `USER_AUTHORED_PRACTICE` | Renamed to the `_fq` convention, removed an unused empty class section; the unfiltered query and the `##NO_TEXT` pragma fix are deliberately unchanged — they are the exercise's own ATC-finding/fix/exemption teaching content | `NO_CURRENT_RUNTIME_CLAIM` |
+| ABAP Cleaner | `zcl_c3_03_cleaner_demo_fq` | `USER_AUTHORED_PRACTICE` | Renamed to the `_fq` convention, removed an unused empty class section; logic otherwise unchanged — no fabricated "after cleanup" version | `NO_CURRENT_RUNTIME_CLAIM` |
+| Authorizations | `zcl_c3_04_dept_auth_fq` | `USER_AUTHORED_PRACTICE` | Renamed to the `_fq` convention, removed an unused empty class section; `AUTHORITY-CHECK`/query logic unchanged | `NO_CURRENT_RUNTIME_CLAIM` |
+| Authorizations — data element | `zde_dept_fq` | `USER_AUTHORED_PRACTICE` | Renamed per the already-documented `zde_<topic>_fq` convention (see [`../NAMING_CONVENTIONS.md`](../NAMING_CONVENTIONS.md)) | `NO_CURRENT_RUNTIME_CLAIM` (DDIC object — created via ADT wizard, no `.abap` file) |
+| Authorizations — authorization field | `ZAFDEPTFQ` | `USER_AUTHORED_PRACTICE` | New short, unsuffixed-style name (9 characters) — the SAP 10-character authorization-field name limit does not fit an underscore-suffixed `_fq` pattern | `NO_CURRENT_RUNTIME_CLAIM` (DDIC object — no `.abap` file) |
+| Authorizations — authorization object | `ZAODEPTFQ` | `USER_AUTHORED_PRACTICE` | New short, unsuffixed-style name (9 characters) — same 10-character constraint | `NO_CURRENT_RUNTIME_CLAIM` (DDIC object — no `.abap` file) |
 
 ## Naming-length check
 
