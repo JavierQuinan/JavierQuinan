@@ -13,10 +13,11 @@ This matrix contains only capabilities supported by current public evidence, doc
 | SAP IS-U / WM | Device / meter troubleshooting | `ENTERPRISE_VERIFIED` | Sanitized operational guides for device-status and related WM/IS-U flows |
 | SAP IS-U / CRM | Contract-end / DCDE recovery | `ENTERPRISE_VERIFIED` | Sanitized CRM ↔ IS-U recovery evidence; no generic integration-platform claim |
 | SAP technical diagnostics | Object discovery, debugging, dumps and process analysis | `ENTERPRISE_VERIFIED` | `SE93`, `SE24/37/38/80`, debugger, `ST22`, `SM21`, `SM50/66` sequence |
-| SAP CRM/SD | Non-energy service billing workflow | `ENTERPRISE_VERIFIED` | Sanitized customer/BP, sales-area and billing/output workflow |
-| ABAP Cloud historical labs | Core / Objects / classrun / internal tables / field symbols / Open SQL / exceptions | `HISTORICAL_EXECUTION_VERIFIED` + `PUBLIC_SOURCE_EVIDENCE` | Curso 1: 16 units accounted for, 10 personal hands-on labs, 10 public source files and 20 owned sanitized ADT screenshots |
+| SAP CRM/SD | Non-energy service billing workflow | `ENTERPRISE_VERIFIED` | Sanitized customer/BP, sales-area and billing/output workflow; retained as supporting functional context, not positioned as a primary CRM specialization |
+| ABAP Cloud historical labs | Core / Objects / classrun / internal tables / field symbols / Open SQL / exceptions | `HISTORICAL_EXECUTION_VERIFIED` + `PUBLIC_SOURCE_EVIDENCE` | Course 1: 16 units accounted for, 10 personal hands-on labs, 10 public source files and 20 owned sanitized ADT screenshots |
 | ABAP tooling | abapGit / ATC / ABAP Cleaner / authorizations | `OWNER_CONFIRMED_HANDS_ON_EXECUTION` + `PUBLIC_NORMALIZED_SOURCE` | Four Course 3 practices with `_fq` normalized source and precise training provenance |
 | ABAP Cloud Dictionary / DDIC | Domains, data elements, tables, lock objects, persistence, relations, Dynamic Cache | `OWNER_CONFIRMED_HANDS_ON_EXECUTION` + `TRAINING_ONLY` | Course 2 hands-on training completed; no saved source artifact is represented |
+| SAP S/4HANA | Multi-module functional training: MM, PP, SD, FI and PM | `TRAINING_CREDENTIAL` | 240-academic-hour International SAP S/4 HANA specialization. Completed module record: MM 20/20, PP 16/20, SD 18/20, FI 18/20, PM 18/20; final average 18/20. This does not imply productive S/4HANA implementation experience |
 | S/4HANA MM | Procurement API client | `EXECUTABLE_NON_LIVE_EXAMPLE` | TypeScript PO/PR client, OData validation, HTTPS guard, request correlation and 6/6 observed CI tests; no live S/4 tenant claim |
 | S/4HANA | Migration concepts | `DOCUMENTATION_GROUNDED` | Migration objects, staging/direct transfer, mapping, simulation, monitoring and reconciliation |
 | ABAP Cloud / Clean Core | Released API/object governance | `DOCUMENTATION_GROUNDED` + completed training | Clean Core guide plus completed ABAP Cloud training; no runtime compliance claim from the historical labs |
@@ -26,10 +27,12 @@ This matrix contains only capabilities supported by current public evidence, doc
 
 ## Claim boundary
 
-This matrix does not claim SAP Integration Suite/CPI runtime, live S/4HANA API connectivity, productive OData/SOAP, IDoc/RFC/BAPI runtime, Event Mesh or RAP/service-binding runtime. Those capabilities are simply outside the evidence represented here.
+This matrix does not claim SAP Integration Suite/CPI runtime, live S/4HANA API connectivity, productive OData/SOAP, IDoc/RFC/BAPI runtime, Event Mesh or RAP/service-binding runtime. The S/4HANA specialization and ABAP Cloud track are represented as completed training and hands-on practice where applicable, not as productive experience that the evidence does not support.
 
 ## Recruiter summary
 
-**Functional / process strength:** SAP ECC MM · SAP IS-U / Work Management · CRM/SD  
+**Functional / process strength:** SAP ECC MM · SAP IS-U / Work Management  
+**Supporting functional context:** CRM ↔ IS-U · CRM/SD in specific enterprise workflows, without positioning CRM as a primary specialization  
 **Technical strength:** ABAP Objects · SALV · debugging · status/data analysis · 10 historical ABAP Cloud hands-on labs · 4 Course 3 tooling practices  
+**S/4HANA training:** 240-hour specialization across MM · PP · SD · FI · PM, final average 18/20  
 **Modern SAP evidence boundary:** ABAP Cloud historical hands-on evidence · completed DDIC/tooling training · Clean Core/RAP documentation-grounded study · S/4HANA client-side non-live example
