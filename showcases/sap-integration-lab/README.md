@@ -3,8 +3,10 @@
 [Versión en español](./README.es.md)
 
 > **Languages:** English + Spanish  
-> **Scope:** SAP ECC MM, SAP IS-U / Work Management, CRM/SD, ABAP technical diagnostics, historical hands-on ABAP Cloud labs, completed ABAP training practices, and non-live S/4HANA client-side engineering examples.  
-> **Evidence rule:** evidence classes are explicit; enterprise experience, historical execution, owner-confirmed training, public source, documentation-grounded study and executable non-live examples are not treated as equivalent.
+> **Primary enterprise scope:** SAP ECC MM, SAP IS-U / Work Management and SAP technical diagnostics.  
+> **Supporting enterprise context:** specific CRM ↔ IS-U and CRM/SD workflows where sanitized evidence exists; CRM is not positioned as a primary specialization.  
+> **Training / modern SAP scope:** completed S/4HANA multi-module training, historical hands-on ABAP Cloud labs, completed ABAP training practices, documentation-grounded modern SAP study and non-live S/4HANA client-side examples.  
+> **Evidence rule:** evidence classes are explicit; enterprise experience, supporting functional context, training credentials, historical execution, owner-confirmed hands-on training, public source, documentation-grounded study and executable non-live examples are not treated as equivalent.
 
 This showcase combines sanitized enterprise knowledge with reviewable engineering artifacts. It does **not** claim live S/4HANA integration runtime, SAP Integration Suite/CPI implementation, productive OData/SOAP interfaces, or runtime capabilities not supported by a specific artifact.
 
@@ -17,6 +19,7 @@ This showcase combines sanitized enterprise knowledge with reviewable engineerin
 | `HISTORICAL_EXECUTION_VERIFIED` | Personal lab source with documented historical execution evidence |
 | `OWNER_CONFIRMED_HANDS_ON_EXECUTION` | Training practice directly confirmed by the account owner as personally typed, created and run |
 | `PUBLIC_NORMALIZED_SOURCE` | Reviewable practice source published under the portfolio's own `_fq` naming |
+| `TRAINING_CREDENTIAL` | Completed third-party training credential; proves training completion, not productive implementation experience or SAP-vendor certification |
 | `EXECUTABLE_NON_LIVE_EXAMPLE` | Executable/tested example without a live SAP-connectivity claim |
 | `DOCUMENTATION_GROUNDED` | Architecture/technical study grounded in product documentation |
 | `TRAINING_ONLY` | Completed training with no saved source artifact and no runtime claim |
@@ -48,13 +51,13 @@ Documented troubleshooting sequence:
 
 `SE93 → SE24 / SE37 / SE38 / SE80 → debugger → ST22 / SM21 → SM50 / SM66`
 
-### SAP ECC / CRM-SD — `ENTERPRISE_VERIFIED`
+### SAP ECC / CRM-SD — supporting functional context · `ENTERPRISE_VERIFIED`
 
 [CRM-SD Evidence Track](./01-ecc/sd/README.md)
 
-Sanitized evidence covers a non-energy service billing workflow including customer/BP preparation, sales-area context, billing/output review and configured fiscal-output completion.
+Sanitized evidence covers a specific non-energy service billing workflow including customer/BP preparation, sales-area context, billing/output review and configured fiscal-output completion. This evidence is retained as enterprise functional context; it is **not** used to position CRM as a primary specialization.
 
-### Curso 1 — historical ABAP Cloud labs
+### Course 1 — historical ABAP Cloud labs
 
 [ABAP Cloud Historical Labs](./04-abap-labs/README.md)
 
@@ -65,13 +68,13 @@ Sanitized evidence covers a non-energy service billing workflow including custom
 - Six units are theory-only curriculum topics and are explicitly not represented as labs.
 - Demonstrated historical topics include ABAP Core, ABAP Objects, classrun, internal tables, field symbols, Open SQL and exception handling.
 
-### Curso 2 — ABAP Cloud Dictionary / DDIC
+### Course 2 — ABAP Cloud Dictionary / DDIC
 
 Completed hands-on training is documented for domains, data elements, database tables, persistence adjustments, lock objects, table relationships and Dynamic Cache. No saved source/export artifact is represented, and no source is fabricated to fill that absence.
 
 Training context: [SAP Training & Credentials](./00-profile/TRAINING_AND_CREDENTIALS.md) and [ABAP Cloud Dictionary Guide](./04-abap-labs/guides/ABAP_CLOUD_DICTIONARY_GUIDE.md).
 
-### Curso 3 — `OWNER_CONFIRMED_HANDS_ON_EXECUTION` + `PUBLIC_NORMALIZED_SOURCE`
+### Course 3 — `OWNER_CONFIRMED_HANDS_ON_EXECUTION` + `PUBLIC_NORMALIZED_SOURCE`
 
 [Course 3 Training Practices](./04-abap-labs/training-practices/README.md)
 
@@ -87,6 +90,15 @@ The execution claim refers to the original hands-on training practice confirmed 
 ### SAP S/4HANA — mixed evidence classes
 
 [S/4HANA Evidence Track](./02-s4hana/README.md)
+
+**Multi-module functional training — `TRAINING_CREDENTIAL`**
+
+- **Especialización Internacional en SAP S/4 HANA desde cero — 240 academic hours**.
+- Completed module record: **MM 20/20 · PP 16/20 · SD 18/20 · FI 18/20 · PM 18/20**.
+- Final academic average: **18/20**.
+- This credential proves completed S/4HANA training; it is not presented as SAP-vendor certification or productive S/4HANA implementation, conversion or operations experience.
+
+[Training & credential record](./00-profile/TRAINING_AND_CREDENTIALS.md)
 
 **MM Procurement API Client — `EXECUTABLE_NON_LIVE_EXAMPLE`**
 
@@ -112,7 +124,7 @@ The material documents OData/REST/SOAP boundaries, idempotency, error mapping, c
 
 ## Claim boundaries
 
-This portfolio does not claim SAP Integration Suite/CPI runtime, live S/4HANA API connectivity, productive OData/SOAP, IDoc/RFC/BAPI runtime, Event Mesh, RAP/service-binding runtime, or any other capability not supported by the evidence linked above.
+This portfolio does not claim SAP Integration Suite/CPI runtime, live S/4HANA API connectivity, productive OData/SOAP, IDoc/RFC/BAPI runtime, Event Mesh, RAP/service-binding runtime, or any other capability not supported by the evidence linked above. Completed S/4HANA and ABAP Cloud training is not silently upgraded into productive project experience.
 
 ## Training & credentials
 
@@ -124,7 +136,7 @@ Recruiter-facing training records are reconciled against the account owner's act
 
 [Visual Evidence Index](./visual-evidence/README.md)
 
-Only legitimate, sanitized visuals are published. The Curso 1 track includes 20 owned Eclipse ADT screenshots. Employer/customer-sensitive screenshots, instructor-branded course pages and raw third-party training assets are excluded.
+Only legitimate, sanitized visuals are published. The Course 1 track includes 20 owned Eclipse ADT screenshots. Employer/customer-sensitive screenshots, instructor-branded course pages and raw third-party training assets are excluded.
 
 ## Official SAP references
 
@@ -136,7 +148,7 @@ Official SAP documentation is used to ground standard concepts; it does not subs
 
 [SAP Capability Matrix](./00-profile/SAP_CAPABILITY_MATRIX.md)
 
-The central matrix reconciles enterprise experience, historical labs, completed hands-on training, public source, non-live executable examples and documentation-grounded study.
+The central matrix reconciles enterprise experience, supporting functional context, training credentials, historical labs, completed hands-on training, public source, non-live executable examples and documentation-grounded study.
 
 ## Sanitization status
 
