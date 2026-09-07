@@ -14,9 +14,9 @@ Curso 1 (Logali Group), Unidad 13 — "Field Symbol - Punteros." Entrega persona
 
 [`ZCL_LAB_08_FIELDSYMBOLS_FQ`](../source/zcl_lab_08_fieldsymbols_fq.abap)
 
-## Qué demuestra esto
+## Qué demuestra
 
-`ASSIGN` a una variable, `ASSIGN` a una línea de tabla dentro de un loop, `APPEND`/`INSERT ... ASSIGNING`, `READ TABLE ... ASSIGNING`, y un cast de coerción de campo de fecha, ejecutado como una clase de consola ABAP Cloud. Esta clase usa la tabla `ZEMP_LOGALI` específica del curso como tipo de field symbol en tiempo de compilación — ver la [referencia opcional de runtime-readiness](../../runtime-readiness/README.es.md) para un reemplazo sintético `_fq` que elimina esta dependencia.
+`ASSIGN` a una variable, `ASSIGN` a una línea de tabla dentro de un loop, `APPEND`/`INSERT ... ASSIGNING`, `READ TABLE ... ASSIGNING` y un cast de coerción de campo de fecha, ejecutado como una clase de consola ABAP Cloud en la práctica histórica documentada. La clase usa la tabla `ZEMP_LOGALI` específica del curso como tipo de field symbol en tiempo de compilación; esa dependencia forma parte del contexto histórico preservado del source.
 
 ## Evidencia
 
@@ -26,4 +26,4 @@ Source y salida de consola de Eclipse ADT.
 
 ## Sanitización
 
-Dos redacciones aplicadas: (1) la barra de estado de conexión de ADT (identificador privado de cuenta trial de BTP y fragmento de hostname del tenant); (2) una línea de código fuente que asigna un literal de email específico del entorno de formación (un dominio de apariencia real de terceros usado solo como dato de ejercicio, no datos propios del propietario ni un dominio reproducido de otra forma en el fuente `.abap` publicado). El resto del contenido, incluyendo la salida de consola, no fue modificado.
+Dos redacciones aplicadas: (1) la barra de estado de conexión de ADT (identificador privado de cuenta trial de BTP y fragmento de hostname del tenant); (2) una línea de código fuente que asigna un literal de email específico del entorno de formación (un dominio de apariencia real de terceros usado solo como dato de ejercicio, no datos propios del propietario ni un dominio reproducido de otra forma en el source `.abap` publicado). El resto del contenido, incluyendo la salida de consola, no fue modificado.
