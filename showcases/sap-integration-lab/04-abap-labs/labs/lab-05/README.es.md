@@ -14,9 +14,9 @@ Curso 1 (Logali Group), Unidad 6 — "Operaciones con cadenas de caracteres." En
 
 [`ZCL_LAB_05_INVOICE_FQ`](../source/zcl_lab_05_invoice_fq.abap)
 
-## Qué demuestra esto
+## Qué demuestra
 
-`CONCATENATE`, `CONCATENATE LINES OF`, `CONDENSE`, `REPLACE`, `SPLIT`, `SHIFT`, `STRLEN`/`NUMOFCHAR`, `TRANSLATE`, inserción de string-template, y `REVERSE`, ejecutado como una clase de consola ABAP Cloud. Un método (`demo_2_concat_lines_tab`) lee la tabla `ZEMP_LOGALI` específica del curso — ver la [referencia opcional de runtime-readiness](../../runtime-readiness/README.es.md) para un reemplazo sintético `_fq` que elimina esta dependencia.
+`CONCATENATE`, `CONCATENATE LINES OF`, `CONDENSE`, `REPLACE`, `SPLIT`, `SHIFT`, `STRLEN`/`NUMOFCHAR`, `TRANSLATE`, inserción de string-template y `REVERSE`, ejecutado como una clase de consola ABAP Cloud en la práctica histórica documentada. Un método (`demo_2_concat_lines_tab`) lee la tabla `ZEMP_LOGALI` específica del curso; esa dependencia forma parte del contexto histórico preservado del source.
 
 ## Evidencia
 
