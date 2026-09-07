@@ -18,10 +18,12 @@ Las tablas siguientes son el registro canónico, fuente única de verdad, de tod
 
 | Credencial | Emisor | Duración | Fecha | Clasificación | Evidencia pública |
 |---|---|---:|---|---|---|
-| International SAP S/4 HANA Specialization | GEM Educa, con certificación adicional emitida bajo el Colegio de Economistas del Perú (registro ENFOPE) | 240 horas académicas | 2024-08-09 | Certificado / Diploma | [Certificado](./credentials/evidence/sap/sap-s4hana-specialization-certificate-gem-educa-francisco-quinteros-2024.pdf) · [Diploma](./credentials/evidence/sap/sap-s4hana-specialization-diploma-enfope-francisco-quinteros-2024.pdf) |
+| Especialización Internacional en SAP S/4 HANA desde cero | GEM Educa, con certificación adicional emitida bajo el Colegio de Economistas del Perú (registro ENFOPE) | 240 horas académicas | 2024-08-09 | Certificado / Diploma de formación | [Certificado](./credentials/evidence/sap/sap-s4hana-specialization-certificate-gem-educa-francisco-quinteros-2024.pdf) · [Diploma](./credentials/evidence/sap/sap-s4hana-specialization-diploma-enfope-francisco-quinteros-2024.pdf) |
 | SAP ABAP Core - Programación Cloud | Logali Group | 80 horas académicas | 2026-01-18 | Certificado de Aprovechamiento | [Ver certificado](./credentials/evidence/sap/sap-abap-core-cloud-programming-logali-francisco-quinteros-2026.pdf) |
 | SAP ABAP Cloud - Diccionario de datos | Logali Group | 100 horas académicas | 2026-06-28 | Certificado de Aprovechamiento | [Ver certificado](./credentials/evidence/sap/sap-abap-cloud-dictionary-logali-francisco-quinteros-2026.pdf) |
 | SAP abapGit \| ATC \| ABAP Cleaner \| Autorizaciones | Logali Group | 20 horas académicas | 2026-06-28 | Certificado de Aprovechamiento | [Ver certificado](./credentials/evidence/sap/sap-abapgit-atc-cleaner-authorizations-logali-francisco-quinteros-2026.pdf) |
+
+**Registro académico S/4HANA:** MM 20/20 · PP 16/20 · SD 18/20 · FI 18/20 · PM 18/20 · promedio final 18/20. El detalle y el límite de claim están documentados en [Formación y Credenciales SAP](../showcases/sap-integration-lab/00-profile/TRAINING_AND_CREDENTIALS.es.md). Esta credencial acredita formación; no se presenta como certificación oficial emitida por SAP ni como experiencia productiva de implementación S/4HANA.
 
 ### Formación SAP adicional completada
 
