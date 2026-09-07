@@ -4,7 +4,7 @@
 
 Esta página documenta la formación SAP completada de forma separada a la evidencia práctica de ingeniería.
 
-> **Política de denominación:** los certificados de aprovechamiento y diplomas emitidos por terceros se presentan como credenciales de formación. No se describen como certificaciones oficiales emitidas por SAP salvo que la entidad emisora sea SAP.
+> **Política de denominación:** los certificados de aprovechamiento y diplomas emitidos por terceros se presentan exactamente según sus documentos emisores. No se describen como certificaciones oficiales emitidas por SAP salvo que el emisor y la redacción del propio certificado respalden ese claim.
 
 ## Formación completada
 
@@ -14,6 +14,12 @@ Esta página documenta la formación SAP completada de forma separada a la evide
 | Fundamentos ABAP Cloud | SAP ABAP Core - Programación Cloud | Logali Group | 80 horas | 2026-01-18 |
 | Modelo de datos ABAP Cloud | SAP ABAP Cloud - Diccionario de datos | Logali Group | 100 horas | 2026-06-28 |
 | Tooling de ingeniería ABAP | SAP abapGit \| ATC \| ABAP Cleaner \| Autorizaciones | Logali Group | 20 horas | 2026-06-28 |
+
+## Evidencia pública de certificados
+
+Las credenciales seleccionadas intencionalmente para este portfolio se respaldan con sus archivos públicos de certificado. El repositorio mantiene **un único archivo canónico por credencial**: PDF original cuando esté disponible y, en su defecto, imagen original. Las copias duplicadas del mismo certificado se eliminan. La evidencia conserva branding del emisor, nombre del titular, título, fecha, duración y datos públicos de verificación; solo se redacta material genuinamente sensible que no forme parte de la verificación pública.
+
+Los enlaces exactos a cada certificado se mantienen en el [Índice General de Credenciales](../../../docs/CREDENTIALS.es.md), que funciona como fuente única de verdad para los assets de credenciales SAP, Odoo y otras formaciones técnicas.
 
 ## Temas respaldados por el material formativo suministrado
 
@@ -31,12 +37,8 @@ El material suministrado cubre flujo de repositorios con abapGit/GitHub, ATC / A
 
 ## Cómo se utiliza la formación en este portafolio
 
-La formación se trata como contexto de respaldo, no como sustituto de evidencia de ingeniería. Las afirmaciones públicas de capacidad apuntan a source code, tests, guías operativas sanitizadas o artefactos ejecutables dentro del SAP Integration Lab.
-
-Las imágenes completas de certificados, códigos QR e identificadores de validación no se republican aquí por defecto. El material de verificación puede proporcionarse por separado cuando corresponda.
+La formación constituye evidencia profesional de respaldo, mientras que los claims de capacidad de ingeniería siguen apuntando a source code, tests, guías operativas sanitizadas o artefactos ejecutables. Los archivos de certificado prueban la finalización del curso/credencial; no convierten una credencial de formación en una categoría superior de certificación de proveedor.
 
 ## Nota de verificación
 
-Cada fila anterior se reconcilió directamente contra los propios archivos de certificado del propietario (no contra nombres de archivo ni suposiciones previas) — nombres de emisor, títulos de credencial y fechas se corrigieron donde el propio texto del certificado difería de borradores anteriores. Ninguna entrada anterior usa la redacción "SAP Certified" ni "SAP Official Certification"; ninguna de estas credenciales es emitida por SAP.
-
-La formación hands-on de Curso 3 (abapGit, ATC, ABAP Cleaner, Autorizaciones) se documenta junto a su fuente normalizado `_fq` en el [track de Prácticas de Formación de Curso 3](../04-abap-labs/training-practices/README.es.md). Odoo y otras credenciales no-SAP se indexan por separado en el [índice general de credenciales](../../../docs/CREDENTIALS.es.md).
+Cada fila anterior se reconcilió directamente contra los propios archivos de certificado del propietario. Emisor, título, fecha y duración deben coincidir con el certificado. La formación hands-on de Curso 3 (abapGit, ATC, ABAP Cleaner, Autorizaciones) se documenta junto a su source normalizado `_fq` en el [track de Prácticas de Formación de Curso 3](../04-abap-labs/training-practices/README.es.md). Odoo y otras credenciales no-SAP se indexan por separado en el [índice general de credenciales](../../../docs/CREDENTIALS.es.md).
