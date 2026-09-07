@@ -2,29 +2,32 @@
 
 [English version](./CREDENTIALS.md)
 
-> Índice general de credenciales, recruiter-facing. Cada entrada usa el término exacto que indica su propio documento emisor — ninguna credencial aquí se describe como "SAP Certified," "SAP Official Certification," ni una certificación oficial de proveedor equivalente, salvo que el propio emisor sea ese proveedor y su propio documento use ese término. No se publican PDFs, códigos QR, ni IDs de credencial internos; cada entrada se reconcilió directamente contra los propios archivos de certificado del propietario.
+> Índice general recruiter-facing de credenciales. Cada entrada conserva el término exacto usado por su documento emisor; ninguna credencial se eleva a una categoría de certificación más fuerte que la respaldada por el propio certificado. Cuando existe evidencia pública, se enlaza directamente al archivo del certificado.
+
+## Política de evidencia
+
+Los certificados seleccionados intencionalmente para este portfolio son evidencia pública. Se prefiere **un único archivo canónico por credencial**: el PDF original cuando exista y, en su defecto, la imagen original. No se publicarán copias duplicadas del mismo certificado en varios formatos salvo que una previsualización sea técnicamente necesaria. Se conservan branding del emisor, título, nombre del titular, fecha, duración y datos públicos de verificación. Solo se redacta información realmente sensible que no forme parte de la verificación pública, por ejemplo URLs privadas de cuenta, correos privados, identificadores nacionales o material secreto/token.
 
 ## Formación relacionada con SAP
 
 Detalle completo: [Formación y Credenciales SAP](../showcases/sap-integration-lab/00-profile/TRAINING_AND_CREDENTIALS.es.md)
 
-Allí se muestran cuatro credenciales recruiter-facing: una Especialización Internacional SAP S/4HANA (240h, Diploma), SAP ABAP Core - Programación Cloud (80h), SAP ABAP Cloud - Diccionario de datos (100h), y SAP abapGit | ATC | ABAP Cleaner | Autorizaciones (20h) — todas credenciales de formación de Logali Group / GEM Educa, ninguna emitida por SAP.
+La sección SAP separa credenciales destacadas de formación adicional completada, conservando el emisor y la clasificación exactos que constan en cada certificado. Las credenciales de formación no se describen como certificaciones emitidas por SAP salvo que el propio documento emisor lo respalde.
 
 ## Odoo
 
-| Credencial | Emisor | Fecha | Clasificación |
-|---|---|---|---|
-| Certificación Funcional de Odoo 18 (Español) | Odoo Inc. | 2026-05-31 | Certificate of Achievement |
+| Credencial | Emisor | Fecha | Clasificación | Evidencia pública |
+|---|---|---|---|---|
+| Certificación Funcional de Odoo 18 (Español) | Odoo Inc. | 2026-05-31 | Certificate of Achievement | El archivo del certificado se enlazará desde el conjunto canónico público de credenciales |
 
-Este es el propio "Certificate of Achievement" de Odoo Inc. por completar el curso funcional de Odoo 18 en español — el término exacto que usa su propio certificado. No se describe como "Odoo Certified" (una credencial separada, de examen proctorado, que Odoo también ofrece), ya que el propio certificado no usa ese término.
+Este es el propio "Certificate of Achievement" de Odoo Inc. por completar el curso funcional de Odoo 18 en español — el término exacto que usa su propio certificado. No se describe como "Odoo Certified" salvo que el propio certificado use esa denominación.
 
 ## Otras credenciales técnicas relevantes
 
-| Credencial | Emisor | Duración | Fecha | Clasificación |
-|---|---|---|---|---|
-| Curso de Angular | Instituto Internacional de Software (ISI) | 120 horas académicas | 2025-06-23 | Curso de formación |
+| Credencial | Emisor | Duración | Fecha | Clasificación | Evidencia pública |
+|---|---|---:|---|---|---|
+| Curso de Angular | Instituto Internacional de Software (ISI) | 120 horas académicas | 2025-06-23 | Curso de formación | El archivo del certificado se enlazará desde el conjunto canónico público de credenciales |
 
-## Notas
+## Regla del repositorio
 
-- Cursos de Logali Group de menor señal y corta duración (SAP Conceptos e iniciación, SAP ABAP Iniciación a la programación, SAP ABAP List Viewer, SAP ABAP Web Dynpro, y un webinar de debugger) existen en los propios registros de certificados del propietario pero intencionalmente no se publican en este repositorio, para mantener tanto este índice como la página de formación SAP recruiter-facing en lugar de exhaustivos.
-- No se publica ninguna URL de verificación, código QR, ni ID de credencial para ninguna entrada anterior.
+El índice de credenciales no se considera plenamente acreditado únicamente por metadata en tablas. Toda credencial presentada como evidencia pública debe enlazar a su PDF/imagen correspondiente dentro del repositorio. Los archivos duplicados del mismo certificado se eliminan en lugar de enlazarse dos veces.
