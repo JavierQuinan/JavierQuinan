@@ -1,0 +1,1 @@
+SAP public sanitization complete for the current evidence set: Course 1 16 units / 10 hands-on labs / 20 sanitized owned ADT screenshots; Course 2 hands-on DDIC training without fabricated source; Course 3 four normalized _fq practices; raw course/certificate artifacts and sensitive identifiers excluded.
