@@ -31,7 +31,7 @@ The tables below are the canonical, source-of-truth record for every SAP-related
 |---|---|---:|---|---|---|
 | SAP ABAP Iniciación a la programación | Logali Group | 35 academic hours | 2023-09-01 | Certificado de Aprovechamiento | [View certificate](./credentials/evidence/sap/sap-abap-iniciacion-a-la-programacion-logali-francisco-quinteros-2023.pdf) |
 | SAP: Conceptos e iniciación | Logali Group | 8 academic hours | 2023-09-01 | Certificado de Aprovechamiento | [View certificate](./credentials/evidence/sap/sap-conceptos-e-iniciacion-logali-francisco-quinteros-2023.pdf) |
-| SAP ABAP Web Dynpro | Logali Group | 10 academic hours | 2023-09-12 | Certificado de Aprovechamiento | [View certificate](./docs/credentials/evidence/sap/sap-abap-web-dynpro-logali-francisco-quinteros-2023.pdf) |
+| SAP ABAP Web Dynpro | Logali Group | 10 academic hours | 2023-09-12 | Certificado de Aprovechamiento | [View certificate](./credentials/evidence/sap/sap-abap-web-dynpro-logali-francisco-quinteros-2023.pdf) |
 | SAP ABAP List Viewer - ALV | Logali Group | 20 academic hours | 2023-09-21 | Certificado de Aprovechamiento | [View certificate](./credentials/evidence/sap/sap-abap-list-viewer-logali-francisco-quinteros-2023.pdf) |
 | Webinar: ABAP Debugger - Optimización de la Resolución de errores en SAP | Logali Group | Webinar (no academic-hour figure on the certificate) | 2024-06-05 | Webinar attendance certificate | [View certificate](./credentials/evidence/sap/sap-abap-debugger-webinar-logali-francisco-quinteros-2024.pdf) |
 
