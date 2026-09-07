@@ -14,9 +14,9 @@ Curso 1 (Logali Group), Unidad 8 — "Estructuras de control." Entrega personal 
 
 [`ZCL_LAB_06_CONDITION_FQ`](../source/zcl_lab_06_condition_fq.abap)
 
-## Qué demuestra esto
+## Qué demuestra
 
-`IF`/`ENDIF`, `CASE`/`ENDCASE`, `DO`/`ENDDO`, `CHECK`, `SWITCH`, `COND`, `WHILE`/`ENDWHILE`, `LOOP`/`ENDLOOP`, y `TRY`/`ENDTRY` con una excepción real (`CX_SY_ZERODIVIDE`), ejecutado como una clase de consola ABAP Cloud. Esta clase usa la tabla `ZEMP_LOGALI` específica del curso como TYPE DDIC en tiempo de compilación — ver la [referencia opcional de runtime-readiness](../../runtime-readiness/README.es.md) para un reemplazo sintético `_fq` que elimina esta dependencia.
+`IF`/`ENDIF`, `CASE`/`ENDCASE`, `DO`/`ENDDO`, `CHECK`, `SWITCH`, `COND`, `WHILE`/`ENDWHILE`, `LOOP`/`ENDLOOP` y `TRY`/`ENDTRY` con una excepción real (`CX_SY_ZERODIVIDE`), ejecutado como una clase de consola ABAP Cloud en la práctica histórica documentada. La clase usa la tabla `ZEMP_LOGALI` específica del curso como TYPE DDIC en tiempo de compilación; esa dependencia forma parte del contexto histórico preservado del source.
 
 ## Evidencia
 
