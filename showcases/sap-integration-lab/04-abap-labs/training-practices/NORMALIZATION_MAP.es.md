@@ -2,22 +2,22 @@
 
 [English version](./NORMALIZATION_MAP.md)
 
-Los nombres de ejercicio originales no se reproducen aquí en su totalidad (llevan un placeholder de instancia de curso y están documentados internamente para el rastro de auditoría propio del propietario) — esta tabla registra la decisión de nomenclatura y qué cambió, no un diff byte a byte contra material del instructor.
+Los nombres originales de los ejercicios no se reproducen aquí en su totalidad porque contienen placeholders de instancia de curso. Esta tabla registra las decisiones de nomenclatura del portfolio y los cambios aplicados a las prácticas completadas por el propietario; no es una reproducción byte a byte del material del instructor.
 
-| Práctica | Objeto de portfolio | Propiedad | Cambios | Estado de runtime |
+| Práctica | Objeto de portfolio | Propiedad | Cambios | Límite de runtime |
 |---|---|---|---|---|
-| abapGit | `zcl_c3_01_projects_fq` | `USER_AUTHORED_PRACTICE` | Renombrado a la convención `_fq`, se eliminó una sección de clase vacía sin uso; el estilo de paso de parámetros y los literales no cambian | `NO_CURRENT_RUNTIME_CLAIM` |
-| ATC | `zcl_c3_02_atc_demo_fq` | `USER_AUTHORED_PRACTICE` | Renombrado a la convención `_fq`, se eliminó una sección de clase vacía sin uso; la consulta sin filtro y la corrección del pragma `##NO_TEXT` se mantienen deliberadamente sin cambios — son el propio contenido pedagógico del ejercicio sobre finding/corrección/exención de ATC | `NO_CURRENT_RUNTIME_CLAIM` |
-| ABAP Cleaner | `zcl_c3_03_cleaner_demo_fq` | `USER_AUTHORED_PRACTICE` | Renombrado a la convención `_fq`, se eliminó una sección de clase vacía sin uso; la lógica sin cambios por lo demás — sin versión "después de la limpieza" fabricada | `NO_CURRENT_RUNTIME_CLAIM` |
-| Autorizaciones | `zcl_c3_04_dept_auth_fq` | `USER_AUTHORED_PRACTICE` | Renombrado a la convención `_fq`, se eliminó una sección de clase vacía sin uso; lógica de `AUTHORITY-CHECK`/consulta sin cambios | `NO_CURRENT_RUNTIME_CLAIM` |
-| Autorizaciones — elemento de datos | `zde_dept_fq` | `USER_AUTHORED_PRACTICE` | Renombrado según la convención ya documentada `zde_<tema>_fq` (ver [`../NAMING_CONVENTIONS.es.md`](../NAMING_CONVENTIONS.es.md)) | `NO_CURRENT_RUNTIME_CLAIM` (objeto DDIC — creado vía asistente de ADT, sin archivo `.abap`) |
-| Autorizaciones — campo de autorización | `ZAFDEPTFQ` | `USER_AUTHORED_PRACTICE` | Nombre nuevo corto, tipo sin guiones bajos (9 caracteres) — el límite de 10 caracteres de nombre de campo de autorización de SAP no admite un patrón `_fq` con sufijo de guión bajo | `NO_CURRENT_RUNTIME_CLAIM` (objeto DDIC — sin archivo `.abap`) |
-| Autorizaciones — objeto de autorización | `ZAODEPTFQ` | `USER_AUTHORED_PRACTICE` | Nombre nuevo corto, tipo sin guiones bajos (9 caracteres) — misma restricción de 10 caracteres | `NO_CURRENT_RUNTIME_CLAIM` (objeto DDIC — sin archivo `.abap`) |
+| abapGit | `zcl_c3_01_projects_fq` | `USER_AUTHORED_PRACTICE` | Renombrado a la convención `_fq`; se eliminó una sección de clase vacía sin uso; se preservaron la estructura de paso de parámetros y los literales del ejercicio | El claim de ejecución corresponde a la práctica hands-on original confirmada por el propietario; la copia normalizada es evidencia pública de source |
+| ATC | `zcl_c3_02_atc_demo_fq` | `USER_AUTHORED_PRACTICE` | Renombrado a `_fq`; se eliminó una sección vacía; se preservó el contenido pedagógico del finding/fix de ATC | El claim de ejecución corresponde a la práctica hands-on original confirmada por el propietario; la copia normalizada es evidencia pública de source |
+| ABAP Cleaner | `zcl_c3_03_cleaner_demo_fq` | `USER_AUTHORED_PRACTICE` | Renombrado a `_fq`; se eliminó una sección vacía; no se fabricó una variante posterior “limpia” | El claim de ejecución corresponde a la práctica hands-on original confirmada por el propietario; la copia normalizada es evidencia pública de source |
+| Autorizaciones | `zcl_c3_04_dept_auth_fq` | `USER_AUTHORED_PRACTICE` | Renombrado a `_fq`; se eliminó una sección vacía; se preservó la lógica `AUTHORITY-CHECK`/consulta | El claim de ejecución corresponde a la práctica hands-on original confirmada por el propietario; la copia normalizada es evidencia pública de source |
+| Autorizaciones — elemento de datos | `zde_dept_fq` | `USER_AUTHORED_PRACTICE` | El nombre de portfolio sigue la convención documentada `zde_<tema>_fq` | Objeto DDIC documentado desde la práctica completada; no se fabricó archivo `.abap` |
+| Autorizaciones — campo de autorización | `ZAFDEPTFQ` | `USER_AUTHORED_PRACTICE` | Nombre corto de portfolio compatible con el límite de 10 caracteres del campo de autorización | Objeto DDIC documentado desde la práctica completada; no se fabricó archivo `.abap` |
+| Autorizaciones — objeto de autorización | `ZAODEPTFQ` | `USER_AUTHORED_PRACTICE` | Nombre corto de portfolio compatible con el límite de 10 caracteres del objeto de autorización | Objeto DDIC documentado desde la práctica completada; no se fabricó archivo `.abap` |
 
 ## Comprobación de longitud de nomenclatura
 
 | Nombre | Longitud | Tipo de objeto | Límite SAP | ¿Cabe? |
-|---|---|---|---|---|
+|---|---:|---|---:|---|
 | `zcl_c3_01_projects_fq` | 21 | Clase | 30 | Sí |
 | `zcl_c3_02_atc_demo_fq` | 21 | Clase | 30 | Sí |
 | `zcl_c3_03_cleaner_demo_fq` | 25 | Clase | 30 | Sí |
@@ -26,8 +26,8 @@ Los nombres de ejercicio originales no se reproducen aquí en su totalidad (llev
 | `ZAFDEPTFQ` | 9 | Campo de autorización | 10 | Sí |
 | `ZAODEPTFQ` | 9 | Objeto de autorización | 10 | Sí |
 
-No existen colisiones de nomenclatura contra los nombres de objeto de los laboratorios históricos (`zcl_lab_*`) ni contra los nombres de fixture/variante del track de runtime-readiness (`zcl_employee_fixture_fq`, `zcl_lab_*_rt_fq`). Estos límites son guía estándar de nomenclatura de objeto de repositorio ABAP y aún deberían confirmarse directamente en ADT antes de la creación.
+Los cuatro nombres normalizados de clases de Curso 3 no colisionan con los objetos históricos `zcl_lab_*` de Curso 1. Las comprobaciones de longitud anteriores forman parte del registro de normalización completado.
 
 ## Curso 2
 
-No existe mapeo — no se encontró ningún artefacto de código que normalizar. Ver `EVIDENCE_MATRIX.es.md`.
+No existe mapeo porque no había un artefacto de código guardado para normalizar. Curso 2 se representa mediante su registro de formación hands-on DDIC completada, sin fabricar source; ver [Matriz de Evidencia](./EVIDENCE_MATRIX.es.md).
