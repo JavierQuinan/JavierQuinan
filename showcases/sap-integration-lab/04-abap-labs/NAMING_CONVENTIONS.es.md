@@ -2,9 +2,9 @@
 
 [English version](./NAMING_CONVENTIONS.md)
 
-> Este documento registra el patrón observado en las 10 unidades históricas de laboratorio basadas en clases. No afirma que el mismo esquema de prefijos ya se haya utilizado para CDS, RAP, DDIC o objetos de test.
+Este documento registra patrones de nomenclatura que ya están presentes en la evidencia pública ABAP.
 
-## Patrón de clase observado
+## Patrón histórico de clases
 
 ```text
 zcl_lab_<NN>_<tema>_fq[a]
@@ -12,16 +12,16 @@ zcl_lab_<NN>_<tema>_fq[a]
 
 | Segmento | Significado | Observado |
 |---|---|---|
-| `zcl_` | Prefijo de clase en namespace de cliente | las 10 clases |
-| `lab_` | Marcador de laboratorio personal | las 10 clases |
+| `zcl_` | Prefijo de clase en namespace de cliente | las 10 clases históricas |
+| `lab_` | Marcador de laboratorio personal | las 10 clases históricas |
 | `<NN>` | Secuencia personal de dos dígitos | `01`–`08` |
 | `<tema>` | Descriptor corto en inglés | `var`, `arithmetic`, `datatypes`, `message`, `invoice`, `condition`, `tables`, `fieldsymbols` |
 | `_fq` | Sufijo personal de Francisco Quinteros | todas las clases base |
 | `a` opcional | Continuación del mismo tema numerado | `05a`, `07a` |
 
-## Mapeo confirmado
+## Mapeo histórico confirmado
 
-| Unidad | Unidad del curso | Tema | Clase |
+| Lab | Unidad del curso | Tema | Clase |
 |---|---|---|---|
 | 01 | UNIDAD_2 | Variables / conceptos básicos | `zcl_lab_01_var_fq` |
 | 02 | UNIDAD_3 | Aritmética | `zcl_lab_02_arithmetic_fq` |
@@ -34,17 +34,24 @@ zcl_lab_<NN>_<tema>_fq[a]
 | 07a | UNIDAD_11 | Tablas internas II | `zcl_lab_07_tables_fqa` |
 | 08 | UNIDAD_13 | Field symbols | `zcl_lab_08_fieldsymbols_fq` |
 
+## Patrón normalizado de Curso 3
+
+Las cuatro prácticas publicadas de Curso 3 usan el mismo sufijo personal y mantienen explícita la secuencia de curso/práctica:
+
+- `zcl_c3_01_projects_fq`
+- `zcl_c3_02_atc_demo_fq`
+- `zcl_c3_03_cleaner_demo_fq`
+- `zcl_c3_04_dept_auth_fq`
+
+La práctica de autorizaciones también documenta los nombres DDIC abreviados técnicamente válidos `zde_dept_fq`, `ZAFDEPTFQ` y `ZAODEPTFQ` cuando aplican límites de longitud de objetos SAP.
+
+## Regla de nomenclatura actual
+
+- Usar `_fq` para objetos propios/normalizados del portfolio cuando el tipo de objeto SAP y el límite técnico lo permitan.
+- Usar un sufijo abreviado `FQ` cuando un límite estricto del objeto SAP haga inválido `_fq` literal.
+- Usar `_fqa` únicamente para una continuación real del mismo tema numerado del laboratorio histórico.
+- Conservar sin cambios los nombres de sources históricos; la normalización se representa mediante copias de portfolio separadas cuando aplica.
+
 ## Límite de evidencia
 
-Este conjunto histórico contiene únicamente labs basados en clases. No contiene una interfaz custom propia, vista CDS, behavior definition, service definition/binding, objeto DDIC de persistencia ni clase ABAP Unit propia.
-
-## Regla para evidencia futura
-
-Para nuevos objetos originales del portfolio:
-
-1. mantener el sufijo `_fq` cuando el tipo de objeto SAP y sus límites de nombre lo permitan técnicamente;
-2. usar la convención recomendada por SAP/equipo para ese tipo de objeto en lugar de inventar un prefijo únicamente para imitar esta serie;
-3. documentar la decisión de nomenclatura dentro del futuro lab;
-4. no usar `_fqa` salvo que sea realmente una continuación del mismo tema numerado.
-
-La única convención demostrada hoy es el patrón de clases anterior. La nomenclatura futura para CDS/RAP/DDIC/tests se definirá cuando esos objetos se construyan realmente.
+El conjunto histórico de Curso 1 está basado en clases. Curso 2 no tiene artefacto de source guardado. Curso 3 aporta las cuatro clases normalizadas y la nomenclatura documentada de objetos de autorización indicada arriba. No se afirma una convención para tipos de objeto que no estén representados por evidencia pública actual.
