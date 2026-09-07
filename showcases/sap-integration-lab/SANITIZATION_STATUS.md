@@ -23,7 +23,7 @@ This record describes the public repository state after sanitization. It does no
 - private BTP account identifiers, tenant hostnames and SAP technical usernames;
 - enterprise customer/employer identifiers, real tickets, material/order/account IDs and private URLs;
 - credentials, tokens, service keys and secrets;
-- unexecuted runtime-readiness drafts and re-execution planning material.
+- unexecuted reproducibility drafts and re-execution planning material.
 
 ## Integrity boundary
 
