@@ -118,7 +118,7 @@ Este portfolio no afirma runtime de SAP Integration Suite/CPI, conectividad live
 
 [Formación y Credenciales SAP](./00-profile/TRAINING_AND_CREDENTIALS.es.md)
 
-La metadata recruiter-facing de formación SAP fue reconciliada contra los archivos reales de certificados del propietario. No se publican PDFs de certificados, QR ni identificadores de credenciales. Odoo se indexa por separado en el [índice general de credenciales](../../docs/CREDENTIALS.es.md).
+Los registros recruiter-facing de formación fueron reconciliados contra los archivos reales de certificados del propietario. Las credenciales públicas seleccionadas para el portfolio se respaldan con un único PDF/imagen canónica del certificado y se indexan desde el [índice general de credenciales](../../docs/CREDENTIALS.es.md). La evidencia de certificados se mantiene separada del material bruto del curso y no eleva la clasificación de la credencial más allá de la redacción del documento emisor.
 
 ## Evidencia visual
 
@@ -144,4 +144,4 @@ La matriz central reconcilia experiencia enterprise, labs históricos, formació
 
 ## Confidencialidad e integridad
 
-La evidencia pública excluye identidades de empresa/cliente, identificadores reales de objetos de negocio, source propietario, endpoints internos, credenciales, artefactos de certificados y datos enterprise/formativos no sanitizados.
+La evidencia pública excluye identidades de empresa/cliente, identificadores reales de objetos de negocio, source propietario, endpoints internos, credenciales secretas y datos enterprise/formativos no sanitizados. Los PDFs/imágenes canónicos de certificados seleccionados intencionalmente como evidencia profesional pública están permitidos bajo la política de credenciales.
