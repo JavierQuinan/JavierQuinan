@@ -18,7 +18,7 @@
 
 ## 4. Evidencia visual de Curso 1
 
-21 capturas propias de Eclipse ADT del propietario, extraídas de las entregas Word originales y publicadas carpeta de laboratorio por carpeta de laboratorio, cada una con una nota de sanitización documentada (identificadores privados de cuenta, hostnames de tenant, nombres de usuario técnicos, y datos de registro del entorno de formación redactados donde estaban presentes; sin modificar en los demás casos).
+20 capturas propias de Eclipse ADT del propietario, extraídas de las entregas Word originales y publicadas carpeta de laboratorio por carpeta de laboratorio, cada una con una nota de sanitización documentada (identificadores privados de cuenta, hostnames de tenant, nombres de usuario técnicos, y datos de registro del entorno de formación redactados donde estaban presentes; sin modificar en los demás casos).
 
 ## 5. Formación hands-on de Curso 2
 
