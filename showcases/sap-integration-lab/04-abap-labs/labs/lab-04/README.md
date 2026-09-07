@@ -20,10 +20,10 @@ An ABAP text-pool symbol (`TEXT-001`), string-description functions (`STRLEN`/`N
 
 ## Evidence
 
-![Eclipse ADT console output for zcl_lab_04_message_fq](./assets/01-eclipse-adt-console-output.png)
+![Eclipse ADT console output for zcl_lab_04_message_fq](./assets/01-eclipse-adt-project-explorer-and-console.png)
 
 Eclipse ADT source and console output. The regex-validation lines print "invalid" for the literal placeholder strings already present in the historical source (`'Agregar cualquier teléfono'` / `'Agregar cualquier correo'`) — this is the source's own literal content, not a real phone number or email.
 
 ## Sanitization
 
-None required — no identifying data present in this image.
+One redaction applied: the Project Explorer's root connection node (private BTP trial account identifier). All other content, including the console output, is unmodified.

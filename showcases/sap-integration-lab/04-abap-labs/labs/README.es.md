@@ -19,7 +19,7 @@
 | [lab-07a](./lab-07a/README.es.md) | 11 | Tablas internas (Parte II, avanzado) | `ZCL_LAB_07_TABLES_FQA` | 7 |
 | [lab-08](./lab-08/README.es.md) | 13 | Field symbols | `ZCL_LAB_08_FIELDSYMBOLS_FQ` | 1 |
 
-Cada carpeta de laboratorio contiene un README bilingüe (estado, procedencia, objeto, qué demuestra, evidencia propia embebida, nota de sanitización) y enlaza a su source `.abap` en [`../source/`](../source/). Los archivos fuente no se modifican — el propio README de cada laboratorio indica exactamente qué, si algo, fue redactado de sus capturas y por qué.
+Cada carpeta de laboratorio contiene un README bilingüe (estado, procedencia, objeto, qué demuestra, evidencia propia embebida, nota de sanitización) y enlaza a su source `.abap` en [`./source/`](./source/). Los archivos fuente no se modifican — el propio README de cada laboratorio indica exactamente qué, si algo, fue redactado de sus capturas y por qué.
 
 ## Temas del currículo de Curso 1 sin laboratorio hands-on (6 de 16 unidades)
 

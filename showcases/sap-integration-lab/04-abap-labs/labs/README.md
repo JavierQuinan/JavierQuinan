@@ -19,7 +19,7 @@
 | [lab-07a](./lab-07a/README.md) | 11 | Internal tables (Part II, advanced) | `ZCL_LAB_07_TABLES_FQA` | 7 |
 | [lab-08](./lab-08/README.md) | 13 | Field symbols | `ZCL_LAB_08_FIELDSYMBOLS_FQ` | 1 |
 
-Each lab folder contains a bilingual README (status, provenance, object, what it demonstrates, embedded own evidence, sanitization note) and links to its `.abap` source in [`../source/`](../source/). Source files are unmodified — every lab's own README states exactly what, if anything, was redacted from its screenshots and why.
+Each lab folder contains a bilingual README (status, provenance, object, what it demonstrates, embedded own evidence, sanitization note) and links to its `.abap` source in [`./source/`](./source/). Source files are unmodified — every lab's own README states exactly what, if anything, was redacted from its screenshots and why.
 
 ## Curso 1 curriculum topics without a hands-on lab (6 of 16 units)
 

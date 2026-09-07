@@ -58,8 +58,6 @@ jobs:
               root / 'EVIDENCE_MATRIX.md',
               root / 'NAMING_CONVENTIONS.md',
               root / 'labs/README.md',
-              root / 'docs/GAP_ANALYSIS.md',
-              root / 'docs/FUTURE_LAB_ROADMAP.md',
               root / 'guides/ABAPGIT_WORKFLOW_GUIDE.md',
               root / 'guides/ABAP_CLEANER_GUIDE.md',
               root / 'guides/ABAP_CLOUD_DICTIONARY_GUIDE.md',
@@ -70,6 +68,21 @@ jobs:
               es = en.with_name(en.stem + '.es.md')
               if not es.exists():
                   missing.append(f'Missing Spanish pair for {en}')
+
+          # Lab count vs. source count are validated separately: source count is the
+          # number of .abap files (checked above); lab count is the number of
+          # published lab-XX folders, which may legitimately differ from the source
+          # count (e.g. a unit with hands-on evidence but no separate ABAP class).
+          lab_dirs = sorted(p for p in (root / 'labs').iterdir() if p.is_dir() and p.name.startswith('lab-'))
+          if not lab_dirs:
+              missing.append('No lab-XX folders found under labs/')
+          for lab_dir in lab_dirs:
+              en = lab_dir / 'README.md'
+              es = lab_dir / 'README.es.md'
+              if not en.exists():
+                  missing.append(f'Missing {en}')
+              if not es.exists():
+                  missing.append(f'Missing {es}')
           if missing:
               raise SystemExit('\n'.join(missing))
           PY

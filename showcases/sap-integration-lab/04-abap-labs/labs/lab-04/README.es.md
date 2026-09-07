@@ -20,10 +20,10 @@ Un símbolo de text-pool de ABAP (`TEXT-001`), funciones de descripción de stri
 
 ## Evidencia
 
-![Salida de consola de Eclipse ADT para zcl_lab_04_message_fq](./assets/01-eclipse-adt-console-output.png)
+![Salida de consola de Eclipse ADT para zcl_lab_04_message_fq](./assets/01-eclipse-adt-project-explorer-and-console.png)
 
 Source y salida de consola de Eclipse ADT. Las líneas de validación regex imprimen "inválido" para las cadenas placeholder literales ya presentes en el fuente histórico (`'Agregar cualquier teléfono'` / `'Agregar cualquier correo'`) — es el propio contenido literal del fuente, no un teléfono o email real.
 
 ## Sanitización
 
-Ninguna requerida — no hay datos identificables presentes en esta imagen.
+Una redacción aplicada: el nodo raíz de conexión del Project Explorer (identificador privado de cuenta trial de BTP). El resto del contenido, incluyendo la salida de consola, no fue modificado.
