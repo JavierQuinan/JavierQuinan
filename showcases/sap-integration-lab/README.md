@@ -118,7 +118,7 @@ This portfolio does not claim SAP Integration Suite/CPI runtime, live S/4HANA AP
 
 [SAP Training & Credentials](./00-profile/TRAINING_AND_CREDENTIALS.md)
 
-Recruiter-facing SAP training metadata is reconciled against the account owner's actual certificate files. Raw certificate PDFs, QR codes and credential identifiers are not published. Odoo is indexed separately in the [general credentials index](../../docs/CREDENTIALS.md).
+Recruiter-facing training records are reconciled against the account owner's actual certificate files. Public credentials selected for the portfolio are backed by one canonical certificate PDF/image and indexed from the [general credentials index](../../docs/CREDENTIALS.md). Certificate evidence is kept separate from raw course material and does not upgrade the credential classification beyond the wording of the issuing document.
 
 ## Visual evidence
 
@@ -144,7 +144,7 @@ The central matrix reconciles enterprise experience, historical labs, completed 
 
 ## Confidentiality and integrity
 
-Public evidence excludes customer/company identities, real business-object identifiers, proprietary source, internal endpoints, credentials, certificate artifacts and unsanitized enterprise/training data.
+Public evidence excludes customer/company identities, real business-object identifiers, proprietary source, internal endpoints, secret credentials and unsanitized enterprise/training data. Canonical certificate PDFs/images intentionally selected as public professional evidence are permitted under the credential-evidence policy.
 
 ---
 
