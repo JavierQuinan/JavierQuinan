@@ -1,19 +1,36 @@
-# SAP S/4HANA — Línea de Evidencia de Ingeniería
+# SAP S/4HANA — Línea de Formación y Evidencia de Ingeniería
 
 [English version](./README.md)
 
-> **Alcance:** integración S/4HANA MM, Migration Cockpit, APIs liberadas, ABAP Cloud y arquitectura RAP  
-> **Regla de evidencia:** esta página enumera únicamente material que ya existe en el repositorio
+> **Alcance:** formación funcional S/4HANA multidominio completada, cliente MM Procurement API explícitamente no-live, conceptos de Migration Cockpit, APIs liberadas, ABAP Cloud/Clean Core y arquitectura RAP  
+> **Regla de evidencia:** credenciales de formación, ejemplos ejecutables no-live y estudio basado en documentación son clases de evidencia separadas; ninguna se presenta como experiencia productiva de implementación/runtime S/4HANA
 
-Esta línea está separada deliberadamente de ECC. Documenta integración y extensibilidad S/4HANA sin presentar acceso clásico a tablas ECC como evidencia Clean Core.
+Esta línea está separada deliberadamente de ECC. Registra la formación S/4HANA realmente completada por el propietario y el material de ingeniería SAP moderno que existe en el repositorio, sin presentar acceso clásico a tablas ECC como evidencia Clean Core ni ejemplos client-side como integración SAP real.
 
 ## Evidencia disponible actualmente
 
-### 1. MM Procurement API Client
+### 1. Formación funcional S/4HANA multidominio — `TRAINING_CREDENTIAL`
+
+[Formación y Credenciales](../00-profile/TRAINING_AND_CREDENTIALS.es.md)
+
+Completada la **Especialización Internacional en SAP S/4 HANA desde cero — 240 horas académicas**.
+
+Registro académico:
+
+- SAP S/4 HANA MM — **20/20**
+- SAP S/4 HANA PP — **16/20**
+- SAP S/4 HANA SD — **18/20**
+- SAP S/4 HANA FI — **18/20**
+- SAP S/4 HANA PM — **18/20**
+- **Promedio final — 18/20**
+
+Esta credencial demuestra formación funcional completada en esos módulos. No se presenta como certificación oficial SAP ni como experiencia productiva de implementación, conversión u operación S/4HANA.
+
+### 2. MM Procurement API Client — `EXECUTABLE_NON_LIVE_EXAMPLE`
 
 [Procurement API Lab](./mm/procurement-api-lab/README.es.md)
 
-Existe un cliente TypeScript read-only real, sin dependencias externas, versionado en este repositorio.
+Existe un cliente TypeScript read-only sin dependencias externas versionado en este repositorio.
 
 Evidencia implementada:
 
@@ -36,9 +53,9 @@ Dirección de interfaces liberadas documentada por el lab:
 - `API_PURCHASEORDER_2`
 - `API_PURCHASEREQUISITION_2`
 
-La evidencia valida el source del cliente y su comportamiento en CI; no afirma conexión con un tenant S/4HANA real.
+La evidencia valida el source del cliente y su comportamiento en CI; no afirma conexión con un tenant S/4HANA real ni implementación productiva SAP OData.
 
-### 2. Guía Técnica Migration Cockpit
+### 3. Guía Técnica Migration Cockpit — `DOCUMENTATION_GROUNDED`
 
 [Guía Migration Cockpit](./migration-cockpit/README.es.md)
 
@@ -53,7 +70,7 @@ Guía basada en documentación que cubre:
 
 Es una guía técnica de estudio/operación, no un claim de migración productiva ejecutada.
 
-### 3. Guía Técnica ABAP Cloud / Clean Core
+### 4. Guía Técnica ABAP Cloud / Clean Core — `DOCUMENTATION_GROUNDED` + contexto de formación ABAP Cloud completada
 
 [ABAP Cloud / Clean Core](./abap-cloud/README.es.md)
 
@@ -66,7 +83,9 @@ Guía basada en documentación sobre:
 - separación entre objetos liberados internos y APIs remotas
 - reglas de arquitectura para extensiones upgrade-safe
 
-### 4. Guía de Arquitectura RAP
+La línea separada de formación ABAP Cloud documenta 200 horas de formación/práctica hands-on completada. Esta guía no añade un claim de runtime Clean Core ni de extensión S/4 productiva.
+
+### 5. Guía de Arquitectura RAP — `DOCUMENTATION_GROUNDED`
 
 [Guía de Arquitectura RAP](./rap/README.es.md)
 
@@ -78,12 +97,13 @@ Explica límites del business object, ownership de behavior, exposición del ser
 
 ## Límite ECC vs. S/4HANA
 
-La evidencia ECC puede utilizar Open SQL clásico y tablas estándar cuando corresponda al escenario ECC. La evidencia S/4HANA prioriza APIs liberadas, puntos de extensión documentados y razonamiento Clean Core explícito.
+La evidencia ECC puede utilizar Open SQL clásico y tablas estándar cuando corresponda al escenario ECC. El material S/4HANA de esta línea prioriza APIs liberadas, puntos de extensión documentados y razonamiento Clean Core explícito, mientras la especialización de 240 horas permanece claramente clasificada como formación.
 
 ## Integridad de evidencia
 
 El repositorio diferencia claramente:
 
-1. **Source ejecutable con tests/CI observados** — TypeScript Procurement API Client.
-2. **Guías técnicas basadas en documentación SAP** — Migration Cockpit, ABAP Cloud/Clean Core y RAP.
-3. **Runtime no afirmado** — no se declara ejecución sobre tenant S/4HANA real sin evidencia.
+1. **Credencial de formación S/4HANA completada** — 240 horas en MM, PP, SD, FI y PM, promedio final 18/20.
+2. **Source ejecutable con tests/CI observados** — TypeScript Procurement API Client, explícitamente no-live.
+3. **Guías técnicas basadas en documentación SAP** — Migration Cockpit, ABAP Cloud/Clean Core y RAP.
+4. **Runtime no afirmado** — no se declara implementación productiva S/4HANA, conectividad live a tenant, OData/SOAP productivo ni runtime RAP/service-binding sin evidencia.
