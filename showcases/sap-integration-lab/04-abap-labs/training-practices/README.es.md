@@ -1,0 +1,39 @@
+# Prácticas de Formación Curso 2/3
+
+[English version](./README.md)
+
+> **Alcance:** prácticas ABAP hands-on del Curso 3 de Logali Group (abapGit, ATC, ABAP Cleaner, Autorizaciones), implementadas personalmente durante formación estructurada y normalizadas para uso en portfolio. Este es un conjunto de candidatos separado de los 10 laboratorios históricos en [`../labs/`](../labs/README.es.md) — no cambia ningún estado allí.
+
+## Qué es esto
+
+Cuatro prácticas, cada una siguiendo el patrón: una plantilla de ejercicio suministrada por el instructor → la propia ejecución hands-on del propietario en su propio entorno trial de SAP → normalización para portfolio (renombrado a la convención `_fq`, eliminación de declaraciones muertas) → reverificación pendiente. Ninguna de las cuatro se reclama como un algoritmo inventado de forma independiente; cada página en `docs/` indica la procedencia precisa.
+
+## Estado actual
+
+- **Formación:** SÍ tanto para Curso 2 como para Curso 3.
+- **Ejecución hands-on:** confirmada por el propietario para las 4 prácticas de Curso 3 siguientes. Curso 2 no produjo ningún artefacto de fuente guardado — ver `EVIDENCE_MATRIX.es.md`.
+- **Verificación de runtime actual:** 0/4 para las prácticas siguientes. Sin cambios respecto al propio 0/10 del track histórico.
+
+## Prácticas
+
+| Práctica | Objeto | Docs |
+|---|---|---|
+| abapGit | [`source/zcl_c3_01_projects_fq.abap`](./source/zcl_c3_01_projects_fq.abap) | [ABAPGIT_PRACTICE.es.md](./docs/ABAPGIT_PRACTICE.es.md) |
+| ATC (ABAP Test Cockpit) | [`source/zcl_c3_02_atc_demo_fq.abap`](./source/zcl_c3_02_atc_demo_fq.abap) | [ATC_PRACTICE.es.md](./docs/ATC_PRACTICE.es.md) |
+| ABAP Cleaner | [`source/zcl_c3_03_cleaner_demo_fq.abap`](./source/zcl_c3_03_cleaner_demo_fq.abap) | [ABAP_CLEANER_PRACTICE.es.md](./docs/ABAP_CLEANER_PRACTICE.es.md) |
+| Autorizaciones | [`source/zcl_c3_04_dept_auth_fq.abap`](./source/zcl_c3_04_dept_auth_fq.abap) | [AUTHORIZATIONS_PRACTICE.es.md](./docs/AUTHORIZATIONS_PRACTICE.es.md) |
+
+## Curso 2
+
+Revisado por completo. No se encontró ningún fuente ABAP, texto de objeto DDIC, ni documento con código más allá del material de tutorial genérico propio del instructor — representado honestamente en `EVIDENCE_MATRIX.es.md` como `TRAINING = YES`, `HANDS_ON_PRACTICE = YES`, `SAVED_SOURCE_ARTIFACT = NO`, `CURRENT_RUNTIME_VERIFIED = NO`, en lugar de fabricar un archivo fuente.
+
+## Navegación
+
+- [Matriz de Evidencia](./EVIDENCE_MATRIX.es.md)
+- [Mapa de Normalización](./NORMALIZATION_MAP.es.md)
+- [Docs de prácticas](./docs/)
+- [Fuente](./source/)
+
+## Política de publicación
+
+Esta carpeta excluye PDFs del instructor, archivos Word, capturas, el fuente de plantilla original del instructor con sufijo `_USER`, manuales de solución genéricos, texto de curso de terceros, y certificados. Solo se publican aquí el fuente `.abap` normalizado propio del propietario y documentación técnica original.
