@@ -18,7 +18,7 @@ This document defines how SAP evidence is labelled in this portfolio. It does no
 
 No artifact is described as “executed in SAP”, “working in SAP”, “ABAP Unit passed” or “production-ready” unless the corresponding runtime/test evidence is actually available.
 
-Absence of SAP runtime evidence is expressed simply as **“SAP runtime is not claimed by this artifact.”** It is not presented as a future task or promotion promise.
+Absence of SAP runtime evidence is expressed simply as **“SAP runtime is not claimed by this artifact.”** It is not listed as a delivery task or portfolio requirement.
 
 ## Evidence record
 
@@ -137,4 +137,4 @@ Preferred convention:
 
 ## Current integrity rule
 
-Every recruiter-facing claim must be answerable by pointing to an existing guide, source file, test record, CI run or sanitized visual asset in the repository. If the evidence does not exist, the claim is omitted rather than represented as a roadmap item.
+Every recruiter-facing claim must be answerable by pointing to an existing guide, source file, test record, CI run or sanitized visual asset in the repository. If the evidence does not exist, the claim is omitted.
