@@ -18,7 +18,7 @@
 
 ## 4. Curso 1 visual evidence
 
-21 of the account owner's own Eclipse ADT screenshots, extracted from the original Word submissions and published one lab folder at a time, each with a documented sanitization note (private account identifiers, tenant hostnames, technical usernames and training-environment record data redacted where present; unmodified otherwise).
+20 of the account owner's own Eclipse ADT screenshots, extracted from the original Word submissions and published one lab folder at a time, each with a documented sanitization note (private account identifiers, tenant hostnames, technical usernames and training-environment record data redacted where present; unmodified otherwise).
 
 ## 5. Course 2 hands-on training
 
