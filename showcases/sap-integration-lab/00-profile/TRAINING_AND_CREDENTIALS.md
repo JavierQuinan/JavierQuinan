@@ -10,10 +10,25 @@ This page documents completed SAP-related training separately from hands-on engi
 
 | Track | Credential / course | Issuer shown on credential | Duration | Completion |
 |---|---|---|---:|---|
-| S/4HANA | International SAP S/4 HANA Specialization (Certificado / Diploma) | GEM Educa, with additional certification issued under Colegio de Economistas del Perú (ENFOPE registry) | 240 academic hours | 2024-08-09 |
+| S/4HANA | Especialización Internacional en SAP S/4 HANA desde cero | GEM Educa, with additional certification issued under Colegio de Economistas del Perú (ENFOPE registry) | 240 academic hours | 2024-08-09 |
 | ABAP Cloud foundations | SAP ABAP Core - Programación Cloud | Logali Group | 80 hours | 2026-01-18 |
 | ABAP Cloud data model | SAP ABAP Cloud - Diccionario de datos | Logali Group | 100 hours | 2026-06-28 |
 | ABAP engineering tooling | SAP abapGit \| ATC \| ABAP Cleaner \| Autorizaciones | Logali Group | 20 hours | 2026-06-28 |
+
+### S/4HANA academic record
+
+The S/4HANA specialization includes the following completed module record:
+
+| Module | Grade |
+|---|---:|
+| SAP S/4 HANA MM | 20/20 |
+| SAP S/4 HANA PP | 16/20 |
+| SAP S/4 HANA SD | 18/20 |
+| SAP S/4 HANA FI | 18/20 |
+| SAP S/4 HANA PM | 18/20 |
+| **Final average** | **18/20** |
+
+This credential demonstrates multi-module functional S/4HANA training. It is explicitly kept separate from productive implementation, conversion or operational experience on a real S/4HANA system.
 
 ## Additional completed SAP training
 
@@ -35,6 +50,10 @@ The exact certificate links are maintained in the general [Credentials Index](..
 
 ## Topics evidenced by the supplied training material
 
+### SAP S/4HANA
+
+The specialization covers functional training across MM, PP, SD, FI and PM. The academic record preserves module grades and the final average. This training is not used to claim productive S/4HANA project experience.
+
 ### ABAP Core / Cloud foundations
 
 The supplied course material covers ABAP development environments, ADT/Eclipse, SAP Business Technology Platform context, ABAP Cloud projects, transport concepts, ABAP language fundamentals, data types, control structures, string processing, internal tables, field symbols, performance considerations and debugging.
@@ -49,7 +68,7 @@ The supplied course material covers abapGit/GitHub repository workflow, ATC / AB
 
 ## How training is used in this portfolio
 
-Training is supporting professional evidence, while engineering capability claims continue to point to source code, tests, sanitized operational guides or executable artifacts. Certificate files prove course/credential completion; they do not upgrade a training credential into a stronger vendor certification category.
+Training is supporting professional evidence, while engineering capability claims continue to point to source code, tests, sanitized operational guides or executable artifacts. Certificate files prove course/credential completion; they do not upgrade a training credential into a stronger vendor certification category or productive project experience.
 
 ## Verification note
 
