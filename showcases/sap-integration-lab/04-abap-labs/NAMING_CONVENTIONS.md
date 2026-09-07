@@ -2,9 +2,9 @@
 
 [Versión en español](./NAMING_CONVENTIONS.es.md)
 
-> This document records the naming pattern observed in the 10 historical class-based lab units. It does not claim that the same prefix scheme has already been used for CDS, RAP, DDIC or test objects.
+This document records naming patterns that are already present in the public ABAP evidence.
 
-## Observed class pattern
+## Historical class pattern
 
 ```text
 zcl_lab_<NN>_<topic>_fq[a]
@@ -12,16 +12,16 @@ zcl_lab_<NN>_<topic>_fq[a]
 
 | Segment | Meaning | Observed |
 |---|---|---|
-| `zcl_` | Customer-namespace class prefix | all 10 classes |
-| `lab_` | Personal lab marker | all 10 classes |
+| `zcl_` | Customer-namespace class prefix | all 10 historical classes |
+| `lab_` | Personal lab marker | all 10 historical classes |
 | `<NN>` | Two-digit personal sequence | `01`–`08` |
 | `<topic>` | Short English topic descriptor | `var`, `arithmetic`, `datatypes`, `message`, `invoice`, `condition`, `tables`, `fieldsymbols` |
 | `_fq` | Personal suffix for Francisco Quinteros | all base classes |
 | optional `a` | Continuation of the same numbered topic | `05a`, `07a` |
 
-## Confirmed mapping
+## Confirmed historical mapping
 
-| Unit | Course unit | Topic | Class |
+| Lab | Course unit | Topic | Class |
 |---|---|---|---|
 | 01 | UNIDAD_2 | Variables / basic concepts | `zcl_lab_01_var_fq` |
 | 02 | UNIDAD_3 | Arithmetic | `zcl_lab_02_arithmetic_fq` |
@@ -34,17 +34,24 @@ zcl_lab_<NN>_<topic>_fq[a]
 | 07a | UNIDAD_11 | Internal tables II | `zcl_lab_07_tables_fqa` |
 | 08 | UNIDAD_13 | Field symbols | `zcl_lab_08_fieldsymbols_fq` |
 
+## Course 3 normalized pattern
+
+The four published Course 3 practices use the same personal suffix while keeping the course/practice sequence explicit:
+
+- `zcl_c3_01_projects_fq`
+- `zcl_c3_02_atc_demo_fq`
+- `zcl_c3_03_cleaner_demo_fq`
+- `zcl_c3_04_dept_auth_fq`
+
+The authorization practice also documents the technically valid shortened DDIC names `zde_dept_fq`, `ZAFDEPTFQ` and `ZAODEPTFQ` where SAP object-name limits apply.
+
+## Current naming rule
+
+- Use `_fq` for portfolio-owned/normalized objects when the SAP object type and technical name limit allow it.
+- Use a shortened `FQ` suffix where a strict SAP object-name limit makes literal `_fq` invalid.
+- Use `_fqa` only for an actual continuation of the same numbered historical lab topic.
+- Preserve historical source names unchanged; normalization is represented through separate portfolio copies when applicable.
+
 ## Evidence boundary
 
-This historical set contains class-based labs only. It does not contain an authored custom interface, CDS view, behavior definition, service definition/binding, DDIC persistence object or ABAP Unit test class.
-
-## Rule for future evidence
-
-For new original portfolio objects:
-
-1. keep the `_fq` suffix where the SAP object type and naming limits make it technically valid;
-2. use SAP-recommended/house naming conventions for the object type instead of inventing a prefix only to match this lab series;
-3. document the exact naming decision in the future lab;
-4. do not use `_fqa` unless the object is genuinely a continuation of the same numbered lab topic.
-
-The only convention evidenced today is the class pattern above. Future CDS/RAP/DDIC/test naming will be established when those objects are actually built.
+The historical Course 1 set is class-based. Course 2 has no saved source artifact. Course 3 contributes the four normalized class sources and the documented authorization-object naming above. No naming convention is claimed for object types not represented by current public evidence.
