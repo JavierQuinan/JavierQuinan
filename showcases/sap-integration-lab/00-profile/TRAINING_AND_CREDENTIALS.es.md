@@ -10,10 +10,25 @@ Esta página documenta la formación SAP completada de forma separada a la evide
 
 | Línea | Credencial / curso | Emisor indicado en la credencial | Duración | Finalización |
 |---|---|---|---:|---|
-| S/4HANA | International SAP S/4 HANA Specialization (Certificado / Diploma) | GEM Educa, con certificación adicional emitida bajo el Colegio de Economistas del Perú (registro ENFOPE) | 240 horas académicas | 2024-08-09 |
+| S/4HANA | Especialización Internacional en SAP S/4 HANA desde cero | GEM Educa, con certificación adicional emitida bajo el Colegio de Economistas del Perú (registro ENFOPE) | 240 horas académicas | 2024-08-09 |
 | Fundamentos ABAP Cloud | SAP ABAP Core - Programación Cloud | Logali Group | 80 horas | 2026-01-18 |
 | Modelo de datos ABAP Cloud | SAP ABAP Cloud - Diccionario de datos | Logali Group | 100 horas | 2026-06-28 |
 | Tooling de ingeniería ABAP | SAP abapGit \| ATC \| ABAP Cleaner \| Autorizaciones | Logali Group | 20 horas | 2026-06-28 |
+
+### Registro académico S/4HANA
+
+La especialización S/4HANA incluye registro de módulos aprobados con las siguientes calificaciones:
+
+| Módulo | Calificación |
+|---|---:|
+| SAP S/4 HANA MM | 20/20 |
+| SAP S/4 HANA PP | 16/20 |
+| SAP S/4 HANA SD | 18/20 |
+| SAP S/4 HANA FI | 18/20 |
+| SAP S/4 HANA PM | 18/20 |
+| **Promedio final** | **18/20** |
+
+Esta credencial demuestra formación funcional multidominio en S/4HANA. Se mantiene explícitamente separada de experiencia productiva de implementación, conversión o operación de un sistema S/4HANA real.
 
 ## Formación SAP adicional completada
 
@@ -35,6 +50,10 @@ Los enlaces exactos a cada certificado se mantienen en el [Índice General de Cr
 
 ## Temas respaldados por el material formativo suministrado
 
+### SAP S/4HANA
+
+La especialización cubre formación funcional en los módulos MM, PP, SD, FI y PM. El registro académico conserva las calificaciones por módulo y el promedio final. Esta formación no se utiliza para afirmar experiencia productiva en proyectos S/4HANA.
+
 ### ABAP Core / fundamentos Cloud
 
 El material suministrado cubre entornos de desarrollo ABAP, ADT/Eclipse, contexto SAP Business Technology Platform, proyectos ABAP Cloud, conceptos de transporte, fundamentos del lenguaje ABAP, tipos de datos, estructuras de control, procesamiento de strings, tablas internas, field symbols, consideraciones de performance y debugging.
@@ -49,7 +68,7 @@ El material suministrado cubre flujo de repositorios con abapGit/GitHub, ATC / A
 
 ## Cómo se utiliza la formación en este portafolio
 
-La formación constituye evidencia profesional de respaldo, mientras que los claims de capacidad de ingeniería siguen apuntando a source code, tests, guías operativas sanitizadas o artefactos ejecutables. Los archivos de certificado prueban la finalización del curso/credencial; no convierten una credencial de formación en una categoría superior de certificación de proveedor.
+La formación constituye evidencia profesional de respaldo, mientras que los claims de capacidad de ingeniería siguen apuntando a source code, tests, guías operativas sanitizadas o artefactos ejecutables. Los archivos de certificado prueban la finalización del curso/credencial; no convierten una credencial de formación en una categoría superior de certificación de proveedor ni en experiencia productiva.
 
 ## Nota de verificación
 
