@@ -8,7 +8,7 @@
 
 ## Provenance
 
-Hands-on practice implemented by Francisco Quinteros during structured training (Logali Group, Curso 3 — abapGit module) and normalized for portfolio use. Personally created and executed in the account owner's own SAP trial environment: creating the class, creating a GitHub repository, and performing an abapGit stage/commit/push. This is **not** claimed as independently invented outside the training context — the class structure and test literals were specified by the course exercise itself; the account owner's own work was typing, activating, running it, and completing the abapGit workflow.
+Hands-on practice implemented by Francisco Quinteros during structured training (Logali Group, Curso 3 — abapGit module) and normalized for portfolio use. The account owner confirms personally creating and executing the practice in a SAP trial environment: creating the class, creating a GitHub repository, and performing an abapGit stage/commit/push. This is **not** claimed as independently invented outside the training context; the class structure and test literals came from the course exercise, while the hands-on implementation and workflow execution were performed by the account owner.
 
 ## Object
 
@@ -18,14 +18,14 @@ Hands-on practice implemented by Francisco Quinteros during structured training 
 
 Creating an ABAP Cloud class in Eclipse ADT, structuring a method with input/output parameters, and versioning it with abapGit against a GitHub repository.
 
-## Normalization from the original exercise
+## Portfolio normalization
 
-The original exercise used a course-instance placeholder in the class name (a suffix meant to be replaced with the student's own SAP username fragment). The portfolio version renames the class to the `_fq` convention and removes an unused empty section from the class definition. The method's parameter-passing style (`IMPORTING`/`EXPORTING`) and the literal test values are unchanged, since parameter-passing direction was the exercise's own teaching point.
+The original exercise used a course-instance placeholder in the class name. The public portfolio copy uses the `_fq` convention and removes an unused empty section from the class definition. The exercise's parameter-passing structure and literal test values are preserved because they are part of the training context disclosed above.
 
-## Runtime status
+## Runtime boundary
 
-`NO_CURRENT_RUNTIME_CLAIM`. The normalized, renamed copy in this repository has not itself been re-executed; execution refers to the original hands-on training practice confirmed by the account owner. Re-executing this specific renamed file is optional future work, not a requirement of this track.
+The execution claim refers to the original hands-on training practice confirmed by the account owner. The normalized public copy is presented as source evidence and carries no separate current-runtime claim.
 
 ## Dependencies
 
-None beyond released ABAP Cloud APIs (`if_oo_adt_classrun`). No `/DMO/*` table, no external object.
+None beyond released ABAP Cloud APIs (`if_oo_adt_classrun`). No `/DMO/*` table and no external object.
