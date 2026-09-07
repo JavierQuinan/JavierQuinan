@@ -1,6 +1,6 @@
 # SAP Evidence Governance
 
-This document defines how SAP evidence is labelled in this portfolio. It does not use roadmap states; an artifact is described only by evidence that already exists.
+This document defines how SAP evidence is labelled in this portfolio. An artifact is described only by evidence that already exists.
 
 ## Evidence labels
 
