@@ -2,7 +2,7 @@
 
 [English version](./README.md)
 
-Este perfil mantiene los claims recruiter-facing separados por clases de evidencia, en lugar de tratar cada guía o curso como experiencia hands-on.
+Este perfil separa los claims recruiter-facing por clases de evidencia, en lugar de tratar cada guía o curso como experiencia hands-on.
 
 ## Posicionamiento
 
@@ -16,14 +16,13 @@ Este perfil mantiene los claims recruiter-facing separados por clases de evidenc
 ## Clases de evidencia
 
 1. `ENTERPRISE_VERIFIED` — conocimiento operativo sanitizado derivado de trabajo SAP real.
-2. `HISTORICAL_EXECUTION_VERIFIED` — labs personales con evidencia documentada de ejecución histórica. No se afirma ni se exige runtime actual para este track.
-3. `OWNER_CONFIRMED_HANDS_ON_EXECUTION` — práctica de formación que el propietario confirma directamente haber tecleado, creado y ejecutado personalmente durante formación estructurada; no sobrevivió ningún artefacto independiente más allá de esa confirmación.
-4. `PUBLIC_NORMALIZED_SOURCE` — el source de la práctica se publica bajo la propia nomenclatura `_fq` del portfolio; la copia renombrada en sí no ha sido reejecutada de forma independiente.
+2. `HISTORICAL_EXECUTION_VERIFIED` — labs personales con evidencia documentada de ejecución histórica.
+3. `OWNER_CONFIRMED_HANDS_ON_EXECUTION` — práctica de formación que el propietario confirma haber tecleado, creado y ejecutado personalmente durante formación estructurada.
+4. `PUBLIC_NORMALIZED_SOURCE` — source revisable de práctica publicado bajo la propia nomenclatura `_fq` del portfolio.
 5. `PUBLIC_SOURCE_EVIDENCE` — source revisable en este repositorio.
 6. `EXECUTABLE_NON_LIVE_EXAMPLE` — ejemplo ejecutable/testeado sin claim de conectividad SAP real.
 7. `DOCUMENTATION_GROUNDED` — arquitectura/estudio basado en documentación.
 8. `TRAINING_ONLY` — formación completada sin artefacto de source guardado y sin claim de runtime.
-9. `NOT_YET_EVIDENCED` — no existe actualmente base de portfolio para un claim hands-on.
 
 ## Índices de evidencia
 
@@ -32,10 +31,9 @@ Este perfil mantiene los claims recruiter-facing separados por clases de evidenc
 - [SAP Engineering Evidence Lab](../README.es.md)
 - [Laboratorios Históricos ABAP Cloud](../04-abap-labs/README.es.md)
 - [Prácticas de Formación de Curso 3](../04-abap-labs/training-practices/README.es.md)
-- [Referencia de Runtime-Readiness](../04-abap-labs/runtime-readiness/README.es.md)
 - [Índice de Evidencia Visual](../visual-evidence/README.es.md)
 - [Índice de Referencias Oficiales SAP](../OFFICIAL_SAP_REFERENCES.es.md)
 
 ## Límite de claims
 
-La formación no se presenta como certificación emitida por SAP ni como evidencia runtime. RAP y los conceptos de integración están basados en documentación. El cliente procurement es un ejemplo ejecutable no-live. Los labs ABAP históricos conservan evidencia documentada de ejecución histórica; no se afirma una reejecución actual. Las prácticas de Curso 3 son formación hands-on confirmada por el propietario, normalizada a source de portfolio; las copias normalizadas en sí no han sido reejecutadas de forma independiente.
+La formación no se presenta como certificación emitida por SAP ni como evidencia enterprise/runtime. La arquitectura RAP y los conceptos de integración están basados en documentación. El cliente procurement es un ejemplo ejecutable no-live. Los labs ABAP históricos conservan evidencia documentada de ejecución histórica. Las prácticas de Curso 3 son formación hands-on confirmada por el propietario con source público normalizado `_fq`.

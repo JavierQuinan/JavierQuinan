@@ -78,12 +78,12 @@ Repetir la baja desde el flujo funcional CRM normal, sin forzar datos técnicos 
 
 ### 7. Validar resultado
 
-Evidencia esperada:
+Patrón profesional observado:
 
-- contrato activo después de la recuperación
-- posibilidad de iniciar nuevamente el fin/baja
-- generación de la orden downstream mediante el flujo normal de integración
-- ausencia de manipulación directa de tablas
+- contrato restaurado al estado activo esperado antes del reintento;
+- fin/baja repetido mediante el flujo CRM normal;
+- generación downstream de desconexión/OT validada a través del proceso normal;
+- sin manipulación directa de tablas como método de recuperación.
 
 ## Interpretación de troubleshooting
 
@@ -99,24 +99,20 @@ El caso fuente contenía identificadores reales, eliminados de esta versión.
 
 No publicar:
 
-- números de OT
-- acuerdos/contratos
-- cuentas o puntos de notificación
-- clientes
-- URLs internas CRM
-- roles internos
-- IDs de procesos custom cuando revelen configuración propietaria
-- screenshots empresariales
+- números de OT;
+- acuerdos/contratos;
+- cuentas o puntos de notificación;
+- clientes;
+- URLs internas CRM;
+- roles internos;
+- IDs de procesos custom cuando revelen configuración propietaria;
+- screenshots empresariales.
 
 ## Qué demuestra
 
-- troubleshooting CRM ↔ IS-U
-- recuperación de ciclo de vida contractual
-- dependencias de generación de OT
-- razonamiento de estados de proceso
-- preferencia por recuperación funcional sobre manipulación técnica
-- validación de estados upstream/downstream
-
-## Laboratorio futuro
-
-Este patrón podrá transformarse en un lab sintético de máquina de estados, idempotencia, retry y compensación para demostrar arquitectura de integración sin copiar código propietario CRM/IS-U.
+- troubleshooting CRM ↔ IS-U;
+- recuperación de ciclo de vida contractual;
+- dependencias de generación de OT;
+- razonamiento de estados de proceso;
+- preferencia por recuperación funcional sobre manipulación técnica;
+- validación de estados upstream/downstream.

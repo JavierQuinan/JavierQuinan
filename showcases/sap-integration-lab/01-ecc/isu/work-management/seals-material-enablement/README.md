@@ -1,14 +1,24 @@
-# SAP ECC MM ↔ IS-U/WM — Seal Material Enablement
+# SAP ECC MM ↔ IS-U/WM — Seal Enablement and Consumption
 
 [Versión en español](./README.es.md)
 
-> **Evidence type:** sanitized cross-module support case  
+> **Evidence type:** sanitized cross-module operational case  
 > **Status:** `FUNCTIONAL_EVIDENCE_READY`  
-> **Scope:** material master availability → seal-management enablement → work-order material usage
+> **Scope:** material availability → seal management → work-order consumption → test-environment support
 
-This evidence documents a cross-module support scenario where seal materials already exist in the SAP material master but still require enablement/configuration in the seal-management process before they can be consumed operationally in work orders.
+This evidence documents the relationship between SAP MM, Seal Management and Work Management, complemented by the contributed operational guide for `ZCONS_SELLOS` and the use of `MMPV` in test/replica environments.
 
-The source ticket contained real organization names, ticket IDs and material numbers; none are published here.
+## Contributed evidence guide
+
+- [ZCONS_SELLOS: Seal consumption](./CONSUMO_SELLOS_GUIDE.es.md) (Spanish original; no separate English translation exists for this guide)
+
+The documented upload structure uses the columns `MATERIAL`, `ORDEN`, `SERIE` and `UBICACIÓN`.
+
+### MMPV evidence
+
+![MMPV in test environment](./evidence/figure-03.webp)
+
+The screenshot belongs to the contributed guide and documents accounting-period extension in test environments through `MMPV`.
 
 ## Process relationship
 
@@ -19,79 +29,49 @@ Material requirement for field work
 Material created/extended in SAP MM
           │
           ▼
-Validate material attributes/context
+Enable/configure in Seal Management
           │
           ▼
-Enable/configure material in Seal Management
-          │
-          ▼
-Make seal type available to WM process
+Make seal type available to WM
           │
           ▼
 Use in work order / field execution
           │
           ▼
-Record/consume material according to process
+ZCONS_SELLOS / consumption according to process
 ```
 
 ## Troubleshooting principle
 
-A material existing in `MM01/MM03` context does not by itself prove that every downstream application can use it.
+A material existing in `MM01/MM03` context does not automatically mean every downstream application can use it.
 
-When a material is unavailable in a field-service/seal workflow, verify both layers:
+When a material is unavailable in a field/seal workflow, validate two layers:
 
-1. **MM layer** — material exists and is extended/configured for the required organizational context.
-2. **Seal/WM layer** — the corresponding seal category/type/configuration is available for the work-order process.
+1. **MM** — material exists and is correctly extended/configured for the required organizational context.
+2. **Seal/WM** — corresponding seal category/type/configuration is available for the work-order process.
 
 ## Diagnostic checklist
 
-- Is the material master record present?
-- Is the material extended to the required plant/storage context?
-- Is the material intended for the seal-management process?
-- Does the seal-management configuration reference/recognize the material?
-- Is the required seal category/type active?
-- Is the work-order process configured to expose that seal/material option?
+- Does the material exist?
+- Is it extended to the required plant/storage location?
+- Does it belong to the seal-management process?
+- Does seal configuration recognize/reference the material?
+- Is the seal category/type active?
+- Does the work order expose that material/seal option?
 - Does the downstream consumption/material-movement process recognize the selected material?
 
 ## Cross-module insight
 
-This case demonstrates that master-data readiness is multi-layered:
-
 ```text
-MM master-data readiness
+MM master-data availability
         ≠
-WM application readiness
+WM application availability
 ```
-
-A support analyst must trace the dependency rather than recreating the material or forcing a work-order entry.
-
-## Public boundary
-
-Never publish:
-
-- material numbers from the enterprise system
-- ticket IDs
-- organization/business-unit names
-- internal seal categories/configuration values
-- screenshots with operational data
-- custom program or transport identifiers
-
-## Future technical lab
-
-A public synthetic lab can model:
-
-- material eligibility rules
-- seal-type mapping
-- work-order material selection
-- material-consumption validation
-- configuration consistency report
-
-without copying customer-specific Seal Management configuration.
 
 ## What this proves
 
-- SAP MM ↔ IS-U/WM integration awareness
-- material-master vs. application-configuration distinction
-- field-service material enablement troubleshooting
-- downstream-consumption thinking
-- support-case sanitization and traceability
+- SAP MM ↔ IS-U/WM integration awareness;
+- seal management and consumption through an operational process;
+- upload-file structure for `ZCONS_SELLOS`;
+- use of `MMPV` in test/replica environments;
+- troubleshooting of field-material enablement.

@@ -16,7 +16,7 @@ Curso 1 (Logali Group), Unit 5 — "Procesamiento Campos de Texto." Personal Wor
 
 ## What this demonstrates
 
-An ABAP text-pool symbol (`TEXT-001`), string-description functions (`STRLEN`/`NUMOFCHAR`/`COUNT`/`FIND`), case-conversion functions, and regex validation (`contains( regex = )`), executed as an ABAP Cloud console class. Reproducing this class requires recreating `TEXT-001` in the class's Text Elements tab — see the [optional runtime-readiness reference](../../runtime-readiness/LAB04_TEXT_ELEMENT_DECISION.md) for exact steps.
+An ABAP text-pool symbol (`TEXT-001`), string-description functions (`STRLEN`/`NUMOFCHAR`/`COUNT`/`FIND`), case-conversion functions, and regex validation (`contains( regex = )`), executed as an ABAP Cloud console class in the documented historical practice. `TEXT-001` is part of that original class context.
 
 ## Evidence
 

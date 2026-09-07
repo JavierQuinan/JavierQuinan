@@ -14,15 +14,15 @@ Curso 1 (Logali Group), Unidad 5 — "Procesamiento Campos de Texto." Entrega pe
 
 [`ZCL_LAB_04_MESSAGE_FQ`](../source/zcl_lab_04_message_fq.abap)
 
-## Qué demuestra esto
+## Qué demuestra
 
-Un símbolo de text-pool de ABAP (`TEXT-001`), funciones de descripción de strings (`STRLEN`/`NUMOFCHAR`/`COUNT`/`FIND`), funciones de conversión de mayúsculas/minúsculas, y validación con regex (`contains( regex = )`), ejecutado como una clase de consola ABAP Cloud. Reproducir esta clase requiere recrear `TEXT-001` en la pestaña Text Elements de la clase — ver la [referencia opcional de runtime-readiness](../../runtime-readiness/LAB04_TEXT_ELEMENT_DECISION.es.md) para los pasos exactos.
+Un símbolo de text-pool de ABAP (`TEXT-001`), funciones de descripción de strings (`STRLEN`/`NUMOFCHAR`/`COUNT`/`FIND`), funciones de conversión de mayúsculas/minúsculas y validación con regex (`contains( regex = )`), ejecutado como una clase de consola ABAP Cloud en la práctica histórica documentada. `TEXT-001` forma parte de ese contexto original de la clase.
 
 ## Evidencia
 
 ![Salida de consola de Eclipse ADT para zcl_lab_04_message_fq](./assets/01-eclipse-adt-project-explorer-and-console.png)
 
-Source y salida de consola de Eclipse ADT. Las líneas de validación regex imprimen "inválido" para las cadenas placeholder literales ya presentes en el fuente histórico (`'Agregar cualquier teléfono'` / `'Agregar cualquier correo'`) — es el propio contenido literal del fuente, no un teléfono o email real.
+Source y salida de consola de Eclipse ADT. Las líneas de validación regex imprimen "inválido" para las cadenas placeholder literales ya presentes en el source histórico (`'Agregar cualquier teléfono'` / `'Agregar cualquier correo'`) — es el propio contenido literal del source, no un teléfono o email real.
 
 ## Sanitización
 

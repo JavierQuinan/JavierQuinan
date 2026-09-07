@@ -16,7 +16,7 @@ Curso 1 (Logali Group), Unit 8 — "Estructuras de control." Personal Word submi
 
 ## What this demonstrates
 
-`IF`/`ENDIF`, `CASE`/`ENDCASE`, `DO`/`ENDDO`, `CHECK`, `SWITCH`, `COND`, `WHILE`/`ENDWHILE`, `LOOP`/`ENDLOOP`, and `TRY`/`ENDTRY` with a real exception (`CX_SY_ZERODIVIDE`), executed as an ABAP Cloud console class. This class uses the training-specific `ZEMP_LOGALI` table as a compile-time DDIC type — see the [optional runtime-readiness reference](../../runtime-readiness/README.md) for a synthetic `_fq` replacement that removes this dependency.
+`IF`/`ENDIF`, `CASE`/`ENDCASE`, `DO`/`ENDDO`, `CHECK`, `SWITCH`, `COND`, `WHILE`/`ENDWHILE`, `LOOP`/`ENDLOOP`, and `TRY`/`ENDTRY` with a real exception (`CX_SY_ZERODIVIDE`), executed as an ABAP Cloud console class in the documented historical practice. The class uses the training-specific `ZEMP_LOGALI` table as a compile-time DDIC type; that dependency is part of the preserved historical source context.
 
 ## Evidence
 

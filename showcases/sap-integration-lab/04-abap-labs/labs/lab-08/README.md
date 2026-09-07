@@ -16,7 +16,7 @@ Curso 1 (Logali Group), Unit 13 — "Field Symbol - Punteros." Personal Word sub
 
 ## What this demonstrates
 
-`ASSIGN` to a variable, `ASSIGN` to a table line while looping, `APPEND`/`INSERT ... ASSIGNING`, `READ TABLE ... ASSIGNING`, and a date-field coercion cast, executed as an ABAP Cloud console class. This class uses the training-specific `ZEMP_LOGALI` table as a compile-time field-symbol type — see the [optional runtime-readiness reference](../../runtime-readiness/README.md) for a synthetic `_fq` replacement that removes this dependency.
+`ASSIGN` to a variable, `ASSIGN` to a table line while looping, `APPEND`/`INSERT ... ASSIGNING`, `READ TABLE ... ASSIGNING`, and a date-field coercion cast, executed as an ABAP Cloud console class in the documented historical practice. The class uses the training-specific `ZEMP_LOGALI` table as a compile-time field-symbol type; that dependency is part of the preserved historical source context.
 
 ## Evidence
 

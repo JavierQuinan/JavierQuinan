@@ -78,12 +78,12 @@ Run the intended contract-end process through the normal CRM flow rather than ed
 
 ### 7. Validate the result
 
-Expected evidence:
+Observed professional pattern:
 
-- contract active after recovery step
-- contract-end process can be initiated again
-- downstream disconnection/work-order process is generated through the normal integration path
-- no direct table manipulation was required
+- contract restored to the expected active state before retry;
+- contract-end process repeated through the normal CRM flow;
+- downstream disconnection/work-order generation validated through the normal process path;
+- no direct table manipulation used as the recovery method.
 
 ## Troubleshooting interpretation
 
@@ -99,24 +99,20 @@ The source material contained real order/account identifiers. They are removed.
 
 Do not publish:
 
-- work-order numbers
-- contract/agreement IDs
-- account or notification-point IDs
-- customer names
-- internal CRM URLs
-- internal role names
-- custom process IDs when they reveal proprietary configuration
-- screenshots with enterprise data
+- work-order numbers;
+- contract/agreement IDs;
+- account or notification-point IDs;
+- customer names;
+- internal CRM URLs;
+- internal role names;
+- custom process IDs when they reveal proprietary configuration;
+- screenshots with enterprise data.
 
 ## What this proves
 
-- CRM ↔ IS-U process troubleshooting
-- contract lifecycle recovery
-- work-order generation dependencies
-- process-state reasoning
-- preference for functional recovery over direct technical manipulation
-- validation of upstream and downstream states
-
-## Future technical lab
-
-A future integration lab can model this pattern with synthetic state machines and idempotent retry/compensation logic outside the enterprise system, demonstrating the same reasoning without copying proprietary CRM/IS-U code.
+- CRM ↔ IS-U process troubleshooting;
+- contract lifecycle recovery;
+- work-order generation dependencies;
+- process-state reasoning;
+- preference for functional recovery over direct technical manipulation;
+- validation of upstream and downstream states.
