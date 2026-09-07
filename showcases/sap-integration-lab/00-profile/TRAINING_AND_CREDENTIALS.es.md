@@ -6,14 +6,26 @@ Esta página documenta la formación SAP completada de forma separada a la evide
 
 > **Política de denominación:** los certificados de aprovechamiento y diplomas emitidos por terceros se presentan exactamente según sus documentos emisores. No se describen como certificaciones oficiales emitidas por SAP salvo que el emisor y la redacción del propio certificado respalden ese claim.
 
-## Formación completada
+## Credenciales SAP destacadas
 
 | Línea | Credencial / curso | Emisor indicado en la credencial | Duración | Finalización |
 |---|---|---|---:|---|
-| S/4HANA | International SAP S/4 HANA Specialization (Diploma) | GEM Educa, con certificación adicional emitida bajo el Colegio de Economistas del Perú (registro ENFOPE) | 240 horas académicas | 2024-08-09 |
+| S/4HANA | International SAP S/4 HANA Specialization (Certificado / Diploma) | GEM Educa, con certificación adicional emitida bajo el Colegio de Economistas del Perú (registro ENFOPE) | 240 horas académicas | 2024-08-09 |
 | Fundamentos ABAP Cloud | SAP ABAP Core - Programación Cloud | Logali Group | 80 horas | 2026-01-18 |
 | Modelo de datos ABAP Cloud | SAP ABAP Cloud - Diccionario de datos | Logali Group | 100 horas | 2026-06-28 |
 | Tooling de ingeniería ABAP | SAP abapGit \| ATC \| ABAP Cleaner \| Autorizaciones | Logali Group | 20 horas | 2026-06-28 |
+
+## Formación SAP adicional completada
+
+| Línea | Credencial / curso | Emisor indicado en la credencial | Duración | Finalización |
+|---|---|---|---:|---|
+| Fundamentos ABAP | SAP ABAP Iniciación a la programación | Logali Group | 35 horas | 2023-09-01 |
+| Fundamentos SAP | SAP: Conceptos e iniciación | Logali Group | 8 horas | 2023-09-01 |
+| UI ABAP | SAP ABAP Web Dynpro | Logali Group | 10 horas | 2023-09-12 |
+| Reporting ABAP | SAP ABAP List Viewer - ALV | Logali Group | 20 horas | 2023-09-21 |
+| Formación continua | Webinar: ABAP Debugger - Optimización de la Resolución de errores en SAP | Logali Group | Webinar (el certificado no indica horas académicas) | 2024-06-05 |
+
+Esta división en dos niveles conserva todo registro de formación SAP legítimamente completado sin saturar la primera vista recruiter-facing: la tabla destacada cubre el diploma de especialización y la formación ABAP Cloud más reciente/avanzada, mientras que la tabla adicional conserva los cursos fundacionales más antiguos y el webinar.
 
 ## Evidencia pública de certificados
 

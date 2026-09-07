@@ -10,7 +10,7 @@ This evidence documents the relationship between SAP MM, Seal Management and Wor
 
 ## Contributed evidence guide
 
-- [ZCONS_SELLOS: Seal consumption](./CONSUMO_SELLOS_GUIDE.md)
+- [ZCONS_SELLOS: Seal consumption](./CONSUMO_SELLOS_GUIDE.es.md) (Spanish original; no separate English translation exists for this guide)
 
 The documented upload structure uses the columns `MATERIAL`, `ORDEN`, `SERIE` and `UBICACIÓN`.
 

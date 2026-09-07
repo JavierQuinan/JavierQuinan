@@ -6,14 +6,26 @@ This page documents completed SAP-related training separately from hands-on engi
 
 > **Credential wording policy:** third-party course-completion certificates and executive diplomas are presented exactly according to their issuing documents. They are not described as SAP-issued official certifications unless the issuing authority and certificate wording support that claim.
 
-## Completed training
+## Featured SAP credentials
 
 | Track | Credential / course | Issuer shown on credential | Duration | Completion |
 |---|---|---|---:|---|
-| S/4HANA | International SAP S/4 HANA Specialization (Diploma) | GEM Educa, with additional certification issued under Colegio de Economistas del Perú (ENFOPE registry) | 240 academic hours | 2024-08-09 |
+| S/4HANA | International SAP S/4 HANA Specialization (Certificado / Diploma) | GEM Educa, with additional certification issued under Colegio de Economistas del Perú (ENFOPE registry) | 240 academic hours | 2024-08-09 |
 | ABAP Cloud foundations | SAP ABAP Core - Programación Cloud | Logali Group | 80 hours | 2026-01-18 |
 | ABAP Cloud data model | SAP ABAP Cloud - Diccionario de datos | Logali Group | 100 hours | 2026-06-28 |
 | ABAP engineering tooling | SAP abapGit \| ATC \| ABAP Cleaner \| Autorizaciones | Logali Group | 20 hours | 2026-06-28 |
+
+## Additional completed SAP training
+
+| Track | Credential / course | Issuer shown on credential | Duration | Completion |
+|---|---|---|---:|---|
+| ABAP fundamentals | SAP ABAP Iniciación a la programación | Logali Group | 35 hours | 2023-09-01 |
+| SAP fundamentals | SAP: Conceptos e iniciación | Logali Group | 8 hours | 2023-09-01 |
+| ABAP UI | SAP ABAP Web Dynpro | Logali Group | 10 hours | 2023-09-12 |
+| ABAP reporting | SAP ABAP List Viewer - ALV | Logali Group | 20 hours | 2023-09-21 |
+| Continuing education | Webinar: ABAP Debugger - Optimización de la Resolución de errores en SAP | Logali Group | Webinar (no academic-hour figure on the certificate) | 2024-06-05 |
+
+This two-tier split keeps every legitimately completed SAP training record in the portfolio without saturating the first recruiter-facing view: the featured table covers the specialization diploma and the most recent/advanced ABAP Cloud training, while the additional table preserves the earlier foundational courses and the webinar.
 
 ## Public certificate evidence
 

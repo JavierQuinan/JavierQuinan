@@ -77,7 +77,7 @@ Esto valida el **cliente/source**, no un runtime real de tenant SAP S/4HANA.
 
 ## Frontera de seguridad
 
-No se versiona URL SAP real, usuario, contraseña, OAuth client secret, bearer token, cookie, certificado/llave privada ni payload productivo.
+No se versiona URL SAP real, usuario, contraseña, OAuth client secret, token estilo bearer, cookie, certificado/llave privada ni payload productivo.
 
 La implementación sigue siendo deliberadamente **solo lectura**. La autenticación real deberá provenir de un proveedor externo de credenciales/tokens.
 

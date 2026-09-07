@@ -2,7 +2,7 @@
 
 [Versión en español](./SANITIZATION_STATUS.es.md)
 
-**Status: IN FINAL EVIDENCE RECONCILIATION.**
+**Status: COMPLETE.**
 
 This record describes the public repository state after sanitization. It does not add technical capability claims.
 
@@ -12,8 +12,10 @@ This record describes the public repository state after sanitization. It does no
 - Curso 2: completed hands-on ABAP Dictionary training documented without fabricated source artifacts.
 - Curso 3: four owner-confirmed hands-on practices with public normalized `_fq` source.
 - SAP enterprise evidence: sanitized MM, IS-U/Work Management, CRM/SD and technical-diagnostics material.
-- SAP training credentials: recruiter-facing credential records linked to one canonical public certificate PDF/image per credential when available.
-- Odoo credential: indexed separately from SAP and linked to the issuer certificate as public evidence.
+- SAP training credentials: 9 recruiter-facing credential records (S/4HANA specialization certificate + diploma, 3 featured 2026 Logali ABAP Cloud certificates and 5 additional Logali certificates/webinar), each linked to one canonical public certificate PDF under `docs/credentials/evidence/sap/`.
+- Odoo credential: indexed separately from SAP and linked to the issuer's own "Certificate of Achievement" PDF under `docs/credentials/evidence/odoo/`.
+- Other technical credential: the Angular course certificate is linked under `docs/credentials/evidence/other/`.
+- Every published credential file was verified individually (SHA-256 inventory, content review) against the source `certificados/` folder; exact-duplicate files and superseded/earlier repeat completions were excluded so each credential maps to exactly one canonical public file.
 
 ## Public certificate policy
 

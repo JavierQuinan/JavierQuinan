@@ -77,7 +77,7 @@ This is **client/source validation**, not SAP S/4HANA tenant runtime validation.
 
 ## Security boundary
 
-No real SAP URL, user, password, OAuth client secret, bearer token, cookie, certificate/private key or production payload is stored in this lab.
+No real SAP URL, user, password, OAuth client secret, bearer-style token, cookie, certificate/private key or production payload is stored in this lab.
 
 The current source remains intentionally read-only. Real authentication should be supplied through an external credential/token provider rather than committed application configuration.
 

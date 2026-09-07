@@ -2,7 +2,7 @@
 
 [English version](./SANITIZATION_STATUS.md)
 
-**Estado: EN RECONCILIACIÓN FINAL DE EVIDENCIA.**
+**Estado: COMPLETO.**
 
 Este registro describe el estado público del repositorio después de la sanitización. No agrega claims de capacidades técnicas.
 
@@ -12,8 +12,10 @@ Este registro describe el estado público del repositorio después de la sanitiz
 - Curso 2: formación hands-on de ABAP Dictionary completada y documentada sin fabricar artefactos de source.
 - Curso 3: cuatro prácticas hands-on confirmadas por el propietario con source público normalizado `_fq`.
 - Evidencia enterprise SAP: material sanitizado de MM, IS-U/Work Management, CRM/SD y diagnóstico técnico.
-- Credenciales de formación SAP: registros recruiter-facing enlazados a un único PDF/imagen pública canónica del certificado por credencial cuando esté disponible.
-- Credencial Odoo: indexada por separado de SAP y enlazada al certificado del emisor como evidencia pública.
+- Credenciales de formación SAP: 9 registros recruiter-facing (certificado + diploma de especialización S/4HANA, 3 certificados destacados 2026 de Logali ABAP Cloud y 5 certificados/webinar adicionales de Logali), cada uno enlazado a un único PDF público canónico bajo `docs/credentials/evidence/sap/`.
+- Credencial Odoo: indexada por separado de SAP y enlazada al propio "Certificate of Achievement" del emisor bajo `docs/credentials/evidence/odoo/`.
+- Otra credencial técnica: el certificado del curso de Angular está enlazado bajo `docs/credentials/evidence/other/`.
+- Cada certificado publicado fue verificado individualmente (inventario SHA-256, revisión de contenido) contra la carpeta origen `certificados/`; se excluyeron archivos exactamente duplicados y finalizaciones anteriores/repetidas superadas, de modo que cada credencial corresponde a un único archivo público canónico.
 
 ## Política de certificados públicos
 
