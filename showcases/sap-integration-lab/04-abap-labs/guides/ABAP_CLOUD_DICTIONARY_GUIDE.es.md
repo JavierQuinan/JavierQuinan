@@ -62,7 +62,7 @@ Los conceptos fueron estudiados durante formación de terceros. La redacción, e
 
 ## Estado de evidencia
 
-`TRAINING_ONLY_IN_THIS_TRACK`. Consulta el [Análisis de Gaps](../docs/GAP_ANALYSIS.es.md).
+`TRAINING_ONLY_IN_THIS_TRACK` — la formación hands-on de Curso 2 ocurrió, pero no existe ningún artefacto de source guardado para normalizar o publicar; ver [Prácticas de Formación de Curso 3 — Matriz de Evidencia](../training-practices/EVIDENCE_MATRIX.es.md) para cómo se revela esto.
 
 ## Referencia oficial
 

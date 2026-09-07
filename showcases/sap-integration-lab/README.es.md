@@ -10,16 +10,18 @@ Este showcase combina conocimiento enterprise sanitizado con artefactos de ingen
 
 ## Modelo de evidencia
 
-| Clase | Significado |
-|---|---|
-| `ENTERPRISE_VERIFIED` | Conocimiento operativo sanitizado derivado de trabajo SAP real |
-| `HANDS_ON_HISTORICAL` | Source de laboratorio personal con evidencia histórica de ejecución; la reejecución actual puede seguir pendiente |
-| `CURRENT_RUNTIME_VERIFIED` | Reejecutado en un entorno actual con evidencia nueva |
-| `PUBLIC_SOURCE_EVIDENCE` | Existe source público revisable |
-| `EXECUTABLE_NON_LIVE_EXAMPLE` | Ejemplo ejecutable/testeado sin afirmar conectividad SAP real |
-| `DOCUMENTATION_GROUNDED` | Estudio técnico/arquitectónico basado en documentación de producto |
-| `TRAINING_ONLY` | Formación completada sin evidencia runtime hands-on independiente |
-| `NOT_YET_EVIDENCED` | Actualmente no existe evidencia de portfolio para sostener un claim hands-on |
+Se usan seis niveles de evidencia en este lab, y **no son equivalentes** — cada uno hace un claim más estrecho o más amplio que los demás:
+
+| Nivel | Clase | Significado |
+|---|---|---|
+| 1 | `ENTERPRISE_VERIFIED` | Conocimiento operativo sanitizado derivado de trabajo SAP real |
+| 2 | `PUBLIC_SOURCE_EVIDENCE` | Existe source público revisable en este repositorio |
+| 3 | `HISTORICAL_EXECUTION_VERIFIED` | Source de laboratorio personal con evidencia documentada de ejecución histórica; no se afirma ni se exige runtime actual |
+| 4 | `OWNER_CONFIRMED_HANDS_ON_EXECUTION` | Práctica de formación confirmada directamente por el propietario como tecleada, creada y ejecutada personalmente; no sobrevivió ningún artefacto independiente más allá de esa confirmación |
+| 5 | `DOCUMENTATION_GROUNDED` | Estudio técnico/arquitectónico basado en documentación de producto |
+| 6 | `TRAINING_ONLY` | Formación completada sin artefacto de source guardado y sin claim de runtime |
+
+Clases de apoyo, más estrechas: `PUBLIC_NORMALIZED_SOURCE` (el source de una práctica publicado bajo la propia nomenclatura `_fq` del portfolio — la copia renombrada en sí no se reejecuta de forma independiente), `EXECUTABLE_NON_LIVE_EXAMPLE` (ejemplo ejecutable/testeado sin afirmar conectividad real), `NOT_YET_EVIDENCED` (sin base de portfolio todavía para un claim hands-on).
 
 ## Evidencia disponible actualmente
 
@@ -54,17 +56,26 @@ Secuencia documentada:
 
 La evidencia sanitizada cubre un flujo de facturación de servicios no energéticos: preparación cliente/BP, contexto de área de ventas, revisión billing/output y finalización del output fiscal configurado.
 
-### Laboratorios históricos ABAP Cloud — `HANDS_ON_HISTORICAL`
+### Laboratorios históricos ABAP Cloud — `HISTORICAL_EXECUTION_VERIFIED`
 
 [Laboratorios Históricos ABAP Cloud](./04-abap-labs/README.es.md)
 
-- 10 archivos source de clases ABAP personales en 8 temas base.
+- El currículo completo de 16 unidades de Curso 1: 10 unidades con un laboratorio hands-on personal (source + las propias capturas sanitizadas del propietario) en 8 temas base, 6 unidades solo-teoría sin laboratorio.
 - Evidencia histórica de ejecución: **10/10** documentada en entregas fuente privadas.
-- Revalidación de runtime actual: **0/10 — pendiente**.
+- No se afirma ni se exige runtime actual para este track.
 - Temas históricos demostrados: ABAP Core, ABAP Objects, classrun, tablas internas, field symbols, Open SQL y manejo de excepciones.
 - Cinco guías derivadas de formación cubren DDIC, abapGit, ATC, ABAP Cleaner y autorizaciones sin presentarlas como labs ejecutados.
+- Una [referencia opcional de reproducibilidad](./04-abap-labs/runtime-readiness/README.es.md) documenta análisis de dependencias, una fixture sintética y 3 borradores de source runtime-ready — material de apoyo, no un bloqueador de portfolio.
 
 No se republican screenshots históricos ni material bruto de los cursos.
+
+### Prácticas de formación de Curso 3 — `OWNER_CONFIRMED_HANDS_ON_EXECUTION` + `PUBLIC_NORMALIZED_SOURCE`
+
+[Prácticas de Formación de Curso 3](./04-abap-labs/training-practices/README.es.md)
+
+- 4 prácticas hands-on (abapGit, ATC, ABAP Cleaner, Autorizaciones) implementadas personalmente por el propietario durante formación estructurada, confirmadas directamente por él y normalizadas a la convención `_fq` del portfolio.
+- No sobrevivió ningún artefacto independiente (una captura propia, una exportación propia de herramienta) más allá de esa confirmación — revelado en lugar de ocultado.
+- Curso 2 (práctica hands-on de ABAP Dictionary) se documenta como `TRAINING_ONLY`: la formación y la práctica hands-on ocurrieron, pero no se guardó ningún artefacto de source para normalizar o publicar.
 
 ### SAP S/4HANA — clases de evidencia mixtas
 

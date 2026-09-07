@@ -62,7 +62,7 @@ Concepts were studied during third-party training. The wording, structure and il
 
 ## Evidence status
 
-`TRAINING_ONLY_IN_THIS_TRACK`. See the [Gap Analysis](../docs/GAP_ANALYSIS.md).
+`TRAINING_ONLY_IN_THIS_TRACK` — Course 2 hands-on training occurred, but no saved source artifact exists to normalize or publish; see [Course 3 Training Practices — Evidence Matrix](../training-practices/EVIDENCE_MATRIX.md) for how this is disclosed.
 
 ## Official reference
 

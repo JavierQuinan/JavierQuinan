@@ -50,7 +50,7 @@
 
 ## Resumen
 
-- **Ningún laboratorio usa vistas CDS, artefactos RAP, Behavior Definitions, Service Definitions/Bindings, ni OData.** Ninguno encontrado — coherente con el `GAP_ANALYSIS.md` existente.
+- **Ningún laboratorio usa vistas CDS, artefactos RAP, Behavior Definitions, Service Definitions/Bindings, ni OData.** Ninguno encontrado en los laboratorios históricos, Curso 2, ni las prácticas de Curso 3.
 - **Ningún laboratorio requiere que exista un objeto Z propio nuevo** para compilar como fuente histórico — el único objeto de namespace de cliente referenciado es `ZEMP_LOGALI`, que es provisto por el curso, no algo que este portafolio deba recrear desde cero (en la Fase 2/3 se diseña un *reemplazo*, no una recreación de `ZEMP_LOGALI` en sí).
 - **3 laboratorios (06, 08, y parcialmente 05) están bloqueados por `ZEMP_LOGALI`.** Los laboratorios 06 y 08 se bloquean en tiempo de activación (referencia de tipo DDIC); el laboratorio 05 se bloquea solo en runtime para uno de sus ocho métodos.
 - **1 laboratorio (04) está bloqueado por un elemento de texto faltante**, no por una dependencia de código.

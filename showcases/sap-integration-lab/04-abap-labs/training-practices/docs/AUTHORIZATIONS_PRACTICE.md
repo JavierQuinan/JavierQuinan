@@ -4,7 +4,7 @@
 
 ## Status
 
-`USER_AUTHORED_PRACTICE` / `PORTFOLIO_NORMALIZED` / `NORMALIZED_NOT_EXECUTED` / `NEEDS_ADT_VERIFICATION`
+`USER_AUTHORED_PRACTICE` / `OWNER_CONFIRMED_HANDS_ON_EXECUTION` / `PORTFOLIO_NORMALIZED` / `PUBLIC_NORMALIZED_SOURCE` / `NO_CURRENT_RUNTIME_CLAIM`
 
 ## Provenance
 
@@ -38,7 +38,7 @@ The original exercise used a course-instance placeholder in the class name and i
 
 ## Runtime status
 
-`NORMALIZED_NOT_EXECUTED`. This class and its DDIC prerequisites have not been created or activated in this form. `NEEDS_ADT_VERIFICATION` before any current-runtime claim.
+`NO_CURRENT_RUNTIME_CLAIM`. This renamed class and its renamed DDIC prerequisites have not themselves been created or activated under these `_fq` names; the original data element, authorization field, authorization object, class creation and `AUTHORITY-CHECK` execution refer to the original hands-on training practice confirmed by the account owner.
 
 ## Dependencies
 

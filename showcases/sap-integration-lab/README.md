@@ -10,16 +10,18 @@ This showcase combines sanitized enterprise knowledge with reviewable engineerin
 
 ## Evidence model
 
-| Class | Meaning |
-|---|---|
-| `ENTERPRISE_VERIFIED` | Sanitized operational knowledge derived from real SAP work |
-| `HANDS_ON_HISTORICAL` | Personal lab source with historical execution evidence; current re-execution may still be pending |
-| `CURRENT_RUNTIME_VERIFIED` | Re-executed in a current environment with fresh evidence |
-| `PUBLIC_SOURCE_EVIDENCE` | Reviewable public source exists |
-| `EXECUTABLE_NON_LIVE_EXAMPLE` | Executable/tested example without a claim of live SAP connectivity |
-| `DOCUMENTATION_GROUNDED` | Architecture/technical study grounded in product documentation |
-| `TRAINING_ONLY` | Completed training without independent hands-on runtime evidence |
-| `NOT_YET_EVIDENCED` | No portfolio evidence currently supports a hands-on claim |
+Six evidence tiers are used across this lab, and they are **not equivalent** — each makes a narrower or wider claim than the others:
+
+| Tier | Class | Meaning |
+|---|---|---|
+| 1 | `ENTERPRISE_VERIFIED` | Sanitized operational knowledge derived from real SAP work |
+| 2 | `PUBLIC_SOURCE_EVIDENCE` | Reviewable public source exists in this repository |
+| 3 | `HISTORICAL_EXECUTION_VERIFIED` | Personal lab source with documented historical execution evidence; no current-runtime claim is made or required |
+| 4 | `OWNER_CONFIRMED_HANDS_ON_EXECUTION` | Training practice directly confirmed by the account owner as personally typed, created and run; no independent artifact survived beyond that confirmation |
+| 5 | `DOCUMENTATION_GROUNDED` | Architecture/technical study grounded in product documentation |
+| 6 | `TRAINING_ONLY` | Completed training with no saved source artifact and no runtime claim |
+
+Supporting, narrower classes: `PUBLIC_NORMALIZED_SOURCE` (a practice's source published under the portfolio's own `_fq` naming — the renamed copy itself is not independently re-executed), `EXECUTABLE_NON_LIVE_EXAMPLE` (executable/tested example without a live-connectivity claim), `NOT_YET_EVIDENCED` (no portfolio basis for a hands-on claim yet).
 
 ## Evidence available now
 
@@ -54,17 +56,26 @@ Documented troubleshooting sequence:
 
 Sanitized evidence covers a non-energy service billing workflow including customer/BP preparation, sales-area context, billing/output review and configured fiscal-output completion.
 
-### Historical ABAP Cloud labs — `HANDS_ON_HISTORICAL`
+### Historical ABAP Cloud labs — `HISTORICAL_EXECUTION_VERIFIED`
 
 [ABAP Cloud Historical Labs](./04-abap-labs/README.md)
 
-- 10 personal ABAP class source files across 8 base topics.
+- Curso 1's full 16-unit curriculum: 10 units with a personal hands-on lab (source + the account owner's own sanitized screenshots) across 8 base topics, 6 theory-only units with no lab.
 - Historical execution evidence: **10/10** documented in private source submissions.
-- Current runtime re-verification: **0/10 — pending**.
+- No current-runtime claim is made or required for this track.
 - Demonstrated historical topics include ABAP Core, ABAP Objects, classrun, internal tables, field symbols, Open SQL and exception handling.
 - Five training-derived guides cover DDIC, abapGit, ATC, ABAP Cleaner and authorizations without presenting them as executed labs.
+- An [optional reproducibility reference](./04-abap-labs/runtime-readiness/README.md) documents dependency analysis, a synthetic fixture and 3 runtime-ready source drafts — supporting material, not a portfolio blocker.
 
 Historical screenshots and raw course material are not republished.
+
+### Course 3 training practices — `OWNER_CONFIRMED_HANDS_ON_EXECUTION` + `PUBLIC_NORMALIZED_SOURCE`
+
+[Course 3 Training Practices](./04-abap-labs/training-practices/README.md)
+
+- 4 hands-on practices (abapGit, ATC, ABAP Cleaner, Authorizations) personally implemented by the account owner during structured training, confirmed directly by the account owner and normalized to the portfolio's `_fq` convention.
+- No independent artifact (a personal screenshot, a personal tool export) survived beyond that confirmation — disclosed rather than hidden.
+- Course 2 (ABAP Dictionary hands-on practice) is documented as `TRAINING_ONLY`: training and hands-on practice occurred, but no source artifact was saved to normalize or publish.
 
 ### SAP S/4HANA — mixed evidence classes
 

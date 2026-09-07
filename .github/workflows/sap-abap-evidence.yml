@@ -21,6 +21,7 @@ jobs:
         run: |
           set -euo pipefail
           root='showcases/sap-integration-lab/04-abap-labs'
+          sap_root='showcases/sap-integration-lab'
           test -f "$root/README.md"
           test -f "$root/README.es.md"
           test -f "$root/EVIDENCE_MATRIX.md"
@@ -30,6 +31,11 @@ jobs:
 
           if grep -RniE '(clientsecret|clientid|subaccountid|BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|Bearer[[:space:]]+[A-Za-z0-9._-]+)' "$root"; then
             echo 'Potential credential material detected in public ABAP evidence.' >&2
+            exit 1
+          fi
+
+          if grep -RniE '(OPTIONAL_FUTURE_EXPANSION|FUTURE_LAB_ROADMAP|GAP_ANALYSIS\.md|recommended next lab|next-generation lab)' "$sap_root"; then
+            echo 'Future/promise framing detected in the public SAP evidence track.' >&2
             exit 1
           fi
 
@@ -58,8 +64,6 @@ jobs:
               root / 'EVIDENCE_MATRIX.md',
               root / 'NAMING_CONVENTIONS.md',
               root / 'labs/README.md',
-              root / 'docs/GAP_ANALYSIS.md',
-              root / 'docs/FUTURE_LAB_ROADMAP.md',
               root / 'guides/ABAPGIT_WORKFLOW_GUIDE.md',
               root / 'guides/ABAP_CLEANER_GUIDE.md',
               root / 'guides/ABAP_CLOUD_DICTIONARY_GUIDE.md',
@@ -70,6 +74,20 @@ jobs:
               es = en.with_name(en.stem + '.es.md')
               if not es.exists():
                   missing.append(f'Missing Spanish pair for {en}')
+
+          # Course 1 contains 16 curriculum units and exactly 10 public hands-on labs.
+          # Source count and lab count are validated independently so theory-only units
+          # are never fabricated as labs and source artifacts are not invented.
+          lab_dirs = sorted(p for p in (root / 'labs').iterdir() if p.is_dir() and p.name.startswith('lab-'))
+          if len(lab_dirs) != 10:
+              missing.append(f'Expected 10 public hands-on lab folders, found {len(lab_dirs)}')
+          for lab_dir in lab_dirs:
+              en = lab_dir / 'README.md'
+              es = lab_dir / 'README.es.md'
+              if not en.exists():
+                  missing.append(f'Missing {en}')
+              if not es.exists():
+                  missing.append(f'Missing {es}')
           if missing:
               raise SystemExit('\n'.join(missing))
           PY

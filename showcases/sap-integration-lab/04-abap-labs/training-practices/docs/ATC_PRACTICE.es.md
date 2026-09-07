@@ -4,7 +4,7 @@
 
 ## Estado
 
-`USER_AUTHORED_PRACTICE` / `PORTFOLIO_NORMALIZED` / `NORMALIZED_NOT_EXECUTED` / `NEEDS_ADT_VERIFICATION`
+`USER_AUTHORED_PRACTICE` / `OWNER_CONFIRMED_HANDS_ON_EXECUTION` / `PORTFOLIO_NORMALIZED` / `PUBLIC_NORMALIZED_SOURCE` / `NO_CURRENT_RUNTIME_CLAIM`
 
 ## Procedencia
 
@@ -28,7 +28,7 @@ El ejercicio original usaba un placeholder de instancia de curso en el nombre de
 
 ## Estado de runtime
 
-`NORMALIZED_NOT_EXECUTED`. Este archivo no ha sido activado, ejecutado, ni comprobado con ATC en esta forma. `NEEDS_ADT_VERIFICATION` antes de cualquier afirmación de runtime actual o de resultado ATC actual.
+`NO_CURRENT_RUNTIME_CLAIM`. La copia normalizada y renombrada en este repositorio no ha sido reactivada, reejecutada, ni recomprobada con ATC por sí misma; la ejecución y los findings/corrección/exención originales de ATC se refieren a la práctica de formación hands-on original confirmada por el propietario. No se afirma `ATC_CLEAN`/resultado ATC actual para la copia renombrada.
 
 ## Dependencias
 

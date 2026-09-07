@@ -71,6 +71,6 @@ Dado que 4 de los nombres que realmente necesitarían una variante (patrón 02/0
 
 ## Qué NO se hace explícitamente
 
-- Las 3 clases históricas (`zcl_lab_05_invoice_fq`, `zcl_lab_06_condition_fq`, `zcl_lab_08_fieldsymbols_fq`) **no se modifican, reemplazan ni eliminan** — permanecen exactamente como se publicaron, siguen en `HISTORICAL_EXECUTION_EVIDENCE = YES` / `CURRENT_RUNTIME_VERIFICATION = PENDING`.
+- Las 3 clases históricas (`zcl_lab_05_invoice_fq`, `zcl_lab_06_condition_fq`, `zcl_lab_08_fieldsymbols_fq`) **no se modifican, reemplazan ni eliminan** — permanecen exactamente como se publicaron, siguen en `HISTORICAL_EXECUTION_EVIDENCE = YES` / `CURRENT_RUNTIME_VERIFICATION = NO_CURRENT_RUNTIME_CLAIM`.
 - Ninguna variante runtime-ready ha sido ejecutada. Su estado es `NOT_YET_EXECUTED`, no `CURRENT_RUNTIME_VERIFIED` — ese estado solo puede proponerse después de que exista evidencia de ejecución real (ver Fase 10 / `RUNTIME_EXECUTION_PLAN.es.md` en la Fase 7).
 - Las variantes runtime-ready no se publican en GitHub — existen solo en esta carpeta local `_RUNTIME_WORK/source/`.

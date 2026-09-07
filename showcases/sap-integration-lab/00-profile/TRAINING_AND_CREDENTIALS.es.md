@@ -10,7 +10,7 @@ Esta página documenta la formación SAP completada de forma separada a la evide
 
 | Línea | Credencial / curso | Emisor indicado en la credencial | Duración | Finalización |
 |---|---|---|---:|---|
-| S/4HANA | International SAP S/4 HANA Specialization — Executive Certified Diploma | Florida Global University / GEM | 240 horas académicas | 2024-07-20 |
+| S/4HANA | International SAP S/4 HANA Specialization (Diploma) | GEM Educa, con certificación adicional emitida bajo el Colegio de Economistas del Perú (registro ENFOPE) | 240 horas académicas | 2024-08-09 |
 | Fundamentos ABAP Cloud | SAP ABAP Core - Programación Cloud | Logali Group | 80 horas | 2026-01-18 |
 | Modelo de datos ABAP Cloud | SAP ABAP Cloud - Diccionario de datos | Logali Group | 100 horas | 2026-06-28 |
 | Tooling de ingeniería ABAP | SAP abapGit \| ATC \| ABAP Cleaner \| Autorizaciones | Logali Group | 20 horas | 2026-06-28 |
@@ -34,3 +34,9 @@ El material suministrado cubre flujo de repositorios con abapGit/GitHub, ATC / A
 La formación se trata como contexto de respaldo, no como sustituto de evidencia de ingeniería. Las afirmaciones públicas de capacidad apuntan a source code, tests, guías operativas sanitizadas o artefactos ejecutables dentro del SAP Integration Lab.
 
 Las imágenes completas de certificados, códigos QR e identificadores de validación no se republican aquí por defecto. El material de verificación puede proporcionarse por separado cuando corresponda.
+
+## Nota de verificación
+
+Cada fila anterior se reconcilió directamente contra los propios archivos de certificado del propietario (no contra nombres de archivo ni suposiciones previas) — nombres de emisor, títulos de credencial y fechas se corrigieron donde el propio texto del certificado difería de borradores anteriores. Ninguna entrada anterior usa la redacción "SAP Certified" ni "SAP Official Certification"; ninguna de estas credenciales es emitida por SAP.
+
+La formación hands-on de Curso 3 (abapGit, ATC, ABAP Cleaner, Autorizaciones) se documenta junto a su fuente normalizado `_fq` en el [track de Prácticas de Formación de Curso 3](../04-abap-labs/training-practices/README.es.md). Odoo y otras credenciales no-SAP se indexan por separado en el [índice general de credenciales](../../../docs/CREDENTIALS.es.md).
