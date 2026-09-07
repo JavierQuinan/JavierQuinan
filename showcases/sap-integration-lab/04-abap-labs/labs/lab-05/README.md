@@ -16,7 +16,7 @@ Curso 1 (Logali Group), Unit 6 — "Operaciones con cadenas de caracteres." Pers
 
 ## What this demonstrates
 
-`CONCATENATE`, `CONCATENATE LINES OF`, `CONDENSE`, `REPLACE`, `SPLIT`, `SHIFT`, `STRLEN`/`NUMOFCHAR`, `TRANSLATE`, string-template insertion, and `REVERSE`, executed as an ABAP Cloud console class. One method (`demo_2_concat_lines_tab`) reads the training-specific `ZEMP_LOGALI` table — see the [optional runtime-readiness reference](../../runtime-readiness/README.md) for a synthetic `_fq` replacement that removes this dependency.
+`CONCATENATE`, `CONCATENATE LINES OF`, `CONDENSE`, `REPLACE`, `SPLIT`, `SHIFT`, `STRLEN`/`NUMOFCHAR`, `TRANSLATE`, string-template insertion, and `REVERSE`, executed as an ABAP Cloud console class in the documented historical practice. One method (`demo_2_concat_lines_tab`) reads the training-specific `ZEMP_LOGALI` table; that dependency is part of the preserved historical source context.
 
 ## Evidence
 
