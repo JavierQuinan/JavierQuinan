@@ -10,7 +10,7 @@
 
 | Capability | Training context | Existing lab in this set | Code | Historical runtime evidence | Current-runtime claim | Guide | Track status |
 |---|---|---|---|---|---|---|---|
-| ABAP Core | YES | YES (8/10 units) | YES | YES | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
+| ABAP Core | YES | YES (8/10 labs) | YES | YES | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
 | ABAP Objects | YES | YES (10/10) | YES | YES | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
 | ABAP Cloud classrun pattern | YES | YES (10/10) | YES | YES | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
 | ADT / Eclipse | YES | Indirect through all classrun labs | N/A | YES (indirect) | NO_CURRENT_RUNTIME_CLAIM | — | `LAB_FOUND` |
@@ -18,14 +18,14 @@
 | Field Symbols | YES | YES (`lab-08`) | YES | YES | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
 | Open SQL | YES | YES (`lab-05`, `lab-06`, `lab-07`, `lab-07a`) | YES | YES | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
 | Exception Handling | YES | YES (`lab-06`) | YES | YES | NO_CURRENT_RUNTIME_CLAIM | — | `HISTORICAL_EXECUTION_VERIFIED` |
-| Custom interface authoring (`zif_*`) | NO | NO | NO | NO | N/A | — | `NOT_FOUND_IN_THIS_LAB_SET` |
+| Custom interface authoring (`zif_*`) | NO | NO | NO | NO | N/A | — | `NOT_EVIDENCED_IN_THIS_LAB_SET` |
 | ABAP Dictionary / DDIC | YES | NO | NO | NO | N/A | YES | `TRAINING_ONLY_IN_THIS_TRACK` |
-| CDS | NO in this source set | NO | NO | NO | N/A | NO | `OPTIONAL_FUTURE_EXPANSION` |
-| RAP | NO in this source set | NO | NO | NO | N/A | NO | `OPTIONAL_FUTURE_EXPANSION` |
-| Behavior Definitions | NO | NO | NO | NO | N/A | NO | `OPTIONAL_FUTURE_EXPANSION` |
-| Service Definitions / Bindings | NO | NO | NO | NO | N/A | NO | `OPTIONAL_FUTURE_EXPANSION` |
-| OData hands-on ABAP lab | NO | NO | NO | NO | N/A | NO | `OPTIONAL_FUTURE_EXPANSION` |
-| ABAP Unit lab | NO | NO | NO | NO | N/A | NO | `OPTIONAL_FUTURE_EXPANSION` |
+| CDS | NO in this source set | NO | NO | NO | N/A | NO | `NOT_EVIDENCED_IN_THIS_LAB_SET` |
+| RAP | NO in this source set | NO | NO | NO | N/A | NO | `NOT_EVIDENCED_IN_THIS_LAB_SET` |
+| Behavior Definitions | NO | NO | NO | NO | N/A | NO | `NOT_EVIDENCED_IN_THIS_LAB_SET` |
+| Service Definitions / Bindings | NO | NO | NO | NO | N/A | NO | `NOT_EVIDENCED_IN_THIS_LAB_SET` |
+| OData hands-on ABAP lab | NO | NO | NO | NO | N/A | NO | `NOT_EVIDENCED_IN_THIS_LAB_SET` |
+| ABAP Unit lab | NO | NO | NO | NO | N/A | NO | `NOT_EVIDENCED_IN_THIS_LAB_SET` |
 | ATC hands-on practice | YES | YES — [`training-practices/`](./training-practices/README.md) (`zcl_c3_02_atc_demo_fq`) | YES | N/A (training-practice, not historical-lab evidence) | NO_CURRENT_RUNTIME_CLAIM | YES | `OWNER_CONFIRMED_HANDS_ON_EXECUTION` |
 | ABAP Cleaner hands-on practice | YES | YES — [`training-practices/`](./training-practices/README.md) (`zcl_c3_03_cleaner_demo_fq`) | YES | N/A (training-practice, not historical-lab evidence) | NO_CURRENT_RUNTIME_CLAIM | YES | `OWNER_CONFIRMED_HANDS_ON_EXECUTION` |
 | abapGit hands-on practice | YES | YES — [`training-practices/`](./training-practices/README.md) (`zcl_c3_01_projects_fq`) | YES | N/A (training-practice, not historical-lab evidence) | NO_CURRENT_RUNTIME_CLAIM | YES | `OWNER_CONFIRMED_HANDS_ON_EXECUTION` |
@@ -51,6 +51,5 @@ Those artifacts remain classified separately in the central [SAP Capability Matr
 - `OWNER_CONFIRMED_HANDS_ON_EXECUTION`: the account owner directly confirms personally typing, creating and running this training practice; see [Training Practices](./training-practices/README.md) for the exact provenance wording per practice.
 - `LAB_FOUND`: indirect or partial lab evidence exists.
 - `TRAINING_ONLY_IN_THIS_TRACK`: studied and documented here, with no saved source artifact and no hands-on-lab claim in this historical set.
-- `NOT_FOUND_IN_THIS_LAB_SET`: no lab/source evidence in this historical set; this is **not** a portfolio-wide absence claim.
-- `OPTIONAL_FUTURE_EXPANSION`: not part of this track's current scope; may be built as a future, original lab — never a blocker to closing this track.
+- `NOT_EVIDENCED_IN_THIS_LAB_SET`: no lab/source evidence in this historical set; this is **not** a portfolio-wide absence claim.
 - `NO_CURRENT_RUNTIME_CLAIM`: this track does not assert current-environment re-execution.
