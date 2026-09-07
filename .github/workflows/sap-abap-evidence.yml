@@ -22,30 +22,46 @@ jobs:
           set -euo pipefail
           root='showcases/sap-integration-lab/04-abap-labs'
           sap_root='showcases/sap-integration-lab'
+
           test -f "$root/README.md"
           test -f "$root/README.es.md"
           test -f "$root/EVIDENCE_MATRIX.md"
           test -f "$root/EVIDENCE_MATRIX.es.md"
-          count=$(find "$root/labs/source" -maxdepth 1 -type f -name '*.abap' | wc -l | tr -d ' ')
-          test "$count" = '10'
+          test ! -d "$root/runtime-readiness"
 
-          if grep -RniE '(clientsecret|clientid|subaccountid|BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|Bearer[[:space:]]+[A-Za-z0-9._-]+)' "$root"; then
-            echo 'Potential credential material detected in public ABAP evidence.' >&2
+          source_count=$(find "$root/labs/source" -maxdepth 1 -type f -name '*.abap' | wc -l | tr -d ' ')
+          test "$source_count" = '10'
+
+          image_count=$(find "$root/labs" -path '*/assets/*' -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' \) | wc -l | tr -d ' ')
+          test "$image_count" = '20'
+
+          if find "$sap_root" -type f \( -iname '*.pdf' -o -iname '*.docx' \) | grep -q .; then
+            echo 'Raw PDF/DOCX material detected in public SAP evidence.' >&2
             exit 1
           fi
 
-          if grep -RniE '(OPTIONAL_FUTURE_EXPANSION|FUTURE_LAB_ROADMAP|GAP_ANALYSIS\.md|recommended next lab|next-generation lab)' "$sap_root"; then
-            echo 'Future/promise framing detected in the public SAP evidence track.' >&2
+          if grep -RniE --include='*.md' --include='*.abap' --include='*.ts' --include='*.js' --include='*.json' \
+            '(clientsecret|client_secret|clientid|client_id|subaccountid|BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|Bearer[[:space:]]+[A-Za-z0-9._-]+|api[_-]?key[[:space:]]*[:=][[:space:]]*[^[:space:]]+|password[[:space:]]*[:=][[:space:]]*[^[:space:]]+)' "$sap_root"; then
+            echo 'Potential credential material detected in public SAP evidence.' >&2
+            exit 1
+          fi
+
+          if grep -RniEi --include='*.md' --include='*.abap' \
+            '\b(future|futuro|roadmap)\b|runtime-readiness|OPTIONAL_FUTURE_EXPANSION|NOT_YET_EVIDENCED|NEEDS_ADT_VERIFICATION|CURRENT_RUNTIME_VERIFICATION' "$sap_root"; then
+            echo 'Planning/promise framing detected in the public SAP evidence track.' >&2
             exit 1
           fi
 
           python - <<'PY'
           from pathlib import Path
+          import json
           import re
 
           root = Path('showcases/sap-integration-lab/04-abap-labs')
+          sap_root = Path('showcases/sap-integration-lab')
           missing = []
-          for md in root.rglob('*.md'):
+
+          for md in sap_root.rglob('*.md'):
               text = md.read_text(encoding='utf-8')
               for target in re.findall(r'\[[^\]]+\]\(([^)]+)\)', text):
                   if target.startswith(('http://', 'https://', '#', 'mailto:')):
@@ -56,8 +72,6 @@ jobs:
                   resolved = (md.parent / target).resolve()
                   if not resolved.exists():
                       missing.append(f'{md}: {target}')
-          if missing:
-              raise SystemExit('Broken relative links:\n' + '\n'.join(missing))
 
           required_pairs = [
               root / 'README.md',
@@ -75,9 +89,6 @@ jobs:
               if not es.exists():
                   missing.append(f'Missing Spanish pair for {en}')
 
-          # Course 1 contains 16 curriculum units and exactly 10 public hands-on labs.
-          # Source count and lab count are validated independently so theory-only units
-          # are never fabricated as labs and source artifacts are not invented.
           lab_dirs = sorted(p for p in (root / 'labs').iterdir() if p.is_dir() and p.name.startswith('lab-'))
           if len(lab_dirs) != 10:
               missing.append(f'Expected 10 public hands-on lab folders, found {len(lab_dirs)}')
@@ -88,6 +99,12 @@ jobs:
                   missing.append(f'Missing {en}')
               if not es.exists():
                   missing.append(f'Missing {es}')
+
+          settings = json.loads(Path('.claude/settings.json').read_text(encoding='utf-8'))
+          expected = {'attribution': {'commit': '', 'pr': ''}}
+          if settings != expected:
+              missing.append('.claude/settings.json attribution policy changed')
+
           if missing:
               raise SystemExit('\n'.join(missing))
           PY
