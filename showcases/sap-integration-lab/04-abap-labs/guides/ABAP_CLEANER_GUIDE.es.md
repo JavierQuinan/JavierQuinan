@@ -54,4 +54,4 @@ Concepto estudiado durante formación de terceros. La guía y la ilustración se
 
 ## Estado de evidencia
 
-`TRAINING_ONLY_IN_THIS_TRACK`. Consulta el [Roadmap de Laboratorios Futuros](../docs/FUTURE_LAB_ROADMAP.es.md).
+`OWNER_CONFIRMED_HANDS_ON_EXECUTION` — ver las [Prácticas de Formación de Curso 3](../training-practices/README.es.md) para el source normalizado `_fq` y la procedencia exacta.

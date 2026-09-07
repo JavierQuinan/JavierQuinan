@@ -60,7 +60,7 @@ La evidencia sanitizada cubre un flujo de facturación de servicios no energéti
 
 [Laboratorios Históricos ABAP Cloud](./04-abap-labs/README.es.md)
 
-- 10 archivos source de clases ABAP personales en 8 temas base.
+- El currículo completo de 16 unidades de Curso 1: 10 unidades con un laboratorio hands-on personal (source + las propias capturas sanitizadas del propietario) en 8 temas base, 6 unidades solo-teoría sin laboratorio.
 - Evidencia histórica de ejecución: **10/10** documentada en entregas fuente privadas.
 - No se afirma ni se exige runtime actual para este track.
 - Temas históricos demostrados: ABAP Core, ABAP Objects, classrun, tablas internas, field symbols, Open SQL y manejo de excepciones.

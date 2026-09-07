@@ -50,7 +50,7 @@
 
 ## Summary
 
-- **No labs use CDS views, RAP artifacts, Behavior Definitions, Service Definitions/Bindings, or OData.** None found — consistent with the existing `GAP_ANALYSIS.md`.
+- **No labs use CDS views, RAP artifacts, Behavior Definitions, Service Definitions/Bindings, or OData.** None found in the historical labs, Course 2, or Course 3 practices.
 - **No custom Z objects are required to exist** for any of the 10 labs to compile as historical source — the only customer-namespace object referenced is `ZEMP_LOGALI`, which is course-provided, not something this portfolio needs to author from scratch (a *replacement* is designed in Phase 2/3, not a recreation of `ZEMP_LOGALI` itself).
 - **3 labs (06, 08, and partially 05) are blocked by `ZEMP_LOGALI`.** Labs 06 and 08 are blocked at activation time (DDIC type reference); lab 05 is blocked only at runtime for one of its eight methods.
 - **1 lab (04) is blocked by a missing text element**, not a code dependency.

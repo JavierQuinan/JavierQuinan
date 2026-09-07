@@ -48,7 +48,7 @@ Concept studied during third-party training. This guide was independently writte
 
 ## Evidence status
 
-`TRAINING_ONLY_IN_THIS_TRACK`. See the [Future Lab Roadmap](../docs/FUTURE_LAB_ROADMAP.md).
+`OWNER_CONFIRMED_HANDS_ON_EXECUTION` — see the [Course 3 Training Practices](../training-practices/README.md) for the normalized `_fq` source and exact provenance.
 
 ## Official references
 

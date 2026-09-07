@@ -60,7 +60,7 @@ Sanitized evidence covers a non-energy service billing workflow including custom
 
 [ABAP Cloud Historical Labs](./04-abap-labs/README.md)
 
-- 10 personal ABAP class source files across 8 base topics.
+- Curso 1's full 16-unit curriculum: 10 units with a personal hands-on lab (source + the account owner's own sanitized screenshots) across 8 base topics, 6 theory-only units with no lab.
 - Historical execution evidence: **10/10** documented in private source submissions.
 - No current-runtime claim is made or required for this track.
 - Demonstrated historical topics include ABAP Core, ABAP Objects, classrun, internal tables, field symbols, Open SQL and exception handling.

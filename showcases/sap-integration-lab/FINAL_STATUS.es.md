@@ -2,37 +2,45 @@
 
 [English version](./FINAL_STATUS.md)
 
-> **ESTADO DEL PORTFOLIO SAP: COMPLETO PARA EL ALCANCE ACTUAL.** Esto afirma que el alcance actual y definido de este track de portfolio SAP está completo — **no** afirma que "SAP como tecnología" esté completado, dominado, ni cubierto exhaustivamente. La expansión futura opcional permanece abierta (ver abajo) y nunca es un bloqueador de este estado.
+> **ESTADO DEL PORTFOLIO SAP: COMPLETO PARA LA EVIDENCIA ACTUAL DOCUMENTADA.** Esto afirma que el alcance actual y definido de este track de portfolio SAP está completo sobre lo que existe hoy — **no** afirma que "SAP como tecnología" esté completado, dominado, ni cubierto exhaustivamente.
 
-## Qué significa "completo para el alcance actual"
-
-Cada clase de evidencia siguiente alcanzó el estado de cierre que su propia categoría permite — nada queda en un estado artificial de "pendiente" o "TODO". Algunas categorías son enterprise-verificadas, algunas históricas, algunas formación confirmada por el propietario, algunas basadas en documentación, y cada una se presenta exactamente como eso — nunca inflada a una clase a la que no pertenece.
-
-## 1. Evidencia SAP enterprise
+## 1. Experiencia enterprise
 
 `ENTERPRISE_VERIFIED` + `PUBLIC_SOURCE_EVIDENCE` — conocimiento operativo sanitizado y source revisable de trabajo real en SAP MM, IS-U/Work Management, y CRM/SD. Ver [SAP Engineering Evidence Lab](./README.es.md).
 
-## 2. Evidencia de source ABAP — laboratorios históricos
+## 2. Curso 1 — 16 unidades, 10 laboratorios
 
-`HISTORICAL_EXECUTION_VERIFIED` — 10 archivos de source de clase ABAP personales, 10/10 con evidencia documentada de ejecución histórica. No se afirma ni se exige runtime actual. Ver [Laboratorios Históricos ABAP Cloud](./04-abap-labs/labs/README.es.md) y la [Referencia de Runtime-Readiness](./04-abap-labs/runtime-readiness/README.es.md), opcional y no bloqueante.
+`HISTORICAL_EXECUTION_VERIFIED` — el currículo completo de 16 unidades de Curso 1 está contabilizado: 10 unidades tienen un laboratorio hands-on personal (source + las propias capturas sanitizadas del propietario), y 6 unidades son solo-teoría (estudiadas, sin ejercicio de Laboratorio, sin entrega personal en Word — listadas como temas de currículo, no laboratorios). No se afirma ni se exige runtime actual. Ver [Laboratorios Históricos ABAP Cloud](./04-abap-labs/labs/README.es.md).
 
-## 3. Formación hands-on de Curso 2
+## 3. Evidencia de source de Curso 1
 
-`TRAINING_ONLY` / `NO_SAVED_SOURCE_ARTIFACT` — la práctica hands-on de ABAP Dictionary (dominios, elementos de datos, tablas, objetos de bloqueo, ajustes de persistencia, relaciones de tablas, Dynamic Cache) ocurrió según el registro de formación del propietario, pero no sobrevivió ningún artefacto de source para publicar. No se fabrica código para llenar este gap. Ver [Prácticas de Formación — Matriz de Evidencia](./04-abap-labs/training-practices/EVIDENCE_MATRIX.es.md).
+10 archivos de source de clase ABAP personales (`ZCL_LAB_01_VAR_FQ` hasta `ZCL_LAB_08_FIELDSYMBOLS_FQ`, incluyendo los laboratorios en dos partes 05/05a y 07/07a), sin cambios desde su entrega original de 2025.
 
-## 4. Formación hands-on de Curso 3 + sources normalizados `_fq`
+## 4. Evidencia visual de Curso 1
+
+21 capturas propias de Eclipse ADT del propietario, extraídas de las entregas Word originales y publicadas carpeta de laboratorio por carpeta de laboratorio, cada una con una nota de sanitización documentada (identificadores privados de cuenta, hostnames de tenant, nombres de usuario técnicos, y datos de registro del entorno de formación redactados donde estaban presentes; sin modificar en los demás casos).
+
+## 5. Formación hands-on de Curso 2
+
+`TRAINING_ONLY` / `NO_SAVED_SOURCE_ARTIFACT` — la práctica hands-on de ABAP Dictionary (dominios, elementos de datos, tablas, objetos de bloqueo, ajustes de persistencia, relaciones de tablas, Dynamic Cache) ocurrió según el registro de formación del propietario, pero no sobrevivió ningún artefacto de source para publicar. No se fabrica código para llenar este gap.
+
+## 6. Prácticas hands-on de Curso 3 + sources normalizados `_fq`
 
 `OWNER_CONFIRMED_HANDS_ON_EXECUTION` + `PUBLIC_NORMALIZED_SOURCE` — 4 prácticas (abapGit, ATC, ABAP Cleaner, Autorizaciones), ejecutadas personalmente por el propietario durante formación estructurada y normalizadas a la nomenclatura `_fq` del portfolio. Ver [Prácticas de Formación de Curso 3](./04-abap-labs/training-practices/README.es.md).
 
-## 5. Credenciales de formación
+## 7. Credenciales de formación SAP
 
-Reconciliadas directamente contra los propios archivos de certificado del propietario (no contra nombres de archivo ni suposiciones previas). Ver [Formación y Credenciales SAP](./00-profile/TRAINING_AND_CREDENTIALS.es.md) y el [Índice General de Credenciales](../../docs/CREDENTIALS.es.md) (SAP, Odoo, y otras credenciales técnicas, mantenidas separadas).
+Reconciliadas directamente contra los propios archivos de certificado del propietario. Ver [Formación y Credenciales SAP](./00-profile/TRAINING_AND_CREDENTIALS.es.md).
 
-## 6. Ejemplos de documentación/ingeniería S/4HANA
+## 8. Credencial de Odoo (separada de SAP)
+
+Certificación Funcional de Odoo 18 (Español) — Odoo Inc., Certificate of Achievement. Ver el [Índice General de Credenciales](../../docs/CREDENTIALS.es.md).
+
+## 9. Evidencia actual de S/4HANA
 
 `DOCUMENTATION_GROUNDED` (Migration Cockpit, ABAP Cloud/Clean Core, arquitectura RAP) + `EXECUTABLE_NON_LIVE_EXAMPLE` (S/4HANA MM Procurement API Client, testeado, sin claim de tenant en vivo). Ver [Línea de Evidencia S/4HANA](./02-s4hana/README.es.md).
 
-## Límites de evidencia
+## Límites de los claims
 
 No se afirma, en ningún archivo de este lab:
 
@@ -42,13 +50,5 @@ No se afirma, en ningún archivo de este lab:
 - runtime de integración IDoc o RFC/BAPI;
 - Event Mesh;
 - runtime de RAP/service-binding;
-- ejecución actual de ABAP Unit para el conjunto de laboratorios históricos;
+- ejecución actual de ABAP Unit, CDS, ni RAP en ningún lugar de este track;
 - "SAP Certified" ni "SAP Official Certification" para ninguna credencial no emitida por SAP.
-
-## Expansión futura opcional
-
-No forma parte del alcance actual de este track, nunca un bloqueador del estado anterior:
-
-- ABAP Unit, CDS, RAP, Definición/Binding de Servicio, exposición OData hands-on — un futuro conjunto de laboratorios originales de siguiente generación (ver [Roadmap de Laboratorios Futuros](./04-abap-labs/docs/FUTURE_LAB_ROADMAP.es.md)).
-- Un laboratorio DDIC original de Curso 2, independiente del ejercicio del curso.
-- Reverificación de runtime actual opcional de los laboratorios históricos y/o los 3 borradores runtime-ready, usando el material existente de [Referencia de Runtime-Readiness](./04-abap-labs/runtime-readiness/README.es.md).

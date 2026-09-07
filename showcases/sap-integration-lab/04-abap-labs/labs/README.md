@@ -1,30 +1,44 @@
-# Historical Lab Catalog & Code Index
+# Historical Lab Catalog
 
 [Versión en español](./README.es.md)
 
-> Ten curated ABAP source files from historical personal lab submissions. Private per-lab provenance records are retained off-repository; this public catalog discloses course context, dependencies and sanitization status without publishing the original course material or historical screenshots.
+> Curso 1 (Logali Group) is a 16-unit curriculum. 10 units include a personal hands-on lab with a Word submission and embedded evidence, confirmed as the account owner's own work via document metadata; the other 6 units are theory-only (no Laboratorio exercise, no personal Word document) and are listed separately below as curriculum topics, not labs.
 
-| Object | Lab | Main capability | Historical execution | Current-runtime claim | Reproducibility note | Publication status |
-|---|---|---|---|---|---|---|
-| `ZCL_LAB_01_VAR_FQ` | [source](./source/zcl_lab_01_var_fq.abap) | Data types / ABAP Core | YES | NO_CURRENT_RUNTIME_CLAIM | Requires `/DMO/EMPLOYEE_HR` demo data | `PUBLIC_SOURCE_READY` |
-| `ZCL_LAB_02_ARITHMETIC_FQ` | [source](./source/zcl_lab_02_arithmetic_fq.abap) | Arithmetic / ABAP Core | YES | NO_CURRENT_RUNTIME_CLAIM | Self-contained | `PUBLIC_SOURCE_READY` |
-| `ZCL_LAB_03_DATATYPES_FQ` | [source](./source/zcl_lab_03_datatypes_fq.abap) | Conversions / dates | YES | NO_CURRENT_RUNTIME_CLAIM | Self-contained | `PUBLIC_SOURCE_READY` |
-| `ZCL_LAB_04_MESSAGE_FQ` | [source](./source/zcl_lab_04_message_fq.abap) | Text / regex | YES | NO_CURRENT_RUNTIME_CLAIM | Recreate or refactor `TEXT-001` | `PUBLIC_SOURCE_READY` |
-| `ZCL_LAB_05_INVOICE_FQ` | [source](./source/zcl_lab_05_invoice_fq.abap) | Strings + Open SQL | YES (original submitted variant) | NO_CURRENT_RUNTIME_CLAIM | Requires training-table replacement | `PUBLIC_SOURCE_READY_SANITIZED` |
-| `ZCL_LAB_05_INVOICE_FQA` | [source](./source/zcl_lab_05_invoice_fqa.abap) | Strings / regex / escape | YES (original submitted variant) | NO_CURRENT_RUNTIME_CLAIM | Public sample email sanitized | `PUBLIC_SOURCE_READY_SANITIZED` |
-| `ZCL_LAB_06_CONDITION_FQ` | [source](./source/zcl_lab_06_condition_fq.abap) | Control flow / exceptions | YES (original submitted variant) | NO_CURRENT_RUNTIME_CLAIM | Requires training-table replacement | `PUBLIC_SOURCE_READY_SANITIZED` |
-| `ZCL_LAB_07_TABLES_FQ` | [source](./source/zcl_lab_07_tables_fq.abap) | Internal tables + Open SQL | YES (original submitted variant) | NO_CURRENT_RUNTIME_CLAIM | `/DMO/CONNECTION`; sample emails sanitized | `PUBLIC_SOURCE_READY_SANITIZED` |
-| `ZCL_LAB_07_TABLES_FQA` | [source](./source/zcl_lab_07_tables_fqa.abap) | Advanced internal tables + Open SQL | YES | NO_CURRENT_RUNTIME_CLAIM | `/DMO/FLIGHT`, `/DMO/CONNECTION`, `/DMO/CARRIER` | `PUBLIC_SOURCE_READY` |
-| `ZCL_LAB_08_FIELDSYMBOLS_FQ` | [source](./source/zcl_lab_08_fieldsymbols_fq.abap) | Field symbols | YES (original submitted variant) | NO_CURRENT_RUNTIME_CLAIM | Requires training-table replacement; sample emails sanitized | `PUBLIC_SOURCE_READY_SANITIZED` |
+## The 10 hands-on labs
+
+| Lab | Unit | Topic | Object | Evidence images |
+|---|---|---|---|---|
+| [lab-01](./lab-01/README.md) | 2 | Variables and data types | `ZCL_LAB_01_VAR_FQ` | 1 |
+| [lab-02](./lab-02/README.md) | 3 | Arithmetic operations | `ZCL_LAB_02_ARITHMETIC_FQ` | 1 |
+| [lab-03](./lab-03/README.md) | 4 | Data type conversions | `ZCL_LAB_03_DATATYPES_FQ` | 2 |
+| [lab-04](./lab-04/README.md) | 5 | Text field processing | `ZCL_LAB_04_MESSAGE_FQ` | 1 |
+| [lab-05](./lab-05/README.md) | 6 | String operations (Part I) | `ZCL_LAB_05_INVOICE_FQ` | 1 |
+| [lab-05a](./lab-05a/README.md) | 7 | String operations (Part II) | `ZCL_LAB_05_INVOICE_FQA` | 1 |
+| [lab-06](./lab-06/README.md) | 8 | Control structures | `ZCL_LAB_06_CONDITION_FQ` | 2 |
+| [lab-07](./lab-07/README.md) | 10 | Internal tables (Part I) | `ZCL_LAB_07_TABLES_FQ` | 3 |
+| [lab-07a](./lab-07a/README.md) | 11 | Internal tables (Part II, advanced) | `ZCL_LAB_07_TABLES_FQA` | 7 |
+| [lab-08](./lab-08/README.md) | 13 | Field symbols | `ZCL_LAB_08_FIELDSYMBOLS_FQ` | 1 |
+
+Each lab folder contains a bilingual README (status, provenance, object, what it demonstrates, embedded own evidence, sanitization note) and links to its `.abap` source in [`../source/`](../source/). Source files are unmodified — every lab's own README states exactly what, if anything, was redacted from its screenshots and why.
+
+## Curso 1 curriculum topics without a hands-on lab (6 of 16 units)
+
+These units were studied (theory PDF, and in most cases a personal quiz-attempt record) but have no Laboratorio exercise, no personal Word submission, and no embedded personal screenshot — so no lab folder is created for them, to avoid representing a topic as hands-on when no hands-on artifact exists.
+
+| Unit | Topic |
+|---|---|
+| 1 | Herramientas y entornos de desarrollo (Eclipse ADT tooling) |
+| 9 | Estructuras y Tipos Locales |
+| 12 | Expresiones Constructor |
+| 14 | Depuración de Programas |
+| 15 | Programación dinámica |
+| 16 | Performance |
 
 ## Status semantics
 
-- `PUBLIC_SOURCE_READY`: safe to review publicly as source, backed by documented historical execution evidence. No current-runtime claim is made or required for this track.
-- `PUBLIC_SOURCE_READY_SANITIZED`: public source differs from the historical submitted variant only in disclosed non-functional sample-literal/comment sanitization.
-- `Historical execution: YES` means historical execution evidence exists — it is a distinct, narrower claim than current-environment re-execution, which this track does not assert.
-
-An [optional, non-blocking reproducibility reference](../runtime-readiness/README.md) documents dependency analysis and 3 runtime-ready source drafts for anyone who later chooses to re-execute these labs — it is supporting material, not a requirement of this track.
+- `HISTORICAL_EXECUTION_VERIFIED`: source plus documented historical execution evidence exists, including the account owner's own screenshot(s) from the original training submission.
+- `TRAINING_ONLY` (curriculum topics table above): studied, with no saved hands-on artifact.
 
 ## Provenance boundary
 
-The private source documents are personal training submissions. Document metadata supports provenance under Francisco Quinteros' Office profile but is not treated as independent proof of every embedded element. Historical screenshots remain private. Public source variants that sanitize sample literals are labeled accordingly; this track makes no current-runtime claim.
+The private source documents are personal training submissions. Document metadata (`docProps/core.xml`) supports provenance under Francisco Quinteros' Office profile for every one of the 10 hands-on labs above. Full course PDFs (Documentación/Laboratorio/Solución/Test) are not republished — only the account owner's own `.abap` source and the account owner's own embedded screenshots are published, sanitized per each lab's own note.

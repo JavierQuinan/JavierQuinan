@@ -4,6 +4,8 @@
 
 > **Regla de alcance:** esta matriz describe únicamente el material de `04-abap-labs/`. No es la matriz global de capacidades SAP. Para la vista completa, consulta la [Matriz de Capacidades SAP](../00-profile/SAP_CAPABILITY_MATRIX.es.md).
 
+> **Conteo de unidades:** Curso 1 es un currículo de 16 unidades. 10 unidades tienen un laboratorio hands-on personal (source + capturas propias); 6 unidades son solo-teoría sin ejercicio de Laboratorio ni carpeta de laboratorio — ver el [catálogo de laboratorios](./labs/README.es.md) para el desglose exacto. "10 laboratorios" y "16 unidades" no están en tensión: describen dos cosas distintas.
+
 `Historical Runtime Evidence: YES` significa que la entrega privada de origen contiene evidencia de ejecución consistente con la implementación entregada. `NO_CURRENT_RUNTIME_CLAIM` significa que este track no afirma reejecución en un entorno actual — es un enunciado de alcance factual y cerrado, no una tarea abierta.
 
 | Capacidad | Contexto de formación | Lab existente en este conjunto | Código | Evidencia histórica de runtime | Claim de runtime actual | Guía | Estado del track |

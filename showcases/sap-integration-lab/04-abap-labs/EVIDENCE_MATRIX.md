@@ -4,6 +4,8 @@
 
 > **Scope rule:** this matrix describes only the material in `04-abap-labs/`. It is not the portfolio-wide SAP capability matrix. For the broader view, see [SAP Capability Matrix](../00-profile/SAP_CAPABILITY_MATRIX.md).
 
+> **Unit count:** Curso 1 is a 16-unit curriculum. 10 units have a personal hands-on lab (source + own screenshots); 6 units are theory-only with no Laboratorio exercise and no lab folder — see the [lab catalog](./labs/README.md) for the exact breakdown. "10 labs" and "16 units" are not in tension: they describe two different things.
+
 `Historical Runtime Evidence: YES` means the private source submission contains execution evidence consistent with the submitted implementation. `NO_CURRENT_RUNTIME_CLAIM` means this track does not assert current-environment re-execution — it is a closed, factual scope statement, not an open task.
 
 | Capability | Training context | Existing lab in this set | Code | Historical runtime evidence | Current-runtime claim | Guide | Track status |
