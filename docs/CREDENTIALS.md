@@ -18,10 +18,12 @@ The tables below are the canonical, source-of-truth record for every SAP-related
 
 | Credential | Issuer | Duration | Date | Classification | Public evidence |
 |---|---|---:|---|---|---|
-| International SAP S/4 HANA Specialization | GEM Educa, with additional certification issued under Colegio de Economistas del Perú (ENFOPE registry) | 240 academic hours | 2024-08-09 | Certificado / Diploma | [Certificate](./credentials/evidence/sap/sap-s4hana-specialization-certificate-gem-educa-francisco-quinteros-2024.pdf) · [Diploma](./credentials/evidence/sap/sap-s4hana-specialization-diploma-enfope-francisco-quinteros-2024.pdf) |
+| Especialización Internacional en SAP S/4 HANA desde cero | GEM Educa, with additional certification issued under Colegio de Economistas del Perú (ENFOPE registry) | 240 academic hours | 2024-08-09 | Training Certificate / Diploma | [Certificate](./credentials/evidence/sap/sap-s4hana-specialization-certificate-gem-educa-francisco-quinteros-2024.pdf) · [Diploma](./credentials/evidence/sap/sap-s4hana-specialization-diploma-enfope-francisco-quinteros-2024.pdf) |
 | SAP ABAP Core - Programación Cloud | Logali Group | 80 academic hours | 2026-01-18 | Certificado de Aprovechamiento | [View certificate](./credentials/evidence/sap/sap-abap-core-cloud-programming-logali-francisco-quinteros-2026.pdf) |
 | SAP ABAP Cloud - Diccionario de datos | Logali Group | 100 academic hours | 2026-06-28 | Certificado de Aprovechamiento | [View certificate](./credentials/evidence/sap/sap-abap-cloud-dictionary-logali-francisco-quinteros-2026.pdf) |
 | SAP abapGit \| ATC \| ABAP Cleaner \| Autorizaciones | Logali Group | 20 academic hours | 2026-06-28 | Certificado de Aprovechamiento | [View certificate](./credentials/evidence/sap/sap-abapgit-atc-cleaner-authorizations-logali-francisco-quinteros-2026.pdf) |
+
+**S/4HANA academic record:** MM 20/20 · PP 16/20 · SD 18/20 · FI 18/20 · PM 18/20 · final average 18/20. The detailed module record and claim boundary are documented in [SAP Training & Credentials](../showcases/sap-integration-lab/00-profile/TRAINING_AND_CREDENTIALS.md). This credential proves completed training; it is not presented as an SAP-issued official certification or productive S/4HANA implementation experience.
 
 ### Additional completed SAP training
 
@@ -29,7 +31,7 @@ The tables below are the canonical, source-of-truth record for every SAP-related
 |---|---|---:|---|---|---|
 | SAP ABAP Iniciación a la programación | Logali Group | 35 academic hours | 2023-09-01 | Certificado de Aprovechamiento | [View certificate](./credentials/evidence/sap/sap-abap-iniciacion-a-la-programacion-logali-francisco-quinteros-2023.pdf) |
 | SAP: Conceptos e iniciación | Logali Group | 8 academic hours | 2023-09-01 | Certificado de Aprovechamiento | [View certificate](./credentials/evidence/sap/sap-conceptos-e-iniciacion-logali-francisco-quinteros-2023.pdf) |
-| SAP ABAP Web Dynpro | Logali Group | 10 academic hours | 2023-09-12 | Certificado de Aprovechamiento | [View certificate](./credentials/evidence/sap/sap-abap-web-dynpro-logali-francisco-quinteros-2023.pdf) |
+| SAP ABAP Web Dynpro | Logali Group | 10 academic hours | 2023-09-12 | Certificado de Aprovechamiento | [View certificate](./docs/credentials/evidence/sap/sap-abap-web-dynpro-logali-francisco-quinteros-2023.pdf) |
 | SAP ABAP List Viewer - ALV | Logali Group | 20 academic hours | 2023-09-21 | Certificado de Aprovechamiento | [View certificate](./credentials/evidence/sap/sap-abap-list-viewer-logali-francisco-quinteros-2023.pdf) |
 | Webinar: ABAP Debugger - Optimización de la Resolución de errores en SAP | Logali Group | Webinar (no academic-hour figure on the certificate) | 2024-06-05 | Webinar attendance certificate | [View certificate](./credentials/evidence/sap/sap-abap-debugger-webinar-logali-francisco-quinteros-2024.pdf) |
 
