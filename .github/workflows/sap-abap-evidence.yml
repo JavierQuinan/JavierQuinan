@@ -40,12 +40,6 @@ jobs:
             exit 1
           fi
 
-          if grep -RniE --include='*.md' --include='*.abap' --include='*.ts' --include='*.js' --include='*.json' \
-            '(clientsecret|client_secret|clientid|client_id|subaccountid|BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|Bearer[[:space:]]+[A-Za-z0-9._-]+|api[_-]?key[[:space:]]*[:=][[:space:]]*[^[:space:]]+|password[[:space:]]*[:=][[:space:]]*[^[:space:]]+)' "$sap_root"; then
-            echo 'Potential credential material detected in public SAP evidence.' >&2
-            exit 1
-          fi
-
           if grep -RniEi --include='*.md' --include='*.abap' \
             '\b(future|futuro|roadmap)\b|runtime-readiness|OPTIONAL_FUTURE_EXPANSION|NOT_YET_EVIDENCED|NEEDS_ADT_VERIFICATION|CURRENT_RUNTIME_VERIFICATION' "$sap_root"; then
             echo 'Planning/promise framing detected in the public SAP evidence track.' >&2
@@ -60,6 +54,32 @@ jobs:
           root = Path('showcases/sap-integration-lab/04-abap-labs')
           sap_root = Path('showcases/sap-integration-lab')
           missing = []
+
+          # Targeted secret scan: generic documentation words are allowed; actual-looking
+          # assigned values and bearer/private-key material are not.
+          text_suffixes = {'.md', '.abap', '.ts', '.js', '.json', '.yml', '.yaml', '.txt'}
+          safe_tokens = {'test', 'example', 'dummy', 'mock', 'placeholder', 'fake', 'redacted', 'sample', '***', '<redacted>', '<placeholder>'}
+          assignment = re.compile(
+              r'(?i)(clientsecret|client_secret|clientid|client_id|subaccountid|api[_-]?key|password)'
+              r'\s*["\']?\s*[:=]\s*["\']([^"\'\s,}]+)'
+          )
+          bearer = re.compile(r'(?i)\bBearer\s+([A-Za-z0-9._-]+)')
+          private_key = re.compile(r'BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY')
+
+          for path in sap_root.rglob('*'):
+              if not path.is_file() or path.suffix.lower() not in text_suffixes:
+                  continue
+              text = path.read_text(encoding='utf-8', errors='ignore')
+              if private_key.search(text):
+                  missing.append(f'Private-key material detected: {path}')
+              for match in bearer.finditer(text):
+                  token = match.group(1).lower()
+                  if not any(marker in token for marker in safe_tokens):
+                      missing.append(f'Bearer token-like value detected: {path}')
+              for match in assignment.finditer(text):
+                  value = match.group(2).strip().lower()
+                  if value and not any(marker in value for marker in safe_tokens):
+                      missing.append(f'Secret-like assigned value detected: {path}: {match.group(1)}')
 
           for md in sap_root.rglob('*.md'):
               text = md.read_text(encoding='utf-8')
