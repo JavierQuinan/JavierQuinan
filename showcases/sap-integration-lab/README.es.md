@@ -3,8 +3,10 @@
 [English version](./README.md)
 
 > **Idiomas:** Inglés + Español  
-> **Alcance:** SAP ECC MM, SAP IS-U / Work Management, CRM/SD, diagnóstico técnico ABAP, laboratorios históricos hands-on de ABAP Cloud, prácticas ABAP de formación completadas y ejemplos no-live de ingeniería client-side para S/4HANA.  
-> **Regla de evidencia:** las clases de evidencia son explícitas; experiencia enterprise, ejecución histórica, formación hands-on confirmada, source público, estudio basado en documentación y ejemplos ejecutables no-live no se tratan como equivalentes.
+> **Alcance enterprise principal:** SAP ECC MM, SAP IS-U / Work Management y diagnóstico técnico SAP.  
+> **Contexto enterprise complementario:** flujos específicos CRM ↔ IS-U y CRM/SD donde existe evidencia sanitizada; CRM no se posiciona como especialidad principal.  
+> **Alcance formativo / SAP moderno:** formación S/4HANA multidominio completada, laboratorios históricos hands-on de ABAP Cloud, prácticas ABAP de formación completadas, estudio SAP moderno basado en documentación y ejemplos no-live de ingeniería client-side para S/4HANA.  
+> **Regla de evidencia:** las clases de evidencia son explícitas; experiencia enterprise, contexto funcional complementario, credenciales de formación, ejecución histórica, formación hands-on confirmada, source público, estudio basado en documentación y ejemplos ejecutables no-live no se tratan como equivalentes.
 
 Este showcase combina conocimiento enterprise sanitizado con artefactos de ingeniería revisables. **No** afirma runtime de integración real con S/4HANA, implementación SAP Integration Suite/CPI, interfaces OData/SOAP productivas ni capacidades runtime no respaldadas por un artefacto específico.
 
@@ -17,6 +19,7 @@ Este showcase combina conocimiento enterprise sanitizado con artefactos de ingen
 | `HISTORICAL_EXECUTION_VERIFIED` | Source de laboratorio personal con evidencia documentada de ejecución histórica |
 | `OWNER_CONFIRMED_HANDS_ON_EXECUTION` | Práctica de formación confirmada por el propietario como tecleada, creada y ejecutada personalmente |
 | `PUBLIC_NORMALIZED_SOURCE` | Source revisable de práctica publicado bajo la propia nomenclatura `_fq` del portfolio |
+| `TRAINING_CREDENTIAL` | Credencial de formación de tercero completada; acredita formación, no experiencia productiva de implementación ni certificación oficial de SAP |
 | `EXECUTABLE_NON_LIVE_EXAMPLE` | Ejemplo ejecutable/testeado sin claim de conectividad SAP real |
 | `DOCUMENTATION_GROUNDED` | Estudio técnico/arquitectónico basado en documentación de producto |
 | `TRAINING_ONLY` | Formación completada sin artefacto de source guardado y sin claim de runtime |
@@ -48,11 +51,11 @@ Secuencia documentada:
 
 `SE93 → SE24 / SE37 / SE38 / SE80 → debugger → ST22 / SM21 → SM50 / SM66`
 
-### SAP ECC / CRM-SD — `ENTERPRISE_VERIFIED`
+### SAP ECC / CRM-SD — contexto funcional complementario · `ENTERPRISE_VERIFIED`
 
 [Línea de Evidencia CRM-SD](./01-ecc/sd/README.es.md)
 
-La evidencia sanitizada cubre un flujo de facturación de servicios no energéticos: preparación cliente/BP, contexto de área de ventas, revisión billing/output y finalización del output fiscal configurado.
+La evidencia sanitizada cubre un flujo específico de facturación de servicios no energéticos: preparación cliente/BP, contexto de área de ventas, revisión billing/output y finalización del output fiscal configurado. Esta evidencia se conserva como contexto funcional enterprise; **no** se utiliza para posicionar CRM como especialidad principal.
 
 ### Curso 1 — laboratorios históricos ABAP Cloud
 
@@ -88,6 +91,15 @@ El claim de ejecución corresponde a la práctica hands-on original confirmada p
 
 [Línea de Evidencia S/4HANA](./02-s4hana/README.es.md)
 
+**Formación funcional multidominio — `TRAINING_CREDENTIAL`**
+
+- **Especialización Internacional en SAP S/4 HANA desde cero — 240 horas académicas**.
+- Registro de módulos aprobados: **MM 20/20 · PP 16/20 · SD 18/20 · FI 18/20 · PM 18/20**.
+- Promedio académico final: **18/20**.
+- Esta credencial acredita formación S/4HANA completada; no se presenta como certificación oficial SAP ni como experiencia productiva de implementación, conversión u operación S/4HANA.
+
+[Registro de formación y credenciales](./00-profile/TRAINING_AND_CREDENTIALS.es.md)
+
 **MM Procurement API Client — `EXECUTABLE_NON_LIVE_EXAMPLE`**
 
 - Cliente TypeScript read-only para PO/PR sin dependencias externas.
@@ -112,7 +124,7 @@ El material documenta límites OData/REST/SOAP, idempotencia, mapeo de errores, 
 
 ## Límites de claims
 
-Este portfolio no afirma runtime de SAP Integration Suite/CPI, conectividad live a APIs S/4HANA, OData/SOAP productivo, runtime IDoc/RFC/BAPI, Event Mesh, runtime RAP/service-binding ni ninguna otra capacidad que no esté respaldada por la evidencia enlazada arriba.
+Este portfolio no afirma runtime de SAP Integration Suite/CPI, conectividad live a APIs S/4HANA, OData/SOAP productivo, runtime IDoc/RFC/BAPI, Event Mesh, runtime RAP/service-binding ni ninguna otra capacidad que no esté respaldada por la evidencia enlazada arriba. La formación S/4HANA y ABAP Cloud completada no se eleva silenciosamente a experiencia productiva de proyecto.
 
 ## Formación y credenciales
 
@@ -136,7 +148,7 @@ La documentación oficial SAP respalda conceptos estándar; no sustituye evidenc
 
 [Matriz de Capacidades SAP](./00-profile/SAP_CAPABILITY_MATRIX.es.md)
 
-La matriz central reconcilia experiencia enterprise, labs históricos, formación hands-on completada, source público, ejemplos ejecutables no-live y estudio basado en documentación.
+La matriz central reconcilia experiencia enterprise, contexto funcional complementario, credenciales de formación, labs históricos, formación hands-on completada, source público, ejemplos ejecutables no-live y estudio basado en documentación.
 
 ## Estado de sanitización
 
