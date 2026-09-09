@@ -10,7 +10,7 @@ Certificates intentionally selected for this portfolio are public evidence. Pref
 
 ## SAP-related training
 
-Full detail: [SAP Training & Credentials](../showcases/sap-integration-lab/00-profile/TRAINING_AND_CREDENTIALS.md)
+Full detail: [SAP Training & Credentials](../showcases/sap-engineering-evidence/00-profile/TRAINING_AND_CREDENTIALS.md)
 
 The tables below are the canonical, source-of-truth record for every SAP-related certificate published in this repository. Training credentials are not described as SAP-issued certifications unless the issuing document itself supports that wording.
 
@@ -23,7 +23,7 @@ The tables below are the canonical, source-of-truth record for every SAP-related
 | SAP ABAP Cloud - Diccionario de datos | Logali Group | 100 academic hours | 2026-06-28 | Certificado de Aprovechamiento | [View certificate](./credentials/evidence/sap/sap-abap-cloud-dictionary-logali-francisco-quinteros-2026.pdf) |
 | SAP abapGit \| ATC \| ABAP Cleaner \| Autorizaciones | Logali Group | 20 academic hours | 2026-06-28 | Certificado de Aprovechamiento | [View certificate](./credentials/evidence/sap/sap-abapgit-atc-cleaner-authorizations-logali-francisco-quinteros-2026.pdf) |
 
-**S/4HANA academic record:** MM 20/20 · PP 16/20 · SD 18/20 · FI 18/20 · PM 18/20 · final average 18/20. The detailed module record and claim boundary are documented in [SAP Training & Credentials](../showcases/sap-integration-lab/00-profile/TRAINING_AND_CREDENTIALS.md). This credential proves completed training; it is not presented as an SAP-issued official certification or productive S/4HANA implementation experience.
+**S/4HANA academic record:** MM 20/20 · PP 16/20 · SD 18/20 · FI 18/20 · PM 18/20 · final average 18/20. The detailed module record and claim boundary are documented in [SAP Training & Credentials](../showcases/sap-engineering-evidence/00-profile/TRAINING_AND_CREDENTIALS.md). This credential proves completed training; it is not presented as an SAP-issued official certification or productive S/4HANA implementation experience.
 
 ### Additional completed SAP training
 
