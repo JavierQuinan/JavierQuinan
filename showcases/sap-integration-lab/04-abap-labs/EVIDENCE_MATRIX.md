@@ -36,12 +36,12 @@
 
 ## Portfolio-wide context
 
-The statuses above are deliberately local to this lab set. Elsewhere in the SAP Integration Lab there is already additional evidence, including:
+The statuses above are deliberately local to this lab set. Elsewhere in the SAP Engineering Evidence Lab there is additional evidence, including:
 
 - documentation-grounded RAP architecture;
 - source-reviewed ABAP Unit design patterns in other ABAP packs;
 - an executable non-live OData client-side example in the S/4HANA procurement client;
-- enterprise-sanitized debugging and specific cross-system operational evidence, without a generic integration-platform claim.
+- enterprise-sanitized debugging and specific cross-system operational evidence, without a middleware or generic platform claim.
 
 Those artifacts remain classified separately in the central [SAP Capability Matrix](../00-profile/SAP_CAPABILITY_MATRIX.md).
 
