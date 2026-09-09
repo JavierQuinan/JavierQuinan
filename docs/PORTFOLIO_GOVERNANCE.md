@@ -122,7 +122,7 @@ Published profile case studies/evidence include:
 2. Motorix / TecnoAuto workshop SaaS
 3. FITBA / GYMORA web + mobile platform
 4. LegalTech workflow platform
-5. SAP Integration Lab / enterprise systems evidence
+5. SAP Engineering Evidence — ECC, IS-U, MM & ABAP
 
 ## Recommended six pinned repositories
 
