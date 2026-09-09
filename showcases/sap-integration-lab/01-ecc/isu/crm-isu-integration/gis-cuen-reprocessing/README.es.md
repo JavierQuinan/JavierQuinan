@@ -2,7 +2,7 @@
 
 [English version](./README.md)
 
-> **Tipo de evidencia:** soporte operativo sanitizado de integración GIS → SAP  
+> **Tipo de evidencia:** soporte operativo sanitizado del flujo de interfaz/reproceso GIS → SAP  
 > **Objetos observados:** monitor de CUEN · tabla técnica de interfaz · reproceso de novedades
 
 Esta evidencia documenta el control diario de CUEN pendientes, bloqueados o respondidos por GIS con error, y el reproceso controlado de los casos que cumplen condiciones de tratamiento.
@@ -82,13 +82,15 @@ Si persiste un error, se conserva de forma controlada:
 
 ## Qué demuestra
 
-- soporte de integración GIS ↔ SAP IS-U;
+- soporte operativo de un flujo de interfaz/reproceso GIS ↔ SAP IS-U;
 - clasificación de errores antes de reproceso;
 - consulta técnica read-only;
 - trazabilidad CUEN → novedad;
 - ejecución masiva acotada;
 - validación posterior por registro;
 - disciplina de escalamiento de interfaces.
+
+Esta evidencia no afirma desarrollo de middleware, implementación de SAP Integration Suite/CPI ni propiedad sobre la interfaz corporativa subyacente.
 
 ## Límite de confidencialidad
 
