@@ -36,4 +36,4 @@ This profile separates recruiter-facing claims by evidence class instead of trea
 
 ## Claim boundary
 
-Training is not presented as SAP-issued certification or as enterprise/runtime evidence. RAP architecture and integration concepts are documentation-grounded. The procurement client is an executable non-live example. Historical ABAP labs retain documented historical execution evidence. Course 3 practices are owner-confirmed hands-on training with public normalized `_fq` source.
+Training is not presented as SAP-issued certification or as enterprise/runtime evidence. RAP architecture and external API concepts are documentation-grounded. The procurement client is an executable non-live example, not productive SAP interface evidence. Historical ABAP labs retain documented historical execution evidence. Course 3 practices are owner-confirmed hands-on training with public normalized `_fq` source.
