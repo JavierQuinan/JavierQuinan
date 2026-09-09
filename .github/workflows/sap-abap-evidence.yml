@@ -3,7 +3,7 @@ name: Validate SAP ABAP Evidence
 on:
   pull_request:
     paths:
-      - 'showcases/sap-integration-lab/**'
+      - 'showcases/sap-engineering-evidence/**'
       - 'docs/CREDENTIALS.md'
       - 'docs/CREDENTIALS.es.md'
       - 'docs/credentials/**'
@@ -11,7 +11,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'showcases/sap-integration-lab/**'
+      - 'showcases/sap-engineering-evidence/**'
       - 'docs/CREDENTIALS.md'
       - 'docs/CREDENTIALS.es.md'
       - 'docs/credentials/**'
@@ -26,8 +26,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          root='showcases/sap-integration-lab/04-abap-labs'
-          sap_root='showcases/sap-integration-lab'
+          root='showcases/sap-engineering-evidence/04-abap-labs'
+          sap_root='showcases/sap-engineering-evidence'
           cert_root='docs/credentials/evidence'
 
           test -f "$root/README.md"
@@ -79,8 +79,8 @@ jobs:
           import json
           import re
 
-          root = Path('showcases/sap-integration-lab/04-abap-labs')
-          sap_root = Path('showcases/sap-integration-lab')
+          root = Path('showcases/sap-engineering-evidence/04-abap-labs')
+          sap_root = Path('showcases/sap-engineering-evidence')
           cert_root = Path('docs/credentials/evidence')
           missing = []
 
