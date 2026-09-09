@@ -48,6 +48,7 @@ Este es el propio "Certificate of Achievement" de Odoo Inc. por completar el cur
 | Credencial | Emisor | Duración | Fecha | Clasificación | Evidencia pública |
 |---|---|---:|---|---|---|
 | Curso de Angular | Instituto Internacional de Software (ISI) | 120 horas académicas | 2025-06-23 | Curso de formación | [Ver certificado](./credentials/evidence/other/angular-course-isi-francisco-quinteros-2025.pdf) |
+| Curso de Desarrollo Full-stack | Codica | No consta en el certificado | 2025-12-03 | Certificado de finalización | [Ver certificado](./credentials/evidence/other/fullstack-development-codica-francisco-quinteros-2025.pdf) |
 
 ## Regla del repositorio
 
