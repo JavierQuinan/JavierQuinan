@@ -13,7 +13,7 @@ Current flagship tier:
 - FITBA / GYMORA
 - LegalTech Automation Platform
 
-Enterprise evidence tracks such as SAP Integration Lab and Odoo Engineering Lab follow the same evidence-first philosophy, with domain-specific adaptations.
+Enterprise evidence tracks such as SAP Engineering Evidence and Odoo Engineering Lab follow the same evidence-first philosophy, with domain-specific adaptations.
 
 ## Required case-study structure
 
