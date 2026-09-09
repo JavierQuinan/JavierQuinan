@@ -1,29 +1,29 @@
-# SAP S/4HANA MM — Procurement API Evidence Lab
+# SAP S/4HANA MM — Procurement API Client Example
 
 [Versión en español](./README.es.md)
 
-> **Evidence type:** Clean Core integration evidence based on released SAP interfaces  
+> **Evidence type:** executable non-live client-side example based on documented released SAP interfaces  
 > **Status:** `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_VALIDATED / S4_RUNTIME_NOT_CLAIMED`  
 > **Scope:** Purchase Requisitions + Purchase Orders
 
-This lab demonstrates how classic ECC purchasing evidence evolves into a modern S/4HANA integration design without treating direct table access as a Clean Core integration pattern.
+This example contrasts classic ECC purchasing source with a client-side S/4HANA API approach. It demonstrates TypeScript client behavior and testable API-consumption patterns only; it is not presented as productive SAP interface implementation or live S/4HANA experience.
 
 ## Architectural contrast
 
 ```text
-Classic ECC evidence                 S/4HANA Clean Core evidence
+Classic ECC evidence                 S/4HANA client-side example
 --------------------                 ---------------------------
-ABAP report/service                  External/application extension
+ABAP report/service                  External TypeScript client
         │                                      │
         ▼                                      ▼
-EKKO / EKPO                           Released OData / CDS API
+EKKO / EKPO                           Documented released API
 classic Open SQL                              │
                                       ┌───────┴────────┐
                                       ▼                ▼
                                Purchase Requisition  Purchase Order
 ```
 
-## Released-interface direction
+## Documented released-interface direction
 
 Purchase Orders:
 
@@ -34,7 +34,7 @@ Purchase Requisitions:
 
 - OData V4 API family: `API_PURCHASEREQUISITION_2`
 
-Exact service paths, fields, authentication and availability must always be verified against the target S/4HANA release before connecting to a real tenant.
+Exact service paths, fields, authentication and availability must be verified against the target S/4HANA release before any real connectivity claim can be made.
 
 ## Source implementation
 
@@ -47,7 +47,7 @@ Implemented source evidence:
 - injectable HTTP transport
 - OData `value` response validation
 - `$top`, `$skip` and `$filter` query construction
-- stable SAP API error mapping
+- stable remote API error mapping
 - correlation/request ID capture
 - HTTPS enforcement outside localhost
 - timeout-aware Fetch transport
@@ -77,50 +77,42 @@ This is **client/source validation**, not SAP S/4HANA tenant runtime validation.
 
 ## Security boundary
 
-No real SAP URL, user, password, OAuth client secret, bearer-style token, cookie, certificate/private key or production payload is stored in this lab.
+No real SAP URL, user, password, OAuth client secret, bearer-style token, cookie, certificate/private key or production payload is stored in this example.
 
-The current source remains intentionally read-only. Real authentication should be supplied through an external credential/token provider rather than committed application configuration.
+The current source remains intentionally read-only. Any future real authentication would need to be supplied externally and separately evidenced.
 
 ## What this proves now
 
-- understanding of the ECC-to-S/4HANA integration boundary
-- released-API / Clean Core-oriented design
-- TypeScript integration-client engineering
+- TypeScript API-client implementation
+- OData response handling in the published source
 - transport abstraction and deterministic contract testing
 - error/correlation-ID handling
 - secure-by-default endpoint validation
 - reproducible CI validation
+- understanding of documented released-interface boundaries
 - bilingual technical documentation
 
 ## What is not claimed
 
+- productive SAP interface implementation
+- SAP Integration Suite / CPI experience
 - connection to a real S/4HANA tenant
 - metadata verification against a specific release
-- OAuth/token acquisition
+- OAuth/token acquisition against SAP
 - real SAP authorization success
 - end-to-end S/4HANA runtime
 - write/create/change operations
 
-## Next milestones
+## Possible future validation
 
-### P3 — Integration hardening
-
-- pagination traversal
-- transient-error retry policy for safe reads
-- release-specific response schemas
-- metadata/capability checks
-- external auth-provider abstraction
-
-### P4 — Authorized sandbox integration
-
-Only when a legitimate S/4HANA sandbox/tenant is available:
+Only if a legitimate S/4HANA sandbox/tenant becomes available could a separate evidence item document:
 
 - connectivity
 - API metadata verification
 - sanitized read-only request
-- documented runtime result
+- observed runtime result
 
-Until P4, no S/4 runtime claim is made.
+Until such evidence exists, no S/4HANA runtime or productive-interface claim is made.
 
 ## Evidence maturity
 

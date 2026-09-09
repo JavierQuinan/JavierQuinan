@@ -1,29 +1,29 @@
-# SAP S/4HANA MM — Laboratorio de Evidencia con APIs de Procurement
+# SAP S/4HANA MM — Ejemplo de Cliente API de Procurement
 
 [English version](./README.md)
 
-> **Tipo de evidencia:** integración Clean Core basada en interfaces SAP liberadas  
+> **Tipo de evidencia:** ejemplo ejecutable client-side no-live basado en interfaces SAP liberadas documentadas  
 > **Estado:** `SOURCE_READY / LOCAL_TEST_VALIDATED / CI_VALIDATED / S4_RUNTIME_NOT_CLAIMED`  
 > **Alcance:** Solicitudes de Pedido + Pedidos de Compra
 
-Este laboratorio demuestra cómo evoluciona la evidencia de compras desde ECC clásico hacia un diseño moderno S/4HANA, sin presentar el acceso directo a tablas como patrón de integración Clean Core.
+Este ejemplo contrasta source de compras ECC clásico con un enfoque client-side mediante APIs S/4HANA. Demuestra únicamente comportamiento del cliente TypeScript y patrones testeables de consumo de API; no se presenta como implementación productiva de interfaces SAP ni como experiencia S/4HANA en vivo.
 
 ## Contraste arquitectónico
 
 ```text
-ECC clásico                         S/4HANA Clean Core
------------                         -----------------
-Reporte/servicio ABAP               Extensión/aplicación externa
+Evidencia ECC clásica                Ejemplo client-side S/4HANA
+---------------------                --------------------------
+Reporte/servicio ABAP                Cliente TypeScript externo
        │                                      │
        ▼                                      ▼
-EKKO / EKPO                         OData / CDS API liberada
+EKKO / EKPO                         API liberada documentada
 Open SQL clásico                             │
                                      ┌───────┴────────┐
                                      ▼                ▼
                               Solicitud de pedido   Pedido
 ```
 
-## Dirección de interfaces liberadas
+## Dirección documentada de interfaces liberadas
 
 Pedidos de compra:
 
@@ -34,20 +34,20 @@ Solicitudes de pedido:
 
 - familia API OData V4: `API_PURCHASEREQUISITION_2`
 
-Los paths exactos, campos, autenticación y disponibilidad deberán verificarse contra la release S/4HANA objetivo antes de conectarse a un tenant real.
+Los paths exactos, campos, autenticación y disponibilidad deben verificarse contra la release S/4HANA objetivo antes de realizar cualquier claim de conectividad real.
 
 ## Implementación source
 
-Ya existe un cliente TypeScript sin dependencias externas en [`client/`](./client/README.es.md).
+Existe un cliente TypeScript sin dependencias externas en [`client/`](./client/README.es.md).
 
-Capacidades implementadas:
+Evidencia implementada:
 
 - consultas read-only de pedidos
 - consultas read-only de solicitudes
 - transporte HTTP inyectable
 - validación OData `value`
 - construcción de `$top`, `$skip` y `$filter`
-- mapeo estable de errores SAP API
+- mapeo estable de errores de API remota
 - captura de correlation/request ID
 - HTTPS obligatorio fuera de localhost
 - Fetch transport con timeout
@@ -56,7 +56,7 @@ Capacidades implementadas:
 
 ## Evidencia de tests
 
-Los seis tests deterministas pasaron tanto localmente como en GitHub Actions con Node 22:
+Los seis tests deterministas pasaron localmente y en GitHub Actions con Node 22:
 
 1. normalización OData de pedido
 2. normalización OData de solicitud
@@ -79,50 +79,42 @@ Esto valida el **cliente/source**, no un runtime real de tenant SAP S/4HANA.
 
 No se versiona URL SAP real, usuario, contraseña, OAuth client secret, token estilo bearer, cookie, certificado/llave privada ni payload productivo.
 
-La implementación sigue siendo deliberadamente **solo lectura**. La autenticación real deberá provenir de un proveedor externo de credenciales/tokens.
+La implementación sigue siendo deliberadamente read-only. Cualquier autenticación real futura tendría que suministrarse externamente y evidenciarse por separado.
 
 ## Qué demuestra actualmente
 
-- comprensión de la frontera ECC → S/4HANA
-- diseño orientado a APIs liberadas / Clean Core
-- ingeniería TypeScript para integración
+- implementación de cliente API en TypeScript
+- manejo de respuestas OData presente en el source publicado
 - abstracción de transporte y contract testing determinista
 - manejo de errores/correlation IDs
 - validación segura de endpoints
 - CI reproducible
-- documentación bilingüe
+- comprensión de límites documentados de interfaces liberadas
+- documentación técnica bilingüe
 
 ## Qué no se afirma
 
+- implementación productiva de interfaces SAP
+- experiencia con SAP Integration Suite / CPI
 - conexión con tenant S/4HANA real
 - metadata validada para una release concreta
-- adquisición OAuth/token
+- adquisición OAuth/token contra SAP
 - autorización SAP real
 - runtime end-to-end S/4HANA
 - operaciones create/change
 
-## Próximos hitos
+## Posible validación futura
 
-### P3 — Hardening de integración
-
-- recorrido de paginación
-- retry de errores transitorios solo en lecturas seguras
-- schemas por release
-- metadata/capabilities
-- proveedor externo de autenticación
-
-### P4 — Sandbox autorizado
-
-Solo cuando exista un entorno S/4HANA legítimo:
+Solo si existiera un entorno S/4HANA legítimo, una evidencia separada podría documentar:
 
 - conectividad
-- metadata API
-- lectura sanitizada
-- evidencia runtime documentada
+- verificación de metadata API
+- lectura sanitizada read-only
+- resultado runtime observado
 
-Hasta entonces no se afirma runtime S/4.
+Hasta que exista esa evidencia, no se afirma runtime S/4HANA ni implementación productiva de interfaces.
 
-## Madurez
+## Madurez de evidencia
 
 `RESEARCH_VALIDATED -> DESIGN_READY -> SOURCE_READY -> LOCAL_TEST_VALIDATED -> CI_VALIDATED -> RUNTIME_VALIDATED`
 
