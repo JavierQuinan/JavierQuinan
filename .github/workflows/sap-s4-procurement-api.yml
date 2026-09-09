@@ -3,13 +3,13 @@ name: SAP S4 Procurement API Client
 on:
   pull_request:
     paths:
-      - 'showcases/sap-integration-lab/02-s4hana/mm/procurement-api-lab/client/**'
+      - 'showcases/sap-engineering-evidence/02-s4hana/mm/procurement-api-lab/client/**'
       - '.github/workflows/sap-s4-procurement-api.yml'
   push:
     branches:
       - main
     paths:
-      - 'showcases/sap-integration-lab/02-s4hana/mm/procurement-api-lab/client/**'
+      - 'showcases/sap-engineering-evidence/02-s4hana/mm/procurement-api-lab/client/**'
       - '.github/workflows/sap-s4-procurement-api.yml'
 
 permissions:
@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 5
     defaults:
       run:
-        working-directory: showcases/sap-integration-lab/02-s4hana/mm/procurement-api-lab/client
+        working-directory: showcases/sap-engineering-evidence/02-s4hana/mm/procurement-api-lab/client
 
     steps:
       - name: Checkout
