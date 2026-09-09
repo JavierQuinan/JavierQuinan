@@ -5,10 +5,10 @@
 > **Idiomas:** Inglés + Español  
 > **Alcance enterprise principal:** SAP ECC MM, SAP IS-U / Work Management y diagnóstico técnico SAP.  
 > **Contexto enterprise complementario:** flujos específicos CRM ↔ IS-U y CRM/SD donde existe evidencia sanitizada; CRM no se posiciona como especialidad principal.  
-> **Alcance formativo / SAP moderno:** formación S/4HANA multidominio completada, laboratorios históricos hands-on de ABAP Cloud, prácticas ABAP de formación completadas, estudio SAP moderno basado en documentación y ejemplos no-live de ingeniería client-side para S/4HANA.  
+> **Alcance formativo / SAP moderno:** formación S/4HANA multidominio completada, laboratorios históricos hands-on de ABAP Cloud, prácticas ABAP de formación completadas, estudio SAP moderno basado en documentación y ejemplos no-live client-side para S/4HANA.  
 > **Regla de evidencia:** las clases de evidencia son explícitas; experiencia enterprise, contexto funcional complementario, credenciales de formación, ejecución histórica, formación hands-on confirmada, source público, estudio basado en documentación y ejemplos ejecutables no-live no se tratan como equivalentes.
 
-Este showcase combina conocimiento enterprise sanitizado con artefactos de ingeniería revisables. **No** afirma runtime de integración real con S/4HANA, implementación SAP Integration Suite/CPI, interfaces OData/SOAP productivas ni capacidades runtime no respaldadas por un artefacto específico.
+Este showcase combina conocimiento enterprise sanitizado con artefactos de ingeniería revisables. **No** afirma implementación productiva S/4HANA, conectividad live a APIs S/4HANA, implementación SAP Integration Suite/CPI, interfaces OData/SOAP productivas ni capacidades runtime no respaldadas por un artefacto específico.
 
 ## Modelo de evidencia
 
@@ -116,11 +116,11 @@ Guía sobre objetos/APIs liberados, release contracts y gobierno orientado a ATC
 **RAP — `DOCUMENTATION_GROUNDED`**  
 Arquitectura CDS → behavior → projection → service definition/binding → OData V4. No se afirma runtime RAP.
 
-### Arquitectura de integración y patrones client-side — `DOCUMENTATION_GROUNDED` + `EXECUTABLE_NON_LIVE_EXAMPLE`
+### Estudio de arquitectura de APIs externas — `DOCUMENTATION_GROUNDED` + `EXECUTABLE_NON_LIVE_EXAMPLE`
 
-[Guía de Arquitectura de Integración](./03-integration/README.es.md)
+[Estudio de Arquitectura de APIs Externas](./03-integration/README.es.md)
 
-El material documenta límites OData/REST/SOAP, idempotencia, mapeo de errores, correlation IDs, observabilidad y separación de secretos. El cliente procurement S/4 es el ejemplo ejecutable. Esto no se presenta como evidencia de una integración SAP real en runtime.
+Este material documenta conceptos OData/REST/SOAP como idempotencia, mapeo de errores, correlation IDs, observabilidad y separación de secretos. El cliente procurement S/4 es el único ejemplo ejecutable relacionado con SAP y es explícitamente local/no-live. Esta sección **no** constituye evidencia de implementación productiva de interfaces SAP, middleware, CPI/Integration Suite ni conectividad SAP real.
 
 ## Límites de claims
 
