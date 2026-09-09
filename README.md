@@ -4,7 +4,7 @@
 
 ### Software Engineer & Lawyer · Enterprise Technology · SAP · Full Stack
 
-**SAP S/4HANA · IS-U / Utilities · MM · Work Management · ABAP Cloud · AI · Regulated Systems**
+**SAP ECC · IS-U / Utilities · Work Management · MM · ABAP · Full Stack · Regulated Systems**
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-111827?style=flat-square&logo=vercel&logoColor=white)](https://portfolio-five-gilt-51.vercel.app)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/francisco-quinteros-583132152)
@@ -28,7 +28,7 @@ I complement that enterprise experience with completed **SAP S/4HANA training** 
 
 These training records are not presented as productive S/4HANA, BTP, CPI or RAP project experience. Modern SAP topics such as Clean Core, RAP and migration concepts remain explicitly classified according to the evidence available.
 
-As a Full Stack engineer, I build **enterprise SaaS products, web/mobile applications, APIs and integration-heavy systems** using Angular, React, TypeScript, NestJS, Node.js, PostgreSQL, Supabase, Redis and related tooling. My mobile evidence includes React Native/Expo and native Android/Kotlin.
+As a Full Stack engineer, I build **enterprise SaaS products, web/mobile applications and API-driven systems** using Angular, React, TypeScript, NestJS, Node.js, PostgreSQL, Supabase, Redis and related tooling. My mobile evidence includes React Native/Expo and native Android/Kotlin.
 
 My legal background adds value when software involves **regulated workflows, privacy, traceability, evidence, contracts, compliance-sensitive rules or complex business constraints**.
 
@@ -55,10 +55,9 @@ My legal background adds value when software involves **regulated workflows, pri
 | Backend | NestJS · Node.js · Express · REST APIs · JWT · WebSockets |
 | Data | PostgreSQL · Supabase · TypeORM · MySQL · MongoDB |
 | Mobile | **Kotlin · Native Android** · React Native · Expo · Ionic · Firebase |
-| Architecture | Multi-tenant SaaS · RBAC · background workers · event-driven workflows · integrations |
+| Architecture | Multi-tenant SaaS · RBAC · background workers · event-driven workflows |
 | Async / Infrastructure | Redis · BullMQ · Docker · nginx · S3/MinIO-compatible storage |
 | Quality | Playwright · Jest · Supertest · GitHub Actions · linting · automated validation |
-| Integration engineering | REST · SOAP/XML/XSD in software projects · OData in an explicitly non-live S/4 example |
 | Regulated technology | Privacy-aware design · traceability · digital evidence awareness · compliance-sensitive rules |
 
 ## Selected engineering work
@@ -134,7 +133,7 @@ These areas are retained because real sanitized enterprise evidence exists, but 
 
 Training evidence is deliberately not upgraded into productive S/4HANA, BTP, CPI, RAP or ABAP Cloud client-project experience.
 
-### [SAP Integration Lab — Public Engineering Evidence](showcases/sap-integration-lab/README.md)
+### [SAP Engineering Evidence — ECC, IS-U, MM & ABAP](showcases/sap-integration-lab/README.md)
 
 Evidence available now:
 
@@ -144,15 +143,15 @@ Evidence available now:
 - **ECC IS-U / Work Management / `ZWM_STATUS_AUDIT_LAB`** — original read-only status-analysis source plus sanitized operational troubleshooting guidance and visual evidence.
 - **ECC Technical Diagnostics** — original bilingual guides for transaction/object discovery, debugging, dump analysis and process monitoring.
 - **ECC / CRM-SD** — sanitized functional evidence for specific CRM ↔ IS-U recovery and non-energy service billing workflows.
-- **S/4HANA MM Procurement API Client** — TypeScript read-only source with OData validation, correlation-ID handling, HTTPS enforcement and **6/6 tests PASS in GitHub Actions**; local/mock only.
+- **S/4HANA MM Procurement API Client** — TypeScript read-only source with OData validation, correlation-ID handling, HTTPS enforcement and **6/6 tests PASS in GitHub Actions**; local/mock only, not productive SAP connectivity.
 - **S/4HANA Migration Cockpit** — technical guide + synthetic migration runbook.
 - **ABAP Cloud / Clean Core** — architecture/governance guidance covering released objects, release contracts and extension boundaries.
 - **RAP** — documentation-grounded architecture guide covering CDS, behavior, projection, service definition/binding and authorization/test boundaries.
-- **SAP Integration** — resilience guidance for OData/REST/SOAP, idempotency, error classification, correlation and observability.
+- **External API architecture study** — documentation-grounded OData/REST/SOAP resilience concepts; explicitly not evidence of productive SAP interfaces or middleware implementation.
 
 ECC ABAP artifacts are reviewable source/static evidence, not corporate runtime results. The S/4 API client has local/CI test evidence but no live-tenant claim.
 
-`SAP IS-U` `Utilities` `Work Management` `SAP MM` `ABAP` `ABAP Cloud` `S/4HANA` `Debugging` `TypeScript` `Regulated Systems`
+`SAP IS-U` `Utilities` `Work Management` `SAP MM` `ABAP` `ABAP Cloud training` `S/4HANA training` `Debugging` `TypeScript` `Regulated Systems`
 
 ## Training & Credentials
 
@@ -176,7 +175,7 @@ ECC ABAP artifacts are reviewable source/static evidence, not corporate runtime 
 2. [Motorix ERP / SaaS Showcase](showcases/motorix/README.md)
 3. [FITBA Web + Mobile Showcase](showcases/fitba/README.md)
 4. [Legal Workflow Platform Showcase](showcases/legaltech/README.md)
-5. [SAP Integration Lab](showcases/sap-integration-lab/README.md)
+5. [SAP Engineering Evidence — ECC, IS-U, MM & ABAP](showcases/sap-integration-lab/README.md)
 6. [Billing & Inventory — Angular + PHP](https://github.com/JavierQuinan/Listas)
 7. [Parking Android — Kotlin](https://github.com/JavierQuinan/parqueadero_android)
 
