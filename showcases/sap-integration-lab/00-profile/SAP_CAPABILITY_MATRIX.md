@@ -11,7 +11,7 @@ This matrix contains only capabilities supported by current public evidence, doc
 | SAP ECC MM | Purchasing analytics | `PUBLIC_SOURCE_EVIDENCE` | `EBAN → EKKO/EKPO → EKET` source, PO-category guard and downstream/schedule diagnostics |
 | SAP IS-U / WM | Work-order analysis and lifecycle | `ENTERPRISE_VERIFIED` + `PUBLIC_SOURCE_EVIDENCE` | Sanitized `IW38/IW32` knowledge plus `ZWM_STATUS_AUDIT_LAB` source |
 | SAP IS-U / WM | Device / meter troubleshooting | `ENTERPRISE_VERIFIED` | Sanitized operational guides for device-status and related WM/IS-U flows |
-| SAP IS-U / CRM | Contract-end / DCDE recovery | `ENTERPRISE_VERIFIED` | Sanitized CRM ↔ IS-U recovery evidence; no generic integration-platform claim |
+| SAP IS-U / CRM | Contract-end / DCDE recovery | `ENTERPRISE_VERIFIED` | Sanitized CRM ↔ IS-U recovery evidence; no platform or middleware implementation claim |
 | SAP technical diagnostics | Object discovery, debugging, dumps and process analysis | `ENTERPRISE_VERIFIED` | `SE93`, `SE24/37/38/80`, debugger, `ST22`, `SM21`, `SM50/66` sequence |
 | SAP CRM/SD | Non-energy service billing workflow | `ENTERPRISE_VERIFIED` | Sanitized customer/BP, sales-area and billing/output workflow; retained as supporting functional context, not positioned as a primary CRM specialization |
 | ABAP Cloud historical labs | Core / Objects / classrun / internal tables / field symbols / Open SQL / exceptions | `HISTORICAL_EXECUTION_VERIFIED` + `PUBLIC_SOURCE_EVIDENCE` | Course 1: 16 units accounted for, 10 personal hands-on labs, 10 public source files and 20 owned sanitized ADT screenshots |
@@ -23,7 +23,7 @@ This matrix contains only capabilities supported by current public evidence, doc
 | ABAP Cloud / Clean Core | Released API/object governance | `DOCUMENTATION_GROUNDED` + completed training | Clean Core guide plus completed ABAP Cloud training; no runtime compliance claim from the historical labs |
 | RAP | Architecture | `DOCUMENTATION_GROUNDED` | CDS → behavior → projection → service definition/binding → OData V4 architecture guide; no RAP runtime claim |
 | ABAP | ABAP Unit design patterns in other public packs | `PUBLIC_SOURCE_EVIDENCE` | Deterministic test scenarios reviewed at source level; no current runtime execution claim |
-| Integration architecture | OData / REST / SOAP resilience patterns | `DOCUMENTATION_GROUNDED` + `EXECUTABLE_NON_LIVE_EXAMPLE` | Architecture guide + non-live S/4 client; not evidence of productive SAP integration implementation |
+| External API architecture study | OData / REST / SOAP resilience concepts | `DOCUMENTATION_GROUNDED` + `EXECUTABLE_NON_LIVE_EXAMPLE` | Architecture study + non-live S/4 client; not evidence of productive SAP interface, middleware or integration-platform implementation |
 
 ## Claim boundary
 

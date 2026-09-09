@@ -66,29 +66,22 @@ Public artifacts exclude real:
 - work orders;
 - users;
 - company/customer configuration;
-- internal integration endpoints.
+- internal endpoints.
 
 ### SAP S/4HANA
 
 S/4HANA evidence is split between:
 
-- executable integration-side source with observed local/CI tests where available; and
-- technical guides covering released interfaces, Migration Cockpit, ABAP Cloud/Clean Core and RAP architecture.
+- an executable client-side example with observed local/CI tests and no live SAP connectivity claim; and
+- technical guides covering Migration Cockpit, released APIs, ABAP Cloud/Clean Core and RAP architecture.
 
 Classic ECC source is never relabelled as S/4HANA Clean Core source.
 
-### SAP Integration
+### External API architecture study
 
-Integration evidence may cover:
+Documentation may cover OData, REST, SOAP/XML, idempotency, correlation IDs, retry/error mapping, audit and observability. Those topics are classified as `DOCUMENTATION_GROUNDED` unless a specific executable artifact supports a narrower claim.
 
-- OData;
-- REST;
-- SOAP/XML;
-- message transformation;
-- idempotency;
-- correlation IDs;
-- retry/error mapping;
-- audit and observability.
+The public S/4HANA procurement client is an `EXECUTABLE_NON_LIVE_EXAMPLE`. It is not evidence of productive SAP interface implementation, SAP middleware configuration, SAP Integration Suite/CPI experience or live S/4HANA connectivity.
 
 Secrets and internal destinations remain outside Git.
 

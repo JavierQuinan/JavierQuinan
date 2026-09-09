@@ -8,7 +8,7 @@
 > **Training / modern SAP scope:** completed S/4HANA multi-module training, historical hands-on ABAP Cloud labs, completed ABAP training practices, documentation-grounded modern SAP study and non-live S/4HANA client-side examples.  
 > **Evidence rule:** evidence classes are explicit; enterprise experience, supporting functional context, training credentials, historical execution, owner-confirmed hands-on training, public source, documentation-grounded study and executable non-live examples are not treated as equivalent.
 
-This showcase combines sanitized enterprise knowledge with reviewable engineering artifacts. It does **not** claim live S/4HANA integration runtime, SAP Integration Suite/CPI implementation, productive OData/SOAP interfaces, or runtime capabilities not supported by a specific artifact.
+This showcase combines sanitized enterprise knowledge with reviewable engineering artifacts. It does **not** claim productive S/4HANA implementation, live S/4HANA API connectivity, SAP Integration Suite/CPI implementation, productive OData/SOAP interfaces, or runtime capabilities not supported by a specific artifact.
 
 ## Evidence model
 
@@ -116,11 +116,11 @@ Guide covering released objects/APIs, release contracts and ATC-oriented governa
 **RAP — `DOCUMENTATION_GROUNDED`**  
 Architecture guide covering CDS → behavior → projection → service definition/binding → OData V4. No RAP runtime claim is made.
 
-### Integration architecture & client-side patterns — `DOCUMENTATION_GROUNDED` + `EXECUTABLE_NON_LIVE_EXAMPLE`
+### External API architecture study — `DOCUMENTATION_GROUNDED` + `EXECUTABLE_NON_LIVE_EXAMPLE`
 
-[Integration Architecture Guide](./03-integration/README.md)
+[External API Architecture Study](./03-integration/README.md)
 
-The material documents OData/REST/SOAP boundaries, idempotency, error mapping, correlation IDs, observability and secret separation. The S/4 procurement client is the executable example. This is not presented as evidence of a live SAP integration implementation.
+This material documents OData/REST/SOAP concepts such as idempotency, error mapping, correlation IDs, observability and secret separation. The S/4 procurement client is the only executable SAP-adjacent example and is explicitly local/non-live. This section is **not** evidence of productive SAP interface implementation, middleware work, CPI/Integration Suite experience or live SAP connectivity.
 
 ## Claim boundaries
 

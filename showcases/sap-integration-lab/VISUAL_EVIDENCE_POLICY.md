@@ -1,4 +1,4 @@
-# Visual Evidence Policy — SAP Integration Lab
+# Visual Evidence Policy — SAP Engineering Evidence Lab
 
 [Versión en español](./VISUAL_EVIDENCE_POLICY.es.md)
 

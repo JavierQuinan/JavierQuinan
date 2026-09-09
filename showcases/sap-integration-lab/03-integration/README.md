@@ -1,16 +1,14 @@
-# SAP Integration — Engineering Guide
+# External API Architecture Study — SAP-Adjacent, Non-Live
 
 [Versión en español](./README.es.md)
 
-> **Scope:** integration patterns connecting SAP with external software systems
+> **Scope:** documentation-grounded API/interface design concepts plus one executable, local/non-live S/4HANA client example. This document is not evidence of productive SAP interface, middleware, CPI/Integration Suite or live-connectivity experience.
 
-This guide links SAP evidence with the broader full-stack engineering portfolio. It documents the integration controls used across the public evidence and points to the executable S/4HANA Procurement API Client as the concrete source example.
+This study connects general full-stack API engineering concepts with the explicitly non-live S/4HANA Procurement API Client published in this repository. It separates reviewable source and architectural study from professional SAP runtime claims.
 
-## Integration patterns documented
+## OData / REST client-side concepts
 
-### OData / REST
-
-The public S/4HANA Procurement API Client demonstrates:
+The public S/4HANA Procurement API Client demonstrates only the behavior present in its source and tests:
 
 - external configuration;
 - read-only API consumption;
@@ -26,13 +24,17 @@ The public S/4HANA Procurement API Client demonstrates:
 
 See: [`../02-s4hana/mm/procurement-api-lab`](../02-s4hana/mm/procurement-api-lab/README.md).
 
-### SOAP / XML
+The client does **not** demonstrate a live S/4HANA tenant connection, productive OData implementation, SAP middleware configuration, destination setup or corporate runtime behavior.
 
-The portfolio also documents SOAP/XML-heavy enterprise integration through the sanitized KOVI case study. Public evidence focuses on architecture, XML/XSD validation, asynchronous processing and failure handling without exposing fiscal/customer payloads.
+## SOAP / XML context outside SAP
+
+The portfolio separately contains real software-engineering evidence involving SOAP/XML/XSD in the sanitized KOVI case study. That evidence belongs to the software-product track and must not be reinterpreted as SAP interface experience.
+
+## Documentation-grounded resilience concepts
+
+The following patterns are retained as architecture study because they are useful for API clients and distributed systems generally. They are not represented as productive SAP implementation evidence.
 
 ### Idempotency
-
-For integrations that may be retried, the engineering rule is:
 
 ```text
 External request/event
@@ -48,11 +50,9 @@ Persist result / correlation ID
 Return/replay deterministic outcome
 ```
 
-A retry must not silently create duplicate business effects.
-
 ### Error classification
 
-Errors should be separated into categories such as:
+A client/interface design may distinguish:
 
 - authentication/authorization;
 - transport/connectivity;
@@ -63,19 +63,17 @@ Errors should be separated into categories such as:
 - transient retryable failure;
 - permanent/non-retryable failure.
 
-This makes support and observability materially better than returning a generic “SAP error”.
-
 ### Correlation and traceability
 
-Integration logs should preserve a correlation identifier across:
+A generic distributed-system trace may preserve a correlation identifier across:
 
-`caller → integration layer → SAP/API → worker/job → response`.
+`caller → client/service layer → remote API → worker/job → response`
 
 The public TypeScript client records returned correlation/request IDs when available.
 
 ### Observability
 
-A useful integration record links technical events with business context without logging confidential payloads:
+A safe technical record may include:
 
 - operation name;
 - safe business reference;
@@ -88,7 +86,7 @@ A useful integration record links technical events with business context without
 
 ### Secret/configuration separation
 
-Public code must not contain:
+Public examples must not contain:
 
 - SAP credentials;
 - RFC destinations;
@@ -99,15 +97,15 @@ Public code must not contain:
 
 Configuration is externalized and examples use placeholders or synthetic values.
 
-## Evidence available in this repository
+## Evidence classification
 
-| Evidence | What it demonstrates |
-|---|---|
-| S/4HANA Procurement API Client | TypeScript OData client, validation, correlation IDs, HTTPS and **6/6 CI tests** |
-| KOVI public case study | SOAP/XML/XSD, async workers, certificate-handling architecture and failure boundaries |
-| ECC diagnostics guides | transaction/object tracing and technical troubleshooting methodology |
-| SAP operational guides | business-process context needed to interpret integration failures correctly |
+| Artifact | Classification | What it supports |
+|---|---|---|
+| S/4HANA Procurement API Client | `EXECUTABLE_NON_LIVE_EXAMPLE` | TypeScript client behavior, OData parsing/validation, HTTPS guard, request correlation and observed CI tests |
+| This document | `DOCUMENTATION_GROUNDED` | Architecture study only |
+| KOVI public case study | Separate software-product evidence | SOAP/XML/XSD and async processing outside SAP |
+| ECC diagnostics/operational guides | `ENTERPRISE_VERIFIED` where explicitly classified | SAP troubleshooting/process context, not interface implementation |
 
-## Evidence boundary
+## Claim boundary
 
-No internal endpoint, RFC destination, hostname, credential, certificate, customer payload or proprietary adapter source is published.
+No productive SAP interface implementation, SAP Integration Suite/CPI work, live S/4HANA API connectivity, IDoc/RFC/BAPI runtime, middleware configuration or customer SAP endpoint is claimed by this study.
