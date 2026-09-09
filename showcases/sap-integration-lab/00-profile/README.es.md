@@ -36,4 +36,4 @@ Este perfil separa los claims recruiter-facing por clases de evidencia, en lugar
 
 ## Límite de claims
 
-La formación no se presenta como certificación emitida por SAP ni como evidencia enterprise/runtime. La arquitectura RAP y los conceptos de integración están basados en documentación. El cliente procurement es un ejemplo ejecutable no-live. Los labs ABAP históricos conservan evidencia documentada de ejecución histórica. Las prácticas de Curso 3 son formación hands-on confirmada por el propietario con source público normalizado `_fq`.
+La formación no se presenta como certificación emitida por SAP ni como evidencia enterprise/runtime. La arquitectura RAP y los conceptos de APIs externas están basados en documentación. El cliente procurement es un ejemplo ejecutable no-live, no evidencia de interfaces SAP productivas. Los labs ABAP históricos conservan evidencia documentada de ejecución histórica. Las prácticas de Curso 3 son formación hands-on confirmada por el propietario con source público normalizado `_fq`.
