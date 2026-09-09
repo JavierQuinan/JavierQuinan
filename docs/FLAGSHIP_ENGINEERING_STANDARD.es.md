@@ -13,7 +13,7 @@ Nivel flagship actual:
 - FITBA / GYMORA
 - LegalTech Automation Platform
 
-Los tracks enterprise como SAP Integration Lab y Odoo Engineering Lab siguen la misma filosofía evidence-first, adaptada a su dominio.
+Los tracks enterprise como SAP Engineering Evidence y Odoo Engineering Lab siguen la misma filosofía evidence-first, adaptada a su dominio.
 
 ## Estructura requerida para cada caso de estudio
 
