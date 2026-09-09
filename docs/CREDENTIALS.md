@@ -48,6 +48,7 @@ This is Odoo Inc.'s own "Certificate of Achievement" for completing the Spanish-
 | Credential | Issuer | Duration | Date | Classification | Public evidence |
 |---|---|---:|---|---|---|
 | Curso de Angular | Instituto Internacional de Software (ISI) | 120 academic hours | 2025-06-23 | Training course | [View certificate](./credentials/evidence/other/angular-course-isi-francisco-quinteros-2025.pdf) |
+| Full-stack Development course | Codica | Not stated on the certificate | 2025-12-03 | Certificado de finalización (Certificate of completion) | [View certificate](./credentials/evidence/other/fullstack-development-codica-francisco-quinteros-2025.pdf) |
 
 ## Repository rule
 
