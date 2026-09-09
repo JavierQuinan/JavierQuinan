@@ -118,7 +118,7 @@ Architecture guide covering CDS → behavior → projection → service definiti
 
 ### External API architecture study — `DOCUMENTATION_GROUNDED` + `EXECUTABLE_NON_LIVE_EXAMPLE`
 
-[External API Architecture Study](./03-integration/README.md)
+[External API Architecture Study](./03-api-architecture/README.md)
 
 This material documents OData/REST/SOAP concepts such as idempotency, error mapping, correlation IDs, observability and secret separation. The S/4 procurement client is the only executable SAP-adjacent example and is explicitly local/non-live. This section is **not** evidence of productive SAP interface implementation, middleware work, CPI/Integration Suite experience or live SAP connectivity.
 

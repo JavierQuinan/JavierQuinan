@@ -133,7 +133,7 @@ These areas are retained because real sanitized enterprise evidence exists, but 
 
 Training evidence is deliberately not upgraded into productive S/4HANA, BTP, CPI, RAP or ABAP Cloud client-project experience.
 
-### [SAP Engineering Evidence — ECC, IS-U, MM & ABAP](showcases/sap-integration-lab/README.md)
+### [SAP Engineering Evidence — ECC, IS-U, MM & ABAP](showcases/sap-engineering-evidence/README.md)
 
 Evidence available now:
 
@@ -156,7 +156,7 @@ ECC ABAP artifacts are reviewable source/static evidence, not corporate runtime 
 ## Training & Credentials
 
 - [General credentials index](docs/CREDENTIALS.md) — SAP training, Odoo and other relevant technical credentials.
-- [SAP training & credentials](showcases/sap-integration-lab/00-profile/TRAINING_AND_CREDENTIALS.md) — S/4HANA module record, ABAP Cloud track and claim boundaries.
+- [SAP training & credentials](showcases/sap-engineering-evidence/00-profile/TRAINING_AND_CREDENTIALS.md) — S/4HANA module record, ABAP Cloud track and claim boundaries.
 - [Odoo 18 Functional Certificate](docs/CREDENTIALS.md#odoo) — Odoo Inc. Certificate of Achievement.
 
 ## Engineering principles
@@ -175,7 +175,7 @@ ECC ABAP artifacts are reviewable source/static evidence, not corporate runtime 
 2. [Motorix ERP / SaaS Showcase](showcases/motorix/README.md)
 3. [FITBA Web + Mobile Showcase](showcases/fitba/README.md)
 4. [Legal Workflow Platform Showcase](showcases/legaltech/README.md)
-5. [SAP Engineering Evidence — ECC, IS-U, MM & ABAP](showcases/sap-integration-lab/README.md)
+5. [SAP Engineering Evidence — ECC, IS-U, MM & ABAP](showcases/sap-engineering-evidence/README.md)
 6. [Billing & Inventory — Angular + PHP](https://github.com/JavierQuinan/Listas)
 7. [Parking Android — Kotlin](https://github.com/JavierQuinan/parqueadero_android)
 
