@@ -118,7 +118,7 @@ Arquitectura CDS → behavior → projection → service definition/binding → 
 
 ### Estudio de arquitectura de APIs externas — `DOCUMENTATION_GROUNDED` + `EXECUTABLE_NON_LIVE_EXAMPLE`
 
-[Estudio de Arquitectura de APIs Externas](./03-integration/README.es.md)
+[Estudio de Arquitectura de APIs Externas](./03-api-architecture/README.es.md)
 
 Este material documenta conceptos OData/REST/SOAP como idempotencia, mapeo de errores, correlation IDs, observabilidad y separación de secretos. El cliente procurement S/4 es el único ejemplo ejecutable relacionado con SAP y es explícitamente local/no-live. Esta sección **no** constituye evidencia de implementación productiva de interfaces SAP, middleware, CPI/Integration Suite ni conectividad SAP real.
 
