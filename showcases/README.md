@@ -12,7 +12,7 @@ These case studies expose recruiter-facing engineering evidence while keeping pr
 | MOTORIX / TecnoAuto | Multi-tenant ERP/SaaS · RBAC · branch scoping · migrations · operations | [Case study](./motorix/README.md) | [Caso de estudio](./motorix/README.es.md) |
 | FITBA / GYMORA | Web + native mobile · Supabase/RLS · SportsTech · consent architecture | [Case study](./fitba/README.md) | [Caso de estudio](./fitba/README.es.md) |
 | Legal Workflow Automation | Legal workflows · document processing · security/privacy · bounded AI; software + law project, not a standalone LegalTech-specialist claim | [Case study](./legaltech/README.md) | [Caso de estudio](./legaltech/README.es.md) |
-| SAP Engineering Evidence Lab | Primary enterprise evidence: IS-U / Work Management · MM · technical diagnostics; S/4HANA 240h training · ABAP Cloud 200h hands-on/training · explicit non-live modern SAP boundaries | [Engineering lab](./sap-integration-lab/README.md) | [Laboratorio](./sap-integration-lab/README.es.md) |
+| SAP Engineering Evidence | Primary enterprise evidence: IS-U / Work Management · MM · technical diagnostics; S/4HANA 240h training · ABAP Cloud 200h hands-on/training · explicit non-live modern SAP boundaries | [Engineering evidence](./sap-engineering-evidence/README.md) | [Evidencia](./sap-engineering-evidence/README.es.md) |
 
 ## Evidence standard
 
