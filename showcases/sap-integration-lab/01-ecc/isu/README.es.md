@@ -2,7 +2,7 @@
 
 [English version](./README.md)
 
-> **Alcance:** SAP ECC IS-U / Work Management / integración CRM / GIS  
+> **Alcance:** SAP ECC IS-U / Work Management con flujos operativos específicos entre CRM/GIS y SAP  
 > **Evidencia representada:** guías operativas aportadas · source ABAP original read-only · revisión determinista de source · guías técnicas reproducibles
 
 Esta línea está separada de S/4HANA y organiza la evidencia operativa SAP entregada para este portafolio dentro del módulo al que corresponde.
@@ -88,7 +88,7 @@ Documenta clasificación previa de errores, consulta técnica read-only, resoluc
 
 [Occasional Metered Service](./crm-isu-integration/occasional-metered-service/README.es.md)
 
-Evidencia end-to-end CRM → WM → CRM: cliente/acuerdo/contrato, ejecución técnica de OT, datos relacionados con medidor, estado final, cierre técnico y finalización contractual.
+Evidencia operativa end-to-end CRM → WM → CRM: cliente/acuerdo/contrato, ejecución técnica de OT, datos relacionados con medidor, estado final, cierre técnico y finalización contractual.
 
 ## Referencias técnicas estándar
 
@@ -103,7 +103,7 @@ Para el modelo de estados, la documentación SAP expone campos estándar como `A
 - administración preventiva de rangos `AUFTRAG`;
 - SAP GUI Scripting bajo controles de batch;
 - Device Management y regularización de estados;
-- integración CRM ↔ IS-U / WM y GIS ↔ SAP;
+- soporte operativo en flujos específicos CRM ↔ IS-U / WM y GIS ↔ SAP;
 - consistencia MM ↔ WM;
 - background jobs y procesos masivos controlados;
 - diseño original de diagnóstico ABAP clásico read-only;
@@ -111,6 +111,6 @@ Para el modelo de estados, la documentación SAP expone campos estándar como `A
 
 ## Límite técnico
 
-Las guías se publican conforme a la versión aportada para el portafolio. No se añaden credenciales, endpoints internos ni source propietario que no forme parte de la evidencia entregada.
+Las guías se publican conforme a la versión aportada para el portafolio. Esta línea no afirma implementación de middleware SAP ni añade credenciales, endpoints internos o source propietario que no forme parte de la evidencia entregada.
 
 El source ABAP de auditoría de estados se presenta como evidencia source/static con guía reproducible de verificación. No se atribuye un resultado runtime corporativo cuando no existe un registro real de ejecución.

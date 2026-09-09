@@ -2,7 +2,7 @@
 
 [Versión en español](./README.es.md)
 
-> **Evidence type:** sanitized operational support for GIS → SAP integration
+> **Evidence type:** sanitized operational support for the GIS → SAP interface/reprocessing workflow
 
 This evidence documents daily monitoring of CUEN records that are pending, locked or returned by GIS with an error, followed by controlled reprocessing only when treatment criteria are satisfied.
 
@@ -72,13 +72,15 @@ Persistent failures retain only sanitized identifiers, sanitized novelty ID, san
 
 ## What this demonstrates
 
-- GIS ↔ SAP IS-U integration support;
+- operational support for a GIS ↔ SAP IS-U interface/reprocessing workflow;
 - error classification before reprocessing;
 - read-only technical lookup;
 - CUEN-to-novelty traceability;
 - bounded batch processing;
 - per-record post-validation;
 - interface escalation discipline.
+
+This evidence does not claim middleware development, SAP Integration Suite/CPI implementation or ownership of the underlying corporate interface.
 
 ## Confidentiality boundary
 
