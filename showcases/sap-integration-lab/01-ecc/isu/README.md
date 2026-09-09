@@ -2,7 +2,7 @@
 
 [Versión en español](./README.es.md)
 
-> **Scope:** SAP ECC IS-U / Work Management / CRM / GIS integration  
+> **Scope:** SAP ECC IS-U / Work Management with specific CRM/GIS cross-system operational workflows  
 > **Evidence represented:** sanitized operational guidance · original read-only ABAP source · deterministic source review · reproducible technical guides
 
 This track is intentionally independent from S/4HANA. It converts operational utilities experience into reviewable evidence while removing customer/company configuration and real identifiers.
@@ -69,13 +69,13 @@ Documents recovery when an incomplete CRM contract-end flow does not produce the
 
 [CUEN Monitoring & Reprocessing](./crm-isu-integration/gis-cuen-reprocessing/README.md)
 
-Documents pre-classification of errors, read-only technical lookup, `CUEN → novelty ID` resolution, bounded GIS→SAP reprocessing and per-record post-validation.
+Documents pre-classification of errors, read-only technical lookup, `CUEN → novelty ID` resolution, bounded GIS→SAP interface reprocessing and per-record post-validation.
 
 ### Occasional Metered Service
 
 [Occasional Metered Service](./crm-isu-integration/occasional-metered-service/README.md)
 
-End-to-end CRM → WM → CRM evidence covering contract setup, technical work-order execution, meter-related data, final operational status, technical completion and contract completion.
+End-to-end CRM → WM → CRM operational evidence covering contract setup, technical work-order execution, meter-related data, final operational status, technical completion and contract completion.
 
 ## Standard technical references
 
@@ -90,7 +90,7 @@ For the status model, SAP documentation exposes standard fields including `AUFK-
 - preventive `AUFTRAG` number-range administration;
 - governed SAP GUI Scripting batch operations;
 - Device Management and status regularization;
-- CRM ↔ IS-U / WM and GIS ↔ SAP integration support;
+- operational support across specific CRM ↔ IS-U / WM and GIS ↔ SAP workflows;
 - MM ↔ WM configuration consistency;
 - background-job and controlled batch-process governance;
 - original classic-ABAP read-only diagnostic design;
@@ -98,6 +98,6 @@ For the status model, SAP documentation exposes standard fields including `AUFK-
 
 ## Technical and confidentiality boundary
 
-Public evidence documents standard read-only diagnostic objects and original portfolio source only. It does not publish direct manipulation shortcuts, proprietary `Z*` implementations, credentials, real orders/installations/contracts/meters/CUEN/users, internal endpoints or unsanitized enterprise screenshots.
+Public evidence documents standard read-only diagnostic objects and original portfolio source only. It does not claim SAP middleware implementation or publish direct manipulation shortcuts, proprietary `Z*` implementations, credentials, real orders/installations/contracts/meters/CUEN/users, internal endpoints or unsanitized enterprise screenshots.
 
 The ABAP status-audit source remains source/static evidence with reproducible verification guidance. No corporate runtime result is attributed where no actual execution record exists.
