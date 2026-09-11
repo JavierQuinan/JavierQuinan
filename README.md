@@ -45,6 +45,14 @@ My legal background adds value when software involves **regulated workflows, pri
 | Quality & delivery | GitHub Actions, Jest, Supertest, Playwright, linting, static validation, build gates, security review and evidence-first readiness documentation. |
 | Regulated systems | Traceability, tenant isolation, electronic-invoicing workflows, privacy-aware design and compliance-sensitive product decisions informed by software engineering + law. |
 
+## Open-source collaboration
+
+I also contribute focused fixes and documentation improvements to external open-source projects. Only merged work is listed here.
+
+| Project | Contribution | Result |
+|---|---|---|
+| [avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) | [PR #159 — document the published detector npm install/import path](https://github.com/conorbronsdon/avoid-ai-writing/pull/159) | **Merged** · documentation aligned with the package's published CommonJS entry point and CI-reviewed repository behavior |
+
 ## Core stack
 
 | Area | Technologies / capabilities |
