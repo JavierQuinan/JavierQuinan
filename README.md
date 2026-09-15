@@ -47,11 +47,15 @@ My legal background adds value when software involves **regulated workflows, pri
 
 ## Open-source collaboration
 
-I also contribute focused fixes and documentation improvements to external open-source projects. Only merged work is listed here.
+I contribute focused fixes and documentation improvements to external open-source projects. The entries below are limited to **merged, verifiable upstream work**.
 
 | Project | Contribution | Result |
 |---|---|---|
+| [OpsiMate](https://github.com/OpsiMate/OpsiMate) | [PR #933 — standardize the client on the shared `Role` enum](https://github.com/OpsiMate/OpsiMate/pull/933) | **Merged** · removed duplicated role definitions, adopted the canonical shared enum and preserved client behavior/API compatibility |
+| [avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) | [PR #180 — retain max-size paragraph after heading](https://github.com/conorbronsdon/avoid-ai-writing/pull/180) | **Merged** · fixed a corpus-preprocessing boundary bug and added 399/400-word regression coverage; the maintainer explicitly preserved the contribution and attribution in follow-up coordination |
 | [avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) | [PR #159 — document the published detector npm install/import path](https://github.com/conorbronsdon/avoid-ai-writing/pull/159) | **Merged** · documentation aligned with the package's published CommonJS entry point and CI-reviewed repository behavior |
+
+These contributions show the workflow I use in external repositories: reproduce a bounded problem, respect maintainer scope, make the smallest defensible change, add or preserve verification evidence, respond to review, and keep attribution/history clear.
 
 ## Core stack
 
@@ -196,6 +200,12 @@ Mi experiencia SAP profesional se concentra principalmente en **SAP IS-U / Utili
 Complemento esta experiencia con una **Especialización Internacional en SAP S/4 HANA de 240 horas** en MM, PP, SD, FI y PM (promedio final 18/20) y **200 horas de formación/práctica hands-on en ABAP Cloud**. S/4HANA, ABAP Cloud, Clean Core, RAP y OData se muestran con el nivel exacto de evidencia disponible, sin convertir formación o ejemplos no-live en experiencia productiva.
 
 Como Software Engineer desarrollo soluciones empresariales y SaaS con Angular, React, TypeScript, NestJS, Node.js, PostgreSQL, Supabase, Redis, APIs, mobile y automatización. Mi formación jurídica aporta una perspectiva adicional en privacidad, trazabilidad, reglas de negocio, cumplimiento y sistemas regulados.
+
+### Colaboración open source
+
+También contribuyo a proyectos open source externos con cambios acotados y verificables. Entre las contribuciones upstream ya integradas están **OpsiMate #933**, donde consolidé el uso del enum `Role` compartido sin alterar comportamiento, y **avoid-ai-writing #180**, donde corregí un edge case de preprocessing que podía perder un párrafo válido de 400 palabras y añadí cobertura de regresión para los límites 399/400. También está integrada **avoid-ai-writing #159**, enfocada en documentar correctamente el consumo del detector publicado en npm.
+
+Mi criterio para estas colaboraciones es el mismo que aplico en proyectos propios: reproducir primero, respetar el alcance del maintainer, hacer cambios mínimos defendibles, dejar evidencia de validación y no presentar como propio trabajo que todavía no ha sido aceptado upstream.
 
 ---
 
