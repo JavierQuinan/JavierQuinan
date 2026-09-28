@@ -51,6 +51,7 @@ I contribute focused fixes and documentation improvements to external open-sourc
 
 | Project | Contribution | Result |
 |---|---|---|
+| [OWASP Agent Memory Guard](https://github.com/OWASP/www-project-agent-memory-guard) | [PR #124 — make self-reinforcement decay trust-aware](https://github.com/OWASP/www-project-agent-memory-guard/pull/124) | **Merged** · hardened the ASI06 self-reinforcement trust boundary with conservative `SourceClass.SYSTEM` defaults, explicit trusted corroboration and regression coverage |
 | [OpsiMate](https://github.com/OpsiMate/OpsiMate) | [PR #933 — standardize the client on the shared `Role` enum](https://github.com/OpsiMate/OpsiMate/pull/933) | **Merged** · removed duplicated role definitions, adopted the canonical shared enum and preserved client behavior/API compatibility |
 | [avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) | [PR #180 — retain max-size paragraph after heading](https://github.com/conorbronsdon/avoid-ai-writing/pull/180) | **Merged** · fixed a corpus-preprocessing boundary bug and added 399/400-word regression coverage; the maintainer explicitly preserved the contribution and attribution in follow-up coordination |
 | [avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) | [PR #159 — document the published detector npm install/import path](https://github.com/conorbronsdon/avoid-ai-writing/pull/159) | **Merged** · documentation aligned with the package's published CommonJS entry point and CI-reviewed repository behavior |
@@ -203,7 +204,7 @@ Como Software Engineer desarrollo soluciones empresariales y SaaS con Angular, R
 
 ### Colaboración open source
 
-También contribuyo a proyectos open source externos con cambios acotados y verificables. Entre las contribuciones upstream ya integradas están **OpsiMate #933**, donde consolidé el uso del enum `Role` compartido sin alterar comportamiento, y **avoid-ai-writing #180**, donde corregí un edge case de preprocessing que podía perder un párrafo válido de 400 palabras y añadí cobertura de regresión para los límites 399/400. También está integrada **avoid-ai-writing #159**, enfocada en documentar correctamente el consumo del detector publicado en npm.
+También contribuyo a proyectos open source externos con cambios acotados y verificables. Entre las contribuciones upstream ya integradas está **OWASP Agent Memory Guard #124**, donde reforcé el trust boundary del detector de self-reinforcement para que solo fuentes explícitamente confiables puedan debilitar el historial de detección, con defaults conservadores y cobertura de regresión; además están **OpsiMate #933**, donde consolidé el uso del enum `Role` compartido sin alterar comportamiento, y **avoid-ai-writing #180**, donde corregí un edge case de preprocessing que podía perder un párrafo válido de 400 palabras y añadí cobertura de regresión para los límites 399/400. También está integrada **avoid-ai-writing #159**, enfocada en documentar correctamente el consumo del detector publicado en npm.
 
 Mi criterio para estas colaboraciones es el mismo que aplico en proyectos propios: reproducir primero, respetar el alcance del maintainer, hacer cambios mínimos defendibles, dejar evidencia de validación y no presentar como propio trabajo que todavía no ha sido aceptado upstream.
 
